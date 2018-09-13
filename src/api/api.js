@@ -4,18 +4,20 @@ axios.defaults.baseURL = '/api/v1'
 export const getData = function (url, data = {}) {
   return axios({
     url,
-    params: data.params,
+    params: data,
     headers: setHeaders()
   })
 }
 export const postData = function (url, data = {}) {
   return axios({
     url,
-    data: data.data,
+    data: data,
     method: 'post',
     headers: setHeaders()
   })
 }
+
+
 export const deleteData = function (url, data = {}) {
   return axios({
     url,

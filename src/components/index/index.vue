@@ -22,7 +22,7 @@
                        <span>店铺内销</span>
                 </li>
                 <li v-for="(type,index) in types" :key="index">
-                    <router-link to="/">
+                    <router-link to="/Search">
                         <span style="font-size:0.3rem;">{{type.name}}</span>
                     </router-link>
                 </li>

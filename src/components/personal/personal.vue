@@ -9,9 +9,6 @@
                     <router-link to="/userpwdlogin"> 
                         <p style="margin-left:0.5rem;font-size:0.6rem;">登陆</p>          
                     </router-link> 
-                    <router-link to="/orderdetails"> 
-                        <p style="margin-left:0.5rem;font-size:0.6rem;">订单详情</p> 
-                    </router-link> 
                 </div>
              </div>
              <div class="order">
@@ -21,16 +18,16 @@
                  </div>
              </div>
              <div class="shoppitem">
-                  <div class="waitpay" >
+                  <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingPay'}})" >
                       <i class="iconf waitpayone"></i>
                        <span class="waitnum">01</span>
                       <p>待付款</p>
                   </div> 
-                  <div class="waitpay">
+                  <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingSign'}})">
                       <i class="iconf waitpaytwo"></i>
-                      <p>待发货</p>
+                      <p>待收货</p>
                   </div> 
-                  <div class="waitpay">
+                  <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'haveSigned'}})">
                       <i class="iconf waitpaythree"></i>
                       <p>已完成</p>
                   </div> 
@@ -40,32 +37,31 @@
                   </div> 
              </div>
              <div class="buyitems">
-                    <router-link to="/Dontuse">
-                     <div class="coupons">
+                    
+                     <div class="coupons" @click="$router.push({name: 'couponList'})">
                        <i class="iconc couponsone"></i>
                        <span>我的优惠券</span>
                        <span class="couponsnum"> {{personalitem.couponCount}}＞</span>
-                     </div>
-                    </router-link>   
-               <router-link to="/Address">
-                  <div class="coupons">
+                     </div>  
+               
+                  <div class="coupons" @click="$router.push({name: 'addressList'})">
                     <i class="iconc couponstwo"></i>
                     <span>我的地址</span>
                     <span class="couponsnum">＞</span>
                   </div>
-                </router-link>  
+                 
                 <div class="coupons">
                     <i class="iconc couponsthree"></i>
                     <span>在线客服</span>
                     <span class="couponsnum"> {{personalitem.serviceTelephone}}＞</span>
                 </div>
-                <router-link to="/Setup">
-                <div class="coupons">
+                
+                <div class="coupons" @click="$router.push({name: 'ucenterSetup'})">
                     <i class="iconc couponsfour"></i>
                     <span>设置</span>
                     <span class="couponsnum"> 0＞</span>
                 </div>
-                </router-link>
+                
              </div>
         </div>
         <Footer></Footer>
@@ -97,7 +93,7 @@ export default {
      },
      methods: {
          allorder () {
-             this.$router.push('myorder')
+             this.$router.push({name: 'orderList'})
          }
      }
 }

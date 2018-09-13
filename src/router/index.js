@@ -28,6 +28,14 @@ import Setup from '@/components/setupthe/setup'
 import Personaldata from '@/components/setupthe/personaldata'
 import Binding from '@/components/setupthe/binding'
 import Feedback from '@/components/setupthe/feedback'
+
+// zhangjie
+import OrderList from '@/views/order/list'
+import OrderDetail from '@/views/order/detail'
+import AddressList from '@/views/address/list'
+import AddressEdit from '@/views/address/edit'
+import CouponList from '@/views/coupon/list'
+import UcenterSetup from '@/views/ucenter/setup'
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +44,49 @@ export default new Router({
       path: '/',
       component: Index
     },
+    {
+      name: 'orderList',
+      path: '/order/list',
+      component: OrderList,
+      meta: { title: '我的订单' }
+    },
+    {
+      name: 'orderDetail',
+      path: '/order/detail',
+      component: OrderDetail,
+      meta: { title: '订单详情' }
+    },
+    {
+      name: 'addressList',
+      path: '/address/list',
+      component: AddressList,
+      meta: { title: '我的地址' }
+    },
+    {
+      name: 'addressEdit',
+      path: '/address/edit',
+      component: AddressEdit,
+      meta: { title: '添加修改地址' }
+    },
+    {
+      name: 'couponList',
+      path: '/coupon/list',
+      component: CouponList,
+      meta: { title: '我的优惠券' }
+    },
+    // 个人中心
+    {
+      name: 'ucenterSetup',
+      path: '/ucenter/setup',
+      component: UcenterSetup,
+      meta: { title: '我的优惠券' }
+    },
+
+
+
+
+
+
     {
       path: '/theLogin',
       name: 'TheLogin',
@@ -152,11 +203,7 @@ export default new Router({
       name: 'Newaddress',
       component: Newaddress
     },
-    {
-      path: '/address',
-      name: 'Address',
-      component: Address
-    },
+    
     {
       path: '/Setup',
       name: 'Setup',
