@@ -36,6 +36,7 @@ import AddressList from '@/views/address/list'
 import AddressEdit from '@/views/address/edit'
 import CouponList from '@/views/coupon/list'
 import UcenterSetup from '@/views/ucenter/setup'
+import UcenterPersonnalData from '@/views/ucenter/personaldata'
 Vue.use(Router)
 
 export default new Router({
@@ -79,7 +80,13 @@ export default new Router({
       name: 'ucenterSetup',
       path: '/ucenter/setup',
       component: UcenterSetup,
-      meta: { title: '我的优惠券' }
+      meta: { title: '设置' }
+    },
+    {
+      name: 'ucenterPersonal',
+      path: '/ucenter/personaldata',
+      component: UcenterPersonnalData,
+      meta: { title: '设置' }
     },
 
 

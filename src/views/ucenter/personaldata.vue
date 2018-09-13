@@ -1,15 +1,13 @@
 <template >
    <div class="pertop">
       <div class="settop">
-            <router-link to="/Setup">
-                <i class="back backs"></i>     
-            </router-link>
+            <i class="back backs" @click="$router.back(-1)"></i>     
             <span class="stt">修改个人资料</span>
             <span class="deter" @click="deter">确定</span>
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
-                <input @keyup.13=show() type="search" ref="input1" placeholder="请输入用户名">
+                <input @keyup.13=show() type="search" ref="input1" v-model="nickname" placeholder="请输入用户名">
             </form>
         </div>
         <div class="perfoot">
@@ -19,10 +17,11 @@
 </template>
 
 <script>
+import { getMemberInfo } from '@/api/ucenter/index.js'
     export default {
         data () {
             return {
-                username: '',
+                nickname: '',
             }
         },
         methods: {

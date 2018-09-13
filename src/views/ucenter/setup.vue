@@ -15,16 +15,15 @@
                      <span class="settx">＞</span>
                  </span>
              </div>
-             <router-link to='/Personaldata'>
-                 <div class="setitems">
-                    <span>
-                     个人资料 </span>
-                  <span>
-                     <span ref="personal"></span>
-                     <span class="settx">＞</span>
-                  </span>
-                </div>
-             </router-link>
+             
+            <div class="setitems" @click="$router.push({name: 'ucenterPersonal'})">
+                <span>
+                    个人资料 </span>
+                <span>
+                 <span ref="personal"></span>
+                    <span class="settx">＞</span>
+                </span>
+            </div>
              <router-link to='/Binding'>
                 <div class="setitems">
                     <span>
