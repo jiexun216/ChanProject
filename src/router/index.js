@@ -28,7 +28,11 @@ import Setup from '@/components/setupthe/setup'
 import Personaldata from '@/components/setupthe/personaldata'
 import Binding from '@/components/setupthe/binding'
 import Feedback from '@/components/setupthe/feedback'
-
+import Cargoods from '@/views/car/cargoods'
+import EditorGoods from "@/views/car/editorGoods"
+import Settlement from "@/views/settlement/settlement"
+import Empty from "@/views/car/empty"
+ 
 // zhangjie
 import OrderList from '@/views/order/list'
 import OrderDetail from '@/views/order/detail'
@@ -230,6 +234,25 @@ export default new Router({
       path: '/Feedback',
       name: 'Feedback',
       component: Feedback
+    },
+    //购物车
+    {
+      path: '/Cargoods',
+      name: 'Cargoods',
+      component: Cargoods
+    },
+    {
+      path: '/EditorGoods',
+      name: 'EditorGoods',
+      component: EditorGoods
+    },{
+      path: '/Settlement',
+      name: 'Settlement',
+      component: Settlement
+    },{
+      path: 'Empty',
+      name: 'Empty',
+      component: Empty
     }
   ]
 })
