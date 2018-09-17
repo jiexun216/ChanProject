@@ -13,7 +13,7 @@
         </div>
         <div>算命</div>
       </router-link>
-      <router-link  :to="{name:''}" tag="li">
+      <router-link  :to="{name:'Empty'}" tag="li">
         <div>
           <i class="iconf iconimg3"></i>
         </div>
