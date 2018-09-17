@@ -1,9 +1,7 @@
 <template>
      <div>
          <div class="settop">
-            <router-link to="/Personal">
-                <i class="back backs"></i>     
-            </router-link>
+            <i class="back backs" @click="$router.back(-1)"></i>     
             <span class="stt">设置</span>
         </div>
         <div class="setitem">
@@ -34,17 +32,17 @@
                     </span>
                 </div>
              </router-link>
-             <router-link to='/Feedback'>
-                <div class="setitems">
-                    <span>
-                        意见反馈 </span>
-                    <span>
-                        <span class="settx">＞</span>
-                    </span>
-                </div>
-             </router-link>
              
-             <div class="setitems">
+            <div class="setitems" @click="$router.push({name: 'ucenterFeedback'})">
+                <span>
+                    意见反馈 </span>
+                <span>
+                    <span class="settx">＞</span>
+                </span>
+            </div>
+            
+             
+             <!-- <div class="setitems">
                  <span>
                      清理缓存 </span>
                  <span>
@@ -57,7 +55,7 @@
                  <span>
                      <span class="settx">＞</span>
                  </span>
-             </div>
+             </div> -->
         </div>
 
         <div class="headerpro" @touchmove.prevent v-if="headerpro"> 
@@ -67,7 +65,7 @@
                 <p class="headclose" @click="headdown">取消</p>
             </div>   
         </div>
-        <div class="setfooter">
+        <div class="setfooter" @click="loginOut">
             <img src="../../assets/img/outlo.png" alt="">
              <p>退出登录</p>
         </div>
@@ -75,6 +73,7 @@
 </template>
 
 <script>
+import { exitLogon } from '@/api/ucenter/index.js'
     export default {
          data () {
              return {
@@ -84,6 +83,10 @@
          },
          created () {
              this.$getData('ucenter/index').then(res => {
+                 if (res.data.status == 99) {
+                     this.$toast(res.data.message ? res.data.message : '操作失败')
+                     this.$router.push({name: res.data.data.url})
+                 }
                   this.data = res.data.data;
                   console.log(this.data)
              }).catch(err =>{
@@ -91,6 +94,15 @@
              })
         },
          methods: {
+            // 退出登录
+            loginOut () {
+                exitLogon ().then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 0) {
+                        this.$router.push({name: 'PasswordLogin'})
+                    }
+                })
+            },
             headdown () {
                 this.headerpro = false;
            },

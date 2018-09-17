@@ -3,7 +3,7 @@
       <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
             <span class="stt">修改个人资料</span>
-            <span class="deter" @click="deter">确定</span>
+            <span class="deter" @click="confirmModify()">确定</span>
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getMemberInfo } from '@/api/ucenter/index.js'
+import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
     export default {
         data () {
             return {
@@ -25,12 +25,32 @@ import { getMemberInfo } from '@/api/ucenter/index.js'
             }
         },
         methods: {
+            getData () {
+                getMemberInfo ().then(res => {
+                    if (res.data.status == 99) {
+                     this.$toast(res.data.message ? res.data.message : '操作失败')
+                     this.$router.push({name: res.data.data.url})
+                    }
+                    this.nickname = res.data.data.nickName
+                }).catch(err => {
+                    return err
+                })
+            },
             show () {
                 this.$refs.input1.blur();
             },
-            deter () {
-                this.$router.push('/Setup');
+            confirmModify () {
+                modifyUserName (this.nickname).then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 0) {
+                        this.$router.push({name: 'ucenterSetup'});
+                    } 
+                })
+                
             }
+        },
+        mounted (){
+            this.getData();
         }
     }
 </script>

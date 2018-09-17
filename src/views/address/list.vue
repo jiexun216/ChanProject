@@ -16,9 +16,7 @@
        </div>
         <div v-else> 
             <div class="orderdetop orderdetop1">
-                <router-link to="/Harvestaddress">
-                    <i class="back backs"></i>     
-                </router-link>
+                <i class="back backs" @click="$router.back(-1)"></i>     
                 <span >收获地址</span>
                 <span class="oks">
                     完成
@@ -83,6 +81,10 @@ export default {
       this.loading = true;
       getAddressList(this.page)
         .then(res => {
+          if (res.data.status == 99) {
+            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$router.push({name: res.data.data.url})
+          }
           this.loading = false;
           this.listData = res.data.data.list;
           this.total = res.data.data.total;
