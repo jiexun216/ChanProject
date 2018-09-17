@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TheLogin from '@/components/user/theLogin'
-import Registered from '@/components/user/registered'
-import UserPwdLogin from '@/components/user/userPwdLogin'
-import Forget from '@/components/user/forget'
-import RestPwd from '@/components/user/restpwd'
-import Index from '@/components/index/index'
 import Language from '@/components/index/language'
 import Search from '@/components/index/search'
 import GoodsDetails from '@/components/index/goodsdetails'
@@ -24,9 +18,9 @@ import Dontuse from '@/components/personal/dontuse'
 import Harvestaddress from '@/components/address/harvestaddress'
 import Newaddress from '@/components/address/newaddress'
 import Address from '@/components/address/address'
-import Setup from '@/components/setupthe/setup'
 import Personaldata from '@/components/setupthe/personaldata'
 import Binding from '@/components/setupthe/binding'
+
 import Feedback from '@/components/setupthe/feedback'
 import Cargoods from '@/views/car/cargoods'
 import EditorGoods from "@/views/car/editorGoods"
@@ -41,6 +35,16 @@ import AddressEdit from '@/views/address/edit'
 import CouponList from '@/views/coupon/list'
 import UcenterSetup from '@/views/ucenter/setup'
 import UcenterPersonnalData from '@/views/ucenter/personaldata'
+import UcenterFeedback from '@/views/ucenter/feedback'
+import UcenterIndex from '@/views/ucenter/index'
+import Index from '@/views/index/index'
+import GoodsList from '@/views/goods/list'
+import GoodsDetail from '@/views/goods/detail'
+import UserPwdLogin from '@/views/user/password-login'
+import UserRegister from '@/views/user/register'
+import UserMobileLogin from '@/views/user/mobile-login'
+import UserFindPass from '@/views/user/find-pass'
+import ResetPassword from '@/views/user/reset-password'
 Vue.use(Router)
 
 export default new Router({
@@ -49,6 +53,43 @@ export default new Router({
       path: '/',
       component: Index
     },
+    // 账号密码登录
+    {
+      name: 'PasswordLogin',
+      path: '/user/password-login',
+      component: UserPwdLogin,
+      meta: { title: '密码登录' }
+    },
+    // 用户注册
+    {
+      name: 'userRegister',
+      path: '/user/register',
+      component: UserRegister,
+      meta: { title: '用户注册' }
+    },
+    // 手机登录
+    {
+      name: 'userMobileLogin',
+      path: '/user/mobile-login',
+      component: UserMobileLogin,
+      meta: { title: '手机登录' }
+    },
+    // 密码找回
+    {
+      name: 'userFindPass',
+      path: '/user/find-pass',
+      component: UserFindPass,
+      meta: { title: '找回密码' }
+    },
+    // 密码找回-重置密码
+    {
+      name: 'resetPassword',
+      path: '/user/reset-password',
+      component: ResetPassword,
+      meta: { title: '找回密码' }
+    },
+
+    // 订单管理
     {
       name: 'orderList',
       path: '/order/list',
@@ -61,6 +102,7 @@ export default new Router({
       component: OrderDetail,
       meta: { title: '订单详情' }
     },
+    // 地址管理
     {
       name: 'addressList',
       path: '/address/list',
@@ -73,6 +115,7 @@ export default new Router({
       component: AddressEdit,
       meta: { title: '添加修改地址' }
     },
+    // 优惠券管理
     {
       name: 'couponList',
       path: '/coupon/list',
@@ -80,6 +123,12 @@ export default new Router({
       meta: { title: '我的优惠券' }
     },
     // 个人中心
+    {
+      name: 'ucenterIndex',
+      path: '/ucenter/index',
+      component: UcenterIndex,
+      meta: { title: '个人中心' }
+    },
     {
       name: 'ucenterSetup',
       path: '/ucenter/setup',
@@ -90,43 +139,38 @@ export default new Router({
       name: 'ucenterPersonal',
       path: '/ucenter/personaldata',
       component: UcenterPersonnalData,
-      meta: { title: '设置' }
+      meta: { title: '个人资料' }
     },
-
-
-
-
-
-
     {
-      path: '/theLogin',
-      name: 'TheLogin',
-      component: TheLogin
+      name: 'ucenterFeedback',
+      path: '/ucenter/feedback',
+      component: UcenterFeedback,
+      meta: { title: '意见反馈' }
     },
+    // 商品列表
+    {
+      name: 'goodsList',
+      path: '/goods/list',
+      component: GoodsList,
+      meta: { title: '商品列表' }
+    },
+    {
+      name: 'goodsDetail',
+      path: '/goods/detail',
+      component: GoodsDetail,
+      meta: { title: '商品详情' }
+    },
+
+
+
+
+
+
+    
     {
       path: '/Message',
       name: 'Message',
       component: Message
-    },
-    {
-      path: '/registered',
-      name: 'Registered',
-      component: Registered
-    },
-    {
-      path: '/userPwdLogin',
-      name: 'UserPwdLogin',
-      component: UserPwdLogin
-    },
-    {
-      path: '/forget',
-      name: 'Forget',
-      component: Forget
-    },
-    {
-      path: '/restpwd',
-      name: 'RestPwd',
-      component: RestPwd
     },
     {
       path: '/index',
@@ -161,11 +205,6 @@ export default new Router({
           component: purchaseNotice
         }
       ]
-    },
-    {
-      path: '/personal',
-      name: 'Personal',
-      component: Personal
     },
     {
       path: '/myorder',
@@ -215,11 +254,6 @@ export default new Router({
       component: Newaddress
     },
     
-    {
-      path: '/Setup',
-      name: 'Setup',
-      component: Setup
-    },
     {
       path: '/Personaldata',
       name: 'Personaldata',

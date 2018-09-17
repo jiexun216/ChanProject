@@ -30,7 +30,7 @@
             <div class="orderheader ">
                      <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
                         <div class="orderstyle">
-                            <img src="../../assets/img/order.png" alt="" style="width:3rem;margin:0.4rem;">
+                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{item.goodsName}}</p>
@@ -109,6 +109,10 @@ import {getOrderInfo} from '@/api/order/index.js'
               let id = this.$route.query.id
               this.loading = true
               getOrderInfo(id).then((res) => {
+                  if (res.data.status == 99) {
+                      this.$toast(res.data.message ? res.data.message : '操作失败')
+                      this.$router.push({name: res.data.data.url})
+                  }
                   this.orderInfo = res.data.data.orderInfo
                   this.receiverInfo = res.data.data.receiverInfo
                   this.goodsList = res.data.data.goodsList

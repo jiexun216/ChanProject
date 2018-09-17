@@ -63,6 +63,10 @@ export default {
     getData() {
       getCouponList(this.status)
         .then(res => {
+          if (res.data.status == 99) {
+            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$router.push({name: res.data.data.url})
+          }
           this.listData = res.data.data.list;
         })
         .catch(err => {

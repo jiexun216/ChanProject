@@ -1,8 +1,8 @@
 <template>
   <div>
      <div class="theLogin-top">
-        <router-link to="/userPwdLogin" class="theLogin-close"></router-link>
-        <router-link to='/registered' class="registered">注册</router-link>
+        <p class="theLogin-close"></p>
+        <p @click="$router.push({name: 'userRegister'})" class="registered">注册</p>
      </div>
      <div class="fastLogin">
         <p class="faLogin">手机快捷登录</p>

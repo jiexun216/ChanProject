@@ -29,7 +29,7 @@
                  <div v-for="orderGoodsInfo in item.orderGoodsList" :key="orderGoodsInfo.id">
                      <div class="ordercontent">
                         <div class="orderstyle">
-                            <img src="../../assets/img/order.png" alt="" style="width:3rem;margin:0.4rem;">
+                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{orderGoodsInfo.goodsTitle}}</p>
@@ -93,7 +93,11 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
         },
         methods: {
            getData () {
-               getOrderList(this.status,this.page).then(res =>{
+               getOrderList(this.status,this.page).then(res => {
+                   if (res.data.status == 99) {
+                      this.$toast(res.data.message ? res.data.message : '操作失败')
+                      this.$router.push({name: res.data.data.url})
+                    }
                     this.listData  = res.data.data.list
                     this.total = res.data.data.total
                 }).catch(err => {

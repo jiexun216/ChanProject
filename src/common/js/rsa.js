@@ -9,6 +9,6 @@ export const rsaJsencrypt = (password) => {
   publicKey += '-----END PUBLIC KEY-----'
   let encryptor = new JSEncrypt()
   encryptor.setPublicKey(publicKey)
-  let rsaPassWord = encryptor.encrypt(password)
+  let rsaPassWord = encryptor.encrypt(JSON.stringify({"encrypt": "yes", "password": password}))
   return rsaPassWord
 }

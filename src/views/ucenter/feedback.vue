@@ -2,17 +2,15 @@
    <div>
        <div>
             <div class="feedtop">
-                <router-link to="/Personal">
-                    <i class="back backs"></i>     
-                </router-link>
+                <i class="back backs" @click="$router.back(-1)"></i>     
                 <span class="stt">意见反馈</span>
           </div>
         </div>
         <div class="feed">
           <div class="pleaseinput">
-            <textarea name="" id="" cols="35" rows="8" placeholder="请输入..." class="pleasesr"> </textarea>
-            <p>如果您在网站和APP发现任何问题，或者有更好的建议，欢迎给我们留言！</p>
-            <button type="submit" class="submit">提交</button>
+            <textarea v-model="opinion" cols="35" rows="8" placeholder="请输入..." class="pleasesr"> </textarea>
+            <p>如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！</p>
+            <button type="submit" @click="submitOpinion()" class="submit">提交</button>
           </div>
           
         </div>
@@ -21,10 +19,26 @@
 </template>
 
 <script>
+import { issueOpinion } from '@/api/ucenter/index.js'
     export default {
         data () {
             return {
-               
+                opinion: ""
+            }
+        },
+        methods: {
+            submitOpinion () {
+                issueOpinion (this.opinion).then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 0) {
+                        this.$router.push({name: 'ucenterSetup'});
+                    } else if (res.data.status == 99) {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$router.push({name: res.data.data.url})
+                    }
+                }).catch(err => {
+                    return err
+                })
             }
         }
     }

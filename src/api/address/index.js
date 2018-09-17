@@ -36,3 +36,20 @@ export function getAddressInfo(id) {
     return getData(url, data)
 }
 
+// 添加编辑收货地址 zhangjie 0913
+export function saveAddressInfo(id,contactName,contactMobile,provinceName,cityName,sectionName,detailAddress,areaCode,isDefault) {
+    const url = 'address/saveInfo'
+    const data = {
+        id,
+        contactName,
+        contactMobile,
+        provinceName,
+        cityName,
+        sectionName,
+        detailAddress,
+        areaCode,
+        isDefault
+    }
+    return postData(url, data)
+}
+
