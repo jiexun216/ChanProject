@@ -5,32 +5,41 @@
         <div>
           <i class="iconf iconimg"></i>
         </div>
-        <div class="font-color">主页</div>
+        <div class="font-color">{{indexone}}</div>
       </router-link>
       <router-link  :to="{name:''}" tag="li">
         <div>
           <i class="iconf iconimg2"></i>
         </div>
-        <div>算命</div>
+        <div>{{sm}}</div>
       </router-link>
       <router-link  :to="{name:'Empty'}" tag="li">
         <div>
           <i class="iconf iconimg3"></i>
         </div>
-        <div>购物车</div>
+        <div>{{car}}</div>
       </router-link>
       <router-link  :to="{name:'Personal'}" tag="li">
         <div>
           <i class="iconf iconimg4"></i>
         </div>
-        <div>个人</div>
+        <div>{{person}}</div>
       </router-link>
     </ul>
  </div> 
 </template>
 
 <script>
-    
+    export default {
+      data () {
+           return {
+             indexone: '首页',
+             sm: '算命',
+             car: "购物车",
+             person: '个人'
+           }
+      }
+    }
 </script>
 
 <style>

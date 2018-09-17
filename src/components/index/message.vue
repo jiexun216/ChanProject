@@ -4,7 +4,7 @@
             <router-link to="/Index">
                 <i class="back backs"></i>     
             </router-link>
-            <span >消息中心</span>
+            <span >{{messagecenter}}</span>
             <span class="myorder">
                 <span @click="opertion"><i class="back backcoups" ></i></span>
             </span>
@@ -19,19 +19,19 @@
      <announcement :is='currentView' keep-alive class="ann" v-if="annshow"></announcement>
      <div class="opertion" @touchmove.prevent v-if="opertionshow">
          <div class="operbtm">
-             <p>全部标记为已读</p>
-             <p @click="keyempty">一键清空</p> 
+             <p>{{AllMarkedRead}}</p>
+             <p @click="keyempty">{{AkeyEmpty}}</p> 
               <!-- 这个是一键清空的 -->
-             <p class="operbtmp" @click="operhide">取消</p>
+             <p class="operbtmp" @click="operhide">{{cancel}}</p>
          </div>
      </div>
      <div class="opertion" @touchmove.prevent v-if="clearshow">
           <div class="clear">
-               <p class="clearall">是否清空所有消息</p>
-               <p class="clearno">清空后无法回复，请谨慎处理</p>
+               <p class="clearall">{{emptyAll}}</p>
+               <p class="clearno">{{carefulEmpty}}</p>
                <div class="cender">
-                   <span @click="dercencal">取消</span>
-                   <span class="dermine" @click="dermine">确定</span>
+                   <span @click="dercencal">{{cancel}}</span>
+                   <span class="dermine" @click="dermine">{{determine}}</span>
                      <!-- 点击这个确定消息隐藏 -->
                </div>
           </div>
@@ -47,6 +47,13 @@ import mynews from './mynews'
     export default {
         data () {
             return {
+                messagecenter: '消息中心',
+                AllMarkedRead: '全部标记为已读',
+                AkeyEmpty: '一键清空',
+                cancel: '取消',
+                emptyAll: '是否清空所有消息',
+                carefulEmpty: '清空后无法恢复，请谨慎处理',
+                determine: '确定',
                 changeRed:'announcement',
                 currentView: 'announcement',
                 tabText: {  

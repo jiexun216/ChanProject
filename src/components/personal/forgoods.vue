@@ -4,13 +4,13 @@
             <div class="timer">
                <span v-html="time ()" class="time"></span>
                <div class="timerclick">
-                   <span>配送在途</span>
+                   <span>{{distribution}}</span>
                </div>
             </div>
             <div class="orderpay">
                  <div class="standpay">
                      <i class="timericon standpayone"></i>
-                     <span>[杭州市]你的订单已打包完毕，等待配送</span>
+                     <span>{{WaitingShipping}}</span>
                      <p v-html="time()" style="color:#ccc"></p>
                  </div>
                  <div>
@@ -35,8 +35,8 @@
             <div class="total">
                 <span>共1件,总计￥100</span>
                 <div class="totalitem">
-                    <span class="totalitemone">查看物流</span>
-                    <span class="totalitemtwo">确认收货</span>
+                    <span class="totalitemone">{{CheckLogistics}}</span>
+                    <span class="totalitemtwo">{{ConfirmGoods}}</span>
                 </div>
             </div>        
         </div> 
@@ -46,6 +46,10 @@
     export default {
         data () {
           return {
+              distribution: '配送在途',
+              WaitingShipping: '[杭州市]你的订单已打包完毕，等待配送',
+              CheckLogistics: '查看物流',
+              ConfirmGoods: '确认收货',
               currentdate:'',
           }
         },

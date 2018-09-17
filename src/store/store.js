@@ -6,7 +6,11 @@ export default new Vuex.Store({
   state: {
     count: 0,
     page: '',
-    goodsQuantity: ''
+    goodsQuantity: '',
+    soldthings: 10,
+    price: '',
+    marketPrice: '',
+    value: '',
   },
   mutations: {
     increment: state => state.count++,

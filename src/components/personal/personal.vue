@@ -36,8 +36,7 @@
                       <p>售后服务</p>
                   </div> 
              </div>
-             <div class="buyitems">
-                    
+             <div class="buyitems"> 
                      <div class="coupons" @click="$router.push({name: 'couponList'})">
                        <i class="iconc couponsone"></i>
                        <span>我的优惠券</span>
@@ -104,7 +103,7 @@ export default {
     font-size: 0.4rem;
 }
 .personal-top{
-    height: 100%;
+   margin-bottom: 1rem;
 }
 .members{
     margin: 0.4rem;

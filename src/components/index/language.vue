@@ -4,7 +4,7 @@
            <router-link to="/index">
              <i class="icun lang"></i>
            </router-link>
-          <p class="choose">语言选择</p>
+          <p class="choose">{{language}}</p>
        </div>
        <div class="lans">
            
@@ -13,7 +13,13 @@
 </template>
 
 <script>
-    
+    export default {
+        data () {
+            return {
+                language: '语言选择'
+            }
+        }
+    }
 </script>
 
 <style>

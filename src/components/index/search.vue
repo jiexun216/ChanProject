@@ -7,7 +7,7 @@
            <i class="search-icon search-bg"></i>
            <input type="search" class="searchs" style="line-height:1rem;" placeholder="搜索" >      
          </div>
-           <p class="concel" @click="concel">取消</p>
+           <p class="concel" @click="concel">{{concel}}</p>
         </div>
         </el-header>
      <el-container>
@@ -39,6 +39,7 @@ import goodsCategoryList from './goodsCategoryList'
     export default {
         data () {
             return {
+                concel: '取消',
                 keyword: '',
                 bgclickActive: '-1',
                 result1:null,

@@ -19,7 +19,7 @@
         <div class="store-sale">
             <ul class="store-list">
                 <li class="store-items">                  
-                       <span>店铺内销</span>
+                       <span>{{store}}</span>
                 </li>
                 <li v-for="(type,index) in types" :key="index">
                     <router-link to="/Search">
@@ -40,25 +40,25 @@
              <div>
                  <i class="icon thatmroeimg"></i>
              </div>
-             <div>生辰八字</div>
+             <div>{{birth}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg2"></i>
              </div>
-             <div>问大师</div>
+             <div>{{master}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg3" ></i>
              </div>
-             <div>精品课程</div>
+             <div>{{course}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg4"></i>
              </div>
-             <div>更多</div>
+             <div>{{more}}</div>
            </router-link>
         </ul>
 
@@ -80,7 +80,7 @@
                                 ￥{{good.market_price}}
                            </span>
                            <span class="gobuy" @click="goPage(good.id)">
-                               <router-link to='/goodsDetails' :key="good.id">去购买</router-link>
+                               <router-link to='/goodsDetails' :key="good.id">{{tobuy}}</router-link>
                            </span>
                       </div>    
                       </div>     
@@ -96,6 +96,12 @@ import Footer from './footer'
     export default {
         data () {
             return {
+                store: '店铺内销',
+                birth: '生辰八字',
+                master: '问大师',
+                course: '精品课程',
+                more: '更多',
+                tobuy: '去购买',
                 goodsId: '',
                 types: [],
                 banners: [],

@@ -4,20 +4,20 @@
             <router-link to="/">
                 <i class="back backs"></i>     
             </router-link>
-            <span >我的优惠券</span>
+            <span >{{MyCoupons}}</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
         </div>
         <div class="usecoupons">
              <div class="useitembg useitembgs">
-                <span>未使用</span>
+                <span>{{DontUse}}</span>
              </div>
              <div class="useitembg">
-                 <span>已使用</span>
+                 <span>{{beenUsed}}</span>
              </div>
              <div>
-                 <span>已过期</span>
+                 <span>{{expired}}</span>
              </div>
         </div>
         <div class="couponsitem">
@@ -34,7 +34,7 @@
                   </div>
              </div>
              <div class="couponright">
-                   <p>去使用</p>
+                   <p>{{useThe}}</p>
              </div>
         </div>
     </div>
@@ -44,8 +44,11 @@
   export default {
        data () {
            return {
-            
-
+              MyCoupons: '我的优惠券',
+              DontUse: '未使用',
+              beenUsed: '已使用',
+              expired: '已过期',
+              useThe: '去使用'
            }
        },
        methods: {

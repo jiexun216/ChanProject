@@ -5,7 +5,7 @@
                  <router-link to="/index">
                  <i class="de-icon de-iconimg1"> </i>
                  </router-link>
-             <span>商品详情</span> 
+             <span>{{Goodsdetails}}</span> 
              <div class="details-right">
                <i class="de-icon de-iconimg2">
                    <router-link to="/goodsDetails"> </router-link>
@@ -67,10 +67,10 @@
         <div class="foot">
             <div class="customer">
                 <img src="../../assets/img/36.png" alt="">
-                <p>客服</p>
+                <p>{{Customerservice}}</p>
             </div>
-            <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys">立即购买</button>
+            <button class="inbuy" @click="joinbuy">{{Addcart}}</button>
+            <button class="inbuys">{{buynow}}</button>
         </div>
         <div  style="overflow:hidden;" v-if="detailsshow">
             <div class="overlayer" @touchmove.prevent > </div>
@@ -94,21 +94,28 @@
                         </div>
                   </div>
                   <div class="number">
-                      <span class="num">数量</span>
-                       <el-input-number :min="0" v-model="num1" @change="handleChange"></el-input-number>
+                      <span class="num">{{number}}</span>
+                       <van-stepper v-model="value" />
                   </div>
-                  <button class="joinsbuy" @click="addcar">加入购物车</button>
+                  <button class="joinsbuy" @click="addcar">{{Addcart}}</button>
              </div>
         </div>
         
    </div> 
 </template>
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
-<script>
 
+<script>
+import Vue from 'vue'
+import { Stepper } from 'vant';
+Vue.use(Stepper);
     export default {
         data () {
             return {
+                Goodsdetails: '商品详情',
+                Customerservice: '客服',
+                Addcart: '加入购物车',
+                buynow: '立即购买',
+                number: '数量',
                 goodsInfos: [], 
                 goodsImages: [],  
                 num1: 1,  
@@ -119,7 +126,7 @@
                 skuAtterInfo:[],
                 skuInfos: [],
                 detailsshow:false,
-                
+                value: 1,
             }
         },
         created () {
@@ -153,7 +160,17 @@
           },
           addcar () {
             this.$toast('已经加入购物车')
-            
+            this.$postData("./Index",{
+                params: {
+                     value: this.$store.state.value,
+                     price: this.$store.state.price,
+                   
+                }
+            }).then(res =>{
+                console.log(111)
+            }).catch( err => {
+
+            })
           },
           closebuy () {
               this.detailsshow = false;
@@ -340,6 +357,9 @@
 .number {
     font-size: 0.35rem;
     margin: 0.4rem;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
 }
 .number .num{
     font-size: 0.4rem;
@@ -350,5 +370,8 @@
     float:right;
     width: 0.8rem;
     padding-right: 0.5rem;
+}
+.van-stepper{
+    line-height: 1rem;
 }
 </style>

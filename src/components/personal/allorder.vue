@@ -11,7 +11,7 @@
             <div class="orderpay">
                  <div class="standpay">
                      <i class="timericon standpayone"></i>
-                     <span>[系统]你的订单已生产，请立即支付</span>
+                     <span>{{productionPayment}}</span>
                      <p v-html="time()" style="color:#ccc"></p>
                  </div>
                  <div>
@@ -36,8 +36,8 @@
             <div class="total">
                 <span>共1件,总计￥100</span>
                 <div class="totalitem">
-                    <span class="totalitemone">取消订单</span>
-                    <span class="totalitemtwo">立即支付</span>
+                    <span class="totalitemone">{{CancelOrder}}</span>
+                    <span class="totalitemtwo">{{ImmediatePayment}}</span>
                 </div>
             </div>        
         </div> 
@@ -47,7 +47,11 @@
     export default {
         data () {
           return {
+              productionPayment: '[系统]你的订单已生产，请立即支付',
+              CancelOrder: '取消订单',
+              ImmediatePayment: '立即支付',  
               currentdate:'',
+
           }
         },
        created () {
