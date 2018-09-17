@@ -19,7 +19,7 @@
                 >
                 <div class="van-card">
                     <div >
-                        <img src="../../../dist/static/img/order.9623a3b.png" alt="" class="van-card-img">
+                        <img src="../../assets/img/order.png" alt="" class="van-card-img">
                     </div>
                     <div class="van-card-right">
                         <p>商品种类的第一件，价格是总价的一般般啊的啊</p>
