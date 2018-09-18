@@ -11,12 +11,13 @@ export default new Vuex.Store({
     price: '',
     marketPrice: '',
     value: '',
+
   },
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--,
     getPage (state, data) {
       state.page = data
-    }
+    },
   }
 })

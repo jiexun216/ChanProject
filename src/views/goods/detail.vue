@@ -72,7 +72,7 @@
             <button class="inbuy" @click="joinbuy">加入购物车</button>
             <button class="inbuys">立即购买</button>
         </div>
-        <div  style="overflow:hidden;" v-if="detailsshow">
+        <!-- <div  style="overflow:hidden;" v-if="detailsshow">
             <div class="overlayer" @touchmove.prevent > </div>
             <div class="detailssize" @touchmove.prevent>
                  <img :src="goodsImages" style="width:40%;"> 
@@ -99,14 +99,27 @@
                   </div>
                   <button class="joinsbuy" @click="addcar">加入购物车</button>
              </div>
-        </div>
-        
+        </div> -->
+        <van-sku
+                    v-if="detailsshow"
+                    v-model="showBase"
+                    :sku="sku"
+                    :goods="goods"
+                    :goods-id="goodsId"
+                    :hide-stock="sku.hide_stock"
+                    @buy-clicked="onBuyClicked"
+                        />       
+
+                        
    </div> 
 </template>
 
 <script>
-import { getGoodsInfo } from '@/api/goods/index.js'
 
+import { getGoodsInfo } from '@/api/goods/index.js'
+import Vue from "vue"
+import { Sku } from 'vant'
+Vue.use(Sku)
     export default {
         data () {
             return {
@@ -121,7 +134,60 @@ import { getGoodsInfo } from '@/api/goods/index.js'
                 skuAtterInfo:[],
                 skuInfos: [],
                 detailsshow:false,
-                
+                showBase: '',
+                sku: {},
+                messageConfig: {},
+                skuKeyStr: [],
+                goods: {
+                    title: '商品',
+                    picture: '../../assets/img/order.png'
+                },       
+                sku: {
+                    tree: [
+                        {
+                            k: '颜色',
+                            v: [
+                                {
+                                    id: '',
+                                    name: '红色',
+                                    imgUrl:'../../assets/img/39.png',
+                                },
+                                {
+                                    id: '1215',
+                                    name: '绿色',
+                                    imgUrl:'../../assets/img/39.png',
+                                }
+                            ],
+                            k_s: 's1',
+                        },
+                        {
+                            k: '尺寸',
+                            v: [
+                            {
+                                id: '',
+                                name: 'M'
+                            },
+                            {
+                                id: '1193',
+                                name: 'L'
+                            }],
+                            k_s: 's2'
+                        }
+                    ],
+                    list: [
+                        {
+                           id: 2259,
+                           s1: '1215',
+                           s2: '1193',
+                           price: 200,
+                           stock_num: 110
+                        }
+                    ],
+                    
+                    price: 115,
+                    stock_num: 227,
+                    hide_stock: false 
+                }    
             }
         },
         created () {
@@ -152,17 +218,9 @@ import { getGoodsInfo } from '@/api/goods/index.js'
            joinbuy () {
                this.detailsshow = true;
            },
-            handleChange(value) {
+          onBuyClicked () {
               
-          },
-          addcar () {
-            this.$toast('已经加入购物车')
-            
-          },
-          closebuy () {
-              this.detailsshow = false;
           }
-
         },
        components: {
         
@@ -223,6 +281,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 .goodprice {
    font-weight: bold;
    margin-right:0.2rem;
+   font-size: 0.4rem;
 }
 .goodmarket{
     font-size: 0.3rem;
@@ -339,6 +398,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
     color: #fff;
     position:fixed;
     bottom: 0;
+    left: 0;
     font-size: 0.4rem;
 }
 .number {
@@ -354,5 +414,16 @@ import { getGoodsInfo } from '@/api/goods/index.js'
     float:right;
     width: 0.8rem;
     padding-right: 0.5rem;
+}
+.van-stepper__input{
+    line-height: 1rem;
+}
+.van-sku-row__item--disabled{
+    background: #fff;
+}
+.van-sku-row__item--active{
+    color: #fff;
+    border-color: #f44;
+    background: #f44;
 }
 </style>

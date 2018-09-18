@@ -160,14 +160,12 @@ Vue.use(Stepper);
           },
           addcar () {
             this.$toast('已经加入购物车')
-            this.$postData("./Index",{
+            this.$postData("/",{
                 params: {
-                     value: this.$store.state.value,
-                     price: this.$store.state.price,
-                   
+                    
                 }
             }).then(res =>{
-                console.log(111)
+                
             }).catch( err => {
 
             })

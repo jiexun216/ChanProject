@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api/v1/': {
-        target: 'http://192.168.111.225/mobile/',
+        target: 'http://www.diamond-exchange.com/mobile/',
         changeOrigin: true,
         pathRewrite: {
           "^/api/v1": ""
