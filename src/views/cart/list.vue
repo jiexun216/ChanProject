@@ -1,19 +1,20 @@
 <template>
- <div>
-      <div class="cartop">
-                <router-link to="/Index">
+   <div>
+        <div class="cartop">
+                <router-link to="/">
                     <i class="carback  carbacks"></i>     
                 </router-link>
                 <span >购物车</span>
                 <div class="carmyorder">
-                    <span >完成</span>
+                    <span @click="editor">编辑</span>
+                    <i class="carback carbackcoups"></i>
                 </div>
         </div>
-         <div class="cargoods">
+        <div class="cargoods">
               <van-checkbox-group class="card-goods" v-model="checkedGoods">
                 <van-checkbox
                   class="card-goods__item"
-                  v-for="item in goods"
+                  v-for="item in cartGoodsList"
                   :key="item.id"
                   :name="item.id"
                 >
@@ -32,12 +33,15 @@
                 </div>
                 </van-checkbox>
                   </van-checkbox-group>
-         </div>  
-        <div class="carfoot">
-                <van-checkbox v-model="checked" class="chooseall">全选</van-checkbox>
-                <button class="carclear">删除</button>
-        </div>    
-</div>    
+                  <van-submit-bar
+                      :price="totalPrice"
+                      :disabled="!checkedGoods.length"
+                      :button-text="submitBarText"
+                      @submit="onSubmit"
+                      class="payfor"
+                      />
+              </div>      
+     </div>    
 </template>
 
 <script>
@@ -51,11 +55,10 @@ Vue.use(Stepper);
             [SubmitBar.name]: SubmitBar,
             [CheckboxGroup.name]: CheckboxGroup
   },
-  data () {
+  data() {
     return {
       checkedGoods: ['1', '2'],
-      checked: '',
-      goods: [{
+      cartGoodsList: [{
         id: '1',
         price: 990,
         
@@ -67,12 +70,32 @@ Vue.use(Stepper);
         id: '3',
         price: 990,
       }]
+    };
+  },
+    computed: {
+    submitBarText() {
+      const count = this.checkedGoods.length;
+      return '去支付' + (count ? `(${count})` : '');
+    },
+    totalPrice() {
+      return this.cartGoodsList.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0), 0);
     }
   },
-   
+  methods: {
+    formatPrice(price) {
+      return (price / 100).toFixed(2);
+    },
+    onSubmit() {
+      this.$router.push('/Settlement')
+    },
+    editor () {
+      this.$router.push('/EditorGoods')
+    }
+  }
  
 }
 </script>
+
 <style>
 .cartop{
   font-size: 0.4rem;
@@ -94,10 +117,13 @@ Vue.use(Stepper);
  .carbackcoups{
      background: url(../../assets/img/49.png) no-repeat center center;
  }
- .carmyorder{
-     margin-right: 0.3rem;
- }
- .card-goods__item {
+.carmyorder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 0.6rem;
+}
+.card-goods__item {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -120,7 +146,7 @@ Vue.use(Stepper);
    padding: 0.2rem;
 }
 .van-card{
-    box-shadow: 0px 0px 10px 5px #fafafa;
+    box-shadow: 0px 0px 10px 5px #fbfbfb;
     border: 1px solid #fbfbfb;
     margin: 0.2rem;
     display: flex;
@@ -146,6 +172,7 @@ Vue.use(Stepper);
     justify-content: space-between;
     align-items: center;
     margin-top: 0.5rem;
+   
 }
 .van-stepper{
   display: flex;
@@ -160,28 +187,7 @@ Vue.use(Stepper);
   border-radius: 0% 40% 40% 0%; 
   width: 30px;
 }
-.carfoot{
-    width: 100%;
-    height: 1.5rem;
-    border-top: 1px solid #ccc;
-    box-shadow: 0px 0px 10px 10px #fbfbfb;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-}
-.chooseall{
-    margin-left: 0.4rem;
-    font-size: 0.4rem;
-}
-.carclear{
-    font-size: 0.4rem;
-    padding: 0.1rem 0.4rem;
-    color: #f00;
-    border: 1px solid #f00;
-    border-radius: 0.3rem;
-    margin-right: 0.4rem;   
+.payfor{
+  box-shadow: 0px 0px 10px 5px #fbfbfb;
 }
 </style>
