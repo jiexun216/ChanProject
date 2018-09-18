@@ -141,53 +141,7 @@ Vue.use(Sku)
                 goods: {
                     title: '商品',
                     picture: '../../assets/img/order.png'
-                },       
-                sku: {
-                    tree: [
-                        {
-                            k: '颜色',
-                            v: [
-                                {
-                                    id: '',
-                                    name: '红色',
-                                    imgUrl:'../../assets/img/39.png',
-                                },
-                                {
-                                    id: '1215',
-                                    name: '绿色',
-                                    imgUrl:'../../assets/img/39.png',
-                                }
-                            ],
-                            k_s: 's1',
-                        },
-                        {
-                            k: '尺寸',
-                            v: [
-                            {
-                                id: '',
-                                name: 'M'
-                            },
-                            {
-                                id: '1193',
-                                name: 'L'
-                            }],
-                            k_s: 's2'
-                        }
-                    ],
-                    list: [
-                        {
-                           id: 2259,
-                           s1: '1215',
-                           s2: '1193',
-                           price: 200,
-                           stock_num: 110
-                        }
-                    ],
-                    
-                    price: 115,
-                    stock_num: 227,
-                    hide_stock: false 
-                }    
+                },           
             }
         },
         created () {
@@ -203,10 +157,8 @@ Vue.use(Sku)
                     console.log(this.goodsInfos)
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                     if (this.goodsInfos.isSku == 1) {
-                        this.goodsAttributes = res.data.data.specifications.goodsAttributes;
-                        this.skuInfo = res.data.data.specifications.goodsAttributes.map(item => {
-                        return item.skuInfo
-                        })
+                        this.sku = res.data.data.sku;
+                        console.log(this.sku)
                     }
                     
                 }).catch(err => {
