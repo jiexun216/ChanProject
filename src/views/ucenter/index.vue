@@ -4,12 +4,14 @@
             <div class="members clearfloat">
                  <img src="../../assets/img/24.png"  class="membersimg">
              </div>
-            <div class="member"> 
-                <!-- <div>
-                    <router-link to="/userpwdlogin"> 
-                        <p style="margin-left:0.5rem;font-size:0.6rem;">登陆</p>          
-                    </router-link> 
-                </div> -->
+            <div class="member">  
+                <div class="loginafter">
+                    <i class="memberImg"><img src="../../assets/img/order.png" /></i>
+                    <div class="loginright">
+                        <p class="loginname">{{personalitem.memberData.nickname}}</p>
+                        <p>{{personalitem.memberData.rankName}}</p>
+                    </div>
+      </div> 
              </div>
              <div class="order">
                  <div class="orderitem">
@@ -72,9 +74,11 @@
 import Vue from 'vue'
 import Footer from '@/components/footer'
 import { getIndex } from '@/api/ucenter/index.js'
+import Loginafter from '@/components/personal/login'
 export default {
     components: {
-          Footer
+          Footer,
+          Loginafter 
       },
       data () {
          return {
@@ -95,6 +99,7 @@ export default {
                      this.$router.push({name: res.data.data.url})
                  }
                  this.personalitem =res.data.data;
+                 this.memberData = res.data.data.memberData
                  this.loading = true;
              }).catch(err => {
                  return err
@@ -197,5 +202,28 @@ export default {
 .couponsnum {
     float:right;
     margin: 0 0.4rem;
+}
+.loginafter{
+    margin: 0.4rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.memberImg{
+   width: 1.5rem;
+   border-radius: 50%;
+}
+.memberImg img{
+    width: 1.5rem;
+   border-radius: 50%;
+}
+.loginright{
+    margin-left: 0.2rem;
+    color: #ccc;
+}
+.loginname{
+   font-size: 0.5rem;
+   color: #000;
+   font-weight: bold;
 }
 </style>
