@@ -16,7 +16,7 @@
              <div class="goodsCategoryList">
                  <ul v-for="(goodsCategoryList,index) in goodsCategoryLists" 
                      :key="goodsCategoryList.index" 
-                     v-bind:class="{ classbg:index ==bgclickActive}"
+                     v-bind:class="{ classbg:index == bgclickActive}"
                      class="goodsul">
                      <li @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''"> 
                         {{goodsCategoryList.name}}
@@ -54,7 +54,8 @@ import { getGoodsList } from '@/api/goods/index.js'
                 goodsCategoryLists: [],
                 total:0,
                 categoryId:0,
-                isLoadingFinished: false 
+                isLoadingFinished: false,
+
             }
         },
         created () {
@@ -99,6 +100,7 @@ import { getGoodsList } from '@/api/goods/index.js'
            concel: function () {
                this.result1 = this.input1;
                this.result1 = " ";
+               this.$router.push('/Index')
            }
          },
          
@@ -138,13 +140,15 @@ import { getGoodsList } from '@/api/goods/index.js'
     width: 25%;
     height: 100%;
     background: #f7f7f7;
-   
 }
 .goodsright{
-    position: absolute;
+    position: fixed;
     left: 25%;
-    top: 2.5rem;
-    width: 75%;
+    top: 2.0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .goodsul{
     margin: 0;padding: 0;
@@ -167,5 +171,12 @@ import { getGoodsList } from '@/api/goods/index.js'
   color: #ff525a;
   font-size: 0.4rem;
   margin-right: 0.3rem;
+}
+
+.goodscate img{
+    width: 4rem; 
+}
+.goodscate{
+    margin: 0 0.4rem;
 }
 </style>
