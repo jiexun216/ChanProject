@@ -6,9 +6,9 @@
                  <i class="de-icon de-iconimg1"> </i>
                  </router-link>
              <span>商品详情</span> 
-             <div class="details-right">
+             <div class="details-right" @click="$router.push({name: 'cartList'})">
                <i class="de-icon de-iconimg2">
-                   <router-link to="/goodsDetails"> </router-link>
+                   <router-link to="/cart/list"> </router-link>
                </i>
                <i class="de-icon de-iconimg3">
                    <router-link to="/goodsDetails">
@@ -97,6 +97,7 @@
                     :goods-id="goodsId"
                     :hide-stock="sku.hide_stock"
                     @buy-clicked="onBuyClicked"
+                    @add-cart="onAddToCart"
                         />       
 
                         
@@ -106,6 +107,7 @@
 <script>
 
 import { getGoodsInfo } from '@/api/goods/index.js'
+import { addGoodsToCart } from "@/api/cart/index.js";
 import Vue from "vue"
 import { Sku } from 'vant'
 import { Tab, Tabs } from 'vant';
@@ -153,18 +155,35 @@ Vue.use(Sku)
             }      
         }, 
         methods: {
+            // 获取商品详情数据
             getData () {
                 getGoodsInfo (this.goodsId).then(res => {
-                    this.goodsInfos = res.data.data.goodsInfo;    
+                    this.goodsInfos = res.data.data.goodsInfo;
+                    this.goods.title = res.data.data.goodsInfo.name
+                    this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                     console.log(this.goodsInfos)
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                     if (this.goodsInfos.isSku == 1) {
                         this.sku = res.data.data.sku;
-                        console.log(this.sku)
                     }
                     
                 }).catch(err => {
                     return err
+                })
+            },
+            // 加入购物车 zhangjie 0918
+            onAddToCart (skuData) {
+                console.log(skuData)
+                let cartGoodsId = skuData.goodsId
+                let goodsQuantity = skuData.selectedNum
+                let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
+                addGoodsToCart (cartGoodsId,goodsQuantity,cartSkuId).then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 99) {
+                        this.$router.push({name: res.data.data.url})
+                    } else if (res.data.status == 0) {
+                        // window.location.reload()
+                    }
                 })
             },
             detailsbg () {
