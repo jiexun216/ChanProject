@@ -76,10 +76,8 @@
                                    
                                 </div>
                             </van-tab>
-                            </van-tabs>
-                            
+                            </van-tabs>                          
             </div>
-            
         </div>
         <div class="foot">
             <div class="customer">
