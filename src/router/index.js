@@ -46,6 +46,7 @@ import UserMobileLogin from '@/views/user/mobile-login'
 import UserFindPass from '@/views/user/find-pass'
 import ResetPassword from '@/views/user/reset-password'
 import CartList from '@/views/cart/list'
+import CartSettlement from "@/views/cart/settlement"
 Vue.use(Router)
 
 export default new Router({
@@ -167,6 +168,12 @@ export default new Router({
       path: '/cart/list',
       component: CartList,
       meta: { title: '购物车列表' }
+    },
+    {
+      name: 'cartSettlement',
+      path: '/cart/settlement',
+      component: CartSettlement,
+      meta: { title: '结算确认' }
     },
 
 

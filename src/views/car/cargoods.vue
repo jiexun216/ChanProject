@@ -4,7 +4,10 @@
                 <router-link to="/Index">
                     <i class="carback  carbacks"></i>     
                 </router-link>
-                <span >购物车</span>
+                <span >
+                  
+                  
+                </span>
                 <div class="carmyorder">
                     <span @click="editor">编辑</span>
                     <i class="carback carbackcoups"></i>

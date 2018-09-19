@@ -1,5 +1,18 @@
 <template>
    <div>
+      <div v-if="cartGoodsList.length == 0">
+      <div class="cartop">
+                <router-link to="/">
+                    <i class="carback  carbacks"></i>     
+                </router-link>
+                <span >购物车</span>
+                <div class="carmyorder">
+                   <i class="carback carbackss"></i>
+                </div>
+        </div>
+       <emptygoods :goodsList="goodsList"></emptygoods>
+   </div>
+     <div v-else>
         <div class="cartop">
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
@@ -20,14 +33,14 @@
                 >
                 <div class="van-card">
                     <div >
-                        <img src="../../assets/img/order.png" alt="" class="van-card-img">
+                        <img :src="item.goodsCoverImg" alt="" class="van-card-img">
                     </div>
                     <div class="van-card-right">
-                        <p>商品种类的第一件，价格是总价的一般般啊的啊</p>
-                        <p class="van-card-p">套装种类</p>
+                        <p>{{item.name}}</p>
+                        <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
-                            <p class="van-price-p" >￥ 990</p>
-                            <p> <van-stepper  /></p>
+                            <p class="van-price-p" >￥ {{item.price}}</p>
+                            <p> <van-stepper v-model="item.goodsQuantity"  /></p>
                         </div>
                     </div>
                 </div>
@@ -41,35 +54,29 @@
                       class="payfor"
                       />
               </div>      
-     </div>    
+     </div>
+   </div>    
 </template>
 
 <script>
+import emptygoods from"../../components/car/emptygoods" 
 import Vue from "vue";
 import { Checkbox, CheckboxGroup, SubmitBar, Toast } from 'vant';
+import { getCartList,orderSettlement } from '@/api/cart/index.js'
 import { Stepper } from 'vant';
 Vue.use(Stepper);
  export default {
       components: {
             [Checkbox.name]: Checkbox,
             [SubmitBar.name]: SubmitBar,
-            [CheckboxGroup.name]: CheckboxGroup
+            [CheckboxGroup.name]: CheckboxGroup,
+            "emptygoods": emptygoods
   },
   data() {
     return {
-      checkedGoods: ['1', '2'],
-      cartGoodsList: [{
-        id: '1',
-        price: 990,
-        
-      }, {
-        id: '2',
-        price: 990,
-        num: 1,
-      }, {
-        id: '3',
-        price: 990,
-      }]
+      checkedGoods: [],
+      cartGoodsList: [],
+      goodsList: []
     };
   },
     computed: {
@@ -78,19 +85,53 @@ Vue.use(Stepper);
       return '去支付' + (count ? `(${count})` : '');
     },
     totalPrice() {
-      return this.cartGoodsList.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0), 0);
+      return this.cartGoodsList.reduce((total, item) => 
+      total + (this.checkedGoods.indexOf(item.id) !== -1 ? Number(item.goodsPriceSubtotal * 100) : 0), 0)
     }
+      
   },
   methods: {
-    formatPrice(price) {
-      return (price / 100).toFixed(2);
+    // 请求数据
+    getData () {
+      getCartList ().then(res => {
+        if (res.data.status == 99) {
+          this.$toast(res.data.message ? res.data.message : '操作失败')
+          this.$router.push({name: res.data.data.url})
+        }
+        this.cartGoodsList  = res.data.data.list
+        this.goodsList = res.data.data.goodsList
+      });
     },
+    // 下单结算
     onSubmit() {
-      this.$router.push('/Settlement')
+      var cartIds = ''
+      this.checkedGoods.forEach(val => {
+        cartIds += val + ','
+      });
+      orderSettlement (1,cartIds,0,0,0,0).then(res => {
+        this.$toast(res.data.message ? res.data.message : '操作失败')
+        if (res.data.status == 0) {
+          this.$router.push({
+							name: 'cartSettlement',
+							query: {
+                buyType: 1,
+                cartIds: cartIds,
+                addressId: 0,
+                goodsId: 0,
+                skuId: 0,
+                goodsQuantity: 0
+							}
+						})
+        }
+      });
+      
     },
     editor () {
       this.$router.push('/EditorGoods')
     }
+  },
+  created () {
+    this.getData();
   }
  
 }
@@ -190,4 +231,25 @@ Vue.use(Stepper);
 .payfor{
   box-shadow: 0px 0px 10px 5px #fbfbfb;
 }
+.cartop{
+  font-size: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.5rem;
+}
+.carback{
+   display: inline-block;
+   width: 0.7rem;
+   height: 0.7rem;
+   background-size: cover;
+   margin-left: 0.2rem;
+ }
+ .carbacks {
+   background: url(../../assets/img/42.png) no-repeat center center;
+ }
+ .carbackss{
+     background: url(../../assets/img/49.png) no-repeat center center;
+     margin-right: 0.3rem;
+ }
 </style>

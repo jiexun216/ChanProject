@@ -3,37 +3,24 @@
              <p>订单信息</p>
              <div class="orderInfoImg">
                  <ul class="orderimg" @click="orderMore">
-                     <li><img src="../../assets/img/order.png" alt=""></li>
-                     <li><img src="../../assets/img/order.png" alt=""></li>
-                     <li><img src="../../assets/img/order.png" alt=""></li>
+                     <li v-for="(item, index) in goodsList" :key="index"><img :src="item.goodsCoverImg" alt=""></li>
                      <li><img src="../../assets/img/49.png">
-                      <div class="overlayer" @touchmove.prevent v-if="orderInfo">
+                      <div class="overlayer" @touchmove.prevent v-if="orderTextStatus">
                             <div class="orders">
                                 <div class="orderstop">
-                                     <span>商品清单（共2件）</span>
+                                     <span>商品清单（共{{orderData.totalQuantity}}件）</span>
                                      <span  class="closeorder">
                                          <i class="orderInfoimg orderInfoimgs" @click="closeorder"></i>
                                      </span>
                                 </div>
-                                <div class="ordergoods">
-                                     <img src="../../assets/img/order.png" alt="" style="width:3rem;height:3rem;margin-right:0.2rem"> 
+                                <div class="ordergoods" v-for="(item, index) in goodsList" :key="index">
+                                     <img :src="item.goodsCoverImg" alt="" style="width:3rem;height:3rem;margin-right:0.2rem"> 
                                      <div class="ordergoodright">
-                                         <p class="orderrightone">商品类白的第一项商品，至二个上皮青柠的那</p>
-                                         <p class="orderrighttwo">中型 套装型</p>
+                                         <p class="orderrightone">{{item.name}}</p>
+                                         <p class="orderrighttwo">{{item.skuInfo}}</p>
                                          <div class="orderprice">
-                                             <span class="orderpricecolor">￥111</span>
-                                             <span>x12</span>
-                                         </div>
-                                     </div>  
-                                </div>
-                                 <div class="ordergoods">
-                                     <img src="../../assets/img/order.png" alt="" style="width:3rem;height:3rem;margin-right:0.2rem"> 
-                                     <div class="ordergoodright">
-                                         <p class="orderrightone">商品类白的第一项商品，至二个上皮青柠的那</p>
-                                         <p class="orderrighttwo">中型 套装型</p>
-                                         <div class="orderprice">
-                                             <span class="orderpricecolor">￥111</span>
-                                             <span>x12</span>
+                                             <span class="orderpricecolor">￥{{item.goodsPrice}}</span>
+                                             <span>x{{item.goodsQuantity}}</span>
                                          </div>
                                      </div>  
                                 </div>
@@ -44,19 +31,19 @@
              </div>
              <div class="deliveryinfo">
                  <span class="deliveryone">发货信息</span>
-                 <span>杭州亚太一号仓</span>
+                 <span>{{orderData.shippingInformation}}</span>
              </div>
              <div class="deliveryinfo">
                   <span class="deliveryone">支付信息</span>
                   <div class="payInforight">
-                       <span>总结 <span class="payInfocolor">￥990.00</span></span>
-                       <span>共6件</span>
+                       <span>总结 <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
+                       <span>共{{orderData.totalQuantity}}件</span>
                   </div>
              </div>
              <div class="deliveryinfo note">
                   <span class="deliveryone">备注</span>
                   <div class="payInforight">
-                       <input type="text" placeholder="输入您的特殊需求">
+                       <input type="text" v-model="remark" placeholder="输入您的特殊需求">
                   </div>
              </div>
         </div>    
@@ -69,15 +56,27 @@ Vue.use(Toast)
     export default {
           data () {
               return {
-                  orderInfo: false
+                  orderTextStatus: false,
+                  remark: ''
               }
+          },
+          // 监听
+          watch: {
+              'remark': function() {
+                  this.$emit('getRemark',this.remark);
+              }
+          },
+          props: {
+              orderData: {},
+              goodsList: Array,
+              orderAmount: Number
           },
           methods: {
               orderMore() {
-                  this.orderInfo = true
+                  this.orderTextStatus = true
               },
               closeorder () {
-                  this.orderInfo = false
+                  this.orderTextStatus = false
               }
 
           }

@@ -1,15 +1,15 @@
 <template>
    <div class="settltop">
             <div class="settlhead">
-                <span>秀才</span>
-                <span>153143131</span>
+                <span>{{deliveryPerson}}</span>
+                <span>{{deliveryPhone}}</span>
             </div>
             <div class="settladdress">
                  <span class="defaaddress">默认</span>   
                    <span class="settlright">
                          <i class="newaddressimg newaddressimgs"></i>
                  </span>
-                 <span>浙江省杭州市西湖区德力西大厦1栋210210210</span>
+                 <span>{{fullAddress}}</span>
                  
             </div>
         </div>    
@@ -17,7 +17,16 @@
 
 <script>
     export default {
-        
+        data () {
+            return {
+
+            }
+        },
+        props: {
+            deliveryPerson: String,
+            deliveryPhone: String,
+            fullAddress: String,
+        }
     }
 </script>
 

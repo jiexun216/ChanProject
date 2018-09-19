@@ -6,7 +6,7 @@
             <img src="../../assets/img/26.png" alt="">
             <div class="emptytop">
                 <p>购物车空空如也，快去选购商品吧~</p>
-                <button class="hot">逛逛店铺热卖</button>
+                <button @click="$router.push({name:'goodsList'})" class="hot">逛逛店铺热卖</button>
             </div>
         </div> 
     </div>  
@@ -15,25 +15,14 @@
         <div class="like">
             <p class="liketop">你可能喜欢</p>
             <div class="likes">
-                <div class="likeleft">
-                     <img src="../../assets/img/like.png" alt="">
+                <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
+                     <img :src="item.goodsCoverImg" alt="">
                      <div class="likelefts">
-                        <h3>你喜欢的都在这里</h3>
-                        <p>已售1313件</p>
+                        <h3>{{item.name}}</h3>
+                        <p>已售{{item.salesVolume}}件</p>
                         <div class="likemon">
-                            <span class="likeone">￥1313</span>
-                            <span class="liketwo">￥4331</span>
-                        </div>
-                     </div>
-                </div>
-                <div class="likeleft">
-                     <img src="../../assets/img/like.png" alt="">
-                     <div class="likelefts">
-                        <h3>你喜欢的都在这里</h3>
-                        <p>已售1313件</p>
-                        <div class="likemon">
-                            <span class="likeone">￥1313</span>
-                            <span class="liketwo">￥4331</span>
+                            <span class="likeone">￥{{item.price}}</span>
+                            <span class="liketwo">￥{{item.market_price}}</span>
                         </div>
                      </div>
                 </div>
@@ -45,7 +34,11 @@
 </template>
 
 <script>
-    
+export default {
+    props: {
+        goodsList: Array
+    }
+}
 </script>
 <style>
 .header{

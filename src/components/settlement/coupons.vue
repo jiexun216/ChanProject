@@ -14,32 +14,22 @@
                             <span>可用优惠券</span>
                             <i class="wxpayimg wxpayimgsix" @click="couponsclose"></i>
                         </div>
-                        <div class="couponscon">
+                        <van-radio-group v-model="radio" @change="couponChange">
+                        <div class="couponscon" v-for="(item, index) in couponList" :key="index">
                             <div class="couponsmons">
                                 <div class="couponsmon">
                                    <i class="couponimg couponimgs"></i>
-                                    <span class="conmoney"> ￥17</span>  
+                                    <span class="conmoney"> ￥{{item.preferentialAmount}}</span>  
                                 </div>  
                             </div> 
                             <div class="couprice">
-                                    <h4>满119-60元</h4>
-                                    <p class="coupricep">2018.04.15-2018.04.20</p>
+                                    <h4>满{{item.condition}}元</h4>
+                                    <p class="coupricep">{{item.startDate}}-{{item.endDate}}</p>
                             </div>   
-                                <van-checkbox v-model="check"></van-checkbox>
+                            <van-radio :name="item.memberCouponId"></van-radio>
                         </div>
-                        <div class="couponscon">
-                            <div class="couponsmons">
-                                <div class="couponsmon">
-                                   <i class="couponimg couponimgs"></i>
-                                    <span class="conmoney"> ￥17</span>  
-                                </div>  
-                            </div> 
-                            <div class="couprice">
-                                    <h4>满119-60元</h4>
-                                    <p class="coupricep">2018.04.15-2018.04.20</p>
-                            </div>   
-                                <van-checkbox v-model="check" ></van-checkbox>
-                        </div>
+                        </van-radio-group>
+                       
                     </div> 
              </div>
         </div>    
@@ -51,7 +41,11 @@
             return {
                 couponsheader: false,
                 check: true,
+                 radio: '1'
             }
+        },
+        props: {
+            couponList: Array,
         },
         methods: {
              usecoupon () {
@@ -60,6 +54,9 @@
             couponsclose () {
              this.couponsheader = false
          },
+         couponChange (memberCouponId) {
+             this.$emit('getCoupon', memberCouponId)
+         }
         }
     }
 </script>
