@@ -48,21 +48,38 @@
         </div>
         <div>
             <div class="details"> 
-                           <span class="detailsspan" @click="detailsbg" ref="clickdeta">
-                              <router-link to="/content"
-                                 class="detailsbg" v-html="goodsInfos.content">
-                              </router-link>
-                           </span> 
-                           <span class="detailsspan" @click="detailsbg">
-                             <router-link to="/paramBase"  v-html="goodsInfos.content">
-                             </router-link>
-                           </span>
-                           <span class="detailsspan" @click="detailsbg">  
-                             <router-link to="/purchaseNotice" v-html="goodsInfos.content" >
-                             </router-link>
-                           </span>
+                          <van-tabs v-model="active">
+                            <van-tab  >
+                                <div slot="title" v-html="goodsInfos.content">
+                                </div>
+                                <div class="goodstu">
+                                    <p>{{goodsInfos.goodsId}}</p>
+                                    <p>{{goodsInfos.name}}</p>
+                                    <p>{{goodsInfos.price}}</p>        
+                                </div>
+                            </van-tab>
+                            <van-tab  >
+                                <div slot="title" v-html="goodsInfos.paramBase">
+                                </div>
+                                <div class="goodstu">
+                                    <p>{{goodsInfos.goodsId}}</p>
+                                    <p>{{goodsInfos.name}}</p>
+                                    <p>{{goodsInfos.price}}</p>
+                                </div>
+                            </van-tab>
+                            <van-tab  >
+                                <div slot="title" v-html="goodsInfos.purchaseNotice">
+                                </div>
+                                <div class="goodstu">
+                                    <p>{{goodsInfos.goodsId}}</p>
+                                    <p>{{goodsInfos.name}}</p>
+                                   
+                                </div>
+                            </van-tab>
+                            </van-tabs>
+                            
             </div>
-            <router-view></router-view>
+            
         </div>
         <div class="foot">
             <div class="customer">
@@ -72,34 +89,6 @@
             <button class="inbuy" @click="joinbuy">加入购物车</button>
             <button class="inbuys" @click="joinbuy">立即购买</button>
         </div>
-        <!-- <div  style="overflow:hidden;" v-if="detailsshow">
-            <div class="overlayer" @touchmove.prevent > </div>
-            <div class="detailssize" @touchmove.prevent>
-                 <img :src="goodsImages" style="width:40%;"> 
-                 <img src="../../assets/img/39.png" class="closebuy" @click="closebuy">
-                  <div class="goodssize">
-                           <p class="goodprice">
-                               ￥{{goodsInfos.price}}
-                           </p>
-                           <p class="goodmarket">
-                                ￥{{goodsInfos.marketPrice}}
-                           </p>
-                  </div>
-                  <div class="specifications skuModule">
-                        <div class="specisitem">
-                            <ul  v-for="item in goodsAttributes" :key="item.id"> {{item.skuTitle}} 
-                                <li v-for="ss in item.skuInfo" :key="ss.index">
-                                    {{ss.attributesName}}</li>      
-                            </ul>                      
-                        </div>
-                  </div>
-                  <div class="number">
-                      <span class="num">数量</span>
-                       <el-input-number :min="0" v-model="num1" @change="handleChange"></el-input-number>
-                  </div>
-                  <button class="joinsbuy" @click="addcar">加入购物车</button>
-             </div>
-        </div> -->
         <van-sku
                     v-if="detailsshow"
                     v-model="showBase"
@@ -121,6 +110,8 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 import { addGoodsToCart,orderSettlement } from "@/api/cart/index.js";
 import Vue from "vue"
 import { Sku } from 'vant'
+import { Tab, Tabs } from 'vant';
+Vue.use(Tab).use(Tabs);
 Vue.use(Sku)
     export default {
         data () {
@@ -129,9 +120,8 @@ Vue.use(Sku)
                 goodsInfos: [], 
                 goodsImages: [],  
                 num1: 1,  
-                skuInfo: [],
+                active: 2,
                 skuAtterInfo:[],
-                skuInfos: [],
                 detailsshow:false,
                 showBase: '',
                 sku: {},
@@ -280,11 +270,14 @@ Vue.use(Sku)
     justify-content:space-around;
     align-items: center;
     font-size: 0.5rem;
+    position: relative;
+    bottom: 0.3rem;
 }
 .details a{
     float:left;
     margin: 0.4rem;
-    font-size: 0.4rem;;
+    font-size: 0.4rem;
+    color: #f44;
 }
 .detailsbg{
     color: #ff525a;
@@ -407,7 +400,24 @@ Vue.use(Sku)
 }
 .van-sku-row__item--active{
     color: #fff;
-    border-color: #f44;
     background: #f44;
+}
+.van-tabs--line{
+    width: 100%;
+}
+.van-tabs__wrap{
+    position: relative;
+}
+.van-hairline--top-bottom::after{
+    border: none;
+}
+.van-tab{
+    font-size: 0.4rem;
+}
+.van-tabs__nav{
+    margin: 0 0.4rem;
+}
+.goodstu{
+    margin: 0 0.4rem;
 }
 </style>
