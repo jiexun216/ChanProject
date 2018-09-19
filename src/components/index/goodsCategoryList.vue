@@ -51,7 +51,7 @@
   margin: 0.4rem; 
 }
 .goodscate img{
-    width: 4rem;
+    width: 2rem;
 }
 .goodsstyle{
     font-size: 0.45rem;

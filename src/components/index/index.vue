@@ -12,7 +12,8 @@
             <div>
                 <router-link to="/Message">
                      <i class="icon notice"></i>
-                </router-link>        
+                </router-link>
+                
             </div>
         </div>
         <div class="store-sale">
@@ -200,6 +201,8 @@ import Footer from './footer'
     flex-wrap: wrap;
 }
 .store-list li a{
+    /* float: left;
+    font-size: 0.3rem; */
     flex-wrap: wrap;
 }
 .thatmore{

@@ -15,8 +15,7 @@
            <div class="goodsleft">
              <div class="goodsCategoryList">
                  <ul v-for="(goodsCategoryList,index) in goodsCategoryLists" 
-                     :key="goodsCategoryList.index" 
-                     v-bind:class="{ classbg:index == bgclickActive}"
+                     :key="index" 
                      class="goodsul">
                      <li @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''"> 
                         {{goodsCategoryList.name}}

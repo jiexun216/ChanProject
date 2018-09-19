@@ -85,7 +85,7 @@
                 <p>客服</p>
             </div>
             <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys">立即购买</button>
+            <button class="inbuys" @click="joinbuy">立即购买</button>
         </div>
         <van-sku
                     v-if="detailsshow"
@@ -105,7 +105,7 @@
 <script>
 
 import { getGoodsInfo } from '@/api/goods/index.js'
-import { addGoodsToCart } from "@/api/cart/index.js";
+import { addGoodsToCart,orderSettlement } from "@/api/cart/index.js";
 import Vue from "vue"
 import { Sku } from 'vant'
 import { Tab, Tabs } from 'vant';
@@ -115,31 +115,14 @@ Vue.use(Sku)
         data () {
             return {
                 goodsId: 0,
-                goodsInfos: [
-                    {
-                        content: '',
-                        paramBase: '',
-                        purchaseNotice: ''
-                    }
-                ], 
+                goodsInfos: [], 
                 goodsImages: [],  
                 num1: 1,  
                 active: 2,
-                skuResultList: [],
-                goodsAttributes: [],
-                skuAttrInfo: {},
-                skuInfo: [],
                 skuAtterInfo:[],
-                skuInfos: [],
                 detailsshow:false,
                 showBase: '',
-                sku: {
-                    tree: [],
-                    list: [],
-                    hide_stock: false
-                },
-                messageConfig: {},
-                skuKeyStr: [],
+                sku: {},
                 goods: {
                     title: '商品',
                     picture: '../../assets/img/order.png'
@@ -159,7 +142,6 @@ Vue.use(Sku)
                     this.goodsInfos = res.data.data.goodsInfo;
                     this.goods.title = res.data.data.goodsInfo.name
                     this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
-                    console.log(this.goodsInfos)
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                     if (this.goodsInfos.isSku == 1) {
                         this.sku = res.data.data.sku;
@@ -184,14 +166,33 @@ Vue.use(Sku)
                     }
                 })
             },
+            // 立即购买 zhangjie 0919
+            onBuyClicked (skuData) {
+                let goodsId = skuData.goodsId
+                let goodsQuantity = skuData.selectedNum
+                let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
+                orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 0) {
+                        this.$router.push({
+							name: 'cartSettlement',
+							query: {
+                                buyType: 2,
+                                cartIds: '',
+                                addressId: 0,
+                                goodsId: goodsId,
+                                skuId: skuId,
+                                goodsQuantity: goodsQuantity
+							}
+						})
+                    }
+                });
+            },
             detailsbg () {
             },
            joinbuy () {
                this.detailsshow = true;
-           },
-          onBuyClicked () {
-              
-          }
+           }
         },
        components: {
         

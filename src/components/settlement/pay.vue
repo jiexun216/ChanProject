@@ -1,6 +1,7 @@
 <template >
      <div class="payment">
              <p>支付方式</p>
+             <van-radio-group v-model="radio" @change="payWayChange">
              <div class="wxpay">
                  <div class="wxpaycen">
                      <i class="wxpayimg wxpayimgs"></i>
@@ -10,7 +11,7 @@
                  </div>
                  </div>
                  <div>
-                    <van-checkbox v-model="checked"></van-checkbox>
+                      <van-radio name="1"></van-radio>
                  </div>
              </div>
              <div class="wxpay">
@@ -22,7 +23,7 @@
                                     </div>
                  </div>
                  <div>
-                    <van-checkbox></van-checkbox>
+                    <van-radio name="2"></van-radio>
                  </div>
              </div>
               <div class="wxpay">
@@ -34,39 +35,34 @@
                                     </div>
                   </div>
                 <div>
-                    <van-checkbox></van-checkbox>
+                    <van-radio name="3"></van-radio>
                  </div>
              </div>
+             </van-radio-group>
         </div>    
 </template>
 
 <script>
-  import Vue from "vue"
+import Vue from "vue"
 import { NavBar, Toast } from 'vant'
-import { Checkbox, CheckboxGroup } from 'vant';
+import { RadioGroup, Radio } from 'vant';
 import { SubmitBar } from 'vant';
 Vue.use(SubmitBar);
-Vue.use(Checkbox).use(CheckboxGroup);
+Vue.use(RadioGroup);
+Vue.use(Radio);
 Vue.use(NavBar)
 export default{
      data () {
         return {
            checked: true,
-           check: true,
+            radio: '1'
            
         }
      },
      methods: {
-         onClickLeft () {
-             this.$router.push("/Cargoods")
+         payWayChange (val) {
+             this.$emit('getRadio', val)
          },
-         onClickRight () {
-             Toast("aaa")
-         },
-         usetouchmove () {
-             Toast("jaosd ahsd")
-         },
-        
          onSubmit () {
 
          }

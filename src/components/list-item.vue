@@ -46,10 +46,10 @@
 .goodscate{
   font-size: 0.4rem;
   line-height: 0.6rem;
-  margin:0 0.4rem; 
+  margin: 0.4rem; 
 }
 .goodscate img{
-    width: 4rem;
+    width: 2rem;
 }
 .goodsstyle{
     font-size: 0.45rem;
