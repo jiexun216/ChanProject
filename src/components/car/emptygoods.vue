@@ -88,7 +88,6 @@ export default {
 }
 .likeleft{
     width: 48%;
-    height: 5rem;
     background: #fff;
     margin-top: 0.2rem;
 }

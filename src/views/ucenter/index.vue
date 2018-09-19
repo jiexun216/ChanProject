@@ -161,6 +161,7 @@ export default {
 }
 .waitnum{
     position: absolute;
+    color: #f00;
 }
 .waitpayone{
     background: url('../../assets/img/20.png') no-repeat center center;

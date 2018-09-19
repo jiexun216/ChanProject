@@ -73,7 +73,6 @@
                                 <div class="goodstu">
                                     <p>{{goodsInfos.goodsId}}</p>
                                     <p>{{goodsInfos.name}}</p>
-                                   
                                 </div>
                             </van-tab>
                             </van-tabs>                          

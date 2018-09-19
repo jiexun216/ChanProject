@@ -5,9 +5,9 @@
                 <router-link to="/language">
                    EN</router-link>
             </span>
-            <div class="index-search"> 
+            <div class="index-search" > 
                 <i class="icon search-bg"></i>
-                <input type="search" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods">
+                <input type="search" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods"  >
             </div>
             <div>
                 <router-link to="/Message">
@@ -123,7 +123,6 @@ import Footer from './footer'
                    event.preventDefault();
                    this.$router.push({
                        path:'/search',
-                       name: 'Search',
                        params:{
                            keyword: ''
                        }
@@ -177,6 +176,7 @@ import Footer from './footer'
     line-height:0.8rem;
     width:80%;
     text-align: center;
+    
 }
 .icon{
   display:inline-block;
