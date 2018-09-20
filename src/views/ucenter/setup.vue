@@ -60,7 +60,7 @@
 
         <div class="headerpro" @touchmove.prevent v-if="headerpro"> 
             <div class="headfoot"  >
-                <p v-show="add" @click="">拍摄</p>
+                <p>拍摄</p>
                 <p>从相册选择</p>
                 <p class="headclose" @click="headdown">取消</p>
             </div>   

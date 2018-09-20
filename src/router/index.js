@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Language from '@/components/index/language'
+import Language from '@/views/language/language'
 import Search from '@/components/index/search'
 import GoodsDetails from '@/components/index/goodsdetails'
 import Content from '@/components/index/content'
