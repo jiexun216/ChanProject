@@ -409,4 +409,7 @@ Vue.use(Sku)
 .goodstu{
     margin: 0 0.4rem;
 }
+.goodstu img{
+    width: 100%;
+}
 </style>
