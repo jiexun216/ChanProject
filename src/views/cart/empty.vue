@@ -10,16 +10,18 @@
                 </div>
         </div>
        <emptygoods></emptygoods>
+       <Footer></Footer>
    </div>    
 </template>
 
 <script>
 
 import emptygoods from"../../components/car/emptygoods" 
-
+import Footer from '../../components/footer'
 export default { 
     components: {
-           "emptygoods": emptygoods
+           "emptygoods": emptygoods,
+           Footer
        },
         data () {
            return {

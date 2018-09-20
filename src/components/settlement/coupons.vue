@@ -9,7 +9,7 @@
              </div>
             
              <div class="overlayer" @touchmove.prevent v-if="couponsheader" >
-                   <div class="coupons">
+                   <div class="couponsuse">
                         <div class="couponstop" >
                             <span>可用优惠券</span>
                             <i class="wxpayimg wxpayimgsix" @click="couponsclose"></i>
@@ -94,7 +94,7 @@
   z-index:10;
   background: rgba(0, 0, 0, 0.3)
 }
-.coupons{
+.couponsuse{
     position: absolute;
     bottom: 50px;
     background: #fff;
