@@ -52,22 +52,19 @@
                             <van-tab  >
                                 <div slot="title">图文详情
                                 </div>
-                                <div class="goodstu">
-                                    {{goodsInfos.content}}   
+                                <div class="goodstu" v-html="goodsInfos.content">
                                 </div>
                             </van-tab>
                             <van-tab  >
                                 <div slot="title" >商品参数
                                 </div>
-                                <div class="goodstu">
-                                    {{goodsInfos.paramBase}}
+                                <div class="goodstu" v-html="goodsInfos.paramBase">
                                 </div>
                             </van-tab>
                             <van-tab  >
                                 <div slot="title" >购买须知
                                 </div>
-                                <div class="goodstu">
-                                    {{goodsInfos.purchaseNotice}}
+                                <div class="goodstu" v-html="goodsInfos.purchaseNotice">
                                 </div>
                             </van-tab>
                             </van-tabs>                          
