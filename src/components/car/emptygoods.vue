@@ -28,6 +28,7 @@
             </div>
         </div>
     </div>
+    <Footer></Footer>
     </div>
     
 </div>
@@ -35,7 +36,11 @@
 </template>
 
 <script>
+import Footer from '../footer'
 export default {
+    components: {
+        Footer
+    },
     props: {
         goodsList: Array
     }
@@ -44,7 +49,7 @@ export default {
 <style>
 .emptyheader{
     box-shadow: 0px 5px 0px 0px #fafafa; 
-    position: relative;
+    position: relative;   
 }
 .empty{
     height: 5rem;
