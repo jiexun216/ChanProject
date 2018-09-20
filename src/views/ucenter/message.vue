@@ -1,19 +1,19 @@
 <template>
    <div>
       <div class="orderdetop">
-            <router-link to="/Index">
+            <router-link to="/">
                 <i class="back backs"></i>     
             </router-link>
             <span >{{messagecenter}}</span>
             <span class="myorder">
-                <span @click="opertion"><i class="back backcoups" ></i></span>
+                <span><i class="back backcoups" ></i></span>
             </span>
         </div>  
         <div class="message">  
-            <nav v-for="(tabtext, index) in tabText" :key="tabtext">        
-    　　　　　　<a href="javascript:void(0);" @click="toggleTabs(tabtext,index);"
-                  :class="{ msgbg:changeRed == index}">
-                   {{tabtext}}</a>
+            <nav v-for="(item, index) in tabText" :key="index">        
+    　　　　　　<a href="javascript:void(0);" @click="toggleTabs(item.text,item.keys);"
+                  :class="{ msgbg:changeRed == item.keys}">
+                   {{item.text}}</a>
     　　　　</nav>
         </div>
      <announcement :is='currentView' keep-alive class="ann" v-if="annshow"></announcement>
@@ -41,9 +41,9 @@
 
 <script>
 import Vue from 'vue'
-import announcement from './announcement'
-import luck from './luck'
-import mynews from './mynews'
+import announcement from "@/components/message/announcement";
+import luck from '@/components/message/luck'
+import mynews from '@/components/message/mynews'
     export default {
         data () {
             return {
@@ -56,11 +56,20 @@ import mynews from './mynews'
                 determine: '确定',
                 changeRed:'announcement',
                 currentView: 'announcement',
-                tabText: {  
-                   announcement: 'announcement',
-                   luck: 'luck', 
-                   mynews: 'mynews'
-                },
+                tabText: [
+                    {
+                        keys: 'announcement',
+                        text: '平台公告',
+                    },
+                    {
+                        keys: 'luck',
+                        text: '运势资讯',
+                    },
+                    {
+                        keys: 'mynews',
+                        text: '我的消息',
+                    },
+                ],
                 opertionshow: false, 
                 clearshow: false,
                 annshow: true,   //这个是消息的true
@@ -80,7 +89,7 @@ import mynews from './mynews'
              }).catch(err => err) 
             },
             toggleTabs (tabText,index) {
-                this.currentView = tabText;
+                this.currentView = index;
                 this.changeRed = index;
             },
             opertion () {

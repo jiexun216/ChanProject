@@ -74,11 +74,9 @@
 import Vue from 'vue'
 import Footer from '@/components/footer'
 import { getIndex } from '@/api/ucenter/index.js'
-import Loginafter from '@/components/personal/login'
 export default {
     components: {
-          Footer,
-          Loginafter 
+          Footer
       },
       data () {
          return {

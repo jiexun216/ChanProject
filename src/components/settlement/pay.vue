@@ -55,7 +55,7 @@ export default{
      data () {
         return {
            checked: true,
-            radio: '1'
+            radio: ''
            
         }
      },

@@ -10,7 +10,7 @@
                 <input type="search" v-model="keyword" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods">
             </div>
             <div>
-                <router-link to="/Message">
+                <router-link to="/ucenter/message">
                      <i class="icon notice"></i>
                 </router-link>
                 

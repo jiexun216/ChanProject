@@ -36,7 +36,7 @@
              <div class="deliveryinfo">
                   <span class="deliveryone">支付信息</span>
                   <div class="payInforight">
-                       <span>总结 <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
+                       <span>总计 <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
                        <span>共{{orderData.totalQuantity}}件</span>
                   </div>
              </div>

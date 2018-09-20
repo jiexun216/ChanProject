@@ -40,7 +40,7 @@
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥ {{item.price}}</p>
-                            <p> <van-stepper v-model="item.goodsQuantity"  /></p>
+                            <p> <van-stepper v-model="item.goodsQuantity" disabled /></p>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ Vue.use(Stepper);
       
     },
     editor () {
-      this.$router.push('/EditorGoods')
+      this.$router.push({name:'cartEdit'})
     }
   },
   created () {

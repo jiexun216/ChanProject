@@ -1,5 +1,5 @@
 <template>
-   <div class="settltop">
+   <div class="settltop" @click="selectAddress">
             <div class="settlhead">
                 <span>{{deliveryPerson}}</span>
                 <span>{{deliveryPhone}}</span>
@@ -20,6 +20,11 @@
         data () {
             return {
 
+            }
+        },
+        methods: {
+            selectAddress () {
+                this.$emit('getAddress')
             }
         },
         props: {

@@ -1,31 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Language from '@/components/index/language'
-import Search from '@/components/index/search'
-import GoodsDetails from '@/components/index/goodsdetails'
-import Content from '@/components/index/content'
-import ParamBase from '@/components/index/paramBase'
-import purchaseNotice from '@/components/index/PurchaseNotice'
-import Message from '@/components/index/message'
-import Personal from '@/components/personal/personal'
-import Myorder from '@/components/personal/myorder'
-import Payment from '@/components/personal/payment'
-import Allorder from '@/components/personal/allorder'
 import Forgoods from '@/components/personal/forgoods'
-import Orderdetails from '@/components/personal/orderdetails'
 import Logisticsinfo from '@/components/personal/logisticsinfo'
-import Dontuse from '@/components/personal/dontuse'
-import Harvestaddress from '@/components/address/harvestaddress'
-import Newaddress from '@/components/address/newaddress'
-import Address from '@/components/address/address'
-import Personaldata from '@/components/setupthe/personaldata'
 import Binding from '@/components/setupthe/binding'
 
-import Feedback from '@/components/setupthe/feedback'
-import Cargoods from '@/views/car/cargoods'
-import EditorGoods from "@/views/car/editorGoods"
-import Settlement from "@/views/settlement/settlement"
-import Empty from "@/views/car/empty"
  
 // zhangjie
 import OrderList from '@/views/order/list'
@@ -37,6 +17,7 @@ import UcenterSetup from '@/views/ucenter/setup'
 import UcenterPersonnalData from '@/views/ucenter/personaldata'
 import UcenterFeedback from '@/views/ucenter/feedback'
 import UcenterIndex from '@/views/ucenter/index'
+import UcenterMessage from '@/views/ucenter/message'
 import Index from '@/views/index/index'
 import GoodsList from '@/views/goods/list'
 import GoodsDetail from '@/views/goods/detail'
@@ -47,6 +28,7 @@ import UserFindPass from '@/views/user/find-pass'
 import ResetPassword from '@/views/user/reset-password'
 import CartList from '@/views/cart/list'
 import CartSettlement from "@/views/cart/settlement"
+import CartEdit from "@/views/cart/edit"
 Vue.use(Router)
 
 export default new Router({
@@ -132,6 +114,12 @@ export default new Router({
       meta: { title: '个人中心' }
     },
     {
+      name: 'ucenterMessage',
+      path: '/ucenter/message',
+      component: UcenterMessage,
+      meta: { title: '消息中心' }
+    },
+    {
       name: 'ucenterSetup',
       path: '/ucenter/setup',
       component: UcenterSetup,
@@ -170,6 +158,12 @@ export default new Router({
       meta: { title: '购物车列表' }
     },
     {
+      name: 'cartEdit',
+      path: '/cart/edit',
+      component: CartEdit,
+      meta: { title: '购物车编辑' }
+    },
+    {
       name: 'cartSettlement',
       path: '/cart/settlement',
       component: CartSettlement,
@@ -182,11 +176,7 @@ export default new Router({
 
 
     
-    {
-      path: '/Message',
-      name: 'Message',
-      component: Message
-    },
+
     {
       path: '/index',
       name: 'Index',
@@ -198,110 +188,14 @@ export default new Router({
       component: Language
     },
     {
-      path: '/search',
-      name: 'Search',
-      component: Search
-    },
-    {
-      path: '/goodsDetails',
-      name: 'GoodsDetails',
-      component: GoodsDetails,
-      children: [
-        {
-          path: '/content',
-          component: Content
-        },
-        {
-          path: '/paramBase',
-          component: ParamBase
-        },
-        {
-          path: '/purchaseNotice',
-          component: purchaseNotice
-        }
-      ]
-    },
-    {
-      path: '/myorder',
-      name: 'Myorder',
-      component: Myorder,
-      children: [
-        {
-          path: '/payment',
-          name: 'payment',
-          component: Payment
-        },
-        {
-          path: '/allorder',
-          name: 'Allorder',
-          component: Allorder
-        },
-        {
-          path: '/forgoods',
-          name: 'Forgoods',
-          component: Forgoods
-        }
-      ]
-    },
-    {
-      path: '/orderdetails',
-      name: 'Orderdetails',
-      component: Orderdetails
-    },
-    {
       path: '/logisticsinfo',
       name: 'Logisticsinfo',
       component: Logisticsinfo
     },
     {
-      path: '/dontuse',
-      name: 'Dontuse',
-      component: Dontuse
-    },
-    {
-      path: '/harvestaddress',
-      name: 'Harvestaddress',
-      component: Harvestaddress
-    },
-    {
-      path: '/newaddress',
-      name: 'Newaddress',
-      component: Newaddress
-    },
-    
-    {
-      path: '/Personaldata',
-      name: 'Personaldata',
-      component: Personaldata
-    },
-    {
       path: '/Binding',
       name: 'Binding',
       component: Binding
-    },
-    {
-      path: '/Feedback',
-      name: 'Feedback',
-      component: Feedback
-    },
-    //购物车
-    {
-      path: '/Cargoods',
-      name: 'Cargoods',
-      component: Cargoods
-    },
-    {
-      path: '/EditorGoods',
-      name: 'EditorGoods',
-      component: EditorGoods
-    },{
-      path: '/Settlement',
-      name: 'Settlement',
-      component: Settlement
-    },{
-      path: 'Empty',
-      name: 'Empty',
-      component: Empty
     }
   ]
 })

@@ -54,7 +54,17 @@ export default {
       ).then(res => {
           this.$toast(res.data.message ? res.data.message : '操作失败')
           if (res.data.status == 0) {
-              this.$router.push({name: 'addressList'});
+              this.$router.push({
+                name: 'addressList',
+                query: {
+                  buyType: this.$route.query.buyType,
+                  cartIds: this.$route.query.cartIds,
+                  addressId: this.$route.query.addressId,
+                  goodsId: this.$route.query.goodsId,
+                  skuId: this.$route.query.skuId,
+                  goodsQuantity: this.$route.query.goodsQuantity
+                }
+              });
           }
       });
     },

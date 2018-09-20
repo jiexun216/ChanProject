@@ -22,7 +22,7 @@
                     完成
                 </span>
                 </div>
-                <div class="oldaddress" v-for="(item, index) in listData" :key="index">
+                <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
                 <div class="oldname">
                         <span>{{item.deliveryPerson}}</span> <span>{{item.deliveryPhone}}</span>
                         <p class="outaddress">{{item.province}}{{item.city}}{{item.section}} {{item.deliveryAddress}}</p>      
@@ -48,7 +48,7 @@
                 </div>
                 </div>
 
-                <div class="addressfooter" @click="$router.push({name:'addressEdit'})">
+                <div class="addressfooter" @click="addAddressHandle">
                 <p>+ 新建地址</p>
                 </div>
         </div>
@@ -135,6 +135,40 @@ export default {
         .catch(() => {
           this.$toast("默认地址设置失败");
         });
+    },
+    // 下单选择地址
+    choiceAddressHandle (addressId) {
+      if (this.$route.query.buyType == 1 || this.$route.query.buyType == 2) {
+        if (!addressId) {
+          this.$toast("地址选择错误");
+          return false;
+        }
+        this.$router.push({
+          name: 'cartSettlement',
+          query: {
+            buyType: this.$route.query.buyType,
+            cartIds: this.$route.query.cartIds,
+            addressId: addressId,
+            goodsId: this.$route.query.goodsId,
+            skuId: this.$route.query.skuId,
+            goodsQuantity: this.$route.query.goodsQuantity
+          }
+        });
+      }
+    },
+    // 添加地址链接 zhangjie 0919
+    addAddressHandle () {
+      this.$router.push({
+        name:'addressEdit',
+        query: {
+          buyType: this.$route.query.buyType,
+          cartIds: this.$route.query.cartIds,
+          addressId: this.$route.query.addressId,
+          goodsId: this.$route.query.goodsId,
+          skuId: this.$route.query.skuId,
+          goodsQuantity: this.$route.query.goodsQuantity
+        }
+      })
     }
   },
   created() {
