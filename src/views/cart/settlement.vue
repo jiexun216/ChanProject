@@ -8,8 +8,17 @@
             @click-left="onClickLeft"
             @click-right="onClickRight"
             />
-        <new-address v-if="addressStatus === 0"></new-address>
-        <oldaddress :deliveryPerson="addressInfo.deliveryPerson" :deliveryPhone="addressInfo.deliveryPhone" :fullAddress="addressInfo.fullAddress" v-else></oldaddress>
+            <div class="newaddtop" v-if="addressStatus === 0">
+            <div class="newaddress" @click="addAddressHandle">
+                <div>
+                    <p class="newaddressone">新建收货地址</p>
+                    <p>新建收获地址，保证商品顺利送达</p> 
+                </div>
+                <i class="newaddressimg newaddressimgs"></i>
+                 
+            </div>
+           </div>
+        <oldaddress @getAddress="selectAddressHandle" :deliveryPerson="addressInfo.deliveryPerson" :deliveryPhone="addressInfo.deliveryPhone" :fullAddress="addressInfo.fullAddress" v-else></oldaddress>
         <pay @getRadio = "handleChangePayWay"></pay>
         <coupons :couponList="this.couponList" @getCoupon = "handleChangeCoupon"></coupons>
         <orderInfo :orderData="this.orderData" :orderAmount="orderAmount" :goodsList="this.goodsList" @getRemark = "handleGetRemark"></orderInfo>
@@ -110,6 +119,34 @@ export default {
 
       })
     },
+    // 点击新建地址
+    addAddressHandle () {
+      this.$router.push({
+        name: 'addressEdit',
+        query: {
+          buyType: this.payParam.buyType,
+          cartIds: this.payParam.cartIds,
+          addressId: this.payParam.addressId,
+          goodsId: this.payParam.goodsId,
+          skuId: this.payParam.skuId,
+          goodsQuantity: this.payParam.goodsQuantity
+        }
+      })
+    },
+    // 点击选择地址
+    selectAddressHandle () {
+      this.$router.push({
+        name: 'addressList',
+        query: {
+          buyType: this.payParam.buyType,
+          cartIds: this.payParam.cartIds,
+          addressId: this.payParam.addressId,
+          goodsId: this.payParam.goodsId,
+          skuId: this.payParam.skuId,
+          goodsQuantity: this.payParam.goodsQuantity
+        }
+      });
+    },
     // 获取支付方式 zhangjie 0918
     handleChangePayWay (payType) {
         this.payParam.payWay = payType
@@ -195,5 +232,39 @@ export default {
 }
 .van-hairline--bottom::after {
   border: none;
+}
+.newaddtop{
+    margin: 0.4rem;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 10px 5px #fafafa;
+    background: url(../../assets/img/symbols-group-3.png) no-repeat bottom;
+    font-size: 0.4rem;
+}
+.settlhead span{
+    display: inline-block;
+    margin: 0.2rem;
+    font-size: 0.4rem;
+    font-weight: bold;
+}
+.newaddress{
+    margin: 0rem 0.6rem 0.6rem 0.2rem;
+    padding-top: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+.newaddressone{
+    color: #f00;
+    font-size: 0.45rem;
+}
+.newaddressimg{
+    display: inline-block;
+    width: 1.5rem;
+    height:1.5rem;
+    background-size: cover;
+    display: inline-block;
+    margin-right: -0.5rem;
+}
+.newaddressimgs {
+    background: url(../../assets/img/19.png) no-repeat center center;
 }
 </style>
