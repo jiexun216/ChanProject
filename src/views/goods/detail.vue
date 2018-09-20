@@ -50,36 +50,28 @@
             <div class="details"> 
                           <van-tabs v-model="active">
                             <van-tab  >
-                                <div slot="title" v-html="goodsInfos.content">
+                                <div slot="title">图文详情
                                 </div>
                                 <div class="goodstu">
-                                    <p>{{goodsInfos.goodsId}}</p>
-                                    <p>{{goodsInfos.name}}</p>
-                                    <p>{{goodsInfos.price}}</p>        
+                                    {{goodsInfos.content}}   
                                 </div>
                             </van-tab>
                             <van-tab  >
-                                <div slot="title" v-html="goodsInfos.paramBase">
+                                <div slot="title" >商品参数
                                 </div>
                                 <div class="goodstu">
-                                    <p>{{goodsInfos.goodsId}}</p>
-                                    <p>{{goodsInfos.name}}</p>
-                                    <p>{{goodsInfos.price}}</p>
+                                    {{goodsInfos.paramBase}}
                                 </div>
                             </van-tab>
                             <van-tab  >
-                                <div slot="title" v-html="goodsInfos.purchaseNotice">
+                                <div slot="title" >购买须知
                                 </div>
                                 <div class="goodstu">
-                                    <p>{{goodsInfos.goodsId}}</p>
-                                    <p>{{goodsInfos.name}}</p>
-                                   
+                                    {{goodsInfos.purchaseNotice}}
                                 </div>
                             </van-tab>
-                            </van-tabs>
-                            
+                            </van-tabs>                          
             </div>
-            
         </div>
         <div class="foot">
             <div class="customer">

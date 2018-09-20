@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="settop">
-                <router-link to="/Setup">
+                <router-link to="/Index">
                     <i class="back backs"></i>     
                 </router-link>
                 <span class="stt">绑定支付宝</span>
