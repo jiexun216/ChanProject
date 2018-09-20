@@ -99,7 +99,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 import { addGoodsToCart,orderSettlement } from "@/api/cart/index.js";
 import Vue from "vue"
 import { Sku } from 'vant'
-import { Tab, Tabs } from 'vant';
+import { Tab, Tabs, Dialog } from 'vant';
 Vue.use(Tab).use(Tabs);
 Vue.use(Sku)
     export default {
@@ -149,11 +149,22 @@ Vue.use(Sku)
                 let goodsQuantity = skuData.selectedNum
                 let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 addGoodsToCart (cartGoodsId,goodsQuantity,cartSkuId).then(res => {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 99) {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
                         this.$router.push({name: res.data.data.url})
                     } else if (res.data.status == 0) {
+                        Dialog.confirm({
+                            title: '温馨提示',
+                            message: '加入购物车成功，立即前往购物车查看'
+                        }).then(() => {
+                            // on confirm
+                            this.$router.push({name: 'cartList'})
+                            
+                        }).catch(() => {
+                        });
                         // window.location.reload()
+                    } else {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
                     }
                 })
             },
