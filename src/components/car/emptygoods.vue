@@ -1,7 +1,7 @@
 <template>
 <div>
-    <div class="header">
-    <div class="empty">
+    <div class="emptyheader">
+        <div class="empty">
         <div>
             <img src="../../assets/img/26.png" alt="">
             <div class="emptytop">
@@ -10,7 +10,6 @@
             </div>
         </div> 
     </div>  
-    </div>
     <div class="emptycon">
         <div class="like">
             <p class="liketop">你可能喜欢</p>
@@ -29,6 +28,8 @@
             </div>
         </div>
     </div>
+    </div>
+    
 </div>
 
 </template>
@@ -41,8 +42,9 @@ export default {
 }
 </script>
 <style>
-.header{
+.emptyheader{
     box-shadow: 0px 5px 0px 0px #fafafa; 
+    position: relative;
 }
 .empty{
     height: 5rem;
@@ -68,7 +70,7 @@ export default {
 }
 .emptycon{
     width: 100%;
-    height: 100%;
+    padding-bottom: 0.4rem;
     background: #fafafa;
 }
 .like{
