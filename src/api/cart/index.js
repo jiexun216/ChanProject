@@ -50,7 +50,21 @@ export function generatingOrder(buyType,cartIds,addressId,goodsId,skuId,goodsQua
     return postData(url, data)
 }
 
-// 编辑购物车（实现增删）
- export function EditorGoods() {
-     
+// 删除购物车 张杰 0919
+ export function deleteCart(cartIds) {
+    const url = 'cart/deleteInfo'
+    const data = {
+        cartIds
+    }
+    return postData(url, data)
+ }
+
+ // 修改购物车商品数量 张杰 0919
+ export function changeCartQuantity(cartId, goodsQuantity) {
+    const url = 'cart/changeCart'
+    const data = {
+        cartId,
+        goodsQuantity
+    }
+    return postData(url, data)
  }
