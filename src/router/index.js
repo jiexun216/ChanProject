@@ -1,21 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
 
-import Language from '@/components/index/language'
-=======
+
 import Language from '@/views/language/language'
-import Search from '@/components/index/search'
-import GoodsDetails from '@/components/index/goodsdetails'
-import Content from '@/components/index/content'
-import ParamBase from '@/components/index/paramBase'
-import purchaseNotice from '@/components/index/PurchaseNotice'
-import Message from '@/components/index/message'
-import Personal from '@/components/personal/personal'
-import Myorder from '@/components/personal/myorder'
-import Payment from '@/components/personal/payment'
-import Allorder from '@/components/personal/allorder'
->>>>>>> 553f3f405f7ae0fc393868ab05af59cad2cff96a
 import Forgoods from '@/components/personal/forgoods'
 import Logisticsinfo from '@/components/personal/logisticsinfo'
 import Binding from '@/components/setupthe/binding'
