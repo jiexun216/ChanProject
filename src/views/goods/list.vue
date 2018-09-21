@@ -154,7 +154,8 @@ import { getGoodsList } from '@/api/goods/index.js'
 }
 .goodsul li{
     width: 100%;
-    margin: 0;padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .goodsCategoryList li{   
     font-size: 0.4rem;

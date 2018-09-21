@@ -58,7 +58,10 @@
                             <van-tab  >
                                 <div slot="title" >商品参数
                                 </div>
-                                <div class="goodstu" v-html="goodsInfos.paramBase">
+                                <div class="goodstu" >
+                                    <ul class="list-paddingleft-2">
+                                        <li v-html="goodsInfos.paramBase"></li>
+                                    </ul>
                                 </div>
                             </van-tab>
                             <van-tab  >
@@ -428,5 +431,19 @@ Vue.use(Sku)
 }
 .goodstu img{
     width: 100%;
+}
+.goodstu ul{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   font-size: 0.2rem;
+   width: 100%;
+}
+.goodstu ul  li{
+     width: 100%;
+     float: left;
+     line-height: 0.8rem;
+     
 }
 </style>

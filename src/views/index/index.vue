@@ -27,11 +27,16 @@
             </ul>
         </div>
        <div class="swiper-container">
-        <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
+        <!-- <el-carousel tag="ul" indicator-position="none" arrow="none">
             <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
                <img :src="banner.picture" style="width:100%"> 
             </el-carousel-item >
-        </el-carousel>
+        </el-carousel> -->
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(image, index) in bannerList" :key="index">
+            <img v-lazy="image" :src="index.picture"/>
+          </van-swipe-item>
+        </van-swipe>
        </div> 
         <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
@@ -90,6 +95,9 @@
 </template>
 <script>
 import Vue from "vue";
+import { Swipe, SwipeItem } from 'vant';
+
+Vue.use(Swipe).use(SwipeItem);
 import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
 export default {
@@ -101,7 +109,7 @@ export default {
       keyword: "",
       goodsCategoryList: [],
       bannerList: [],
-      goodsList: []
+      goodsList: [],
     };
   },
   methods: {
@@ -209,6 +217,7 @@ input {
 }
 .thatmore li {
   font-size: 0.4rem;
+  text-align: center;
 }
 .thatmore li i {
   width: 1.3rem;

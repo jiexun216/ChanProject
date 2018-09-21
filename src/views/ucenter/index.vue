@@ -22,7 +22,7 @@
              <div class="shoppitem">
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingPay'}})" >
                       <i class="iconf waitpayone"></i>
-                       <span class="waitnum">01</span>
+                       <!-- <span class="waitnum">01</span> -->
                       <p>待付款</p>
                   </div> 
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingSign'}})">
@@ -160,6 +160,13 @@ export default {
 .waitnum{
     position: absolute;
     color: #f00;
+}
+.iconf{
+    display: inline-block;
+   width: 0.8rem;
+   height: 0.8rem;
+   background-size: cover;
+   margin-left: 0.2rem;
 }
 .waitpayone{
     background: url('../../assets/img/20.png') no-repeat center center;
