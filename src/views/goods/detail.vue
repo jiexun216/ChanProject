@@ -79,7 +79,7 @@
                 <p>客服</p>
             </div>
             <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys" @click="gobuy">立即购买</button>
+            <button class="inbuys" @click="joinbuy">立即购买</button>
         </div>
         <van-sku
                     v-model="showBase"
