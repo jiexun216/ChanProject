@@ -76,10 +76,9 @@
                 <p>客服</p>
             </div>
             <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys" @click="joinbuy">立即购买</button>
+            <button class="inbuys" @click="gobuy">立即购买</button>
         </div>
         <van-sku
-                    v-if="detailsshow"
                     v-model="showBase"
                     :sku="sku"
                     :goods="goods"
@@ -111,8 +110,7 @@ Vue.use(Sku)
                 num1: 1,  
                 active: 2,
                 skuAtterInfo:[],
-                detailsshow:false,
-                showBase: '',
+                showBase: false,
                 sku: {},
                 goods: {
                     title: '商品',
@@ -124,7 +122,8 @@ Vue.use(Sku)
             this.goodsId = this.$route.query.goodsId ? this.$route.query.goodsId : 0
             if (this.goodsId != 0) {
                 this.getData()
-            }      
+            }  
+             
         }, 
         methods: {
             // 获取商品详情数据
@@ -173,7 +172,7 @@ Vue.use(Sku)
                                 addressId: 0,
                                 goodsId: goodsId,
                                 skuId: skuId,
-                                goodsQuantity: goodsQuantity
+                                goodsQuantity: goodsQuantity,
 							}
 						})
                     }
@@ -182,7 +181,10 @@ Vue.use(Sku)
             detailsbg () {
             },
            joinbuy () {
-               this.detailsshow = true;
+               this.showBase = true;
+           },
+           gobuy () {
+                console.log("加入购物车")
            }
         },
        components: {
