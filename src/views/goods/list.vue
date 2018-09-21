@@ -143,7 +143,7 @@ import { getGoodsList } from '@/api/goods/index.js'
 .goodsright{
     position: fixed;
     left: 25%;
-    top: 2.0rem;
+    top: 2.3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

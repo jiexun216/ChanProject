@@ -3,7 +3,7 @@
         <div class="header" v-if="listData.length == 0">
          <div class="orderdetop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span >收获地址</span>
+            <span class="orderaddress">收获地址</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
@@ -197,6 +197,9 @@ export default {
 }
 .backs {
   background: url(../../assets/img/42.png) no-repeat center center;
+}
+.orderaddress{
+  font-size: 0.5rem;
 }
 .oks {
   color: #f00;

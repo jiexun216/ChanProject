@@ -179,12 +179,12 @@ export default {
 }
 .iconc{
     display:inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
-  background-size: cover;
-  vertical-align: middle;
-  text-align: center;
-  margin:0 0.2rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-size: cover;
+    vertical-align: middle;
+    text-align: center;
+    margin:0 0.2rem;
 }
 .couponsone {
     background: url('../../assets/img/18.png') no-repeat center center;

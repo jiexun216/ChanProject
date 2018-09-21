@@ -1,12 +1,19 @@
 <template>
 <div>
+            <div class="orderdetop">
+                <i class="back backs" @click="$router.back(-1)"></i>     
+                <span class="orderaddress">收获地址</span>
+                <span class="myorder">
+                    <i class="back backcoups"></i>
+                </span>
+            </div>    
     <van-address-edit
-  :area-list="areaList"
-  :address-info="formData"
-  show-set-default
-  show-search-result
-  @save="onSave"
-/>    
+      :area-list="areaList"
+      :address-info="formData"
+      show-set-default
+      show-search-result
+      @save="onSave"
+    />    
 </div>        
 </template>
 
@@ -128,9 +135,15 @@ export default {
 .backs {
   background: url(../../assets/img/42.png) no-repeat center center;
 }
+.backcoups{
+  background: url(../../assets/img/49.png) no-repeat center center;
+}
 .oks {
   color: #f00;
   margin-right: 0.4rem;
+}
+.orderaddress{
+  font-size: 0.45rem;
 }
 .recipi {
   border-top: 1px solid #ccc;

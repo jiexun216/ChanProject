@@ -10,8 +10,8 @@
                    <i class="carback carbackss"></i>
                 </div>
         </div>
-       <emptygoods :goodsList="goodsList"></emptygoods>
-   </div>
+            <emptygoods :goodsList="goodsList"></emptygoods>
+        </div>
      <div v-else>
         <div class="cartop">
                 <router-link to="/">
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import emptygoods from"../../components/car/emptygoods" 
+import emptygoods from"../../components/car/emptygoods"
 import Vue from "vue";
 import { Checkbox, CheckboxGroup, SubmitBar, Toast } from 'vant';
 import { getCartList,orderSettlement } from '@/api/cart/index.js'
@@ -70,7 +70,7 @@ Vue.use(Stepper);
             [Checkbox.name]: Checkbox,
             [SubmitBar.name]: SubmitBar,
             [CheckboxGroup.name]: CheckboxGroup,
-            "emptygoods": emptygoods
+            "emptygoods": emptygoods,
   },
   data() {
     return {

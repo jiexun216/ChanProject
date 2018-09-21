@@ -1,90 +1,74 @@
-<template>
- <div class="footer">
-    <ul class="foot">
-      <router-link  :to="{name:'Index'}" tag="li" exact>
-        <div>
-          <i class="iconf iconimg"></i>
-        </div>
-        <div class="font-color">主页</div>
-      </router-link>
-      <router-link  :to="{name:''}" tag="li">
-        <div>
-          <i class="iconf iconimg2"></i>
-        </div>
-        <div>算命</div>
-      </router-link>
-      <router-link  :to="{name:'cartList'}" tag="li">
-        <div>
-          <i class="iconf iconimg3"></i>
-        </div>
-        <div>购物车</div>
-      </router-link>
-      <router-link  :to="{name:'ucenterIndex'}" tag="li">
-        <div>
-          <i class="iconf iconimg4"></i>
-        </div>
-        <div>个人</div>
-      </router-link>
-    </ul>
+<template> 
+ <div class="common_foot"> 
+      <ul> 
+        <li v-for="item in nav" @click="selectNav(item.title)" :key="item.index">
+        <img :src="isSelect === item.title ? item.url : item.url_one" alt="item.title"> 
+        <p :class="isSelect === item.title ? 'active' : ''">{{item.title}}</p> 
+        </li> 
+      </ul> 
  </div> 
-</template>
-
-<script>
-    
-</script>
-
+</template> 
+  
+<script> 
+ export default { 
+ data () { 
+  return { 
+  isSelect: '首页', 
+  nav: [ 
+   {title: '首页', url: require('../assets/img/46.png'), url_one: require('../assets/img/20.png')}, 
+   {title: '算命', url: require('../assets/img/8.png'), url_one: require('../assets/img/43.png')}, 
+   {title: '购物车', url: require('../assets/img/44.png'), url_one: require('../assets/img/22.png')},
+   {title: '个人', url: require('../assets/img/45.png'), url_one: require('../assets/img/23.png')}
+  ]
+  }
+ },
+ created () {
+  this.isSelect = this.$route.meta.title
+ },
+ methods: {
+  selectNav (title) {
+  this.isSelect = title
+  switch (title) { 
+   case '首页': this.$router.push('/Index') 
+   break 
+   case '算命': this.$router.push('/Index') 
+   break 
+   case '购物车': this.$router.push('/cart/list') 
+   break 
+   case '个人': this.$router.push('/ucenter/index') 
+   break 
+  } 
+  } 
+ } 
+ } 
+</script> 
 <style>
-
-.footer{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background: #fff;
-  box-shadow: 0px 2px 20px #f0f0f0;
-  width: 100%; 
-} 
-.footer::after{
-  content:'';
-  clear: both;
+.common_foot ul{
+position: fixed; 
+ bottom: 0; 
+ z-index: 1000; 
+ width: 100%; 
+ overflow: hidden; 
+ background-color: white;
 }
-ul{
-  display: flex;
-  justify-content:space-around;
-  align-items: center;
-  padding:0.2rem 0;
+.common_foot ul li{
+  float: left; 
+  width: 25%; 
+  height: 100%; 
+  text-align: center; 
+  cursor: pointer; 
+  list-style: none;
+  padding: 0.2rem 0;
 }
-ul li{
-  float:left;
-  text-align: center;
+.common_foot p{
+  font-size: 0.2rem;color: #7f7f7f;
 }
-ul li div{
-  font-size: 0.2rem;
+.common_foot img{
+     width: 0.8rem; 
+  height: 0.8rem; 
 }
-.iconf{
-  display:inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-size: cover;
-  vertical-align: middle;
-  text-align: center;
-}
-.iconimg{
-    background: url(../assets/img/46.png) no-repeat  center center;
-    background-size: 0.8rem;  
-}
-.iconimg2{
-    background: url(../assets/img/48.png) no-repeat  center center;
-    background-size: 1rem; 
-}
-.iconimg3{
-    background: url(../assets/img/44.png) no-repeat  center center;
-    background-size: 0.8rem;  
-}
-.iconimg4{
-    background: url(../assets/img/45.png) no-repeat  center center; 
-    background-size: 0.8rem; 
-}
-.font-color{
-  color:#f00;
+.common_foot .active{
+  color: #f44; 
 }
 </style>
+

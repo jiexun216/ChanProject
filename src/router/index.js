@@ -112,7 +112,7 @@ export default new Router({
       name: 'ucenterIndex',
       path: '/ucenter/index',
       component: UcenterIndex,
-      meta: { title: '个人中心' }
+      meta: { title: '个人' }
     },
     {
       name: 'ucenterMessage',
@@ -156,7 +156,7 @@ export default new Router({
       name: 'cartList',
       path: '/cart/list',
       component: CartList,
-      meta: { title: '购物车列表' }
+      meta: { title: '购物车' }
     },
     {
       name: 'cartEdit',
@@ -181,7 +181,10 @@ export default new Router({
     {
       path: '/index',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta: {
+        title: '首页'
+      }
     },
     {
       path: '/language',
