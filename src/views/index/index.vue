@@ -182,12 +182,11 @@ input {
 }
 .icon {
   display: inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.5rem;
+  height: 0.5rem;
   background-size: cover;
   vertical-align: middle;
   text-align: center;
-  margin: 0 0.2rem;
 }
 .search-bg {
   background: url(../../assets/img/34@0.5x.png) no-repeat center center;
@@ -220,8 +219,8 @@ input {
   text-align: center;
 }
 .thatmore li i {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1rem;
+  height: 1rem;
   margin-bottom: 0.3rem;
 }
 .thatmroeimg {
