@@ -6,7 +6,7 @@
              </div>
             <div class="member">  
                 <div class="loginafter">
-                    <i class="memberImg"><img src="../../assets/img/order.png" /></i>
+                    <i class="memberImg"><img :src="personalitem.memberData.headImg" /></i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>
                         <p>{{personalitem.memberData.rankName}}</p>
