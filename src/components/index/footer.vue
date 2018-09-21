@@ -56,17 +56,17 @@
   content:'';
   clear: both;
 }
-ul{
+.foot{
   display: flex;
   justify-content:space-around;
   align-items: center;
   padding:0.2rem 0;
 }
-ul li{
+.foot li{
   float:left;
   text-align: center;
 }
-ul li div{
+.foot li div{
   font-size: 0.2rem;
 }
 .iconf{

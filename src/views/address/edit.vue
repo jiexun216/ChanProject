@@ -208,4 +208,13 @@ export default {
 .closeaddress span a {
   color: #f00;
 }
-</style>
+ ul{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   display: block;
+}
+ ul li{
+   float: none;
+}
+ </style>

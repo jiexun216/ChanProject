@@ -163,6 +163,9 @@ input {
   background: #f5f5f5;
   border-radius: 0.5rem;
   width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .search {
   line-height: 0.8rem;
@@ -180,6 +183,7 @@ input {
 }
 .search-bg {
   background: url(../../assets/img/34@0.5x.png) no-repeat center center;
+  background-size: 0.5rem;
 }
 .notice {
   background: url(../../assets/img/53.png) no-repeat center center;
@@ -262,5 +266,8 @@ input {
 .gobuy a {
   color: #f00;
   font-size: 0.3rem;
+}
+.moregoods{
+  margin-bottom: 1rem;
 }
 </style>

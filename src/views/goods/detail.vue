@@ -108,7 +108,7 @@ Vue.use(Sku)
                 goodsInfos: [], 
                 goodsImages: [],  
                 num1: 1,  
-                active: 2,
+                active: 0,
                 skuAtterInfo:[],
                 showBase: false,
                 sku: {},
@@ -421,6 +421,10 @@ Vue.use(Sku)
 }
 .goodstu{
     margin: 0 0.4rem;
+    text-align: left;
+    display: block;
+    flex-wrap: wrap;
+
 }
 .goodstu img{
     width: 100%;

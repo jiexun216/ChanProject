@@ -15,10 +15,10 @@
   return { 
   isSelect: '首页', 
   nav: [ 
-   {title: '首页', url: require('../assets/img/46.png'), url_one: require('../assets/img/20.png')}, 
-   {title: '算命', url: require('../assets/img/8.png'), url_one: require('../assets/img/43.png')}, 
-   {title: '购物车', url: require('../assets/img/44.png'), url_one: require('../assets/img/22.png')},
-   {title: '个人', url: require('../assets/img/45.png'), url_one: require('../assets/img/23.png')}
+   {title: '首页', url: require('../assets/img/46.png'), url_one: require('../assets/img/4601.png')}, 
+   {title: '算命', url: require('../assets/img/4301.png'), url_one: require('../assets/img/43.png')}, 
+   {title: '购物车', url: require('../assets/img/4401.png'), url_one: require('../assets/img/44.png')},
+   {title: '个人', url: require('../assets/img/4501.png'), url_one: require('../assets/img/45.png')}
   ]
   }
  },
@@ -65,7 +65,7 @@ position: fixed;
 }
 .common_foot img{
      width: 0.8rem; 
-  height: 0.8rem; 
+     height: 0.8rem; 
 }
 .common_foot .active{
   color: #f44; 
