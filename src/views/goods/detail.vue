@@ -23,7 +23,7 @@
                       <div class="goodcover" >
                         <el-carousel tag="ul" height="6rem" indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
-                              <img :src="goodsImage" style="width:100%"> 
+                              <img :src="goodsImage"  style="width:100%"> 
                              </el-carousel-item >
                         </el-carousel>  
                       <div class="goods">
@@ -79,7 +79,7 @@
                 <p>客服</p>
             </div>
             <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys" @click="gobuy">立即购买</button>
+            <button class="inbuys" @click="joinbuy">立即购买</button>
         </div>
         <van-sku
                     v-model="showBase"
@@ -423,7 +423,7 @@ Vue.use(Sku)
     margin: 0 0.4rem;
 }
 .goodstu{
-    margin: 0 0.4rem;
+    margin: 0.4rem 0.4rem;
     text-align: left;
     display: block;
     flex-wrap: wrap;
