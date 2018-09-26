@@ -136,7 +136,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .theLogin-top{
-  margin-top:1rem;
   display: flex;
   justify-content:space-between;
   align-items:center;

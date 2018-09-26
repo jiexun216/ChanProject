@@ -135,7 +135,6 @@ import { messageSend, registerMember } from '@/api/user/index.js'
 
 <style>
  .theLogin-top{
-  margin-top:1rem;
   display: flex;
   justify-content:space-between;
   align-items:center;

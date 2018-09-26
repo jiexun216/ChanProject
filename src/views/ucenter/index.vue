@@ -6,20 +6,21 @@
              </div>
             <div class="member">  
                 <div class="loginafter">
-                    <i class="memberImg"><img :src="personalitem.memberData.headImg" /></i>
+                    <i class="memberImg"><img :src="personalitem.memberData.headImg" />
+                                         <img src="../../assets/img/order.png"/></i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>
                         <p>{{personalitem.memberData.rankName}}</p>
                     </div>
-      </div> 
-             </div>
-             <div class="order">
+                </div> 
+            </div>
+            <div class="order">
                  <div class="orderitem">
                         <span>我的订单</span>
                         <span @click="allorder">全部订单 ＞</span>
                  </div>
-             </div>
-             <div class="shoppitem">
+            </div>
+            <div class="shoppitem">
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingPay'}})" >
                       <i class="iconf waitpayone"></i>
                        <!-- <span class="waitnum">01</span> -->
@@ -117,11 +118,8 @@ export default {
 * {
     font-size: 0.4rem;
 }
-.personal-top{
-    height: 100%;
-}
 .members{
-    margin: 0.4rem;
+    margin: 0.2rem;
 }
 .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
 .clearfloat{zoom:1} 
@@ -129,7 +127,6 @@ export default {
     float: right;
 }
 .member{
-    height: 2rem;
     border-bottom:5px solid #ccc;
 }
 .memberp{
@@ -137,14 +134,15 @@ export default {
     margin:0 0.4rem;
 }
 .orderitem{
-   font-size: 0.4rem;
    border-bottom: 2px solid #f7f7f7;
    display: flex;
    justify-content: space-between;
    align-items: center;
 }
 .orderitem span{
-    margin: 0.4rem;
+    margin: 0.2rem 0.4rem;
+    color: #ccc;
+    font-size: 0.35rem;
 }
 .shoppitem{
     border-bottom: 5px solid #f7f7f7;
@@ -160,6 +158,7 @@ export default {
 .waitnum{
     position: absolute;
     color: #f00;
+    top: -8px;
 }
 .iconf{
     display: inline-block;
@@ -226,6 +225,7 @@ export default {
 .loginright{
     margin-left: 0.2rem;
     color: #ccc;
+    margin-top: 0.2rem;
 }
 .loginname{
    font-size: 0.5rem;

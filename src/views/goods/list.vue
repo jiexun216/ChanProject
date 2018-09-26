@@ -133,34 +133,32 @@ import { getGoodsList } from '@/api/goods/index.js'
        position: relative;
    }
 .goodsleft{
-    position: fixed;
+    position: fixed;  
     left: 0;
     top:2.5rem; 
     width: 25%;
     height: 100%;
     background: #f7f7f7;
+    font-size: 0.4rem;
 }
 .goodsright{
+    width: 70%;
     position: fixed;
     left: 25%;
     top: 2.3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  
 }
 .goodsul{
     margin: 0;padding: 0;
 }
 .goodsul li{
-    width: 100%;
     margin: 0;
     padding: 0;
-}
-.goodsCategoryList li{   
-    font-size: 0.4rem;
+    line-height: 1rem;
     text-align: center;
-    line-height:1.2rem;
 }
 .classbg{
     border-left:2px solid #ff525a;
@@ -173,10 +171,4 @@ import { getGoodsList } from '@/api/goods/index.js'
   margin-right: 0.3rem;
 }
 
-.goodscate img{
-    width: 4rem; 
-}
-.goodscate{
-    margin: 0 0.4rem;
-}
 </style>

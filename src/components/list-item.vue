@@ -40,19 +40,21 @@
 <style>
 .goodheader{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   margin-top: 0.2rem;
 }
 .goodscate{
-  font-size: 0.4rem;
-  line-height: 0.6rem;
-  margin:0 0.4rem; 
+  font-size: 0.3rem;
+  line-height: 0.4rem;
+  margin-left:0.2rem; 
 }
 .goodscate img{
-    width: 4rem;
+    width: 3rem;
 }
 .goodsstyle{
-    font-size: 0.45rem;
+    font-size: 0.3rem;
     line-height: 0.8rem;
 }
 .goodprice1{

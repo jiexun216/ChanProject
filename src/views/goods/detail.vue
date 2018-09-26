@@ -1,7 +1,7 @@
 <template>
    <div>
        <div class="details-top">
-           <el-header>   
+           <el-header style="height:40px;">   
                  <router-link to="/index">
                  <i class="de-icon de-iconimg1"> </i>
                  </router-link>
@@ -21,7 +21,7 @@
             <ul> 
                 <li style="width:100%;">
                       <div class="goodcover" >
-                        <el-carousel tag="ul" height="6rem" indicator-position="none" arrow="none">
+                        <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
                               <img :src="goodsImage"  style="width:100%"> 
                              </el-carousel-item >
@@ -67,7 +67,10 @@
                             <van-tab  >
                                 <div slot="title" >购买须知
                                 </div>
-                                <div class="goodstu" v-html="goodsInfos.purchaseNotice">
+                                <div class="goodstu">
+                                     <ul class="list-paddingleft-2">
+                                        <li v-html="goodsInfos.purchaseNotice"></li>
+                                    </ul>
                                 </div>
                             </van-tab>
                             </van-tabs>                          
@@ -301,6 +304,7 @@ Vue.use(Sku)
   display: flex;
   align-items: center;
   text-align: center;
+  z-index: 10;
 }
 .customer{
     font-size:0.4rem;
@@ -368,11 +372,6 @@ Vue.use(Sku)
     border-radius: 0.5rem;
     padding: 0.1rem 0.4rem;
 }
-.inthe{
-    border: 1px solid #ff525a;
-    background: #fff4f5;
-    color: #ff525a;
-}
 .joinsbuy{
     width: 100%;
     line-height: 1rem;
@@ -423,14 +422,16 @@ Vue.use(Sku)
     margin: 0 0.4rem;
 }
 .goodstu{
-    margin: 0.4rem 0.4rem;
-    text-align: left;
+    margin: 0.4rem;
+    text-align:left;
     display: block;
     flex-wrap: wrap;
 
 }
 .goodstu img{
     width: 100%;
+    margin:0;
+    padding: 0;
 }
 .goodstu ul{
    display: flex;
@@ -445,5 +446,11 @@ Vue.use(Sku)
      float: left;
      line-height: 0.8rem;
      
+}
+.list-paddingleft-2 li{
+    margin: 0 0.2rem;
+}
+.el-header{
+    padding: 0 5px;
 }
 </style>

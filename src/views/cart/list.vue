@@ -23,15 +23,17 @@
                     <i class="carback carbackcoups"></i>
                 </div>
         </div>
-        <div class="cargoods">
-              <van-checkbox-group class="card-goods" v-model="checkedGoods">
-                <van-checkbox
-                  class="card-goods__item"
-                  v-for="item in cartGoodsList"
-                  :key="item.id"
-                  :name="item.id"
-                >
+        <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
+          <!-- 这是商品  还有商品信息 -->
                 <div class="van-card">
+                  <van-checkbox-group class="card-goods" v-model="checkedGoods">
+                      <van-checkbox
+                        class="card-goods__item"
+                        :key="item.id"
+                        :name="item.id"
+                      >
+                      </van-checkbox>
+                  </van-checkbox-group>
                     <div >
                         <img :src="item.goodsCoverImg" alt="" class="van-card-img">
                     </div>
@@ -39,13 +41,12 @@
                         <p>{{item.name}}</p>
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
-                            <p class="van-price-p" >￥ {{item.price}}</p>
-                            <p> <van-stepper v-model="item.goodsQuantity" disabled /></p>
+                            <p class="van-price-p" >￥{{item.price}}</p>
+                            <p> <van-stepper @change="getGoodsNumber" /></p>
                         </div>
                     </div>
                 </div>
-                </van-checkbox>
-                  </van-checkbox-group>
+                <!-- 这个是支付  然后还有结算价格 -->
                   <van-submit-bar
                       :price="totalPrice"
                       :disabled="!checkedGoods.length"
@@ -54,7 +55,9 @@
                       class="payfor"
                       />
               </div>      
-     </div>
+
+
+     </div>  
    </div>    
 </template>
 
@@ -76,7 +79,8 @@ Vue.use(Stepper);
     return {
       checkedGoods: [],
       cartGoodsList: [],
-      goodsList: []
+      goodsList: [],
+      goodsNumber: 1
     };
   },
     computed: {
@@ -86,7 +90,7 @@ Vue.use(Stepper);
     },
     totalPrice() {
       return this.cartGoodsList.reduce((total, item) => 
-      total + (this.checkedGoods.indexOf(item.id) !== -1 ? Number(item.goodsPriceSubtotal * 100) : 0), 0)
+      total + (this.checkedGoods.indexOf(item.id) !== -1 ? Number(item.price * this.goodsNumber * 100) : 0), 0)
     }
       
   },
@@ -100,7 +104,12 @@ Vue.use(Stepper);
         }
         this.cartGoodsList  = res.data.data.list
         this.goodsList = res.data.data.goodsList
+        console.log(this.cartGoodsList)
       });
+    },
+    // 获取商品数量
+    getGoodsNumber (data) {
+      this.goodsNumber = data
     },
     // 下单结算
     onSubmit() {
@@ -164,11 +173,6 @@ Vue.use(Stepper);
     align-items: center;
     margin-right: 0.6rem;
 }
-.card-goods__item {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
 .van-checkbox__icon--checked .van-icon{
     background: #f00;
     border: 1px solid #f00;
@@ -184,15 +188,15 @@ Vue.use(Stepper);
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 0.2rem;
+   margin-right: 0.3rem;
 }
 .van-card{
     box-shadow: 0px 0px 10px 5px #fbfbfb;
     border: 1px solid #fbfbfb;
     margin: 0.2rem;
     display: flex;
-    justify-content: space-around;
-    justify-content: center;
+    justify-content:space-around; 
+    align-items: center;
     padding: 0.2rem;
 }
 .van-card-img{
@@ -200,20 +204,21 @@ Vue.use(Stepper);
     margin-right: 0.2rem;
 }
 .van-card-right{
-    font-size: 0.4rem;
+    font-size: 0.3rem;
 }
 .van-card-p{
     color: #707070;
     font-size: 0.3rem;
-    margin:0.1rem 0;
 }
 .van-card-price{
     color: #f00;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;
-   
+    margin-top: 0.5rem;   
+}
+.van-price-p{
+  margin-right: 0.3rem;
 }
 .van-stepper{
   display: flex;
@@ -250,6 +255,10 @@ Vue.use(Stepper);
  }
  .carbackss{
      background: url(../../assets/img/49.png) no-repeat center center;
-     margin-right: 0.3rem;
+ }
+ .cargoods{
+   display: flex;
+   justify-content:space-around;
+   align-content:center;
  }
 </style>

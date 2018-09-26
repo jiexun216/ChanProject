@@ -9,10 +9,10 @@
                 </div>
         </div>
          <div class="cargoods">
-              <van-checkbox-group class="card-goods" v-model="checkedGoods">
+              <van-checkbox-group class="card-goods" @change="changeGoods" v-model="checkedGoods">
                 
                 <div class="van-card" v-for="(item,index) in goods" :key="index">
-                    <van-checkbox class="card-goods__item" :name="item.id" ></van-checkbox>
+                    <van-checkbox class="card-goods__item" :name="item" ></van-checkbox>
                     <div>
                         <img :src="item.goodsCoverImg" alt="" class="van-card-img">
                     </div>
@@ -21,7 +21,7 @@
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥ {{item.price}}</p>
-                            <p> <van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" v-model="item.goodsQuantity"  /></p>
+                            <van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" v-model="item.goodsQuantity"  />
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                   </van-checkbox-group>
          </div>  
         <div class="carfoot">
-                <van-checkbox v-model="checked" class="chooseall">全选</van-checkbox>
+                <van-checkbox @change="queryCheck" v-model="checked" class="chooseall">全选</van-checkbox>
                 <button class="carclear" @click="deleteCartHandle">删除</button>
         </div>    
 </div>    
@@ -50,7 +50,7 @@ Vue.use(Stepper);
   data () {
     return {
       checkedGoods: [],
-      checked: '',
+      checked: false,
       goods: []
     }
   },
@@ -64,6 +64,12 @@ Vue.use(Stepper);
         }
         this.goods  = res.data.data.list
       });
+    },
+    queryCheck (data) {
+      data ? this.checkedGoods = this.goods : this.checkedGoods = []
+    },
+    changeGoods (data) {
+      data.length === this.goods.length ? this.checked = true : this.checked = false
     },
     // 删除购物车 zhangjie 0919
     deleteCartHandle () {
@@ -163,7 +169,7 @@ Vue.use(Stepper);
     margin-right: 0.2rem;
 }
 .van-card-right{
-    font-size: 0.4rem;
+    font-size: 0.3rem;
 }
 .van-card-p{
     color: #707070;
@@ -207,11 +213,11 @@ Vue.use(Stepper);
     font-size: 0.4rem;
 }
 .carclear{
-    font-size: 0.4rem;
-    padding: 0.1rem 0.4rem;
+    font-size: 0.3rem;
+    padding:0.1rem 0.4rem;
     color: #f00;
     border: 1px solid #f00;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     margin-right: 0.4rem;   
 }
 </style>

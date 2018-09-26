@@ -26,12 +26,17 @@
                 </li>
             </ul>
         </div>
-       <div class="swiper-container">
-        <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
+       <div class="swiper-container" >
+        <!-- <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
             <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
                <img :src="banner.picture" style="width:100%"> 
             </el-carousel-item >
-        </el-carousel>
+        </el-carousel> -->
+        <van-swipe :autoplay="3000" :showIndicators='false'>
+          <van-swipe-item v-for="banner in bannerList" :key="banner.index">
+            <img :src="banner.picture" style="width:100%;">
+          </van-swipe-item>
+        </van-swipe>
        </div> 
         <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
@@ -62,9 +67,9 @@
 
         <div class="moregoods">
             <ul> 
-                <li style="width:100%;">
+                <li class="moregoodsli">
                       <div class="goodcover" v-for="good in goodsList" :key="good.index" >
-                           <img :src="good.goodsCoverImg">
+                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                       <div class="goods">
                           <p class="goodname">
                               {{good.name}}</p>
@@ -92,6 +97,8 @@
 import Vue from "vue";
 import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
+import { Swipe, SwipeItem } from 'vant';
+Vue.use(Swipe).use(SwipeItem);
 export default {
   components: {
     Footer
@@ -204,7 +211,6 @@ input {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 .thatmore li {
@@ -256,19 +262,24 @@ input {
 }
 .gobuy {
   border: 1px solid #ff525a;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   color: #ff525a;
   float: right;
   width: 1.5rem;
   text-align: center;
   line-height: 0.6rem;
   font-weight: bold;
+  padding: 0.1rem 0.3rem;
 }
 .gobuy a {
   color: #f00;
   font-size: 0.3rem;
 }
 .moregoods{
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+.moregoodsli{
+  width: 100%;
+  height: 100%;
 }
 </style>

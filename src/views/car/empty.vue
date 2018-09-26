@@ -49,6 +49,5 @@ export default {
  }
  .carbackss{
      background: url(../../assets/img/49.png) no-repeat center center;
-     margin-right: 0.3rem;
  }
 </style>

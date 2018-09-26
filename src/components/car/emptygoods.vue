@@ -17,7 +17,7 @@
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
                      <img :src="item.goodsCoverImg" alt="">
                      <div class="likelefts">
-                        <h3>{{item.name}}</h3>
+                        <h4>{{item.name}}</h4>
                         <p>已售{{item.salesVolume}}件</p>
                         <div class="likemon">
                             <span class="likeone">￥{{item.price}}</span>
@@ -62,7 +62,7 @@ export default {
     text-align: center;
 }
 .emptytop p{
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: #ccc;
 }
 .hot{
@@ -88,7 +88,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-
 }
 .liketop{
     line-height: 0.8rem;
@@ -110,10 +109,11 @@ export default {
 }
 .likeone{
     font-weight: bold;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
 }
 .liketwo{
     color: #ccc;
+    font-size: 0.3rem;
     text-decoration: line-through;
 }
 </style>

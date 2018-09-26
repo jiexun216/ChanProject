@@ -1,16 +1,16 @@
 <template>
    <div class="orderInfo">
              <p>订单信息</p>
-             <div class="orderInfoImg">
-                 <ul class="orderimg" @click="orderMore">
+             <div class="orderInfoImg" >
+                 <ul class="orderimg" >
                      <li v-for="(item, index) in goodsList" :key="index"><img :src="item.goodsCoverImg" alt=""></li>
-                     <li><img src="../../assets/img/49.png">
-                      <div class="overlayer" @touchmove.prevent v-if="orderTextStatus">
+                     <li><img src="../../assets/img/49.png" @click="orderMore">
+                      <div class="overlayerorderinfo" @touchmove.prevent v-if="orderTextStatus">
                             <div class="orders">
                                 <div class="orderstop">
                                      <span>商品清单（共{{orderData.totalQuantity}}件）</span>
-                                     <span  class="closeorder">
-                                         <i class="orderInfoimg orderInfoimgs" @click="closeorder"></i>
+                                     <span  class="closeorder" @click="closeorder">
+                                         <i class="orderInfoimg orderInfoimgs"></i>
                                      </span>
                                 </div>
                                 <div class="ordergoods" v-for="(item, index) in goodsList" :key="index">
@@ -76,7 +76,7 @@ Vue.use(Toast)
                   this.orderTextStatus = true
               },
               closeorder () {
-                  this.orderTextStatus = false
+                  this.orderTextStatus = false;
               }
 
           }
@@ -97,26 +97,27 @@ Vue.use(Toast)
     justify-content: flex-start;
     align-items: center;
 }
+.orderimg {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
 .orderimg li{
-    float: left;
-    margin-left: 0.2rem;
-    margin-top: 0.2rem;
-    
+   margin:0.2rem 0 0.2rem;
 }
 .orderimg li img{
-    width: 1.2rem;
+    width:1.2rem;
     border-radius: 0.1rem;
 }
 .deliveryinfo{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.2rem;
-    height: 1rem;
+    height: 0.8rem;
 }
 .deliveryone{
     font-weight: bold;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
 }
 .payInfocolor{
      color: #f00;
@@ -129,7 +130,7 @@ Vue.use(Toast)
      color: #ccc;
  }
 
-.overlayer{
+.overlayerorderinfo{
   position:fixed;
   left:0;
   top:0;
