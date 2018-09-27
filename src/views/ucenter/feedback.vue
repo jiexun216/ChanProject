@@ -76,6 +76,7 @@ import { issueOpinion } from '@/api/ucenter/index.js'
     border: none;
     font-size: 0.5rem;
     padding: 0.2rem;
+    color: #000;
 }
 .pleaseinput .submit{
     width: 90%;

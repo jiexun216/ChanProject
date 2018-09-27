@@ -2,9 +2,9 @@
 <div>
             <div class="orderdetop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="orderaddress">收获地址</span>
+                <span class="orderaddress">编辑/添加地址</span>
                 <span class="myorder">
-                    <i class="back backcoups"></i>
+                      <el-button type="text" @click="open" :showClose="showClose">完成</el-button>
                 </span>
             </div>    
     <van-address-edit
@@ -18,10 +18,14 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Toast } from "mint-ui";
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
 import { getAddressInfo,saveAddressInfo } from "@/api/address/index.js";
+import { Dialog } from 'vant';
+import {Field} from 'vant';
+Vue.use(Dialog);
 export default {
   components: {
     "van-address-edit": AddressEdit
@@ -29,6 +33,7 @@ export default {
   data() {
     return {
       loading: false,
+      showClose: false,
       areaList,
       formData: {
         id: 0,
@@ -45,6 +50,13 @@ export default {
     };
   },
   methods: {
+    beforeClose(action, done) {
+      if (action === 'confirm') {
+        setTimeout(done, 1000);
+      } else {
+        done();
+      }
+    },
     // 添加、修改地址保存
     onSave(content) {
       console.log(content);
@@ -106,15 +118,32 @@ export default {
             duration: 1500
           });
         });
+    },
+    open() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
+      created() {
+        this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
+        if (this.formData.id != 0) {
+          this.getData();
+        }
+      }
     }
-  },
-  created() {
-    this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
-    if (this.formData.id != 0) {
-      this.getData();
-    }
-  }
-};
+}
 </script>
 
 <style>
@@ -124,6 +153,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.3rem;
 }
 .back {
   display: inline-block;
@@ -162,17 +192,6 @@ export default {
   word-wrap: break-word;
   word-break: normal;
 }
-
-.overlayer {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background: #000;
-  opacity: 0.5;
-}
 .restaddress {
   position: absolute;
   left: 0;
@@ -208,5 +227,58 @@ export default {
 .closeaddress span a {
   color: #f00;
 }
-
+.van-popup{
+   width: 7rem;
+   height: 4rem;
+   text-align: center;
+}
+.el-button--text{
+  color: #000;
+  margin-right: 0.4rem;
+}
+.el-message-box{
+  position: absolute;
+  left: 0;
+  top:0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 4rem;
+}
+.el-message-box__btns{
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.el-button--small, .el-button--small.is-round{
+  width: 50%;
+}
+.el-button--primary.is-active, .el-button--primary:active{
+  background: #fff;
+  color: #000;
+}
+.el-button--primary:focus, .el-button--primary:hover{
+  background: #fff;
+  color: #000;
+}
+.el-button:active{
+  background: #fff;
+  color: #000;
+}
+.el-button:focus, .el-button:hover{
+   background: #fff;
+  color: #000;
+}
+.el-button--primary{
+  background: #fff;
+  color: #000;
+}
+.el-button--small, .el-button--small.is-round{
+  border: none;
+}
  </style>

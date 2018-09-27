@@ -36,7 +36,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      component: Index,
+      redirect: '/index'
     },
     // 账号密码登录
     {

@@ -26,10 +26,10 @@
   this.isSelect = this.$route.meta.title
  },
  methods: {
-  selectNav (title) {
+  selectNav (title) { 
   this.isSelect = title
   switch (title) { 
-   case '首页': this.$router.push('/Index') 
+   case '首页': this.$router.push('/')
    break 
    case '算命': this.$router.push('/Index') 
    break 

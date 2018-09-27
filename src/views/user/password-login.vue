@@ -19,7 +19,7 @@
      <div class="click-login"> 
          <!-- <button  type="primary" size="large" class="cli-login" @click="login">登录</button> -->
          <button type="primary" size="large" class="cli-login" @click="memberPassLogin">登录</button>
-         <span class="agree-reg">登录即代表您已同意“<span class="agree-color">用户协议</span>”</span>
+         <!-- <span class="agree-reg">登录即代表您已同意“<span class="agree-color">用户协议</span>”</span> -->
          <div class="phfa">
              <p @click="$router.push({name: 'userMobileLogin'})" class="phonefast">手机快捷登录</p>
              <span class="phonefast-size">·</span>
@@ -170,7 +170,7 @@ export default {
 }
 .otherLogin {
   margin: 0.4rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-around;
   align-items: cneter;

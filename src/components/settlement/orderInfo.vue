@@ -196,4 +196,7 @@ Vue.use(Toast)
 .orderInfoimgs{
     background: url(../../assets/img/39.png) no-repeat center center;
 }
+.payInforight input{
+    color: #000;
+}
 </style>

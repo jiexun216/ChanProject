@@ -175,8 +175,7 @@ import Footer from './footer'
 .search{
     line-height:0.8rem;
     width:80%;
-    text-align: center;
-    
+    text-align: left;
 }
 .icon{
   display:inline-block;

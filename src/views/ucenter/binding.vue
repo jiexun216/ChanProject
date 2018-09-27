@@ -2,9 +2,9 @@
     <div>
         <div>
             <div class="settop">
-                <router-link to="/Index">
+                <div  @click="$router.back(-1)">
                     <i class="back backs"></i>     
-                </router-link>
+                </div>
                 <span class="stt">绑定支付宝</span>
           </div>
         </div>

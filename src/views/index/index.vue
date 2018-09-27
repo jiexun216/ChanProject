@@ -7,7 +7,8 @@
             </span>
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
-                <input type="search" v-model="keyword" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods">
+                <input type="search" v-model="keyword" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods"
+                       @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -108,7 +109,8 @@ export default {
       keyword: "",
       goodsCategoryList: [],
       bannerList: [],
-      goodsList: []
+      goodsList: [],
+      Iscenter: true
     };
   },
   methods: {
@@ -137,11 +139,15 @@ export default {
     },
     goPage(page) {
       this.$store.commit("getPage", page);
-    }
+    },
+    searchleft (data) {
+        this.Iscenter = !this.Iscenter
+      }
   },
   created() {
     this.getData()
-  }
+  },
+  
 };
 </script>
 
@@ -178,6 +184,10 @@ input {
   line-height: 0.8rem;
   width: 80%;
   text-align: center;
+  font-size: 0.3rem;
+}
+.searchleft{
+  text-align: left;
 }
 .icon {
   display: inline-block;

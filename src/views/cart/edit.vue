@@ -61,16 +61,16 @@ Vue.use(Stepper);
         if (res.data.status == 99) {
           this.$toast(res.data.message ? res.data.message : '操作失败')
           this.$router.push({name: res.data.data.url})
-        }
-        this.goods  = res.data.data.list
-      });
-    },
-    queryCheck (data) {
-      data ? this.checkedGoods = this.goods : this.checkedGoods = []
-    },
-    changeGoods (data) {
-      data.length === this.goods.length ? this.checked = true : this.checked = false
-    },
+            }
+            this.goods  = res.data.data.list
+          });
+        },
+        queryCheck (data) {
+          data ? this.checkedGoods = this.goods : this.checkedGoods = []
+        },
+        changeGoods (data) {
+          data.length === this.goods.length ? this.checked = true : this.checked = false
+        },
     // 删除购物车 zhangjie 0919
     deleteCartHandle () {
         if (this.checkedGoods.length == 0) {

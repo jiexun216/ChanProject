@@ -11,7 +11,7 @@
             </form>
         </div>
         <div class="perfoot">
-           <span>这里是说明</span>
+           <!-- <span>这里是说明</span> -->
         </div>
    </div>    
 </template>
@@ -43,7 +43,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
                 modifyUserName (this.nickname).then(res => {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 0) {
-                        this.$router.push({name: 'ucenterSetup'});
+                        // this.$router.push({name: 'ucenterSetup'});
                     } 
                 })
                 
@@ -75,12 +75,12 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  }
  .stt {
      margin:0 auto;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .deter {
      color: #ff525a;
      margin-right: 0.3rem;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .userdata{
      width: 100%;
@@ -88,11 +88,12 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  .userdata input{
      margin-left: 0.3rem;
      line-height: 0.9rem;
+     font-size: 0.4rem;
  }
  .perfoot{
      background: #f7f7f7;  
      position: fixed;
-     top: 2.8rem;
+     top: 2rem;
      left: 0;
      width: 100%;
      height: 100%;
