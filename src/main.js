@@ -14,6 +14,7 @@ import VueAxios from 'vue-axios'
 import Vuex from 'vuex'
 import store from './store/store'
 import i18n from './langs'
+// import i18n from './langs'
 import {getData, postData, deleteData, putData} from './api/api'
 import { JSEncrypt } from 'jsencrypt'
 Vue.prototype.$getData = getData
@@ -29,7 +30,8 @@ Vue.use(ElementUI, {
   size: 'medium',
   i18n: (key, value) => i18n.t(key, value)
 })
-
+Vue.prototype.$store = store
+Vue.prototype.$store.commit('GET_LANG')
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

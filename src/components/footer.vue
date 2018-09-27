@@ -3,8 +3,8 @@
       <ul> 
         <li v-for="item in nav" @click="selectNav(item.title)" :key="item.index">
         <img :src="isSelect === item.title ? item.url : item.url_one" alt="item.title"> 
-        <p :class="isSelect === item.title ? 'active' : ''">{{item.title}}</p> 
-        </li> 
+        <p :class="isSelect === item.title ? 'active' : ''">{{$t(item.title)}}</p> 
+      </li> 
       </ul> 
  </div> 
 </template> 
@@ -13,12 +13,12 @@
  export default { 
  data () { 
   return { 
-  isSelect: '首页', 
+  isSelect: 'common.home', 
   nav: [ 
-   {title: '首页', url: require('../assets/img/46.png'), url_one: require('../assets/img/4601.png')}, 
-   {title: '算命', url: require('../assets/img/4301.png'), url_one: require('../assets/img/43.png')}, 
-   {title: '购物车', url: require('../assets/img/4401.png'), url_one: require('../assets/img/44.png')},
-   {title: '个人', url: require('../assets/img/4501.png'), url_one: require('../assets/img/45.png')}
+   {title: 'common.home', url: require('../assets/img/46.png'), url_one: require('../assets/img/4601.png')}, 
+   {title: 'common.telling', url: require('../assets/img/4301.png'), url_one: require('../assets/img/43.png')}, 
+   {title: 'common.cart', url: require('../assets/img/4401.png'), url_one: require('../assets/img/44.png')},
+   {title: 'common.personal', url: require('../assets/img/4501.png'), url_one: require('../assets/img/45.png')}
   ]
   }
  },
@@ -29,17 +29,20 @@
   selectNav (title) {
   this.isSelect = title
   switch (title) { 
-   case '首页': this.$router.push('/Index') 
+   case 'common.home': this.$router.push('/Index') 
    break 
-   case '算命': this.$router.push('/Index') 
+   case 'common.telling': this.$router.push('/Index') 
    break 
-   case '购物车': this.$router.push('/cart/list') 
+   case 'common.cart': this.$router.push('/cart/list') 
    break 
-   case '个人': this.$router.push('/ucenter/index') 
+   case 'common.personal': this.$router.push('/ucenter/index') 
    break 
   } 
   } 
- } 
+ },
+ mounted() {
+   console.log(this.$i18n.locale)
+ }
  } 
 </script> 
 <style>
