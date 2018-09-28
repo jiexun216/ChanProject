@@ -33,33 +33,35 @@
            </div>
        </div> -->
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
-          <el-radio :label="value.lang" v-for="value in raioLang">{{value.name}}</el-radio>
+          <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index">{{value.name}}</el-radio>
        </el-radio-group>
+       <my-file @input="input($event)"></my-file>
    </div>    
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import myFile from '@/components/upLoadImg/myFile.vue'
 export default {
   data () {
     return {
       language: '语言选择',
       radio2: '',
+      photosList: [],
       raioLang: [
         {lang: 'chinese', name: '简体中文'},
         {lang: 'english', name: 'English'},
         {lang: 'character', name: '繁體中文'}
       ]
-      //  value1: true,
-      //  value2: true,
-      //  value3: false,
-      //  value4: false
     }
   },
   methods: {
     changeLang (lang) {
       this.$store.commit('SET_LANG', lang)
       this.$i18n.locale = lang
+    },
+    input(val) {
+      this.photosList = val  //获取到的图片路径base64
     }
   },
   computed: {
@@ -67,7 +69,8 @@ export default {
   },
   mounted() {
     this.radio2 = this.lang ? this.lang : 'chinese'
-  }
+  },
+  components: {myFile}
 }
 </script>
 
