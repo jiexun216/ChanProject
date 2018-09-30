@@ -3,7 +3,7 @@
         <div class="index-top">
             <span class="language">
                 <router-link to="/language">
-                   EN</router-link>
+                   {{language}}</router-link>
             </span>
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
@@ -99,6 +99,7 @@ import Vue from "vue";
 import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
 import { Swipe, SwipeItem } from 'vant';
+import { mapState } from 'vuex'
 Vue.use(Swipe).use(SwipeItem);
 export default {
   components: {
@@ -110,6 +111,7 @@ export default {
       goodsCategoryList: [],
       bannerList: [],
       goodsList: [],
+      language: ''
       Iscenter: true
     };
   },
@@ -147,7 +149,16 @@ export default {
   created() {
     this.getData()
   },
-  
+
+  mounted() {
+    if (this.lang === 'english') this.language = 'English'
+    else if (this.lang === 'character') this.language = '繁體中文'
+    else this.language = '简体中文'
+  },
+  computed: {
+      ...mapState(['lang'])
+  }
+
 };
 </script>
 
@@ -160,6 +171,9 @@ input {
   border: none;
   background: none;
   color: #000;
+}
+a {
+  font-size: 12px;
 }
 .index-top {
   background-color: #fdfdfd;
@@ -175,14 +189,14 @@ input {
 .index-search {
   background: #f5f5f5;
   border-radius: 0.5rem;
-  width: 80%;
+  width: 68%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .search {
   line-height: 0.8rem;
-  width: 80%;
+  width: 68%;
   text-align: center;
   font-size: 0.3rem;
 }

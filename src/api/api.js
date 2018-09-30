@@ -3,7 +3,6 @@ import * as config from '../../config/config.js'
 
 axios.defaults.baseURL = process.env.NODE_ENV==='production'?config.backendUrl:'/api/v1'
 // axios.defaults.baseURL = '/api/v1'
-
 export const getData = function (url, data = {}) {
   return axios({
     url,
