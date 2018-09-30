@@ -26,7 +26,7 @@
                                     <h4>满{{item.condition}}元</h4>
                                     <p class="coupricep">{{item.startDate}}-{{item.endDate}}</p>
                             </div>   
-                            <van-radio :name="item.memberCouponId"></van-radio>
+                            <van-checkbox v-model="checked" :name="item.memberCouponId"></van-checkbox>
                         </div>
                         </van-radio-group>
                        
@@ -36,12 +36,17 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Checkbox, CheckboxGroup } from 'vant';
+
+Vue.use(Checkbox).use(CheckboxGroup);
     export default {
         data () {
             return {
                 couponsheader: false,
-                check: true,
-                 radio: '1'
+                checked: true,
+                 radio: '1',
+
             }
         },
         props: {
@@ -66,7 +71,8 @@
     margin: 0.4rem;
     border: 1px solid #fff;
     box-shadow: 0px 0px 10px 5px #fafafa;
-    font-size: 0.4rem;
+    font-size: 0.3rem;
+    font-weight: bold;
     padding: 0.4rem;
     display: flex;
     justify-content: space-between;
@@ -132,15 +138,15 @@
    position: absolute;
    top: 0;
    right: 0;
-   left: 0;
+   left: 0.1rem;
    bottom: 0;
    margin: auto;    
    display: flex;
    justify-content: center;
    align-items: center;
    color: #fff;
-   font-size: 0.6rem;
-   padding: 0.2rem;
+   font-size: 0.3rem;
+
 }
 .coupricep{
     color: #ccc;

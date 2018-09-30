@@ -26,12 +26,13 @@
   this.isSelect = this.$route.meta.title
  },
  methods: {
-  selectNav (title) {
+  selectNav (title) { 
   this.isSelect = title
   switch (title) { 
    case 'common.home': this.$router.push('/Index') 
    break 
    case 'common.telling': this.$router.push('/Index') 
+
    break 
    case 'common.cart': this.$router.push('/cart/list') 
    break 

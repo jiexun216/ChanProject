@@ -7,7 +7,7 @@
             <div class="member">  
                 <div class="loginafter">
                     <i class="memberImg"><img :src="personalitem.memberData.headImg" />
-                                         <img src="../../assets/img/order.png"/></i>
+                                         </i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>
                         <p>{{personalitem.memberData.rankName}}</p>
@@ -219,13 +219,14 @@ export default {
    border-radius: 50%;
 }
 .memberImg img{
+    height: 1.5rem;
     width: 1.5rem;
    border-radius: 50%;
 }
 .loginright{
     margin-left: 0.2rem;
     color: #ccc;
-    margin-top: 0.2rem;
+    /* margin-top: 0.2rem; */
 }
 .loginname{
    font-size: 0.5rem;

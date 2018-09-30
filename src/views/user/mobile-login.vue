@@ -33,7 +33,7 @@
          <button  type="primary" size="large" class="cli-login" @click="login">登录</button>
          <span class="agree-reg">未注册手机号码登录即可自动注册，并代表您已同意<br>“<span class="agree-color">用户协议</span>”</span>
          <router-link 
-           to="/userPwdLogin" class="userpwd">
+           to="/user/password-login" class="userpwd">
             账号密码登录
          </router-link>
      </div> 
@@ -103,7 +103,7 @@ export default {
         if(reg.test(tel)) {
           this.$store.dispatch('login')
           localStorage.setItem('userTel',tel)
-          this.$router.go(-1)
+          this.$router.push('/Index')
         } else {
           e.preventDefault()
           this.$toast({

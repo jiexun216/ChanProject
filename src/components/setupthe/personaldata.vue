@@ -56,12 +56,12 @@
  }
  .stt {
      margin:0 auto;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .deter {
      color: #ff525a;
      margin-right: 0.3rem;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .userdata{
      width: 100%;

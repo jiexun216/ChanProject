@@ -90,6 +90,7 @@
                     :goods="goods"
                     :goods-id="goodsId"
                     :hide-stock="sku.hide_stock"
+                    :show-add-cart-btn = "showAddCartBtn"
                     @buy-clicked="onBuyClicked"
                     @add-cart="onAddToCart"
                         />       
@@ -118,6 +119,7 @@ Vue.use(Sku)
                 skuAtterInfo:[],
                 showBase: false,
                 sku: {},
+                showAddCartBtn: true,
                 goods: {
                     title: '商品',
                     picture: '../../assets/img/order.png'
@@ -141,8 +143,7 @@ Vue.use(Sku)
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                     if (this.goodsInfos.isSku == 1) {
                         this.sku = res.data.data.sku;
-                    }
-                    
+                    }     
                 }).catch(err => {
                     return err
                 })
@@ -324,7 +325,7 @@ Vue.use(Sku)
     color: #fff;
     line-height: 1.4rem;
 }
-.overlayer {
+/* .overlayer {
     position:fixed;
     left:0;
     top:0;
@@ -333,7 +334,7 @@ Vue.use(Sku)
     z-index:10;
     background-color: #000;
     opacity: 0.6;
-}
+} */
 .detailssize{
     position:fixed;
     bottom: 0;
@@ -452,5 +453,11 @@ Vue.use(Sku)
 }
 .el-header{
     padding: 0 5px;
+}
+.van-button--primary{
+    display: none;
+}
+.van-button--bottom-action{
+    background: #ff525a;
 }
 </style>
