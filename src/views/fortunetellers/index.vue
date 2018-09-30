@@ -50,7 +50,7 @@
                         <span class="birthmd">
                             {{birth.three}}
                         </span>
-                        <span class="birthchoose" @click="showaddress">请选择</span>
+                        <span class="birthchoose" @click="showaddress" v-html="timeth"></span>
                     </div>
                     </van-dialog>                
                          <van-datetime-picker
@@ -67,13 +67,15 @@
                             v-model="currentDatetime"
                             type="time"  
                             v-if="showTime"
-                            @confirm= "onConfirm"
+                            @cancel="onCancel"
+                            @confirm="onConfirmt"
+                            @change="onChanget"
                             />
                     <van-area :area-list="areaList"
                               v-if="showAddress"
                               @cancel= "onCancel"
-                              @confirm="onConfirm"
-                              @change="onChange"
+                              @confirm="onConfirmth"
+                              @change="onChangeth"
                               />    
                       
              </div>
@@ -122,6 +124,7 @@ Vue.use(NavBar);
             dataTime: {},
             time: '请选择',
             times:'请选择',
+            timeth: '请选择',
             birth: {
                 one: '出生年月',
                 two: '出生时辰',
@@ -185,6 +188,26 @@ Vue.use(NavBar);
         onChange(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
                this.dataTime = picker.getValues()
+            console.log(this.datavalue)
+        },
+        onConfirmt () {
+            this.showcurrentDate = false
+            this.showTime = false
+            this.showAddress = false
+            this.times = this.datavalue;
+        },
+        onChanget(picker,value,index) {
+               this.datavalue = picker.getValues().join('-');
+            console.log(this.datavalue)
+        },
+        onConfirmth () {
+            this.showcurrentDate = false
+            this.showTime = false
+            this.showAddress = false
+            this.timeth = this.datavalue;
+        },
+        onChangeth(picker,value,index) {
+               this.datavalue = picker.getValues().join()
             console.log(this.datavalue)
         },
     },

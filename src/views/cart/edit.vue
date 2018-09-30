@@ -3,7 +3,7 @@
       <div class="cartop">
                 
                 <i class="carback  carbacks" @click="$router.back(-1)"></i>     
-                <span >购物车编辑</span>
+                <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
                     <span >完成</span>
                 </div>
@@ -51,7 +51,8 @@ Vue.use(Stepper);
     return {
       checkedGoods: [],
       checked: false,
-      goods: []
+      goods: [],
+      carts: 'carts'
     }
   },
   methods: {

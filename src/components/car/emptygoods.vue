@@ -5,14 +5,14 @@
         <div>
             <img src="../../assets/img/26.png" alt="">
             <div class="emptytop">
-                <p>购物车空空如也，快去选购商品吧~</p>
-                <button @click="$router.push({name:'goodsList'})" class="hot">逛逛店铺热卖</button>
+                <p>{{$t(empty)}}</p>
+                <button @click="$router.push({name:'goodsList'})" class="hot">{{$t(hot)}}</button>
             </div>
         </div> 
     </div>  
     <div class="emptycon">
         <div class="like">
-            <p class="liketop">你可能喜欢</p>
+            <p class="liketop">{{$t(youlike)}}</p>
             <div class="likes">
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
                      <img :src="item.goodsCoverImg" alt="">
@@ -38,6 +38,14 @@
 <script>
 import Footer from '../footer'
 export default {
+    data () {
+        return {
+            empty: 'common.emptygoods',
+            hot: 'common.goodshot',
+            youlike: 'common.youlike',
+            chushou: 'common.chushou'
+        }
+    },
     components: {
         Footer
     },

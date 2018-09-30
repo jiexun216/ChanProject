@@ -5,7 +5,7 @@
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
                 </router-link>
-                <span >购物车</span>
+                <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
                    <i class="carback carbackss"></i>
                 </div>
@@ -17,9 +17,9 @@
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
                 </router-link>
-                <span >购物车</span>
+                <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                    <span @click="editor">编辑</span>
+                    <span @click="editor">{{$t(editors)}}</span>
                     <i class="carback carbackcoups"></i>
                 </div>
         </div>
@@ -78,6 +78,8 @@ Vue.use(Stepper);
       cartGoodsList: [],
       goodsList: [],
       goodsQuantity: 1,
+      carts: 'common.carts',
+      editors: 'common.editor'
     };
   },
     computed: {

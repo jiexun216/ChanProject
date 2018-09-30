@@ -31,8 +31,7 @@
   switch (title) { 
    case 'common.home': this.$router.push('/Index') 
    break 
-   case 'common.telling': this.$router.push('/Index') 
-
+   case 'common.telling': this.$router.push('/fortunetellers/index') 
    break 
    case 'common.cart': this.$router.push('/cart/list') 
    break 

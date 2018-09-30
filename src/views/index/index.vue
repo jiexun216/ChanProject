@@ -44,25 +44,25 @@
              <div>
                  <i class="icon thatmroeimg"></i>
              </div>
-             <div>生辰八字</div>
+             <div>{{$t(birth)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg2"></i>
              </div>
-             <div>问大师</div>
+             <div>{{$t(wds)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg3" ></i>
              </div>
-             <div>精品课程</div>
+             <div>{{$t(jpclass)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg4"></i>
              </div>
-             <div>更多</div>
+             <div>{{$t(more)}}</div>
            </router-link>
         </ul>
 
@@ -84,7 +84,7 @@
                                 ￥{{good.market_price}}
                            </span>
                            <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
-                               去购买
+                               {{$t(gobuy)}}
                            </span>
                       </div>    
                       </div>     
@@ -111,7 +111,12 @@ export default {
       goodsCategoryList: [],
       bannerList: [],
       goodsList: [],
-      language: ''
+      language: '',
+      birth: 'common.birth',
+      wds: 'common.wds',
+      jpclass: 'common.jpclass',
+      more: 'common.more',
+      gobuy: 'common.gobuy',
       Iscenter: true
     };
   },
@@ -151,7 +156,7 @@ export default {
   },
 
   mounted() {
-    if (this.lang === 'english') this.language = 'English'
+    if (this.lang === 'english') this.language = 'english'
     else if (this.lang === 'character') this.language = '繁體中文'
     else this.language = '简体中文'
   },
