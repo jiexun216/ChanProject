@@ -2,7 +2,7 @@
     <div>
         <div class="header" v-if="listData.length == 0">
          <div class="orderdetop">
-            <i class="back backs" @click="$router.back(-1)"></i>     
+            <i class="back backs" @click="$router.push({path: '/cartSettlement'})"></i>     
             <span class="orderaddress">收货地址</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
@@ -18,7 +18,7 @@
             <div class="orderdetop orderdetop1">
                 <i class="back backs" @click="$router.back(-1)"></i>     
                 <span >收货地址</span>
-                <span class="oks" @click="$router.push({path: '/ucenter/index'})">完成</span>
+                <span class="oks" @click="$router.back(-1)">完成</span>
                 </div>
                 <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
                 <div class="oldname">
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="addressfooter" @click="addAddressHandle">
-                <p>+ 新建地址</p>
+                    <p>+ 新建地址</p>
                 </div>
         </div>
     </div>
@@ -197,7 +197,7 @@ export default {
   background: url(../../assets/img/42.png) no-repeat center center;
 }
 .orderaddress{
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 .oks {
   color: #f00;

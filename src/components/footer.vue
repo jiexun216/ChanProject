@@ -31,7 +31,7 @@
   switch (title) { 
    case '首页': this.$router.push('/')
    break 
-   case '算命': this.$router.push('/Index') 
+   case '算命': this.$router.push('/fortunetellers/index') 
    break 
    case '购物车': this.$router.push('/cart/list') 
    break 

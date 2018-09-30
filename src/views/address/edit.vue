@@ -3,17 +3,15 @@
             <div class="orderdetop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
                 <span class="orderaddress">编辑/添加地址</span>
-                <span class="myorder">
-                      <el-button type="text" @click="open" :showClose="showClose">完成</el-button>
-                </span>
+                <span class="myorder"></span>
             </div>    
-    <van-address-edit
-      :area-list="areaList"
-      :address-info="formData"
-      show-set-default
-      show-search-result
-      @save="onSave"
-    />    
+            <van-address-edit
+              :area-list="areaList"
+              :address-info="formData"
+              show-set-default
+              show-search-result
+              @save="onSave"
+            />    
 </div>        
 </template>
 
@@ -23,9 +21,6 @@ import { Toast } from "mint-ui";
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
 import { getAddressInfo,saveAddressInfo } from "@/api/address/index.js";
-import { Dialog } from 'vant';
-import {Field} from 'vant';
-Vue.use(Dialog);
 export default {
   components: {
     "van-address-edit": AddressEdit
@@ -33,7 +28,6 @@ export default {
   data() {
     return {
       loading: false,
-      showClose: false,
       areaList,
       formData: {
         id: 0,
@@ -44,9 +38,8 @@ export default {
         county: "",
         addressDetail: "",
         areaCode: "",
-        isDefault: false
+        isDefault: true
       },
-      completeshow: false
     };
   },
   methods: {
@@ -119,23 +112,20 @@ export default {
           });
         });
     },
-    open() {
-        this.$confirm('此操作将永久删除该文件, 是否继续?', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          center: true
-        }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
-        });
-      },
+    // 添加地址链接 zhangjie 0919
+    addAddressHandle () {
+      this.$router.push({
+        name:'addressEdit',
+        query: {
+          buyType: this.$route.query.buyType,
+          cartIds: this.$route.query.cartIds,
+          addressId: this.$route.query.addressId,
+          goodsId: this.$route.query.goodsId,
+          skuId: this.$route.query.skuId,
+          goodsQuantity: this.$route.query.goodsQuantity
+        }
+      })
+    },
       created() {
         this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
         if (this.formData.id != 0) {
@@ -196,7 +186,7 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
+  bottom: 0;  
   right: 0;
   margin: auto;
   width: 8rem;
@@ -228,7 +218,7 @@ export default {
   color: #f00;
 }
 .van-popup{
-   width: 7rem;
+   width: 100%;
    height: 4rem;
    text-align: center;
 }
@@ -255,30 +245,32 @@ export default {
   bottom: 0;
   width: 100%;
 }
-.el-button--small, .el-button--small.is-round{
-  width: 50%;
+.el-button--primary{
+  border-color: #ccc;
 }
-.el-button--primary.is-active, .el-button--primary:active{
-  background: #fff;
-  color: #000;
-}
-.el-button--primary:focus, .el-button--primary:hover{
-  background: #fff;
-  color: #000;
-}
-.el-button:active{
-  background: #fff;
-  color: #000;
+.el-button{
+  width: 45%;
+  border: none;
 }
 .el-button:focus, .el-button:hover{
-   background: #fff;
-  color: #000;
+  background: #fff;
+  color: #606266;
 }
 .el-button--primary{
   background: #fff;
-  color: #000;
+  color: #606266;
 }
-.el-button--small, .el-button--small.is-round{
-  border: none;
+.el-dialog{
+  border-radius: 0.3rem;
+}
+.addressfooter {
+  color: #ff525a;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.5rem;
+  box-shadow: 0 0 0.5rem #ccc;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
  </style>
