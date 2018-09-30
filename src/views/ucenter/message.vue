@@ -4,9 +4,9 @@
             <router-link to="/">
                 <i class="back backs"></i>     
             </router-link>
-            <span >{{messagecenter}}</span>
+            <span >{{$t(messagecenter)}}</span>
             <span class="myorder">
-                <span><i class="back backcoups" ></i></span>
+                <span><i class="back backcoups" @click="showinfo"></i></span>
             </span>
         </div>  
         <div class="message">  
@@ -19,19 +19,19 @@
      <announcement :is='currentView' keep-alive class="ann" v-if="annshow"></announcement>
      <div class="opertion" @touchmove.prevent v-if="opertionshow">
          <div class="operbtm">
-             <p>{{AllMarkedRead}}</p>
-             <p @click="keyempty">{{AkeyEmpty}}</p> 
+             <p>{{$t(AllMarkedRead)}}</p>
+             <p @click="keyempty">{{$t(AkeyEmpty)}}</p> 
               <!-- 这个是一键清空 -->
-             <p class="operbtmp" @click="operhide">{{cancel}}</p>
+             <p class="operbtmp" @click="operhide">{{$t(cancel)}}</p>
          </div>
      </div>
      <div class="opertion" @touchmove.prevent v-if="clearshow">
           <div class="clear">
-               <p class="clearall">{{emptyAll}}</p>
-               <p class="clearno">{{carefulEmpty}}</p>
+               <p class="clearall">{{$t(emptyAll)}}</p>
+               <p class="clearno">{{$t(carefulEmpty)}}</p>
                <div class="cender">
-                   <span @click="dercencal">{{cancel}}</span>
-                   <span class="dermine" @click="dermine">{{determine}}</span>
+                   <span @click="dercencal">{{$t(cancel)}}</span>
+                   <span class="dermine" @click="dermine">{{$t(determine)}}</span>
                      <!-- 点击这个确定消息隐藏 -->
                </div>
           </div>
@@ -47,13 +47,13 @@ import mynews from '@/components/message/mynews'
     export default {
         data () {
             return {
-                messagecenter: '消息中心',
-                AllMarkedRead: '全部标记为已读',
-                AkeyEmpty: '一键清空',
-                cancel: '取消',
-                emptyAll: '是否清空所有消息',
-                carefulEmpty: '清空后无法恢复，请谨慎处理',
-                determine: '确定',
+                messagecenter: 'common.messagecenter',
+                AllMarkedRead: 'common.AllMarkedRead',
+                AkeyEmpty: 'common.AkeyEmpty',
+                cancel: 'common.cancel',
+                emptyAll: 'common.emptyAll',
+                carefulEmpty: 'common.carefulEmpty',
+                determine: 'common.determine',
                 changeRed:'announcement',
                 currentView: 'announcement',
                 tabText: [
@@ -117,6 +117,9 @@ import mynews from '@/components/message/mynews'
             keyempty () {
                 this.clearshow = true;
                 this.opertionshow = false;
+            },
+            showinfo (){
+                this.opertionshow = true
             }
         },
         components: {
@@ -163,6 +166,9 @@ a{
      border-bottom: 1px solid #ccc;
      font-weight: bold;
  }
+ .message a{
+     font-size: 0.4rem;
+ }
  .meaclass{
      color: #ccc;
      font-weight: bold;
@@ -188,7 +194,7 @@ a{
      width: 100%;
      background: #fff;
      text-align: center;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
      line-height: 1.3rem;
  }
 .operbtmp{
@@ -209,7 +215,7 @@ a{
     text-align: center;
 }
 .clearall{
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     font-weight: bold;
     margin-top: 1rem;
 }
@@ -221,7 +227,7 @@ a{
     position: absolute;
     bottom: 0;
     width: 100%;
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     line-height: 1.2rem;
     border-top: 1px solid #ccc;
     display: flex;

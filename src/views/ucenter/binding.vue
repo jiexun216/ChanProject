@@ -5,10 +5,10 @@
                 <div  @click="$router.back(-1)">
                     <i class="back backs"></i>     
                 </div>
-                <span class="stt">绑定支付宝</span>
+                <span class="stt">{{$t(binding)}}</span>
           </div>
         </div>
-        <div class="bindingwx bindingwx1">
+        <div class="bindingwx">
               <i class="bindicon bindiconimgwx"></i>
               <span>微信</span>
               <span class="mylove">(My Love)</span>
@@ -48,6 +48,7 @@
       data () {
           return {
               binditem: '',
+              binding: 'common.binding'
           }
       },
       methods: {
@@ -79,15 +80,16 @@
  }
  .stt {
      margin:0 auto;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .bindingwx{
      line-height: 1.3rem;
      width: 100%;   
  }
- .bindingwx1{
+ /* .bindingwx1{
      border-bottom: 1px solid #ccc;
- }
+ } */
+
  .bindicon{
     display: inline-block;
     width: 0.6rem;

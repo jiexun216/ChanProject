@@ -2,42 +2,42 @@
     <div>
      <div class="theLogin-top">
         <p class="theLogin-close"></p>  
-        <p @click="$router.push({name: 'userRegister'})" class="registered">注册</p>
+        <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
-        <p class="faLogin">账户登录</p>
-        <p class="faLogin-more">登录k.chan，解锁更多功能</p>
+        <p class="faLogin">{{$t(uselogin)}}</p>
+        <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tell">
-         <label for="" class="space">用户名</label>
+         <label for="" class="space">{{$t(username)}}</label>
          <input type="text" class="tel" v-model="tel" placeholder="请输入手机号" :maxlength="11">
      </div>
      <div class="login-tell">
-         <label for="" class="space">密&nbsp;&nbsp;&nbsp;码</label> 
+         <label for="" class="space">{{$t(pwd)}}</label> 
          <input type="password" class="yzm" v-model="pwd" placeholder="请输入密码" :minlength="6" :maxlength="16">
      </div>
      <div class="click-login"> 
          <!-- <button  type="primary" size="large" class="cli-login" @click="login">登录</button> -->
-         <button type="primary" size="large" class="cli-login" @click="memberPassLogin">登录</button>
+         <button type="primary" size="large" class="cli-login" @click="memberPassLogin">{{$t(logins)}}</button>
          <!-- <span class="agree-reg">登录即代表您已同意“<span class="agree-color">用户协议</span>”</span> -->
          <div class="phfa">
-             <p @click="$router.push({name: 'userMobileLogin'})" class="phonefast">手机快捷登录</p>
+             <p @click="$router.push({name: 'userMobileLogin'})" class="phonefast">{{$t(phone)}}</p>
              <span class="phonefast-size">·</span>
-             <p @click="$router.push({name: 'userFindPass'})" class="phonefast-size">忘记密码？</p>
+             <p @click="$router.push({name: 'userFindPass'})" class="phonefast-size">{{$t(forget)}}?</p>
          </div>
      </div> 
      <div class="otherLogin">
           <div class="icons">
             <i class="icon weixin"></i>
-            <p class="name">微信登录</p>
+            <p class="name">{{$t(wx)}}</p>
           </div>
           <div class="icons">
             <i class="icon qq"></i>
-            <p class="name">QQ登录</p>
+            <p class="name">{{$t(qq)}}</p>
           </div>
           <div class="icons">
             <i class="icon weibo"></i>
-            <p class="name">微博登录</p>
+            <p class="name">{{$t(wb)}}</p>
           </div>
      </div>
   </div>
@@ -53,7 +53,17 @@ export default {
     return {
       tel: "",
       pwd: "",
-      password: ""
+      password: "",
+       phone: 'common.phone',
+       uselogin: 'common.uselogin',
+        phonekc: 'common.phonekc',
+        logins: 'common.login',
+        wx: 'common.wx',
+        qq: 'common.qq',
+        wb: 'common.wb',
+        username: 'common.username',
+        pwd: 'common.pwd',
+        forget: 'common.forget'
     };
   },
   methods: {

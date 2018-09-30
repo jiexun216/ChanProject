@@ -4,7 +4,7 @@
             <router-link to="/">
                 <i class="back backs"></i>     
             </router-link>
-            <span >我的优惠券</span>
+            <span >{{$t(mycoupon)}}</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
@@ -28,7 +28,7 @@
                   </div>
              </div>
              <div class="couponright" v-if="item.couponStatus == 'waitingUse'">
-                   <p>去使用</p>
+                   <p>{{$t(goUse)}}</p>
              </div>
         </div>
     </div>
@@ -40,6 +40,8 @@ import { getCouponList } from "@/api/coupon/index.js";
 export default {
   data() {
     return {
+      mycoupon: 'common.mycoupon',
+      goUse: 'common.gouse',
       statusList: [
         {
           key: "waitingUse",

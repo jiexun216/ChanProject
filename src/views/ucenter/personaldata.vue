@@ -2,8 +2,8 @@
    <div class="pertop">
       <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="stt">修改个人资料</span>
-            <span class="deter" @click="confirmModify()">确定</span>
+            <span class="stt">{{$t(setpersonal)}}</span>
+            <span class="deter" @click="confirmModify()">{{$t(determine)}}</span>
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
@@ -22,6 +22,8 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
         data () {
             return {
                 nickname: '',
+                setpersonal: 'commonsetpersonal',
+                determine: 'common.determine'
             }
         },
         methods: {

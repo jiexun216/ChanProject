@@ -4,8 +4,8 @@
           <p @click="$router.back(-1)" slot="left" class="theLogin-back"></p>
       </div>
       <div class="fastLogin">
-        <p class="faLogin">手机找回</p>
-        <p class="faLogin-more">使用注册手机号找回密码</p>
+        <p class="faLogin">{{$t(phoneretrieval)}}</p>
+        <p class="faLogin-more">{{$t(retrpwd)}}</p>
      </div>
      <div class="login-tell">
          <input type="telephone" 
@@ -30,7 +30,7 @@
      </div>
      <div class="click-login">
         <p> 
-        <button class="cli-login" @click="nextStep">下一步</button>
+        <button class="cli-login" @click="nextStep">{{$t(next)}}</button>
         </p>
        
      </div>
@@ -51,7 +51,10 @@ export default {
       tel: "",
       code: "",
       sendAuthCode: true,
-      auth_time: 0
+      auth_time: 0,
+      phoneretrieval: 'common.phoneretrieval',
+      retrpwd: 'common.retrpwd',
+      next: 'common.next'
     };
   },
   methods: {
@@ -134,11 +137,11 @@ export default {
   margin-left: 0.5rem;
 }
 .faLogin {
-  font-size: 1rem;
+  font-size: 0.6rem;
   font-weight: blod;
 }
 .faLogin-more {
-  font-size: 0.4rem;
+  font-size: 0.35rem;
   color: #999999;
   line-height: 1rem;
 }

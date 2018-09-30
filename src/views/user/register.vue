@@ -2,15 +2,15 @@
  <div>
      <div class="theLogin-top">
         <p  class="theLogin-close"></p>
-        <p @click="$router.push({name: 'PasswordLogin'})" class="registered">登录</p>
+        <p @click="$router.push({name: 'PasswordLogin'})" class="registered">{{$t(login)}}</p>
      </div>
      <div class="fastLogin">
-        <p class="faLogin">创建账户</p>
-        <p class="faLogin-more">登录k.chan，解锁更多功能</p>
+        <p class="faLogin">{{$t(creat)}}</p>
+        <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tell">
          <input type="text" class="tel" v-model="telephone" placeholder="请输入手机号">
-         <span class="restsend" @click="sendMessage">点击发送验证码</span>
+         <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
          <!-- <span class="restsend" >重新发送(<span>30</span>s)</span> -->
      </div>
       <div class="login-tell">
@@ -23,21 +23,21 @@
          <input type="password" class="yzm" v-model="fpassword" placeholder="请确认密码">
      </div>
      <div class="click-login"> 
-         <p class="cli-login" @click="memberRegister">注册</p>
-         <span class="agree-reg">点击注册按钮代表您已同意“<span class="agree-color">用户协议</span>”</span>
+         <p class="cli-login" @click="memberRegister">{{$t(register)}}</p>
+         <!-- <span class="agree-reg">点击注册按钮代表您已同意“<span class="agree-color">用户协议</span>”</span> -->
      </div> 
      <div class="otherLogin">
           <div class="icons">
             <i class="icon weixin"></i>
-            <p class="name">微信登录</p>
+            <p class="name">{{$t(wx)}}</p>
           </div>
           <div class="icons">
             <i class="icon qq"></i>
-            <p class="name">QQ登录</p>
+            <p class="name">{{$t(qq)}}</p>
           </div>
           <div class="icons">
             <i class="icon weibo"></i>
-            <p class="name">微博登录</p>
+            <p class="name">{{$t(wb)}}</p>
           </div>
      </div>
   </div>   
@@ -53,7 +53,16 @@ import { messageSend, registerMember } from '@/api/user/index.js'
            telephone: "",
            verifyCode: "",
            password: "",
-           fpassword: ""
+           fpassword: "",
+           wx: 'common.wx',
+           qq: 'common.qq',
+           wb: 'common.wb',
+           phonekc: 'common.phonekc',
+           creat: 'common.creat',
+           forget: 'common.forget',
+           login:'common.login',
+           register:'common.register',
+          send: 'common.send'
          }
        },
        methods: {

@@ -5,7 +5,7 @@
            <router-link to="/index">
              <i class="icun lang"></i>
            </router-link>
-          <p class="choose">我的订单</p>
+          <p class="choose">{{$t(myorder)}}</p>
        </div>
        <div class="all"> 
         <span v-for="val in statusList" :class="{'active-index':status===val.key}" :title="val.title" :key="val.key" @click="handleSwitchTab(val.key)">{{val.title}}</span>
@@ -23,7 +23,7 @@
             <div class="orderpay" @click="$router.push({name: 'orderDetail', query: {id: item.orderInfo.id}})">
                  <div class="standpay">
                      <i class="timericon standpayone"></i>
-                     <span>订单编号:{{ item.orderInfo.orderSn }}</span>
+                     <span>{{$t(ordernum)}}:{{ item.orderInfo.orderSn }}</span>
                      <p style="color:#ccc">{{ item.orderInfo.orderStatusName }}</p>
                  </div>
                  <div v-for="orderGoodsInfo in item.orderGoodsList" :key="orderGoodsInfo.id">
@@ -48,12 +48,12 @@
             <div class="total">
                 <span>共{{ item.orderInfo.goodsQuantityTotal }}件,总计￥{{ item.orderInfo.orderAmount }}</span>
                 <div class="totalitem" v-if="item.orderInfo.orderStatus == 'waitingPay'">
-                    <span class="totalitemone" @click="closeOrder(item.orderInfo.id)">取消订单</span>
-                    <span class="totalitemtwo">立即支付</span>
+                    <span class="totalitemone" @click="closeOrder(item.orderInfo.id)">{{$t(cancellation)}}</span>
+                    <span class="totalitemtwo">{{$t(immepayment)}}</span>
                 </div>
                 <div class="totalitem" v-else-if="item.orderInfo.orderStatus == 'waitingSign'">
-                    <span class="totalitemone">查看物流</span>
-                    <span class="totalitemtwo" @click="confirmOrder(item.orderInfo.id)">确认收货</span>
+                    <span class="totalitemone">{{$t(looklog)}}</span>
+                    <span class="totalitemtwo" @click="confirmOrder(item.orderInfo.id)">{{$t(receipt)}}</span>
                 </div>
             </div>        
         </div> 
@@ -65,6 +65,12 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
     export default {
         data () {
           return {
+                 myorder: 'common.myorder',
+                 ordernum: 'common.ordernum',
+                 cancellation: 'common.cancellation',
+                 immepayment: 'common.immepayment',
+                 looklog: 'common.looklog',
+                 receipt: 'common.receipt',
                 statusList: [
                 {
                     key: '',
@@ -295,7 +301,7 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
 }
 .ordername {
     flex-wrap: wrap;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
     margin-right: 0.4rem;
 }
 .ordersize{

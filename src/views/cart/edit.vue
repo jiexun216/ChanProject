@@ -5,7 +5,7 @@
                 <i class="carback  carbacks" @click="$router.back(-1)"></i>     
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                    <span >完成</span>
+                    <span >{{$t(completes)}}</span>
                 </div>
         </div>
          <div class="cargoods">
@@ -29,8 +29,8 @@
                   </van-checkbox-group>
          </div>  
         <div class="carfoot">
-                <van-checkbox @change="queryCheck" v-model="checked" class="chooseall">全选</van-checkbox>
-                <button class="carclear" @click="deleteCartHandle">删除</button>
+                <van-checkbox @change="queryCheck" v-model="checked" class="chooseall">{{$t(TotalSelection)}}</van-checkbox>
+                <button class="carclear" @click="deleteCartHandle">{{$t(deletes)}}</button>
         </div>    
 </div>    
 </template>
@@ -52,7 +52,10 @@ Vue.use(Stepper);
       checkedGoods: [],
       checked: false,
       goods: [],
-      carts: 'carts'
+      carts: 'common.carts',
+      completes: 'common.completes',
+      TotalSelection: 'common.Totalselection',
+      deletes: 'common.deletes'
     }
   },
   methods: {

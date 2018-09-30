@@ -7,7 +7,7 @@
            <i class="search-icon search-bg"></i>
            <input type="search" class="searchs" style="line-height:1rem;" placeholder="搜索" >      
          </div>
-           <p class="concel" @click="concel">取消</p>
+           <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
         </div>
      <div>
@@ -54,7 +54,7 @@ import { getGoodsList } from '@/api/goods/index.js'
                 total:0,
                 categoryId:0,
                 isLoadingFinished: false,
-
+                cancels: 'common.cancel'
             }
         },
         created () {

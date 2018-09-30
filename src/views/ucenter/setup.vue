@@ -2,12 +2,12 @@
      <div>
          <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="stt">设置</span>
+            <span class="stt">{{$t(setup)}}</span>
         </div>
         <div class="setitem">
              <div class="setitems" @click="setitemhead">
                  <span>
-                     头像 </span>
+                     {{$t(headportrait)}} </span>
                  <span>
                      <i class="back backtx"></i>
                      <span class="settx">＞</span>
@@ -16,7 +16,7 @@
              
             <div class="setitems" @click="$router.push({name: 'ucenterPersonal'})">
                 <span>
-                    个人资料 </span>
+                   {{$t(personaldata)}}</span>
                 <span>
                  <span ref="personal"></span>
                     <span class="settx">＞</span>
@@ -25,9 +25,9 @@
              <router-link to='/Binding'>
                 <div class="setitems">
                     <span>
-                        绑定支付宝 </span>
+                        {{$t(bindingz)}} </span>
                     <span>
-                        <span>未绑定</span>
+                        <span>{{$t(wbinding)}}</span>
                         <span class="settx">＞</span>
                     </span>
                 </div>
@@ -35,7 +35,7 @@
              
             <div class="setitems" @click="$router.push({name: 'ucenterFeedback'})">
                 <span>
-                    意见反馈 </span>
+                    {{$t(feedback)}} </span>
                 <span>
                     <span class="settx">＞</span>
                 </span>
@@ -60,14 +60,14 @@
 
         <div class="headerpro" @touchmove.prevent v-if="headerpro"> 
             <div class="headfoot"  >
-                <p>拍摄</p>
-                <p>从相册选择</p>
-                <p class="headclose" @click="headdown">取消</p>
+                <p>{{$t(shot)}}</p>
+                <p>{{$t(chooseimg)}}</p>
+                <p class="headclose" @click="headdown">{{$t(cancel)}}</p>
             </div>   
         </div>
         <div class="setfooter" @click="loginOut">
             <img src="../../assets/img/outlo.png" alt="">
-             <p>退出登录</p>
+             <p>{{$t(exitlogon)}}</p>
         </div>
      </div>   
 </template>
@@ -79,6 +79,16 @@ import { exitLogon } from '@/api/ucenter/index.js'
              return {
                  personal:'',
                  headerpro: false,
+                 setup: 'common.setup',
+                 headportrait: 'common.headportrait',
+                 personaldata: 'common.personaldata',
+                 bindingz: 'common.bindingz',
+                 wbinding:'common.wbinding',
+                 feedback: 'common.feedback',
+                 shot: 'common.shot',
+                 chooseimg: 'common.chooseimg',
+                 cancel: 'common.cancelqx',
+                 exitlogon: 'common.exitlogon'
              }
          },
          created () {

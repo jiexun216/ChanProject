@@ -16,52 +16,52 @@
             </div>
             <div class="order">
                  <div class="orderitem">
-                        <span>我的订单</span>
-                        <span @click="allorder">全部订单 ＞</span>
+                        <span>{{$t(myorder)}}</span>
+                        <span @click="allorder">{{$t(allorders)}} ＞</span>
                  </div>
             </div>
             <div class="shoppitem">
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingPay'}})" >
                       <i class="iconf waitpayone"></i>
                        <!-- <span class="waitnum">01</span> -->
-                      <p>待付款</p>
+                      <p>{{$t(waitpay)}}</p>
                   </div> 
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'waitingSign'}})">
                       <i class="iconf waitpaytwo"></i>
-                      <p>待收货</p>
+                      <p>{{$t(waitgoods)}}</p>
                   </div> 
                   <div class="waitpay" @click="$router.push({name:'orderList', query: {status: 'haveSigned'}})">
                       <i class="iconf waitpaythree"></i>
-                      <p>已完成</p>
+                      <p>{{$t(completed)}}</p>
                   </div> 
                   <div class="waitpay">
                       <i class="iconf waitpayfour"></i>
-                      <p>售后服务</p>
+                      <p>{{$t(serviced)}}</p>
                   </div> 
              </div>
              <div class="buyitems">
                     
                      <div class="coupons" @click="$router.push({name: 'couponList'})">
                        <i class="iconc couponsone"></i>
-                       <span>我的优惠券</span>
+                       <span>{{$t(mycoupon)}}</span>
                        <span class="couponsnum"> {{personalitem.couponCount}}＞</span>
                      </div>  
                
                   <div class="coupons" @click="$router.push({name: 'addressList'})">
                     <i class="iconc couponstwo"></i>
-                    <span>我的地址</span>
+                    <span>{{$t(myaddress)}}</span>
                     <span class="couponsnum">＞</span>
                   </div>
                  
                 <div class="coupons">
                     <i class="iconc couponsthree"></i>
-                    <span>在线客服</span>
+                    <span>{{$t(OnlineService)}}</span>
                     <span class="couponsnum"> {{personalitem.serviceTelephone}}＞</span>
                 </div>
                 
                 <div class="coupons" @click="$router.push({name: 'ucenterSetup'})">
                     <i class="iconc couponsfour"></i>
-                    <span>设置</span>
+                    <span>{{$t(setup)}}</span>
                     <span class="couponsnum"> 0＞</span>
                 </div>
                 
@@ -86,7 +86,17 @@ export default {
              personalitem: {
                  serviceTelephone: '',
                  couponCount:'',
-             }
+             },
+             myorder: 'common.myorder',
+             allorders: 'common.allorder',
+             waitpay: 'common.waitpay',
+             waitgoods: 'common.waitgoods',
+             completed: 'common.completed',
+             serviced: 'common.serviced',
+             mycoupon: 'common.mycoupon',
+             myaddress: 'common.myaddress',
+             OnlineService: 'common.OnlineService',
+             setup: 'common.setup'
          }
       },
      methods: {

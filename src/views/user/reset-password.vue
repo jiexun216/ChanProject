@@ -2,7 +2,7 @@
 <div>
     <div class="rest-top">
         <p @click="$router.back(-1)" class="theLogin-back"></p>
-        <span>重置密码</span>
+        <span>{{$t(repwd)}}</span>
      </div>
     <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item prop="pass" label="密码">
@@ -12,8 +12,8 @@
         <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请确认密码" class="demo-repwd"></el-input>
       </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-      <el-button @click="resetForm('ruleForm2')">重置</el-button>
+      <el-button type="primary" @click="submitForm('ruleForm2')">{{$t(submit)}}</el-button>
+      <el-button @click="resetForm('ruleForm2')">{{$t(reset)}}</el-button>
     </el-form-item>
 </el-form>
 </div>
@@ -49,11 +49,14 @@ Vue.use(ElementUI);
         }
       };
       return {
+        repwd: 'common.repwd',
+        submit: 'common.submit',
+         reset: 'common.reset',
         ruleForm2: {
           pass: '',
           checkPass: '',
           tel: '',
-          code: ''
+          code: '',
         },
         rules2: {
           pass: [
