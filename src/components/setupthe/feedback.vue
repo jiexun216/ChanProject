@@ -10,7 +10,7 @@
         </div>
         <div class="feed">
           <div class="pleaseinput">
-            <textarea name="" id="" cols="35" rows="8" placeholder="请输入..." class="pleasesr"> </textarea>
+            <textarea name="" id="" cols="35" rows="8" :placeholder="$t(entering)" class="pleasesr"> </textarea>
             <p>如果您在网站和APP发现任何问题，或者有更好的建议，欢迎给我们留言！</p>
             <button type="submit" class="submit">提交</button>
           </div>
@@ -24,7 +24,7 @@
     export default {
         data () {
             return {
-               
+               entering: 'common.placeholder.entering'
             }
         }
     }

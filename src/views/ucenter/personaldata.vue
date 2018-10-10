@@ -7,7 +7,7 @@
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
-                <input @keyup.13=show() type="search" ref="input1" v-model="nickname" placeholder="请输入用户名">
+                <input @keyup.13=show() type="search" ref="input1" v-model="nickname" :placeholder="$t(username)">
             </form>
         </div>
         <div class="perfoot">
@@ -23,7 +23,8 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
             return {
                 nickname: '',
                 setpersonal: 'commonsetpersonal',
-                determine: 'common.determine'
+                determine: 'common.determine',
+                username: 'common.placeholder.username'
             }
         },
         methods: {

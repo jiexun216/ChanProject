@@ -10,11 +10,11 @@
      </div>
      <div class="login-tell">
          <label for="" class="space">{{$t(username)}}</label>
-         <input type="text" class="tel" v-model="tel" placeholder="请输入手机号" :maxlength="11">
+         <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)" :maxlength="11">
      </div>
      <div class="login-tell">
-         <label for="" class="space">{{$t(pwd)}}</label> 
-         <input type="password" class="yzm" v-model="pwd" placeholder="请输入密码" :minlength="6" :maxlength="16">
+         <label for="" class="space">{{$t(passwd)}}</label> 
+         <input type="password" class="yzm" v-model="pwd" :placeholder="$t(userpwd)" :minlength="6" :maxlength="16">
      </div>
      <div class="click-login"> 
          <!-- <button  type="primary" size="large" class="cli-login" @click="login">登录</button> -->
@@ -62,8 +62,11 @@ export default {
         qq: 'common.qq',
         wb: 'common.wb',
         username: 'common.username',
-        pwd: 'common.pwd',
-        forget: 'common.forget'
+        passwd: 'common.pwd',
+        forget: 'common.forget',
+        register: 'common.register',
+        userphone: 'common.placeholder.userphone',
+        userpwd: 'common.placeholder.userpwd'
     };
   },
   methods: {
@@ -140,6 +143,16 @@ export default {
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
 }
+.login-tell label{
+  display: inline-block;
+  width: 95px;
+  text-align: right;
+  margin-left: -20px;
+}
+.login-tell input{
+  font-size: 0.3rem;
+  width: 70%;
+}
 .space {
   margin-right: 0.5rem;
 }
@@ -190,7 +203,7 @@ export default {
   height: 1rem;
   display: block;
   border-radius: 50%;
-  float: left;
+  /* float: left; */
 }
 .weixin {
   background: url(../../assets/img/4.png) no-repeat center center;
@@ -216,6 +229,21 @@ export default {
 }
 .phonefast-size {
   color: #999999;
+}
+.icons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.icons i{
+  text-align: center;
+  width: 33%;
+}
+.icons p{
+  width: 100%;
+  text-align: center;
 }
 </style>
 

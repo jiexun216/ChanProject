@@ -7,7 +7,7 @@
             </span>
             <div class="index-search" > 
                 <i class="icon search-bg"></i>
-                <input type="search" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods"  >
+                <input type="search" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"  >
             </div>
             <div>
                 <router-link to="/Message">
@@ -96,6 +96,7 @@ import Footer from './footer'
     export default {
         data () {
             return {
+                allsearch: 'commom.placeholder.allsearch',
                 store: '店铺内销',
                 birth: '生辰八字',
                 master: '问大师',

@@ -12,9 +12,10 @@
          <input type="telephone" 
            v-model="tel"
            class="tel" 
-           placeholder="请输入手机号">
+           :placeholder="$t(userphone)">
            <div class="restsend">
              <input type="button" 
+                    style="width:100%;"
                     class="sends" 
                     value=" 重新发送" 
                     v-show="sendAuthCode"
@@ -27,7 +28,7 @@
            </div>  
      </div>
      <div class="login-tell">
-         <input type="text" class="yzm" v-model="yzm" placeholder="请输入验证码">
+         <input type="text" class="yzm" v-model="yzm" :placeholder="$t(enteryzm)">
      </div>
      <div class="click-login"> 
          <button  type="primary" size="large" class="cli-login" @click="login">{{$t(logins)}}</button>
@@ -74,7 +75,9 @@ export default {
         userpwd: 'common.uesrpwd',
         wx: 'common.wx',
         qq: 'common.qq',
-        wb: 'common.wb'
+        wb: 'common.wb',
+        userphone: 'common.placeholder.userphone',
+       enteryzm: 'common.placeholder.enteryzm'
     }
   },
     methods: {  

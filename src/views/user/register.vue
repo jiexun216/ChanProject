@@ -9,18 +9,18 @@
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tell">
-         <input type="text" class="tel" v-model="telephone" placeholder="请输入手机号">
+         <input type="text" class="tel" v-model="telephone" :placeholder="$t(userphone)">
          <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
          <!-- <span class="restsend" >重新发送(<span>30</span>s)</span> -->
      </div>
       <div class="login-tell">
-         <input type="text" class="yzm" v-model="verifyCode" placeholder="请输入验证码">
+         <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">
      </div>
      <div class="login-tell">
-         <input type="password" class="yzm" v-model="password" placeholder="请输入密码">
+         <input type="password" class="yzm" v-model="password" :placeholder="$t(userpwd)">
      </div>
      <div class="login-tell">
-         <input type="password" class="yzm" v-model="fpassword" placeholder="请确认密码">
+         <input type="password" class="yzm" v-model="fpassword" :placeholder="$t(resetpwd)">
      </div>
      <div class="click-login"> 
          <p class="cli-login" @click="memberRegister">{{$t(register)}}</p>
@@ -62,7 +62,11 @@ import { messageSend, registerMember } from '@/api/user/index.js'
            forget: 'common.forget',
            login:'common.login',
            register:'common.register',
-          send: 'common.send'
+           send: 'common.send',
+           userphone: 'common.placeholder.userphone',
+           enteryzm: 'common.placeholder.enteryzm',
+           userpwd: 'common.placeholder.userpwd',
+           resetpwd: 'common.placeholder.resetpwd'
          }
        },
        methods: {

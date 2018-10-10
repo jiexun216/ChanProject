@@ -9,7 +9,7 @@
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
-                <input @keyup.13=show() type="search" ref="input1" placeholder="请输入用户名">
+                <input @keyup.13=show() type="search" ref="input1" :placeholder="$t(username)">
             </form>
         </div>
         <div class="perfoot">
@@ -22,7 +22,8 @@
     export default {
         data () {
             return {
-                username: '',
+                username: 'common.placeholder.username',
+
             }
         },
         methods: {

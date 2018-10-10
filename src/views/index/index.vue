@@ -7,7 +7,7 @@
             </span>
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
-                <input type="search" v-model="keyword" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods"
+                <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
                        @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
@@ -117,6 +117,7 @@ export default {
       jpclass: 'common.jpclass',
       more: 'common.more',
       gobuy: 'common.gobuy',
+      allsearch: 'common.placeholder.allsearch',
       Iscenter: true
     };
   },

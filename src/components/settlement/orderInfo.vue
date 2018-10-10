@@ -43,7 +43,7 @@
              <div class="deliveryinfo note">
                   <span class="deliveryone">备注</span>
                   <div class="payInforight">
-                       <input type="text" v-model="remark" placeholder="输入您的特殊需求">
+                       <input type="text" v-model="remark" :placeholder="$t(enterxq)">
                   </div>
              </div>
         </div>    
@@ -57,7 +57,8 @@ Vue.use(Toast)
           data () {
               return {
                   orderTextStatus: false,
-                  remark: ''
+                  remark: '',
+                  enterxq: 'common.palceholder.enterxq'
               }
           },
           // 监听
