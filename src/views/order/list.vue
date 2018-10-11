@@ -16,8 +16,8 @@
             <div class="timer">
                <span class="time">{{ item.orderInfo.orderTime }}</span>
                <div class="timerclick">
-                   <i class="timericon timerimg"></i>
-                   <span>24:48:07</span>
+                   <!-- <i class="timericon timerimg"></i> -->
+                   <!-- <span>24:48:07</span> -->
                </div>
             </div>
             <div class="orderpay" @click="$router.push({name: 'orderDetail', query: {id: item.orderInfo.id}})">
