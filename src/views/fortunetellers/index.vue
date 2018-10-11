@@ -11,12 +11,12 @@
         <Addfortun v-if="fortuneshow"></Addfortun>
         <div class="suanming">
              <div >
-                 <div class="personaldata" v-for="perlists in perlist" :key="perlists.index">
+                 <div class="personaldata" v-for="perlist in perlists" :key="perlist.index">
                       <!-- <h3>姓名</h3>
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
-                      <h3>{{perlists.name}}</h3>
-                      <span >{{perlists.sex}}</span>
-                      <span>{{perlists.birthDate}}</span>
+                      <h3>{{perlist.fUllName}}</h3>
+                      <span >{{perlist.sex}}</span>
+                      <span>{{perlist.birthDate}}</span>
                  </div>
                  <div class="buttom">
                     <button class="butstyle" @click="$router.push({name:'contentfortune'})">查看结果</button>
@@ -32,15 +32,13 @@ import Vue from 'vue'
 import { Icon } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
-import { fortunetellers,addfortune } from '@/api/fortunetellers/index.js'
+import { fortunetellers,addfortune,fortuneresults } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
     data () {
          return {
              sm: 'common.sm',
-             fortunelist: [],
-             list: '',
-             perlist: [],
+             perlists: [],
              fortuneshow: false
          }
     },
@@ -48,17 +46,19 @@ export default {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 
+         //请求数据
          getData () {
              fortunetellers().then (res => {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
                 }
-                 this.perlist  = res.data.data.list
+                 this.perlists  = res.data.data.list
+                 console.log(this.perlists)
              }) 
          },
          created () {
-            this.getData();
+            this.getData()
         }
     },
     components: {
@@ -95,10 +95,10 @@ export default {
     margin-bottom: 0.3rem;
 }
 .butstyle{
-    font-size: 0.4rem;
+    font-size: 0.35rem;
     border: 1px solid #000;
     border-radius: 0.4rem;
-    padding: 0.1rem 0.35rem;
+    padding: 0.1rem 0.3rem;
 }
 .butcolor{
     color: #f00;
