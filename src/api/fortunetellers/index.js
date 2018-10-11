@@ -30,3 +30,12 @@ export function addfortune (fullName,sex,birthDate,birthTime,birthAddress) {
     }
     return postData(url,data)
 }
+
+//删除算命记录
+export function deleteFortune (fortuneId) {
+    const url = 'fortune/deleteFortune'
+    const data = {
+        fortuneId
+    }
+    return postData(url,data)
+}
