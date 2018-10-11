@@ -10,16 +10,16 @@
         </van-nav-bar>
         <Addfortun v-if="fortuneshow"></Addfortun>
         <div class="suanming">
-             <div >
-                 <div class="personaldata" v-for="perlists in perlist" :key="perlists.index">
+             <div v-for="perlists in perlist" :key="perlists.fortuneId" >
+                 <div class="personaldata">
                       <!-- <h3>姓名</h3>
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
-                      <h3>{{perlists.name}}</h3>
+                      <h3>{{perlists.fullName}}</h3>
                       <span >{{perlists.sex}}</span>
                       <span>{{perlists.birthDate}}</span>
                  </div>
                  <div class="buttom">
-                    <button class="butstyle" @click="$router.push({name:'contentfortune'})">查看结果</button>
+                    <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
                     <button class="butstyle butcolor">删除</button>
                  </div>
              </div>
@@ -56,10 +56,10 @@ export default {
                 }
                  this.perlist  = res.data.data.list
              }) 
-         },
-         created () {
-            this.getData();
-        }
+         },   
+    },
+    created () {
+        this.getData();
     },
     components: {
        Addfortun,
