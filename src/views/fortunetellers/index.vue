@@ -11,9 +11,12 @@
         <Addfortun v-if="fortuneshow"></Addfortun>
         <div class="suanming">
              <div >
-                 <div class="personaldata">
-                      <h3>姓名</h3>
-                      <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span>
+                 <div class="personaldata" v-for="perlists in perlist" :key="perlists.index">
+                      <!-- <h3>姓名</h3>
+                      <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
+                      <h3>{{perlists.name}}</h3>
+                      <span >{{perlists.sex}}</span>
+                      <span>{{perlists.birthDate}}</span>
                  </div>
                  <div class="buttom">
                     <button class="butstyle" @click="$router.push({name:'contentfortune'})">查看结果</button>
@@ -37,26 +40,24 @@ export default {
              sm: 'common.sm',
              fortunelist: [],
              list: '',
+             perlist: [],
              fortuneshow: false
          }
     },
     methods: {
         onClickLeft () {
             this.$router.push({path: '/Index'})
-         },
-         
+         }, 
          getData () {
-             fortunetellers ().then (res => {
+             fortunetellers().then (res => {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
                 }
-                 this.listData = res.data.data.list;
-                 console.log(this.listData)
+                 this.perlist  = res.data.data.list
              }) 
          },
-                      
-         created() {
+         created () {
             this.getData();
         }
     },
