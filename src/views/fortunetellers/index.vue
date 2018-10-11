@@ -5,7 +5,6 @@
             left-arrow
             @click-left="onClickLeft"
         >
-
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right" @click="changeShow"/>
         </van-nav-bar>
@@ -15,25 +14,27 @@
                  <div class="personaldata">
                       <!-- <h3>姓名</h3>
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
-                      <h3>{{perlists.fullName}}</h3>
-                      <span >{{perlists.sex}}</span>
-                      <span>{{perlists.birthDate}}</span>
+                      <h3>{{perlist.fullName}}</h3>
+                      <span >{{perlist.sex}}</span>
+                      <span>{{perlist.birthDate}}</span>
                  </div>
                  <div class="buttom">
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
-                    <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
+                    <button class="butstyle butcolor">删除</button>
                  </div>
              </div>
         </div>
+        <Add></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
 <script>
 import Vue from 'vue'
-import { Icon,Dialog } from 'vant';
+import { Icon } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
+import Add from '@/views/fortunetellers/add'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
-import { fortunetellers,addfortune,deleteFortune } from '@/api/fortunetellers/index.js'
+import { fortunetellers,addfortune,fortuneresults } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
     data () {
@@ -64,34 +65,18 @@ export default {
                  this.perlist  = res.data.data.list
                  console.log(this.perlist)
              }) 
-         },
-         // 删除算命记录
-         handleDelete (fortuneId) {
-             Dialog.confirm({
-                    title: "删除确认",
-                    message: "此操作不可逆,确认要删除该记录吗?"
-                }).then(() => {
-            deleteFortune(fortuneId)
-            .then(res => {
-                if (res.data.status == 0) {
-                this.$toast("记录删除成功");
-                } else {
-                this.$toast(res.data.message ? res.data.message : "记录删除失败");
-                }
-                this.getData();
-            })
-            .catch(() => {
-                this.$toast("记录删除失败");
-            });
-      });
-         }
+         }, 
+         addfor() {
+             this.show= true
+         }  
     },
     created () {
         this.getData();
     },
     components: {
        Addfortun,
-       ContentFortune
+       ContentFortune,
+       Add
     }
 }
 </script>
