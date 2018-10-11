@@ -8,8 +8,8 @@
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
-        <Addfortun v-if="fortuneshow"></Addfortun>
-        <div class="suanming">
+        <Addfortun v-if="perlist.length == 0"></Addfortun>
+        <div class="suanming" v-else>
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personaldata">
                       <!-- <h3>姓名</h3>
