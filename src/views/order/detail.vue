@@ -3,8 +3,8 @@
         <div class="orderdetop">
             
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span >我的订单</span>
-            <span class="myorder">订单详情</span>
+            <span >{{$t(myorder)}}</span>
+            <span class="myorder">{{$t(orderdetails)}}</span>
         </div>
         <div class="orderheader orderheaderbg">
              <div class="orderusername">
@@ -17,12 +17,12 @@
              <div class="orderusercar">
                  <router-link to="/Logisticsinfo">
                    <i class="back car"></i>
-                   <span>物流信息</span>
+                   <span>{{$t(loginfo)}}</span>
                  </router-link>
                    
              </div>
              <div class="ordering">
-                 <p><span>[系统]</span>你的订单已生产，请立即支付</p>
+                 <p><span>{{$t(system)}}</span>{{$t(orderpay)}}</p>
                  <p>2018.8.30.18.43</p>
              </div>
         </div>
@@ -45,23 +45,23 @@
                         </div>
                      </div>
               <div class="produmoney">
-                <p><span class="produtop">支付金额</span> 
+                <p><span class="produtop">{{$t(payment)}}</span> 
                    <span>共{{orderInfo.totalQuantity}}件，总计￥{{orderInfo.orderAmount}}</span></p>
             </div>
             <div class="produmoney">
-                <p><span class="produtop">备注信息</span> 
+                <p><span class="produtop">{{$t(note)}}</span> 
                    <span>{{orderInfo.remark}}</span></p>
             </div> 
             <div class="produmoney">
-                <p><span class="produtop">订单编号</span> 
+                <p><span class="produtop">{{$t(ordernum)}}</span> 
                    <span>{{orderInfo.orderSn}}</span></p>
             </div> 
             <div class="produmoney">
-                <p><span class="produtop">下单时间</span> 
+                <p><span class="produtop">{{$t(ordertime)}}</span> 
                    <span>{{orderInfo.orderTime}}</span></p>
             </div>  
             <div class="produmoney">
-                <p><span class="produtop">支付方式</span> 
+                <p><span class="produtop">{{$t(paymethod)}}</span> 
                    <span>{{orderInfo.payWay}}</span></p>
             </div>     
            </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="orderfooter">
               <router-link to="/Orderdetails">
-                 <span>如是待支付时，去支付</span>
+                 <span>{{$t(gopay)}}</span>
               </router-link>
         </div>
     </div>
@@ -81,6 +81,17 @@ import {getOrderInfo} from '@/api/order/index.js'
   export default {
       data () {
           return {
+            myorder: 'common.myorder',
+            orderdetails: 'common.orderdetails',
+            loginfo: 'common.loginfo',            
+            system: 'common.system',
+            orderpay: 'common.orderpay',
+            payment: 'common.payment',
+            note: 'common.note',
+            ordernum: 'common.ordernum',
+            ordertime: 'common.ordertime',
+            paymethod: 'common.paymethod',
+            gopay: 'common.gopay',
             loading: false,
             orderInfo: {
                 orderStatus:0,
@@ -217,7 +228,7 @@ import {getOrderInfo} from '@/api/order/index.js'
     line-height: 1rem;
     margin-left:0.4rem;
     margin-right: 0.4rem;
-    font-size: 0.5rem;
+    font-size: 0.3rem;
     margin-bottom: 0.2rem;
 }
 .produtop {
@@ -231,7 +242,7 @@ import {getOrderInfo} from '@/api/order/index.js'
     background: #ff525a;
     width: 100%;
     text-align: center;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     line-height: 1.3rem;
 }
 .orderfooter a{

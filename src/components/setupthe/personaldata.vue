@@ -9,7 +9,7 @@
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
-                <input @keyup.13=show() type="search" ref="input1" placeholder="请输入用户名">
+                <input @keyup.13=show() type="search" ref="input1" :placeholder="$t(username)">
             </form>
         </div>
         <div class="perfoot">
@@ -22,7 +22,8 @@
     export default {
         data () {
             return {
-                username: '',
+                username: 'common.placeholder.username',
+
             }
         },
         methods: {
@@ -56,12 +57,12 @@
  }
  .stt {
      margin:0 auto;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .deter {
      color: #ff525a;
      margin-right: 0.3rem;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .userdata{
      width: 100%;

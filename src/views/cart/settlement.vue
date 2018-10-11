@@ -14,8 +14,7 @@
                     <p class="newaddressone">新建收货地址</p>
                     <p>新建收获地址，保证商品顺利送达</p> 
                 </div>
-                <i class="newaddressimg newaddressimgs"></i>
-                 
+                <i class="newaddressimg newaddressimgs"></i>   
             </div>
            </div>
         <oldaddress @getAddress="selectAddressHandle" :deliveryPerson="addressInfo.deliveryPerson" :deliveryPhone="addressInfo.deliveryPhone" :fullAddress="addressInfo.fullAddress" v-else></oldaddress>
@@ -61,7 +60,6 @@ export default {
       goodsList: [],
       orderData: {},
       orderAmount: 0.00,
-
       payParam: {
         buyType: 1,
         cartIds: "",
@@ -179,10 +177,10 @@ export default {
             this.$toast('请先选择收货地址')
             return false
         }
-        if (this.payParam.remark == '') {
-            this.$toast('请填写备注信息')
-            return false
-        }
+        // if (this.payParam.remark == '') {
+        //     this.$toast('请填写备注信息')
+        //     return false
+        // }
         if (this.payParam.payWay == 0) {
             this.$toast('请选择支付方式')
             return false
@@ -266,5 +264,8 @@ export default {
 }
 .newaddressimgs {
     background: url(../../assets/img/19.png) no-repeat center center;
+}
+.van-nav-bar__title{
+  font-size: 0.4rem;
 }
 </style>

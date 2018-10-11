@@ -5,25 +5,25 @@
         <div>
           <i class="iconf iconimg"></i>
         </div>
-        <div class="font-color">{{indexone}}</div>
+        <div class="font-color">{{$t(indexone)}}</div>
       </router-link>
       <router-link  :to="{name:''}" tag="li">
         <div>
           <i class="iconf iconimg2"></i>
         </div>
-        <div>{{sm}}</div>
+        <div>{{$t(sm)}}</div>
       </router-link>
       <router-link  :to="{name:'Empty'}" tag="li">
         <div>
           <i class="iconf iconimg3"></i>
         </div>
-        <div>{{car}}</div>
+        <div>{{$t(car)}}</div>
       </router-link>
       <router-link  :to="{name:'Personal'}" tag="li">
         <div>
           <i class="iconf iconimg4"></i>
         </div>
-        <div>{{person}}</div>
+        <div>{{$t(person)}}</div>
       </router-link>
     </ul>
  </div> 
@@ -33,7 +33,7 @@
     export default {
       data () {
            return {
-             indexone: '首页',
+             indexone: 'common.home',
              sm: '算命',
              car: "购物车",
              person: '个人'

@@ -2,16 +2,16 @@
    <div class="pertop">
       <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="stt">修改个人资料</span>
-            <span class="deter" @click="confirmModify()">确定</span>
+            <span class="stt">{{$t(setpersonal)}}</span>
+            <span class="deter" @click="confirmModify()">{{$t(determine)}}</span>
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">
-                <input @keyup.13=show() type="search" ref="input1" v-model="nickname" placeholder="请输入用户名">
+                <input @keyup.13=show() type="search" ref="input1" v-model="nickname" :placeholder="$t(username)">
             </form>
         </div>
         <div class="perfoot">
-           <span>这里是说明</span>
+           <!-- <span>这里是说明</span> -->
         </div>
    </div>    
 </template>
@@ -22,6 +22,9 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
         data () {
             return {
                 nickname: '',
+                setpersonal: 'commonsetpersonal',
+                determine: 'common.determine',
+                username: 'common.placeholder.username'
             }
         },
         methods: {
@@ -43,7 +46,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
                 modifyUserName (this.nickname).then(res => {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 0) {
-                        this.$router.push({name: 'ucenterSetup'});
+                        // this.$router.push({name: 'ucenterSetup'});
                     } 
                 })
                 
@@ -75,12 +78,12 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  }
  .stt {
      margin:0 auto;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .deter {
      color: #ff525a;
      margin-right: 0.3rem;
-     font-size: 0.5rem;
+     font-size: 0.4rem;
  }
  .userdata{
      width: 100%;
@@ -88,11 +91,12 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  .userdata input{
      margin-left: 0.3rem;
      line-height: 0.9rem;
+     font-size: 0.4rem;
  }
  .perfoot{
      background: #f7f7f7;  
      position: fixed;
-     top: 2.8rem;
+     top: 2rem;
      left: 0;
      width: 100%;
      height: 100%;

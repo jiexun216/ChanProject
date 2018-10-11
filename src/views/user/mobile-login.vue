@@ -2,19 +2,20 @@
   <div>
      <div class="theLogin-top">
         <p class="theLogin-close"></p>
-        <p @click="$router.push({name: 'userRegister'})" class="registered">注册</p>
+        <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
-        <p class="faLogin">手机快捷登录</p>
-        <p class="faLogin-more">登录k.chan，解锁更多功能</p>
+        <p class="faLogin">{{$t(phone)}}</p>
+        <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tell">
          <input type="telephone" 
            v-model="tel"
            class="tel" 
-           placeholder="请输入手机号">
+           :placeholder="$t(userphone)">
            <div class="restsend">
              <input type="button" 
+                    style="width:100%;"
                     class="sends" 
                     value=" 重新发送" 
                     v-show="sendAuthCode"
@@ -27,28 +28,28 @@
            </div>  
      </div>
      <div class="login-tell">
-         <input type="text" class="yzm" v-model="yzm" placeholder="请输入验证码">
+         <input type="text" class="yzm" v-model="yzm" :placeholder="$t(enteryzm)">
      </div>
      <div class="click-login"> 
-         <button  type="primary" size="large" class="cli-login" @click="login">登录</button>
-         <span class="agree-reg">未注册手机号码登录即可自动注册，并代表您已同意<br>“<span class="agree-color">用户协议</span>”</span>
+         <button  type="primary" size="large" class="cli-login" @click="login">{{$t(logins)}}</button>
+         <span class="agree-reg">{{$t(agree)}}</span>
          <router-link 
-           to="/userPwdLogin" class="userpwd">
-            账号密码登录
+           to="/user/password-login" class="userpwd">
+            {{$t(userpwd)}}
          </router-link>
      </div> 
      <div class="otherLogin">
           <div class="icons">
             <i class="icon weixin"></i>
-            <p class="name">微信登录</p>
+            <p class="name">{{$t(wx)}}</p>
           </div>
           <div class="icons">
             <i class="icon qq"></i>
-            <p class="name">QQ登录</p>
+            <p class="name">{{$t(qq)}}</p>
           </div>
           <div class="icons">
             <i class="icon weibo"></i>
-            <p class="name">微博登录</p>
+            <p class="name">{{$t(wb)}}</p>
           </div>
      </div>
   </div>
@@ -65,7 +66,18 @@ export default {
         tel: '',
         yzm: '',
         sendAuthCode:true,
-        auth_time:0
+        auth_time:0,
+        phone: 'common.phone',
+        phonekc: 'common.phonekc',
+        logins: 'common.login',
+        register: 'common.register',
+        agree: 'common.agree',
+        userpwd: 'common.uesrpwd',
+        wx: 'common.wx',
+        qq: 'common.qq',
+        wb: 'common.wb',
+        userphone: 'common.placeholder.userphone',
+       enteryzm: 'common.placeholder.enteryzm'
     }
   },
     methods: {  
@@ -103,7 +115,7 @@ export default {
         if(reg.test(tel)) {
           this.$store.dispatch('login')
           localStorage.setItem('userTel',tel)
-          this.$router.go(-1)
+          this.$router.push('/Index')
         } else {
           e.preventDefault()
           this.$toast({
@@ -160,7 +172,7 @@ export default {
    margin-left:0.5rem;
 }
 .faLogin{
-  font-size:1rem;
+  font-size:0.6rem;
   font-weight:blod;
 }
 .faLogin-more{
@@ -210,10 +222,10 @@ export default {
 }
 .otherLogin{
    margin: 0.4rem;
-   margin-top:3rem;
+   margin-top:1rem;
    display:flex;
-   justify-content: space-around;
-   align-items:cneter;
+   justify-content: center;
+   align-items:center;
 }
 .icon{
     width: 1rem;
@@ -221,6 +233,8 @@ export default {
     display: block;
     border-radius: 50%;
     float: left;  
+    align-items: center;
+    text-align: center;
 }
 .weixin{
    background: url(../../assets/img/4.png) no-repeat center center;
@@ -236,6 +250,7 @@ export default {
     font-size: 0.4rem;
     float: left;
     line-height:1rem;
+    align-items: center;
   }
   .toast {
     font-size: 1.6rem ;

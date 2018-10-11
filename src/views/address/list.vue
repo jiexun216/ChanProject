@@ -2,8 +2,8 @@
     <div>
         <div class="header" v-if="listData.length == 0">
          <div class="orderdetop">
-            <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="orderaddress">收获地址</span>
+            <i class="back backs" @click="$router.push({path: '/cartSettlement'})"></i>     
+            <span class="orderaddress">收货地址</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
@@ -17,10 +17,8 @@
         <div v-else> 
             <div class="orderdetop orderdetop1">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span >收获地址</span>
-                <span class="oks">
-                    完成
-                </span>
+                <span >收货地址</span>
+                <span class="oks" @click="$router.back(-1)">完成</span>
                 </div>
                 <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
                 <div class="oldname">
@@ -49,7 +47,7 @@
                 </div>
 
                 <div class="addressfooter" @click="addAddressHandle">
-                <p>+ 新建地址</p>
+                    <p>+ 新建地址</p>
                 </div>
         </div>
     </div>
@@ -199,7 +197,7 @@ export default {
   background: url(../../assets/img/42.png) no-repeat center center;
 }
 .orderaddress{
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 .oks {
   color: #f00;
@@ -327,7 +325,6 @@ export default {
    width: 0.7rem;
    height: 0.7rem;
    background-size: cover;
-   margin-left: 0.2rem;
  }
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
@@ -362,5 +359,16 @@ export default {
      border-radius: 0.6rem;
      color: #ff525a;
      font-weight: bold;
+ }
+ .van-switch__node{
+   position:absolute;
+   top: -1px;
+   left: -20px;
+   right: 0;
+   bottom: 0;
+   margin: auto;
+ }
+ .van-switch--on .van-switch__node{
+   transform: translateX(0.4rem);
  }
 </style>

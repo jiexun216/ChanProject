@@ -2,22 +2,21 @@
 <div>
             <div class="orderdetop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="orderaddress">收获地址</span>
-                <span class="myorder">
-                    <i class="back backcoups"></i>
-                </span>
+                <span class="orderaddress">编辑/添加地址</span>
+                <span class="myorder"></span>
             </div>    
-    <van-address-edit
-      :area-list="areaList"
-      :address-info="formData"
-      show-set-default
-      show-search-result
-      @save="onSave"
-    />    
+            <van-address-edit
+              :area-list="areaList"
+              :address-info="formData"
+              show-set-default
+              show-search-result
+              @save="onSave"
+            />    
 </div>        
 </template>
 
 <script>
+import Vue from 'vue'
 import { Toast } from "mint-ui";
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
@@ -39,12 +38,18 @@ export default {
         county: "",
         addressDetail: "",
         areaCode: "",
-        isDefault: false
+        isDefault: true
       },
-      completeshow: false
     };
   },
   methods: {
+    beforeClose(action, done) {
+      if (action === 'confirm') {
+        setTimeout(done, 1000);
+      } else {
+        done();
+      }
+    },
     // 添加、修改地址保存
     onSave(content) {
       console.log(content);
@@ -106,15 +111,29 @@ export default {
             duration: 1500
           });
         });
+    },
+    // 添加地址链接 zhangjie 0919
+    addAddressHandle () {
+      this.$router.push({
+        name:'addressEdit',
+        query: {
+          buyType: this.$route.query.buyType,
+          cartIds: this.$route.query.cartIds,
+          addressId: this.$route.query.addressId,
+          goodsId: this.$route.query.goodsId,
+          skuId: this.$route.query.skuId,
+          goodsQuantity: this.$route.query.goodsQuantity
+        }
+      })
+    },
+      created() {
+        this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
+        if (this.formData.id != 0) {
+          this.getData();
+        }
+      }
     }
-  },
-  created() {
-    this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
-    if (this.formData.id != 0) {
-      this.getData();
-    }
-  }
-};
+}
 </script>
 
 <style>
@@ -124,6 +143,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.3rem;
 }
 .back {
   display: inline-block;
@@ -162,22 +182,11 @@ export default {
   word-wrap: break-word;
   word-break: normal;
 }
-
-.overlayer {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background: #000;
-  opacity: 0.5;
-}
 .restaddress {
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
+  bottom: 0;  
   right: 0;
   margin: auto;
   width: 8rem;
@@ -208,5 +217,60 @@ export default {
 .closeaddress span a {
   color: #f00;
 }
-
+.van-popup{
+   width: 100%;
+   height: 4rem;
+   text-align: center;
+}
+.el-button--text{
+  color: #000;
+  margin-right: 0.4rem;
+}
+.el-message-box{
+  position: absolute;
+  left: 0;
+  top:0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 4rem;
+}
+.el-message-box__btns{
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.el-button--primary{
+  border-color: #ccc;
+}
+.el-button{
+  width: 45%;
+  border: none;
+}
+.el-button:focus, .el-button:hover{
+  background: #fff;
+  color: #606266;
+}
+.el-button--primary{
+  background: #fff;
+  color: #606266;
+}
+.el-dialog{
+  border-radius: 0.3rem;
+}
+.addressfooter {
+  color: #ff525a;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.5rem;
+  box-shadow: 0 0 0.5rem #ccc;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
  </style>

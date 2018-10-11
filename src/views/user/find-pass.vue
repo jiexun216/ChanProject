@@ -4,16 +4,17 @@
           <p @click="$router.back(-1)" slot="left" class="theLogin-back"></p>
       </div>
       <div class="fastLogin">
-        <p class="faLogin">手机找回</p>
-        <p class="faLogin-more">使用注册手机号找回密码</p>
+        <p class="faLogin">{{$t(phoneretrieval)}}</p>
+        <p class="faLogin-more">{{$t(retrpwd)}}</p>
      </div>
      <div class="login-tell">
          <input type="telephone" 
            v-model="tel"
            class="tel" 
-           placeholder="请输入手机号">
+           :placeholder="$t(userphone)">
            <div class="restsend">
              <input type="button" 
+                    style="width:100%;"
                     class="sends" 
                     value=" 重新发送" 
                     v-show="sendAuthCode"
@@ -26,11 +27,11 @@
            </div>  
      </div>
      <div class="login-tell">
-         <input type="text" class="yzm" v-model="code" placeholder="请输入验证码">
+         <input type="text" class="yzm" v-model="code" :placeholder="$t(enteryzm)">
      </div>
      <div class="click-login">
         <p> 
-        <button class="cli-login" @click="nextStep">下一步</button>
+        <button class="cli-login" @click="nextStep">{{$t(next)}}</button>
         </p>
        
      </div>
@@ -51,7 +52,12 @@ export default {
       tel: "",
       code: "",
       sendAuthCode: true,
-      auth_time: 0
+      auth_time: 0,
+      phoneretrieval: 'common.phoneretrieval',
+      retrpwd: 'common.retrpwd',
+      next: 'common.next',
+      userphone: 'common.placeholder.userphone',
+      enteryzm: 'common.placeholder.enteryzm'
     };
   },
   methods: {
@@ -134,11 +140,12 @@ export default {
   margin-left: 0.5rem;
 }
 .faLogin {
-  font-size: 1rem;
+  font-size: 0.6rem;
   font-weight: blod;
+  letter-spacing: 0px;
 }
 .faLogin-more {
-  font-size: 0.4rem;
+  font-size: 0.35rem;
   color: #999999;
   line-height: 1rem;
 }
@@ -147,6 +154,10 @@ export default {
   font-size: 0.4rem;
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+.login-tell input{
+  width: 70%;
 }
 .tel {
   line-height: 0.7rem;
@@ -156,6 +167,10 @@ export default {
 .restsend {
   float: right;
   color: #ff525a;
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  right: 0; 
 }
 .sends {
   color: #f00;

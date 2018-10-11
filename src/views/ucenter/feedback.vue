@@ -8,7 +8,7 @@
         </div>
         <div class="feed">
           <div class="pleaseinput">
-            <textarea v-model="opinion" cols="35" rows="8" placeholder="请输入..." class="pleasesr"> </textarea>
+            <textarea v-model="opinion" cols="35" rows="8" :placeholder="$t(entering)" class="pleasesr"> </textarea>
             <p>如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！</p>
             <button type="submit" @click="submitOpinion()" class="submit">提交</button>
           </div>
@@ -23,7 +23,8 @@ import { issueOpinion } from '@/api/ucenter/index.js'
     export default {
         data () {
             return {
-                opinion: ""
+                opinion: "",
+                entering: 'common.placeholder.entering'
             }
         },
         methods: {
@@ -76,6 +77,7 @@ import { issueOpinion } from '@/api/ucenter/index.js'
     border: none;
     font-size: 0.5rem;
     padding: 0.2rem;
+    color: #000;
 }
 .pleaseinput .submit{
     width: 90%;

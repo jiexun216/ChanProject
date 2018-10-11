@@ -5,9 +5,9 @@
          <div class="search-header">
          <div class="search-top">
            <i class="search-icon search-bg"></i>
-           <input type="search" class="searchs" style="line-height:1rem;" placeholder="搜索" >      
+           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" >      
          </div>
-           <p class="concel" @click="concel">取消</p>
+           <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
         </div>
      <div>
@@ -54,7 +54,8 @@ import { getGoodsList } from '@/api/goods/index.js'
                 total:0,
                 categoryId:0,
                 isLoadingFinished: false,
-
+                cancels: 'common.cancel',
+                search: 'common.placeholder.search'
             }
         },
         created () {

@@ -5,7 +5,7 @@
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
                 </router-link>
-                <span >购物车</span>
+                <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
                    <i class="carback carbackss"></i>
                 </div>
@@ -17,14 +17,13 @@
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
                 </router-link>
-                <span >购物车</span>
+                <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                    <span @click="editor">编辑</span>
+                    <span @click="editor">{{$t(editors)}}</span>
                     <i class="carback carbackcoups"></i>
                 </div>
         </div>
         <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
-          <!-- 这是商品  还有商品信息 -->
                 <div class="van-card">
                   <van-checkbox-group class="card-goods" v-model="checkedGoods">
                       <van-checkbox
@@ -42,11 +41,10 @@
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥{{item.price}}</p>
-                            <p> <van-stepper @change="getGoodsNumber" /></p>
+                            <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity"/></p>
                         </div>
                     </div>
                 </div>
-                <!-- 这个是支付  然后还有结算价格 -->
                   <van-submit-bar
                       :price="totalPrice"
                       :disabled="!checkedGoods.length"
@@ -55,8 +53,6 @@
                       class="payfor"
                       />
               </div>      
-
-
      </div>  
    </div>    
 </template>
@@ -65,7 +61,8 @@
 import emptygoods from"../../components/car/emptygoods"
 import Vue from "vue";
 import { Checkbox, CheckboxGroup, SubmitBar, Toast } from 'vant';
-import { getCartList,orderSettlement } from '@/api/cart/index.js'
+import { getCartList,orderSettlement } from '@/api/cart/index.js';
+import {deleteCart, changeCartQuantity } from '@/api/cart/index.js'
 import { Stepper } from 'vant';
 Vue.use(Stepper);
  export default {
@@ -80,7 +77,9 @@ Vue.use(Stepper);
       checkedGoods: [],
       cartGoodsList: [],
       goodsList: [],
-      goodsNumber: 1
+      goodsQuantity: 1,
+      carts: 'common.carts',
+      editors: 'common.editor'
     };
   },
     computed: {
@@ -90,7 +89,7 @@ Vue.use(Stepper);
     },
     totalPrice() {
       return this.cartGoodsList.reduce((total, item) => 
-      total + (this.checkedGoods.indexOf(item.id) !== -1 ? Number(item.price * this.goodsNumber * 100) : 0), 0)
+      total + (this.checkedGoods.indexOf(item.id) !== -1 ? Number(item.price * item.goodsQuantity * 100) : 0), 0)
     }
       
   },
@@ -104,13 +103,22 @@ Vue.use(Stepper);
         }
         this.cartGoodsList  = res.data.data.list
         this.goodsList = res.data.data.goodsList
-        console.log(this.cartGoodsList)
       });
     },
     // 获取商品数量
-    getGoodsNumber (data) {
-      this.goodsNumber = data
-    },
+    getGoodsNumber (data, cartId, goodsQuantity) { 
+          this,goodsQuantity = data
+       changeCartQuantity (data,cartId, goodsQuantity).then(res => {
+           this.goodsQuantity = cartId
+           console.log(this.goodsQuantity)
+            this.$toast(res.data.message ? res.data.message : '操作失败')
+            if (res.data.status == 99) {
+                 this.$router.push({name: res.data.data.url})
+            } else if (res.data.status == 0) {
+                this.getData();
+            }
+        })
+    },  
     // 下单结算
     onSubmit() {
       var cartIds = ''
@@ -128,12 +136,12 @@ Vue.use(Stepper);
                 addressId: 0,
                 goodsId: 0,
                 skuId: 0,
-                goodsQuantity: 0
+                goodsQuantity: 1,
+                cartGoodsList: 0,
 							}
 						})
         }
       });
-      
     },
     editor () {
       this.$router.push({name:'cartEdit'})

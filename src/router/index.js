@@ -30,13 +30,17 @@ import ResetPassword from '@/views/user/reset-password'
 import CartList from '@/views/cart/list'
 import CartSettlement from "@/views/cart/settlement"
 import CartEdit from "@/views/cart/edit"
+import FortuneIndex from '@/views/fortunetellers/index'
+import ContentFortune from '@/views/fortunetellers/contentfortune'
+import Results from '@/views/fortunetellers/results'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      component: Index,
+      redirect: '/index'
     },
     // 账号密码登录
     {
@@ -170,9 +174,24 @@ export default new Router({
       component: CartSettlement,
       meta: { title: '结算确认' }
     },
-
-
-
+    // 算命
+    {
+      name: 'fortuneTellers',
+      path: '/fortunetellers/index',
+      component: FortuneIndex
+    },
+    // 算命基本、命盘等
+    {
+      name: 'contentfortune',
+      path: '/fortunetellers/contentfortune',
+      component: ContentFortune
+    },
+    // 算命结果
+    {
+      name: 'results',
+      path: '/fortunetellers/results',
+      component: Results
+    },
 
 
 

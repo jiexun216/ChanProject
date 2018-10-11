@@ -5,7 +5,7 @@
                 <span>{{deliveryPhone}}</span>
             </div>
             <div class="settladdress">
-                 <span class="defaaddress">默认</span>   
+                 <span class="defaaddress">{{$t(defaults)}}</span>   
                    <span class="settlright">
                          <i class="newaddressimg newaddressimgs"></i>
                  </span>
@@ -19,7 +19,7 @@
     export default {
         data () {
             return {
-
+               defaults: 'common.default'
             }
         },
         methods: {

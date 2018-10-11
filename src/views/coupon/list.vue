@@ -4,7 +4,7 @@
             <router-link to="/">
                 <i class="back backs"></i>     
             </router-link>
-            <span >我的优惠券</span>
+            <span >{{$t(mycoupon)}}</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
@@ -17,8 +17,8 @@
         <div class="couponsitem" v-for="(item,index) in listData" :key="index">
              <div class="couponitem">
                   <div class="couponmon">
-                    <img src="../../assets/img/27.png"  class="couponimgs">
-                    <span class="couponmoney">
+                    <!-- <img src="../../assets/img/27.png"  class="couponimgs"> -->
+                    <span class="couponmoney couponimgs couponimg">
                         ￥{{item.preferentialAmount}}
                     </span>
                   </div>
@@ -28,7 +28,7 @@
                   </div>
              </div>
              <div class="couponright" v-if="item.couponStatus == 'waitingUse'">
-                   <p>去使用</p>
+                   <p>{{$t(goUse)}}</p>
              </div>
         </div>
     </div>
@@ -40,6 +40,8 @@ import { getCouponList } from "@/api/coupon/index.js";
 export default {
   data() {
     return {
+      mycoupon: 'common.mycoupon',
+      goUse: 'common.gouse',
       statusList: [
         {
           key: "waitingUse",
@@ -115,7 +117,7 @@ export default {
   width: 0.7rem;
   height: 0.7rem;
   background-size: cover;
-  margin-left: 0.2rem;
+  margin-left: 0.4rem;
 }
 .backs {
   background: url(../../assets/img/42.png) no-repeat center center;
@@ -123,7 +125,7 @@ export default {
 .backcoups {
   background: url(../../assets/img/49.png) no-repeat center center;
 }
-.myorder {
+.myorder{
   margin-right: 0.4rem;
 }
 .usecoupons {
@@ -135,7 +137,7 @@ export default {
   font-weight: bold;
 }
 .useitembg {
-  margin: 0.4rem;
+  margin:0.2rem 0.4rem;
 }
 .useitembgs {
   color: #f00;
@@ -152,23 +154,37 @@ export default {
   width: 80%;
   border-radius: 0rem 0.4rem 0.4rem 0rem;
   display: flex;
-  justify-content: space-around;
+  
   align-items: center;
 }
 .couponmon {
   position: relative;
+  margin: 0.2rem 0.3rem;
+  width: 2.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .couponimgs {
-  margin: 0.2rem 0.3rem;
-  margin-left: 0.4rem;
-  width: 100%;
+  position: relative;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.couponimg{
+  background: url('../../assets/img/27.png') no-repeat center center;
 }
 .couponmoney {
-  font-size: 0.7rem;
-  position: absolute;
-  top: 25%;
-  left: 26%;
+  font-size: 0.3rem;
+  font-weight: bold;
   color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
 }
 .couponmanp {
   font-weight: bold;
@@ -176,7 +192,7 @@ export default {
 }
 .couponmantime {
   color: #ccc;
-  font-size: 0.3rem;
+  font-size: 10px;
 }
 .couponright {
   width: 19%;
@@ -189,6 +205,6 @@ export default {
   align-items: center;
 }
 .couponman {
-  margin-left: 0.3rem;
+ margin: 0.3rem;
 }
 </style>

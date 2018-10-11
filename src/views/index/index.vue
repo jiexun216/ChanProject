@@ -3,11 +3,12 @@
         <div class="index-top">
             <span class="language">
                 <router-link to="/language">
-                   EN</router-link>
+                   {{language}}</router-link>
             </span>
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
-                <input type="search" v-model="keyword" placeholder="全局搜索" class="search" @keypress.stop.prevent="searchGoods">
+                <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
+                       @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -43,25 +44,25 @@
              <div>
                  <i class="icon thatmroeimg"></i>
              </div>
-             <div>生辰八字</div>
+             <div>{{$t(birth)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg2"></i>
              </div>
-             <div>问大师</div>
+             <div>{{$t(wds)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg3" ></i>
              </div>
-             <div>精品课程</div>
+             <div>{{$t(jpclass)}}</div>
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg4"></i>
              </div>
-             <div>更多</div>
+             <div>{{$t(more)}}</div>
            </router-link>
         </ul>
 
@@ -83,7 +84,7 @@
                                 ￥{{good.market_price}}
                            </span>
                            <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
-                               去购买
+                               {{$t(gobuy)}}
                            </span>
                       </div>    
                       </div>     
@@ -98,6 +99,7 @@ import Vue from "vue";
 import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
 import { Swipe, SwipeItem } from 'vant';
+import { mapState } from 'vuex'
 Vue.use(Swipe).use(SwipeItem);
 export default {
   components: {
@@ -108,7 +110,15 @@ export default {
       keyword: "",
       goodsCategoryList: [],
       bannerList: [],
-      goodsList: []
+      goodsList: [],
+      language: '',
+      birth: 'common.birth',
+      wds: 'common.wds',
+      jpclass: 'common.jpclass',
+      more: 'common.more',
+      gobuy: 'common.gobuy',
+      allsearch: 'common.placeholder.allsearch',
+      Iscenter: true
     };
   },
   methods: {
@@ -137,11 +147,24 @@ export default {
     },
     goPage(page) {
       this.$store.commit("getPage", page);
-    }
+    },
+    searchleft (data) {
+        this.Iscenter = !this.Iscenter
+      }
   },
   created() {
     this.getData()
+  },
+
+  mounted() {
+    if (this.lang === 'english') this.language = 'english'
+    else if (this.lang === 'character') this.language = '繁體中文'
+    else this.language = '简体中文'
+  },
+  computed: {
+      ...mapState(['lang'])
   }
+
 };
 </script>
 
@@ -154,6 +177,9 @@ input {
   border: none;
   background: none;
   color: #000;
+}
+a {
+  font-size: 12px;
 }
 .index-top {
   background-color: #fdfdfd;
@@ -169,15 +195,19 @@ input {
 .index-search {
   background: #f5f5f5;
   border-radius: 0.5rem;
-  width: 80%;
+  width: 68%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .search {
   line-height: 0.8rem;
-  width: 80%;
+  width: 68%;
   text-align: center;
+  font-size: 0.3rem;
+}
+.searchleft{
+  text-align: left;
 }
 .icon {
   display: inline-block;

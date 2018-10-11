@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import actions from '../store/action'
+import mutations from '../store/mutations'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -11,7 +13,7 @@ export default new Vuex.Store({
     price: '',
     marketPrice: '',
     value: '',
-
+    lang: 'chinese',
   },
   mutations: {
     increment: state => state.count++,
@@ -19,5 +21,7 @@ export default new Vuex.Store({
     getPage (state, data) {
       state.page = data
     },
-  }
+  },
+  actions,
+  mutations
 })

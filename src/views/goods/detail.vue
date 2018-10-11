@@ -5,7 +5,7 @@
                  <router-link to="/index">
                  <i class="de-icon de-iconimg1"> </i>
                  </router-link>
-             <span>商品详情</span> 
+             <span>{{$t(goodsdetails)}}</span> 
              <div class="details-right" @click="$router.push({name: 'cartList'})">
                <i class="de-icon de-iconimg2">
                    <router-link to="/cart/list"> </router-link>
@@ -50,13 +50,13 @@
             <div class="details"> 
                           <van-tabs v-model="active">
                             <van-tab  >
-                                <div slot="title">图文详情
+                                <div slot="title">{{$t(twdetails)}}
                                 </div>
                                 <div class="goodstu" v-html="goodsInfos.content">
                                 </div>
                             </van-tab>
                             <van-tab  >
-                                <div slot="title" >商品参数
+                                <div slot="title" >{{$t(parameters)}}
                                 </div>
                                 <div class="goodstu" >
                                     <ul class="list-paddingleft-2">
@@ -65,7 +65,7 @@
                                 </div>
                             </van-tab>
                             <van-tab  >
-                                <div slot="title" >购买须知
+                                <div slot="title" >{{$t(attention)}}
                                 </div>
                                 <div class="goodstu">
                                      <ul class="list-paddingleft-2">
@@ -79,10 +79,10 @@
         <div class="foot">
             <div class="customer">
                 <img src="../../assets/img/36.png" alt="">
-                <p>客服</p>
+                <p>{{$t(customerservice)}}</p>
             </div>
-            <button class="inbuy" @click="joinbuy">加入购物车</button>
-            <button class="inbuys" @click="joinbuy">立即购买</button>
+            <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
+            <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
         <van-sku
                     v-model="showBase"
@@ -90,6 +90,7 @@
                     :goods="goods"
                     :goods-id="goodsId"
                     :hide-stock="sku.hide_stock"
+                    :show-add-cart-btn = "showAddCartBtn"
                     @buy-clicked="onBuyClicked"
                     @add-cart="onAddToCart"
                         />       
@@ -118,10 +119,18 @@ Vue.use(Sku)
                 skuAtterInfo:[],
                 showBase: false,
                 sku: {},
+                showAddCartBtn: true,
                 goods: {
                     title: '商品',
                     picture: '../../assets/img/order.png'
-                },           
+                },
+                goodsdetails: 'common.goodsdetails',
+                twdetails: 'common.twdetails',
+                parameters: 'common.parameters',
+                attention: 'common.attention',
+                customerservice: 'common.customerservice',
+                joinbuys: 'common.joinbuy',
+                buy: 'common.buy'
             }
         },
         created () {
@@ -343,7 +352,7 @@ Vue.use(Sku)
     color: #fff;
     line-height: 1.4rem;
 }
-.overlayer {
+/* .overlayer {
     position:fixed;
     left:0;
     top:0;
@@ -352,7 +361,7 @@ Vue.use(Sku)
     z-index:10;
     background-color: #000;
     opacity: 0.6;
-}
+} */
 .detailssize{
     position:fixed;
     bottom: 0;
@@ -471,5 +480,11 @@ Vue.use(Sku)
 }
 .el-header{
     padding: 0 5px;
+}
+.van-button--primary{
+    display: none;
+}
+.van-button--bottom-action{
+    background: #ff525a;
 }
 </style>
