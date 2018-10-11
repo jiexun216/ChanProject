@@ -8,7 +8,7 @@
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
-        <!-- <Addfortun></Addfortun>
+        <Addfortun v-if="fortuneshow"></Addfortun>
         <div class="suanming">
              <div >
                  <div class="personaldata">
@@ -16,12 +16,12 @@
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span>
                  </div>
                  <div class="buttom">
-                    <button class="butstyle">查看结果</button>
+                    <button class="butstyle" @click="$router.push({name:'contentfortune'})">查看结果</button>
                     <button class="butstyle butcolor">删除</button>
                  </div>
              </div>
-        </div> -->
-        <ContentFortune></ContentFortune>
+        </div>
+        <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
 <script>
@@ -36,13 +36,15 @@ export default {
          return {
              sm: 'common.sm',
              fortunelist: [],
-             list: ''
+             list: '',
+             fortuneshow: false
          }
     },
     methods: {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          },
+         
          getData () {
              fortunetellers ().then (res => {
                  if (res.data.status == 99) {

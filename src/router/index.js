@@ -32,6 +32,7 @@ import CartSettlement from "@/views/cart/settlement"
 import CartEdit from "@/views/cart/edit"
 import FortuneIndex from '@/views/fortunetellers/index'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
+import Results from '@/views/fortunetellers/results'
 Vue.use(Router)
 
 export default new Router({
@@ -179,10 +180,17 @@ export default new Router({
       path: '/fortunetellers/index',
       component: FortuneIndex
     },
+    // 算命基本、命盘等
     {
       name: 'contentfortune',
       path: '/fortunetellers/contentfortune',
       component: ContentFortune
+    },
+    // 算命结果
+    {
+      name: 'results',
+      path: '/fortunetellers/results',
+      component: Results
     },
 
 
