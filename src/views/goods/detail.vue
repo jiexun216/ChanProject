@@ -148,9 +148,11 @@ Vue.use(Sku)
                     this.goods.title = res.data.data.goodsInfo.name
                     this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
-                    if (this.goodsInfos.isSku == 1) {
-                        this.sku = res.data.data.sku;
-                    }     
+                    // if (this.goodsInfos.isSku == 1) {
+                    //     this.sku = res.data.data.sku;
+                    // }
+                    this.sku = res.data.data.sku;
+                    
                 }).catch(err => {
                     return err
                 })
@@ -163,8 +165,15 @@ Vue.use(Sku)
                 let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 addGoodsToCart (cartGoodsId,goodsQuantity,cartSkuId).then(res => {
                     if (res.data.status == 99) {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
-                        this.$router.push({name: res.data.data.url})
+                        Dialog.confirm({
+                            title: '温馨提示',
+                            message: '您还未登录，立即前往登录'
+                        }).then(() => {
+                            // on confirm
+                            this.$router.push({name: res.data.data.url})
+                            
+                        }).catch(() => {
+                        });
                     } else if (res.data.status == 0) {
                         Dialog.confirm({
                             title: '温馨提示',
@@ -187,7 +196,6 @@ Vue.use(Sku)
                 let goodsQuantity = skuData.selectedNum
                 let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 0) {
                         this.$router.push({
 							name: 'cartSettlement',
@@ -200,6 +208,18 @@ Vue.use(Sku)
                                 goodsQuantity: goodsQuantity,
 							}
 						})
+                    } else if (res.data.status == 99) {
+                        Dialog.confirm({
+                            title: '温馨提示',
+                            message: '您还未登录，立即前往登录'
+                        }).then(() => {
+                            // on confirm
+                            this.$router.push({name: res.data.data.url})
+                            
+                        }).catch(() => {
+                        });
+                    } else {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
                     }
                 });
             },
