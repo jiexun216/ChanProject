@@ -5,6 +5,7 @@
             left-arrow
             @click-left="onClickLeft"
         >
+        
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
