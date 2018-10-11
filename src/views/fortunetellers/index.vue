@@ -8,18 +8,18 @@
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
-        <Addfortun v-if="fortuneshow"></Addfortun>
+        <Addfortun ></Addfortun>
         <div class="suanming">
-             <div >
-                 <div class="personaldata" v-for="perlist in perlists" :key="perlist.index">
+             <div v-for="perlist in perlist" :key="perlist.fortuneId" >
+                 <div class="personaldata">
                       <!-- <h3>姓名</h3>
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
-                      <h3>{{perlist.fUllName}}</h3>
+                      <h3>{{perlist.fullName}}</h3>
                       <span >{{perlist.sex}}</span>
                       <span>{{perlist.birthDate}}</span>
                  </div>
                  <div class="buttom">
-                    <button class="butstyle" @click="$router.push({name:'contentfortune'})">查看结果</button>
+                    <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
                     <button class="butstyle butcolor">删除</button>
                  </div>
              </div>
@@ -38,7 +38,7 @@ export default {
     data () {
          return {
              sm: 'common.sm',
-             perlists: [],
+             perlist: [],
              fortuneshow: false
          }
     },
@@ -53,13 +53,13 @@ export default {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
                 }
-                 this.perlists  = res.data.data.list
-                 console.log(this.perlists)
+                 this.perlist  = res.data.data.list
+                 console.log(this.perlist)
              }) 
-         },
-         created () {
-            this.getData()
-        }
+         },   
+    },
+    created () {
+        this.getData();
     },
     components: {
        Addfortun,
