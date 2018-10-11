@@ -31,6 +31,7 @@ import CartList from '@/views/cart/list'
 import CartSettlement from "@/views/cart/settlement"
 import CartEdit from "@/views/cart/edit"
 import FortuneIndex from '@/views/fortunetellers/index'
+import ContentFortune from '@/views/fortunetellers/contentfortune'
 Vue.use(Router)
 
 export default new Router({
@@ -178,7 +179,11 @@ export default new Router({
       path: '/fortunetellers/index',
       component: FortuneIndex
     },
-    
+    {
+      name: 'contentfortune',
+      path: '/fortunetellers/contentfortune',
+      component: ContentFortune
+    },
 
 
 

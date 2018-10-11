@@ -8,7 +8,7 @@
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
-        <Addfortun v-if="fortunelist.length ==0"></Addfortun>
+        <!-- <Addfortun></Addfortun>
         <div class="suanming">
              <div >
                  <div class="personaldata">
@@ -20,14 +20,15 @@
                     <button class="butstyle butcolor">删除</button>
                  </div>
              </div>
-        </div>
-        
+        </div> -->
+        <ContentFortune></ContentFortune>
     </div>
 </template>
 <script>
 import Vue from 'vue'
 import { Icon } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
+import ContentFortune from '@/views/fortunetellers/contentfortune'
 import { fortunetellers,addfortune } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
@@ -58,7 +59,8 @@ export default {
         }
     },
     components: {
-       Addfortun
+       Addfortun,
+       ContentFortune
     }
 }
 </script>
