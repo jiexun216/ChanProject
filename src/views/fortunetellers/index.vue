@@ -5,7 +5,7 @@
             left-arrow
             @click-left="onClickLeft"
         >
-        
+
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right"/>
         </van-nav-bar>
@@ -15,9 +15,9 @@
                  <div class="personaldata">
                       <!-- <h3>姓名</h3>
                       <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
-                      <h3>{{perlists.fullName}}</h3>
-                      <span >{{perlists.sex}}</span>
-                      <span>{{perlists.birthDate}}</span>
+                      <h3>{{perlist.fullName}}</h3>
+                      <span >{{perlist.sex}}</span>
+                      <span>{{perlist.birthDate}}</span>
                  </div>
                  <div class="buttom">
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
@@ -33,14 +33,12 @@ import Vue from 'vue'
 import { Icon } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
-import { fortunetellers,addfortune } from '@/api/fortunetellers/index.js'
+import { fortunetellers,addfortune,fortuneresults } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
     data () {
          return {
              sm: 'common.sm',
-             fortunelist: [],
-             list: '',
              perlist: [],
              fortuneshow: false
          }
@@ -49,6 +47,7 @@ export default {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 
+         //请求数据
          getData () {
              fortunetellers().then (res => {
                  if (res.data.status == 99) {
@@ -56,6 +55,7 @@ export default {
                     this.$router.push({name: res.data.data.url})
                 }
                  this.perlist  = res.data.data.list
+                 console.log(this.perlist)
              }) 
          },   
     },
@@ -96,10 +96,10 @@ export default {
     margin-bottom: 0.3rem;
 }
 .butstyle{
-    font-size: 0.4rem;
+    font-size: 0.35rem;
     border: 1px solid #000;
     border-radius: 0.4rem;
-    padding: 0.1rem 0.35rem;
+    padding: 0.1rem 0.3rem;
 }
 .butcolor{
     color: #f00;
