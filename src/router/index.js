@@ -174,7 +174,7 @@ export default new Router({
       component: CartSettlement,
       meta: { title: '结算确认' }
     },
-    // 算命
+    // 算命列表
     {
       name: 'fortuneTellers',
       path: '/fortunetellers/index',
