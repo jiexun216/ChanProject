@@ -6,9 +6,9 @@
             @click-left="onClickLeft"
         >
          <van-icon name="search" slot="right" />
-         <van-icon name='add-o' slot="right"/>
+         <van-icon name='add-o' slot="right" @click="addfor"/>
         </van-nav-bar>
-        <Addfortun ></Addfortun>
+        <Addfortun v-if="fortuneshow"></Addfortun>
         <div class="suanming">
              <div v-for="perlist in perlist" :key="perlist.fortuneId" >
                  <div class="personaldata">
@@ -24,6 +24,7 @@
                  </div>
              </div>
         </div>
+        <Add></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -31,6 +32,7 @@
 import Vue from 'vue'
 import { Icon } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
+import Add from '@/views/fortunetellers/add'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
 import { fortunetellers,addfortune,fortuneresults } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
@@ -39,7 +41,8 @@ export default {
          return {
              sm: 'common.sm',
              perlist: [],
-             fortuneshow: false
+             fortuneshow: false,
+             show: false
          }
     },
     methods: {
@@ -56,14 +59,18 @@ export default {
                  this.perlist  = res.data.data.list
                  console.log(this.perlist)
              }) 
-         },   
+         }, 
+         addfor() {
+             this.show= true
+         }  
     },
     created () {
         this.getData();
     },
     components: {
        Addfortun,
-       ContentFortune
+       ContentFortune,
+       Add
     }
 }
 </script>
