@@ -7,9 +7,9 @@
         >
 
          <van-icon name="search" slot="right" />
-         <van-icon name='add-o' slot="right" @click="changeShow"/>
+         <van-icon name='add-o' slot="right" />
         </van-nav-bar>
-        <Addfortun :show="show" @changeYincang = "handlechangeYincang" v-if="perlist.length == 0"></Addfortun>
+        <Addfortun v-if="perlist.length == 0"></Addfortun>
         <div class="suanming" v-else>
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personaldata">
@@ -47,12 +47,6 @@ export default {
          }
     },
     methods: {
-        changeShow() {
-            this.show = true
-        },
-        handlechangeYincang(boole) {
-            this.show = boole
-        },
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 

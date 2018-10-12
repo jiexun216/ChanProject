@@ -98,10 +98,14 @@ Vue.use(Dialog);
 Vue.use(Icon);
 Vue.use(NavBar);
  export default {
+     props: {
+        show: {
+        type: Boolean,
+        required: !0
+      },
+     },
      data () {
         return {
-            nobirth: 'common.nobirth',
-            add: 'common.add', 
             bazi: 'common.bazi',
             name: 'common.name',
             gender: 'common.gender',
@@ -111,7 +115,7 @@ Vue.use(NavBar);
             birthtime: 'common.birthtime',
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
-            show: true,
+            show: false,
             radio: '1',
             currentDate: new Date(),
             currentDatetime: '12:00',
@@ -139,7 +143,7 @@ Vue.use(NavBar);
      },
       components: {
           Footer,
-        "van-address-edit": AddressEdit
+          "van-address-edit": AddressEdit
       },
      methods: {
          getData () {
@@ -200,6 +204,7 @@ Vue.use(NavBar);
              }) 
             } else {
                 done();
+                this.$emit('changeYincang', false)
               this.showTime = false
               this.showcurrentDate = false
               this.showAddress = false

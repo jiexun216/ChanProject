@@ -11,7 +11,7 @@
                     :title="$t(bazi)"
                     show-cancel-button
                     :before-close="beforeClose"
-                    :save="save"
+                    :save="save"  
                     >
                     <div class="birth">
                         <span class="birthmd">
@@ -31,7 +31,7 @@
                         <span class="birthmd">
                             {{$t(birthyear)}}
                         </span>
-                        <span class="birthchoose"   @click="birthchoose" v-html="time"></span>
+                        <span class="birthchoose" @click="birthchoose" v-html="time"></span>
                     </div>
                      <!-- 出生日期 -->
                     <div class="birth">
@@ -113,8 +113,7 @@ Vue.use(NavBar);
      data () {
         return {
             nobirth: 'common.nobirth',
-            add: 'common.add',
-            
+            add: 'common.add',  
             bazi: 'common.bazi',
             name: 'common.name',
             gender: 'common.gender',
@@ -124,7 +123,7 @@ Vue.use(NavBar);
             birthtime: 'common.birthtime',
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
-            // show: false,
+            show: false,
             radio: '1',
             currentDate: new Date(),
             currentDatetime: '12:00',
@@ -152,7 +151,7 @@ Vue.use(NavBar);
      },
       components: {
           Footer,
-        "van-address-edit": AddressEdit
+          "van-address-edit": AddressEdit
       },
      methods: {
          getData () {

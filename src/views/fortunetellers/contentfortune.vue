@@ -65,7 +65,7 @@ Vue.use(Tab).use(Tabs);
 export default {
     data () {
         return {
-            active: 4,
+            active: 1,
             swipeThreshold: '',
             sm: 'common.sm',
         }

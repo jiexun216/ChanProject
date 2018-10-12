@@ -5,19 +5,19 @@
                 <div style="margin:0.4rem;">
                   <div class="resultdis">
                       <span class="resultshead">姓名</span>
-                      <span class="resultsright"> 阳  乾造</span>
+                      <span class="resultsright">{{basic.fullName}}</span>
                   </div>
                    <div class="resultdis">
                       <span class="resultshead">属相</span>
-                      <span class="resultsright">狗</span>
+                      <span class="resultsright">{{basic.zodiac}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">阳历</span>
-                      <span class="resultsright">2018年1月1日 12时</span>
+                      <span class="resultsright">{{basic.gregorianCalendar}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">阴历</span>
-                      <span class="resultsright">二零一八年一月初一 午时</span>
+                      <span class="resultsright">{{basic.lunarCalendar}}</span>
                   </div>
                 </div>
                   
@@ -28,31 +28,35 @@
                 <div style="margin:0.4rem;">
                   <div class="resultdis">
                       <span class="resultshead">节气</span>
-                      <span class="resultsright"> 阳  乾造</span>
+                      <div class="jieqiresults">
+                        <p class="resultsright">{{basic.jieqi.name1}}</p>
+                        <p class="resultsright">{{basic.jieqi.name2}}</p>  
+                      </div>
+                      
                   </div>
                    <div class="resultdis">
                       <span class="resultshead">星座</span>
-                      <span class="resultsright">狗</span>
+                      <span class="resultsright">{{basic.xingzuo}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">二十八星宿</span>
-                      <span class="resultsright">2018年1月1日 12时</span>
+                      <span class="resultsright">{{basic.xingxiu}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">空亡（年月）</span>
-                      <span class="resultsright">二零一八年一月初一 午时</span>
+                      <span class="resultsright">{{basic.kongwang}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">命宫</span>
-                      <span class="resultsright">狗</span>
+                      <span class="resultsright">{{basic.minggong}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">胎元</span>
-                      <span class="resultsright">2018年1月1日 12时</span>
+                      <span class="resultsright">{{basic.taiyuan}}</span>
                   </div>
                   <div class="resultdis">
                       <span class="resultshead">胎息</span>
-                      <span class="resultsright">二零一八年一月初一 午时</span>
+                      <span class="resultsright">{{basic.taixi}}</span>
                   </div>
                 </div>
                   
@@ -64,11 +68,31 @@
                     <p class="resultscg">袁天罡称骨</p>
                   <div class="resultdis">
                       <span class="resultshead">重量</span>
-                      <span class="resultsright"> 四两三钱 </span>
+                      <span class="resultsright"> {{basic.weight}}</span>
                   </div>
                    <div class="resultdis">
                       <span class="resultshead">评语</span>
-                      <span class="resultsright">床前明月光，疑是地上霜。<br>举头望明月。低头思故乡asdjlasjdoas dalsdl;asjdoajs</span>
+                      <span class="resultsright">{{basic.comment}}</span>
+                  </div>
+                </div>
+                  
+            </div>
+      </div>
+       <div class="resultsone">
+            <div class="resultscon">
+                <div style="margin:0.4rem;">
+                    <p class="resultscg">五行信息</p>
+                  <div class="resultdis">
+                      <span class="resultshead">命主属性</span>
+                      <span class="resultsright"> {{basic.mingzhushuxing}}</span>
+                  </div>
+                   <div class="resultdis">
+                      <span class="resultshead">参考用神</span>
+                      <span class="resultsright">{{basic.cankaoyongshen}}</span>
+                  </div>
+                  <div class="resultdis">
+                      <span class="resultshead">参考祀神</span>
+                      <span class="resultsright">{{basic.cankaojishen}}</span>
                   </div>
                 </div>
                   
@@ -78,11 +102,43 @@
 </template>
 
 <script>
-
+import { fortuneresults } from '@/api/fortunetellers/index.js'
+export default {
+    data () {
+        return {
+           basic: {
+                jieqi: {
+                    name1: '',
+                name2: ''
+                }
+                },
+          
+        }
+    },
+    methods: {
+        getData () {
+        fortuneresults(
+            this.$route.query.fortuneId
+            ).then(res => {
+           if (res.data.status == 99) {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$router.push({name: res.data.data.url})
+            }
+            this.basic = res.data.data.basic
+        })
+        
+    }
+    },
+    created () {
+        this.getData();
+        
+    }
+}
 </script>
 <style>
 .resultesstyle{
-    margin: 0.4rem;   
+    margin: 0.4rem; 
+    font-size: 0.3rem;  
 }
 .resultsone{
     margin-top: 0.4rem;
@@ -122,5 +178,8 @@
 .resultscg{
     color: #f00;
     margin: 0.2rem 0;
+}
+.jieqiresults{
+    width: 70%;
 }
 </style>

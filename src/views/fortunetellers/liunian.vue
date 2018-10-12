@@ -3,50 +3,40 @@
         <div class="liunian">
              <div class="lnian ">
                  <p>命主90年流年信息</p>
-                <div class="lnbtom">
-                  <ul class="liunianli">
-                    <li v-for="liunian in liunians" :key="liunian.index">{{liunian.text}}</li>
-                   </ul> 
-                   <ul class="liunianli">
-                    <li v-for="geng in gengs" :key="geng.index">{{geng.text}}</li>
-                   </ul>
-                </div>
-                 <div class="lnbtom">
-                  <ul class="liunianli">
-                    <li v-for="liunian in liunians" :key="liunian.index">{{liunian.text}}</li>
-                   </ul> 
-                   <ul class="liunianli">
-                    <li v-for="geng in gengs" :key="geng.index">{{geng.text}}</li>
-                   </ul>
-                </div>
-                
+                <div>
+                  <div class="liunianli">
+                    <ul v-for="liunian in liunian" :key="liunian.index" class="lnul">
+                        <li v-for="value in liunian" :key="value.index" class="lnli">{{value}}</li> 
+                    </ul>
+                   </div> 
+                </div>                
              </div>
         </div>
     </div>
 </template>
 <script>
+import { fortuneresults } from '@/api/fortunetellers/index.js'
 export default {
     data () {
         return {
-            liunians: [
-                {text: '1岁'},
-                {text: '1岁'},
-                {text: '1岁'},
-                {text: '1岁'},
-                {text: '1岁'},
-                {text: '1岁'},
-                {text: '1岁'},
-            ],
-            gengs: [
-                {text: '庚午'},
-                {text: '庚午'},
-                {text: '庚午'},
-                {text: '庚午'},
-                {text: '庚午'},
-                {text: '庚午'},
-                {text: '庚午'},
-            ]
+            liunian: []
         }
+    },
+    methods: {
+        getData () {
+            fortuneresults(
+                this.$route.query.fortuneId
+                ).then(res => {
+            if (res.data.status == 99) {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$router.push({name: res.data.data.url})
+                }
+                this.liunian = res.data.data.liunian
+            }) 
+        }
+    },
+    created () {
+        this.getData();
     }
 
 }
@@ -61,8 +51,9 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin: 0.2rem;
-    /* padding: 0.2rem 0; */
+    padding: 0.2rem 0;
     
 }
 .lnian p{
@@ -70,7 +61,10 @@ export default {
     line-height: 0.8rem;
     margin: 0.2rem;
 }
-.lnbtom{
-border-bottom:1px solid #ccc;
+.lnul{
+    border-bottom: 1px solid #ccc;
+}
+.lnli{
+    margin: 0.2rem;
 }
 </style>
