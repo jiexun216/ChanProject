@@ -1,109 +1,95 @@
 <template>
     <div class="mp">
         <div class="mingpan">
-            <ul class="mingpanhead">
-                <li v-for="shizhu in shizhus" :key="shizhu.index" class="shizhustyle">{{shizhu.text}}</li>
-            </ul>
-            <ul class="mingpanhead">
-                 <li v-for="zhenggong in zhenggong" :key="zhenggong.index" class="zhenggongstyle">{{zhenggong.text}}</li>
-            </ul>
-            <ul class="mingpanhead">
-                 <!-- <li v-for="value in ding" :key="value.index" class="zhenggongstyle">{{value}}</li> -->
-                 <li class="tianone">丁</li>
-                 <li class="tiantwo">庚</li>
-                 <li class="tianthr">庚</li>
-                 <li class="tianfour">酉</li>
-                 <li class="tianfive">天干</li>
-            </ul>
-            <ul class="mingpanhead">
-                 <li v-for="ding in dings" :key="ding.index" class="zhenggongstyle">{{ding.text}}</li>
-            </ul>
-            <ul class="mingpanhead">
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>藏干</li>
-            </ul>
-            <ul class="mingpanhead">
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>
-                   <ol>
-                      <li v-for="yitu in yitu" :key="yitu.index" class="zhenggongstyle">{{yitu.text}}</li>
-                   </ol>
-                </li>
-                <li>藏干</li>
-            </ul>
-            <ul class="mingpanhead mingpanbtom">
-                 <li v-for="zhenggong in zhenggong" :key="zhenggong.index" class="zhenggongstyle">{{zhenggong.text}}</li>
-            </ul>
-        </div>
-        <div class="mingpan">
-            <div class="mpsizhu">
-                <p class="sizhu">命盘四柱提示</p>
-                <div class="sz">
-                  <div class="szresultdis">
-                      <span class="szresultshead">天干提示</span>
-                      <span class="szresultsright"> 无和的关系 </span>
-                  </div>
-                  <div class="szresultdis">
-                      <span class="szresultshead">地支提示</span>
-                      <span class="szresultsright"> 床前明月光，疑是地上霜  </span>
-                  </div>
-                 </div>
+            <div class="mpdisplay">
+                <ul class="mingpanhead">
+                    <li v-for="shizhu in shizhus" :key="shizhu.index" class="shizhustyle">{{shizhu.text}}</li>
+                </ul>
             </div>
             
-        </div>
-        <div class="mingpan">
-                    <div class="mpsizhu">
-                        <p class="sizhu">命盘四柱提示</p>
-                        <div class="sz">
-                        <div class="szresultdis">
-                            <span class="szresultshead">天干提示</span>
-                            <span class="szresultsright"> 无和的关系 </span>
-                        </div>
-                        <div class="szresultdis">
-                            <span class="szresultshead">地支提示</span>
-                            <span class="szresultsright"> 床前明月光，疑是地上霜  </span>
-                        </div>
+            <div class="mpdisplay">
+                <!-- 时柱 -->
+            <ul class="mpnianzhu"> 
+                <li>{{shizhu.shishen}}</li>
+                <li class="tianganthr">{{shizhu.tiangan}}</li>
+                <li class="tianganthr">{{shizhu.dizhi}}</li>
+                <li>
+                    <div class="height">
+                        <div v-for="cg in scanggan" :key="cg.index">
+                            <span v-for="value in cg" :key="value">{{value}}</span>
                         </div>
                     </div>
-                    
-                </div>
+                </li>
+                <li>{{shizhu.nayin}}</li>
+                <li style="border:none;">{{shizhu.xingyun}}</li>
+            </ul>
+              <!-- 日柱 -->
+             <ul class="mpnianzhu">
+                <li style="color:#ff5d64;">{{rizhu.shishen}}</li>
+                <li class="tiangan">{{rizhu.tiangan}}</li>
+                <li class="tiangan">{{rizhu.dizhi}}</li>
+                <li>
+                    <div class="height">
+                        <div v-for="cg in rcanggan" :key="cg.index">
+                            <span v-for="value in cg" :key="value">{{value}}</span>
+                        </div>
+                    </div>
+                </li>
+                <li>{{rizhu.nayin}}</li>
+                <li style="border:none;">{{rizhu.xingyun}}</li>
+            </ul>
+               <!-- 月柱 -->
+            <ul class="mpnianzhu"> 
+                <li >{{yuezhu.shishen}}</li>
+                <li class="tianganone">{{yuezhu.tiangan}}</li>
+                <li class="tianganone">{{yuezhu.dizhi}}</li>
+                <li >
+                    <div class="height"> 
+                        <div v-for="cg in ycanggan" :key="cg.index">
+                            <span v-for="value in cg" :key="value">{{value}}</span>
+                        </div>
+                    </div>
+                </li>
+                <li>{{yuezhu.nayin}}</li>
+                <li style="border:none;">{{yuezhu.xingyun}}</li>
+            </ul>
+                 <!-- 年柱 -->
+            <ul class="mpnianzhu"> 
+                <li>{{nianzhu.shishen}}</li>
+                <li class="tiangantwo">{{nianzhu.tiangan}}</li>
+                <li class="tiangantwo">{{nianzhu.dizhi}}</li>
+                <li >
+                    <div class="height">
+                        <div v-for="cg in ncanggan" :key="cg.index">
+                            <span v-for="value in cg" :key="value">{{value}}</span>
+                        </div>
+                    </div>
+                </li>
+                <li>{{nianzhu.nayin}}</li>
+                <li style="border:none;">{{nianzhu.xingyun}}</li>
+            </ul>
+            
+            <div class="mpnianzhu"> 
+                <li>主星</li>
+                <li>天干</li>
+                <li>地支</li>
+                <li>
+                    <div  class="height">
+                        <div>
+                            <p>藏干</p>
+                        </div>
+                    </div>
+                </li>
+                <li>纳音</li>
+                <li style="border:none;">星运</li>
+            </div>
+            </div>    
+        </div>
     </div>
 </template>
 
 <script>
+import { fortuneresults } from '@/api/fortunetellers/index.js'
     export default {
         data () {
            return {
@@ -114,28 +100,40 @@
                    {text:'年柱'},
                    {text:'日期'},
                ],
-               zhenggong: [
-                   {text: '正宫'},
-                   {text: '元男'},
-                   {text: '比肩'},
-                   {text: '偏印'},
-                   {text: '主星'},
-               ],
-               
-               dings: [
-                   {text: '丁'},
-                   {text: '庚'},
-                   {text: '庚'},
-                   {text: '酉'},
-                   {text: '地支'},
-               ],
-               yitu: [
-                   {text: '已土'},
-                   {text: '已土'},
-                   {text: '已土'}
-               ]
+               nianzhu: [],
+               yuezhu: [],
+               rizhu: [],
+               shizhu: [],
+               ncanggan: [],
+               ycanggan: [],
+               rcanggan: [],
+               scanggan: []
            }
-        }
+        },
+        methods: {
+            getData () {
+        fortuneresults(
+            this.$route.query.fortuneId
+            ).then(res => {
+           if (res.data.status == 99) {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$router.push({name: res.data.data.url})
+            }
+            this.nianzhu = res.data.data.mingpan.nianzhu            
+            this.yuezhu  = res.data.data.mingpan.yuezhu
+            this.rizhu   = res.data.data.mingpan.rizhu
+            this.shizhu  = res.data.data.mingpan.shizhu
+            this.ncanggan= res.data.data.mingpan.nianzhu.canggan
+            this.ycanggan= res.data.data.mingpan.yuezhu.canggan
+            this.rcanggan= res.data.data.mingpan.rizhu.canggan
+            this.scanggan= res.data.data.mingpan.shizhu.canggan
+        })
+    }
+        },
+        created () {
+        this.getData();
+        
+    }
     }
 </script>
 
@@ -144,7 +142,6 @@
     margin: 0.4rem;
 }
 .mingpan{
-   
     width: 100%;
     box-shadow: 0 0 0.5rem #ccc;
     border-radius: 0.1rem;
@@ -154,8 +151,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
-    margin: 0.3rem;
-    padding: 0.2rem 0;
+    padding:0.2rem 0;
+    width: 100%;
 }
 .mingpanbtom{
     border: none;
@@ -165,21 +162,6 @@
 }
 .zhenggongstyle{
     font-weight: bold;
-}
-.tianone{
-    color: #0f0;
-}
-.tiantwo{
-    color: #f00;
-}
-.tianthr{
-    color: #ff0;
-}
-.tianfour{
-    color: #00f;
-}
-.tianfive{
-    color:#ccc;
 }
 .mpsizhu{
     margin: 0.4rem;
@@ -205,5 +187,32 @@
 .szresultsright{
     margin-left:0.3rem;
     line-height: 0.6rem;
+}
+.mpdisplay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.4rem;
+}
+.mpnianzhu li{
+    padding: 0.2rem 0;
+    /* border-bottom: 1px solid #ccc; */
+    text-align: center;   
+}
+.tiangan{
+    color: #44dee7;
+}
+.tianganone{
+    color: #fcdfaf;
+}
+.tiangantwo{
+    color: #fcdfaf;
+}
+.tianganthr{
+    color: #23b16c;
+}
+.height{
+    height: 1rem;
+    padding-bottom: 0.2rem;
 }
 </style>

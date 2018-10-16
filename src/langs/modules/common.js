@@ -112,6 +112,8 @@ module.exports = {
    birthyear: '出生年月',
    birthtime: '出生日期',
    birthaddress: '出生地',
+   fellback: '意见反馈',
+   liuyan:'如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！'
   },
   char: {
     home: '首頁',
@@ -225,6 +227,8 @@ module.exports = {
    birthyear: '出生年月',
    birthtime: '出生日期',
    birthaddress: '出生地',
+   fellback: '意見反饋',
+   liuyan: '如果您在網站和微商城發現任何問題，或者有更好的建議，歡迎給我們留言！'
   },
   en: {
     home: 'Home',
@@ -339,6 +343,9 @@ module.exports = {
    birthyear: 'Date of birth',
    birthtime: 'Time of birth',
    birthaddress: 'Born address',
+   fellback: 'Feedback',
+   liuyan: 'If you find any problems on the website or wechat, or have better Suggestions, please leave us a message!',
+   
   } 
   
 }

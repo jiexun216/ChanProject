@@ -37,16 +37,18 @@
         <van-tab >
              <div slot="title">评语
              </div>
-            <div class="fortunelist">
+            <!-- <div class="fortunelist">
                  <div class="fortunecon">
-                    <textarea name="" id="" cols="45" rows="10" placeholder="开始输入..." class="fortunetext"></textarea>
-                </div>
-                
+                    <textarea v-model="pingyu" cols="45" rows="10" placeholder="开始输入..." class="fortunetext"></textarea>
+                </div> 
             </div>
             <div class="fortunebtn">
-                <button class="fortunesubmit">提交</button>
-            </div>
-            
+                <button class="fortunesubmit" @click="submitpingyu()">提交</button>
+            </div> -->
+            <div class="pleaseinputs">
+            <textarea v-model="comment" cols="40" rows="8" placeholder="请输入..." class="pleasesrs"> </textarea>
+            <button type="submit" @click="submitOpinion()" class="submits" >提交</button>
+          </div>
         </van-tab>
         
         </van-tabs>
@@ -61,19 +63,40 @@ import Mingpan from '@/views/fortunetellers/mingpan'
 import Xipan from '@/views/fortunetellers/xipan'
 import Dayun from '@/views/fortunetellers/dayun'
 import Liunian from '@/views/fortunetellers/liunian'
+import { issueComment } from '@/api/fortunetellers/index.js'
 Vue.use(Tab).use(Tabs); 
 export default {
     data () {
         return {
-            active: 4,
+            active: 0,
             swipeThreshold: '',
             sm: 'common.sm',
+            comment: '',
+            fortuneId: ''
         }
     },
     methods: {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          },
+         submitOpinion () {
+             issueComment (this.comment,this.fortuneId).then(res => {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    if (res.data.status == 0) {
+                        this.$router.push({
+                          name: 'contentfortune',
+                          query: {
+                              fortuneId: this.$route.query.fortuneId
+                          }});
+                        
+                    } else if (res.data.status == 99) {
+                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$router.push({name: res.data.data.url})
+                    }
+                }).catch(err => {
+                    return err
+                })
+         }
     },
     components: {
         Results,
@@ -130,5 +153,26 @@ export default {
     border-radius: 0.2rem;
     font-size: 0.5rem;
 
+}
+.pleaseinputs{
+    text-align: center;
+    margin: 0.3rem;
+    font-size: 0.4rem;
+    color: #ccc;
+}
+.pleasesrs{
+    box-shadow: 0 0 0.4rem #ccc;
+    border: none;
+    padding: 0.2rem;
+    color: #000;
+}
+.pleaseinputs .submits{
+    width: 90%;
+    font-size: 0.5rem;
+    background: #ff525a;
+    color: #fff;
+    line-height: 1.2rem;
+    border-radius: 0.2rem;
+    margin-top: 0.6rem;
 }
 </style>

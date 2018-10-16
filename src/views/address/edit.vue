@@ -10,7 +10,7 @@
               :address-info="formData"
               show-set-default
               show-search-result
-              @save="onSave"
+              @save="onSave"   
             />    
 </div>        
 </template>
