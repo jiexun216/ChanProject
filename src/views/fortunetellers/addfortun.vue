@@ -107,7 +107,7 @@ Vue.use(NavBar);
      props: {
          show: {
         type: Boolean,
-        required: !0
+        required: false
       },
      },
      data () {
@@ -124,7 +124,7 @@ Vue.use(NavBar);
             birthtime: 'common.birthtime',
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
-            // show: false,
+            show: false,
             radio: '1',
             currentDate: new Date(),
             currentDatetime: '12:00',
@@ -267,6 +267,9 @@ Vue.use(NavBar);
                this.datavalue = picker.getValues()[0].name + picker.getValues()[1].name + picker.getValues()[2].name
         },
     },
+    created () {
+        console.log(this.show)
+    }
     
      }
 </script>

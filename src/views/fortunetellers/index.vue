@@ -25,7 +25,7 @@
                  </div>
              </div>
         </div>
-        <Add></Add>
+        <Add :show="show"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -50,7 +50,7 @@ export default {
         changeShow() {
             this.show = true
         },
-        handlechangeYincang(boole) {
+        handlechangeYincang(boole) { 
             this.show = boole
         },
         onClickLeft () {
