@@ -79,14 +79,16 @@ export default {
             this.$router.push({path: '/Index'})
          },
          submitOpinion () {
-             issueComment (comment,fortuneId).then(res => { 
+              let comment = this.comment
+              let fortuneId = this.fortuneId
+             issueComment (comment,fortuneId).then(res => {    
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 0) {
                         this.$router.push({
                           name: 'contentfortune',
                           query: {
                               comment: '',
-                              fortuneId     
+                              fortuneId
                           }});
                     } else if (res.data.status == 99) {
                         this.$toast(res.data.message ? res.data.message : '操作失败')

@@ -104,12 +104,6 @@ Vue.use(Dialog);
 Vue.use(Icon);
 Vue.use(NavBar);
  export default {
-    //  props: {
-    //     show: {
-    //     type: Boolean,
-    //     required: !0
-    //   },
-    //  },
      data () {
         return {
             nobirth: 'common.nobirth',
@@ -124,6 +118,7 @@ Vue.use(NavBar);
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
             show: false,
+            radio: '1',
             radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',
@@ -276,6 +271,9 @@ Vue.use(NavBar);
                this.datavalue = picker.getValues()[0].name + picker.getValues()[1].name + picker.getValues()[2].name
         },
     },
+    created () {
+        console.log(this.isshow)
+    }
     
      }
 </script>
