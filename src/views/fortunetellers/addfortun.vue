@@ -104,12 +104,6 @@ Vue.use(Dialog);
 Vue.use(Icon);
 Vue.use(NavBar);
  export default {
-     props: {
-         show: {
-        type: Boolean,
-        required: false
-      },
-     },
      data () {
         return {
             nobirth: 'common.nobirth',
@@ -277,7 +271,7 @@ Vue.use(NavBar);
         },
     },
     created () {
-        console.log(this.show)
+        console.log(this.isshow)
     }
     
      }

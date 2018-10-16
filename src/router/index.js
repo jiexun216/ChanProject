@@ -31,6 +31,7 @@ import CartList from '@/views/cart/list'
 import CartSettlement from "@/views/cart/settlement"
 import CartEdit from "@/views/cart/edit"
 import FortuneIndex from '@/views/fortunetellers/index'
+import FortuneNoLog from '@/views/fortunetellers/no-fortune-log'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
 import Results from '@/views/fortunetellers/results'
 Vue.use(Router)
@@ -179,6 +180,11 @@ export default new Router({
       name: 'fortuneTellers',
       path: '/fortunetellers/index',
       component: FortuneIndex
+    },
+    {
+      name: 'fortuneNoLog',
+      path: '/fortunetellers/no-fortune-log',
+      component: FortuneNoLog
     },
     // 算命基本、命盘等
     {

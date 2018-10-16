@@ -6,10 +6,9 @@
             @click-left="onClickLeft"
         >
          <van-icon name="search" slot="right" />
-         <van-icon name='add-o' slot="right" />
+         <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
-        <Addfortun v-if="perlist.length == 0"></Addfortun>
-        <div class="suanming" v-else>
+        <div class="suanming">
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personaldata">
                       <h3>{{perlists.fullName}}</h3>
@@ -21,7 +20,7 @@
                  </div>
              </div>
         </div>
-        <Add  @click="changeYincang"></Add>
+        <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -42,18 +41,16 @@ export default {
              show: false,
          }
     },
-    watch: {
-        perlist () {
-            this.getData() 
-        }
-    },
     methods: {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 
-         //添加算命隐藏
-         changeYincang() {
+         showDialog () {
              this.show  = true
+         },
+         //添加算命隐藏
+         changeYincang(boolval) {
+             this.show  = boolval
          },
          //请求数据
          getData () {
@@ -61,6 +58,9 @@ export default {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
+                }
+                if (res.data.data.list.length == 0) {
+                    this.$router.push({name: "fortuneNoLog"})
                 }
                  this.perlist  = res.data.data.list
              }) 

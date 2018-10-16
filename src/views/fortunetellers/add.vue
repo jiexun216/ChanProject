@@ -98,12 +98,17 @@ Vue.use(Dialog);
 Vue.use(Icon);
 Vue.use(NavBar);
  export default {
-    //  props: {
-    //     show: {
-    //     type: Boolean,
-    //     required: !0
-    //   },
-    //  },
+     props: {
+        show: {
+        type: Boolean,
+        required: !0
+      },
+     },
+     watch: {
+         show: function (val, oldVal) {
+             console.log('new: %s, old: %s', val, oldVal)
+         },
+     },
      data () {
         return {
             nobirth: 'common.nobirth',
@@ -117,7 +122,7 @@ Vue.use(NavBar);
             birthtime: 'common.birthtime',
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
-            show: false,
+            //show: false,
             radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',
@@ -148,10 +153,6 @@ Vue.use(NavBar);
           "van-address-edit": AddressEdit
       },
      methods: {
-         getData () {
-            fortunetellers ().then(res =>{
-            })
-         },
          showAdd() {
              this.show = true;
          },
@@ -186,22 +187,12 @@ Vue.use(NavBar);
              ).then(res =>{
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   if(res.data.status === 0){
-                      this.$router.push({
-                          name: 'fortuneTellers',
-                          query: {
-                              fullName: this.$route.query.fullName,
-                              sex: this.$route.query.sex,
-                              birthDate: this.$route.query.birthDate,
-                              birthTime: this.$route.query.birthTime,
-                              birthAddress: this.$route.query.birthAddress,
-                          }
-                      })
-                      this.getData()
+                      window.location.reload()
                   }
              }) 
             } else {
               done();
-            //   this.$emit('changeYincang', false)
+              this.$emit('changeYincang', false)
               this.showTime = false
               this.showcurrentDate = false
               this.showAddress = false
