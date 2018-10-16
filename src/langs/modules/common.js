@@ -110,7 +110,7 @@ module.exports = {
    nan: '男',
    nv: '女',
    birthyear: '出生年月',
-   birthtime: '出生日期',
+   birthtime: '出生时辰',
    birthaddress: '出生地',
    fellback: '意见反馈',
    liuyan:'如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！'
@@ -225,7 +225,7 @@ module.exports = {
    nan: '男',
    nv: '女',
    birthyear: '出生年月',
-   birthtime: '出生日期',
+   birthtime: '出生時辰',
    birthaddress: '出生地',
    fellback: '意見反饋',
    liuyan: '如果您在網站和微商城發現任何問題，或者有更好的建議，歡迎給我們留言！'

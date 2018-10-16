@@ -6,7 +6,7 @@
             @click-left="onClickLeft"
         >
          <van-icon name="search" slot="right" />
-         <van-icon name='add-o' slot="right" />
+         <van-icon name='add-o' slot="right"  @click="isshow"/>
         </van-nav-bar>
         <Addfortun v-if="perlist.length == 0"></Addfortun>
         <div class="suanming" v-else>
@@ -21,7 +21,7 @@
                  </div>
              </div>
         </div>
-        <Add  @click="changeYincang"></Add>
+        <Add></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -39,7 +39,7 @@ export default {
              sm: 'common.sm',
              perlist: [],
              fortuneshow: false,
-             show: false,
+             show: true,
          }
     },
     watch: {
@@ -51,6 +51,9 @@ export default {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 
+         isshow () {
+             
+         },
          //添加算命隐藏
          changeYincang() {
              this.show  = true

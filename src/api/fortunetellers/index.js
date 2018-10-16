@@ -15,7 +15,6 @@ export function fortuneresults (fortuneId) {
     }
     return getData(url, data)
 }
-
 //添加算命的接口
 export function addfortune (fullName,sex,birthDate,birthTime,birthAddress) {
     const url = 'fortune/addFortune'
@@ -41,8 +40,8 @@ export function deleteFortune (fortuneId) {
 export function issueComment(comment,fortuneId) {
     const url = 'fortune/editComment'
     const data = {
-        comment:comment,
-        fortuneId: fortuneId
+        comment,
+        fortuneId
     }
     return postData(url, data)
 }

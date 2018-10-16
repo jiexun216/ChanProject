@@ -50,7 +50,6 @@
             <button type="submit" @click="submitOpinion()" class="submits" >提交</button>
           </div>
         </van-tab>
-        
         </van-tabs>
    </div>       
 </template>
@@ -71,8 +70,8 @@ export default {
             active: 0,
             swipeThreshold: '',
             sm: 'common.sm',
-            comment: '',
-            fortuneId: ''
+            fortuneId: '',
+            comment: ''
         }
     },
     methods: {
@@ -80,15 +79,15 @@ export default {
             this.$router.push({path: '/Index'})
          },
          submitOpinion () {
-             issueComment (this.comment,this.fortuneId).then(res => {
+             issueComment (comment,fortuneId).then(res => { 
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     if (res.data.status == 0) {
                         this.$router.push({
                           name: 'contentfortune',
                           query: {
-                              fortuneId: this.$route.query.fortuneId
+                              comment: '',
+                              fortuneId     
                           }});
-                        
                     } else if (res.data.status == 99) {
                         this.$toast(res.data.message ? res.data.message : '操作失败')
                         this.$router.push({name: res.data.data.url})
