@@ -1,12 +1,12 @@
 <template>
     <div class="fortunecontent">
-             <div>
+            <div>
                  <van-dialog
                     v-model="show"
                     :title="$t(bazi)"
                     show-cancel-button
                     :before-close="beforeClose"
-                    :save="save"
+                    :save="save"  
                     >
                     <div class="birth">
                         <span class="birthmd">
@@ -14,19 +14,20 @@
                         </span>
                          <input type="text" v-model="save.fullName" :placeholder="$t(username)">
                     </div>
-                     <van-radio-group v-model="radio" title="性别">
+                    <!-- 性别 -->
+                     <van-radio-group v-model="radioSex" title="性别" @change="handleSex">
                          <span class="birthmd">
                             {{$t(gender)}}
                         </span>
-                            <van-radio name="1" @click="one">{{$t(nan)}}</van-radio>
-                            <van-radio name="2" @click="one">{{$t(nv)}}</van-radio>   
+                            <van-radio name="男" checked>{{$t(nan)}}</van-radio>
+                            <van-radio name="女">{{$t(nv)}}</van-radio>   
                     </van-radio-group>
                      <!-- 出生年月              -->
                     <div class="birth" >
                         <span class="birthmd">
                             {{$t(birthyear)}}
                         </span>
-                        <span class="birthchoose"   @click="birthchoose" v-html="time"></span>
+                        <span class="birthchoose" @click="birthchoose" v-html="time"></span>
                     </div>
                      <!-- 出生日期 -->
                     <div class="birth">
@@ -49,7 +50,6 @@
                             type="date"
                             :min-date="minDate"
                             :max-date="maxDate" 
-                            
                             v-if="showcurrentDate"
                             @cancel="onCancel"
                             @confirm="onConfirm"
@@ -58,7 +58,7 @@
                     <!-- 出生日期 -->
                     <van-datetime-picker
                             v-model="currentDatetime"
-                            type="time"  
+                            type="time"
                             v-if="showTime"
                             @cancel="onCancel"
                             @confirm="onConfirmt"
@@ -70,13 +70,12 @@
                               @cancel= "onCancel"
                               @confirm="onConfirmth"
                               @change="onChangeth"
-                              />    
-                      
+                              />     
              </div>
         </div>
 </template>
 <script>
-    import Vue from 'vue'
+import Vue from 'vue'
 import { NavBar, Toast } from 'vant';
 import { Icon } from 'vant';
 import { Dialog } from 'vant';
@@ -87,7 +86,8 @@ import { DatetimePicker } from 'vant';
 import { Area } from 'vant';
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
-import {addfortune } from '@/api/fortunetellers/index.js'
+import {addfortune, fortunetellers } from '@/api/fortunetellers/index.js'
+import utils from '@/utils'
 Vue.use(AddressEdit);
 Vue.use(Area);
 Vue.use(DatetimePicker);
@@ -98,14 +98,16 @@ Vue.use(Dialog);
 Vue.use(Icon);
 Vue.use(NavBar);
  export default {
-     props: {
-        show: {
-        type: Boolean,
-        required: !0
-      },
-     },
+    //  props: {
+    //     show: {
+    //     type: Boolean,
+    //     required: !0
+    //   },
+    //  },
      data () {
         return {
+            nobirth: 'common.nobirth',
+            add: 'common.add',  
             bazi: 'common.bazi',
             name: 'common.name',
             gender: 'common.gender',
@@ -116,7 +118,7 @@ Vue.use(NavBar);
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
             show: false,
-            radio: '1',
+            radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',
             minDate: new Date(1990),
@@ -134,7 +136,7 @@ Vue.use(NavBar);
             timeth: '请选择',
             save: {
                 fullName: '',
-                sex: '',
+                sex: '男',
                 birthDate: '',
                 birthTime: '',
                 birthAddress: '',
@@ -147,14 +149,9 @@ Vue.use(NavBar);
       },
      methods: {
          getData () {
-            fortunetellers () .then(res =>{
-                console.log(res)
+            fortunetellers ().then(res =>{
             })
          },
-         onsaveadd () {
-            
-         },
-         
          showAdd() {
              this.show = true;
          },
@@ -180,7 +177,6 @@ Vue.use(NavBar);
          beforeClose(action, done) {
             if (action === 'confirm') {
                 setTimeout(done,100);
-                console.log(this.save);return false;
              addfortune (
                  this.save.fullName,
                  this.save.sex,
@@ -189,7 +185,7 @@ Vue.use(NavBar);
                  this.save.birthAddress,
              ).then(res =>{
                   this.$toast(res.data.message ? res.data.message : '操作失败')
-                  if(res.data.status = 0){
+                  if(res.data.status === 0){
                       this.$router.push({
                           name: 'fortuneTellers',
                           query: {
@@ -200,15 +196,33 @@ Vue.use(NavBar);
                               birthAddress: this.$route.query.birthAddress,
                           }
                       })
+                      this.getData()
                   }
              }) 
             } else {
-                done();
-                this.$emit('changeYincang', false)
+              done();
+            //   this.$emit('changeYincang', false)
               this.showTime = false
               this.showcurrentDate = false
               this.showAddress = false
             }
+        },
+        handleSex (value) {
+            this.save.sex = value
+        },
+        formatTime (time) {
+            if (!time) {
+                return time
+            }
+            let date = new Date(time)
+            let Year = date.getFullYear()
+            let Month = this.fillZero(date.getMonth() + 1)
+            let Day = this.fillZero(date.getDate())
+            let FormatTime = `${Year}-${Month}-${Day}`
+            return FormatTime
+        },
+        fillZero (num) {
+            return num < 10 ? `0${num}` : num
         },
         //年月日  时间的取消按钮
         onCancel() {
@@ -221,36 +235,34 @@ Vue.use(NavBar);
             this.showcurrentDate = false
             this.showTime = false
             this.showAddress = false
-            // console.log(value);return false;
-            this.time = this.datavalue
+            this.time = this.formatTime(value)
              this.save.birthDate = this.time
-        },
-        one(name) {
-            this.save.sex = this.name
-            console.log(this.name)
-
         },
         onChange(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
                this.dataTime = picker.getValues()
             console.log(this.datavalue)
         },
-        onConfirmt () {
+        //日期的确认按钮
+        onConfirmt (value) {
             this.showcurrentDate = false
             this.showTime = false
             this.showAddress = false
-            this.times = this.datavalue;
+            this.times = value;
             this.save.birthTime = this.times;
         },
         onChanget(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
             console.log(this.datavalue)
         },
-        onConfirmth () {
+        //这个是地址  
+        onConfirmth (value) {
             this.showcurrentDate = false
             this.showTime = false
             this.showAddress = false
-            this.timeth = this.datavalue;
+            this.timeth = value.map(item => {
+                return item.name
+            }).toString();
             this.save.birthAddress = this.timeth
         },
         // 控制出生地确认的按钮
@@ -333,4 +345,3 @@ Vue.use(NavBar);
 }
 
 </style>
-

@@ -3,14 +3,14 @@
        <div>
             <div class="feedtop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="stt">意见反馈</span>
+                <span class="stt">{{$t(fellback)}}</span>
           </div>
         </div>
         <div class="feed">
           <div class="pleaseinput">
-            <textarea v-model="opinion" cols="35" rows="8" :placeholder="$t(entering)" class="pleasesr"> </textarea>
-            <p>如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！</p>
-            <button type="submit" @click="submitOpinion()" class="submit">提交</button>
+            <textarea v-model="opinion" cols="45" rows="8" :placeholder="$t(entering)" class="pleasesr"> </textarea>
+            <p>{{$t(liuyan)}}</p>
+            <button type="submit" @click="submitOpinion()" class="submit">{{$t(submit)}}</button>
           </div>
           
         </div>
@@ -24,6 +24,9 @@ import { issueOpinion } from '@/api/ucenter/index.js'
         data () {
             return {
                 opinion: "",
+                fellback: 'common.fellback',
+                liuyan: 'common.liuyan',
+                submit: 'common.submit',
                 entering: 'common.placeholder.entering'
             }
         },
@@ -75,7 +78,6 @@ import { issueOpinion } from '@/api/ucenter/index.js'
 .pleasesr{
     box-shadow: 0 0 0.4rem #ccc;
     border: none;
-    font-size: 0.5rem;
     padding: 0.2rem;
     color: #000;
 }

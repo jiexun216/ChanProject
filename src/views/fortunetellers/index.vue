@@ -5,7 +5,6 @@
             left-arrow
             @click-left="onClickLeft"
         >
-
          <van-icon name="search" slot="right" />
          <van-icon name='add-o' slot="right" />
         </van-nav-bar>
@@ -13,11 +12,8 @@
         <div class="suanming" v-else>
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personaldata">
-                      <!-- <h3>姓名</h3>
-                      <span>男 | 1989.01.01 | 卯时 | 浙江省西湖区</span> -->
                       <h3>{{perlists.fullName}}</h3>
-                      <span >{{perlists.sex}}</span>
-                      <span>{{perlists.birthDate}}</span>
+                      <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
                  </div>
                  <div class="buttom">
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
@@ -25,7 +21,7 @@
                  </div>
              </div>
         </div>
-        <Add></Add>
+        <Add  @click="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -43,13 +39,22 @@ export default {
              sm: 'common.sm',
              perlist: [],
              fortuneshow: false,
-             show: false
+             show: false,
          }
+    },
+    watch: {
+        perlist () {
+            this.getData() 
+        }
     },
     methods: {
         onClickLeft () {
             this.$router.push({path: '/Index'})
          }, 
+         //添加算命隐藏
+         changeYincang() {
+             this.show  = true
+         },
          //请求数据
          getData () {
              fortunetellers().then (res => {
@@ -58,7 +63,6 @@ export default {
                     this.$router.push({name: res.data.data.url})
                 }
                  this.perlist  = res.data.data.list
-                 console.log(this.perlist)
              }) 
          },
          // 删除算命记录

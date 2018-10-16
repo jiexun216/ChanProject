@@ -24,7 +24,7 @@
                 <li style="border:none;">{{shizhu.xingyun}}</li>
             </ul>
               <!-- 日柱 -->
-             <ul class="mpnianzhu"> 
+             <ul class="mpnianzhu">
                 <li style="color:#ff5d64;">{{rizhu.shishen}}</li>
                 <li class="tiangan">{{rizhu.tiangan}}</li>
                 <li class="tiangan">{{rizhu.dizhi}}</li>

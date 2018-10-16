@@ -33,7 +33,8 @@
            </div>
        </div> -->
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
-          <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index">{{value.name}}</el-radio>
+          <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
+                    @click="$router.push({ name: 'index', query: { languageType}})">{{value.name}}</el-radio>
        </el-radio-group>
        <my-file @input="input($event)"></my-file>
    </div>    
@@ -42,6 +43,7 @@
 <script>
 import { mapState } from 'vuex'
 import myFile from '@/components/upLoadImg/myFile.vue'
+import {  getCartList } from '@/api/language/index.js'
 export default {
   data () {
     return {
@@ -56,6 +58,15 @@ export default {
     }
   },
   methods: {
+    getData () {
+      getCartList ().then( res => {
+        if (res.data.status == 99) {
+                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$router.push({name: res.data.data.url})
+                }
+                
+             }) 
+    },
     changeLang (lang) {
       this.$store.commit('SET_LANG', lang)
       this.$i18n.locale = lang

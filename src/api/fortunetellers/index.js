@@ -2,9 +2,7 @@ import {postData,getData} from '../api.js'
 //算命列表接口
 export function fortunetellers () {
     const url = 'fortune/list'
-    const data = {
-            
-    }
+    const data ={}
     return getData(url, data)
 }
 
@@ -38,4 +36,13 @@ export function deleteFortune (fortuneId) {
         fortuneId
     }
     return postData(url,data)
+}
+//意见反馈接口
+export function issueComment(comment,fortuneId) {
+    const url = 'fortune/editComment'
+    const data = {
+        comment:comment,
+        fortuneId: fortuneId
+    }
+    return postData(url, data)
 }
