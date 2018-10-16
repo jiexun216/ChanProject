@@ -119,6 +119,7 @@ Vue.use(NavBar);
             username:'common.placeholder.username',
             show: false,
             radio: '1',
+            radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',
             minDate: new Date(1990),
