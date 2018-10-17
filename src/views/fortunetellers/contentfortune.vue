@@ -62,7 +62,7 @@ import Mingpan from '@/views/fortunetellers/mingpan'
 import Xipan from '@/views/fortunetellers/xipan'
 import Dayun from '@/views/fortunetellers/dayun'
 import Liunian from '@/views/fortunetellers/liunian'
-import { issueComment } from '@/api/fortunetellers/index.js'
+import { issueComment,fortuneresults } from '@/api/fortunetellers/index.js'
 Vue.use(Tab).use(Tabs); 
 export default {
     data () {
@@ -71,25 +71,36 @@ export default {
             swipeThreshold: '',
             sm: 'common.sm',
             fortuneId: '',
-            comment: ''
+            comment: '',
+            perlists: []
         }
     },
     methods: {
+        getData () {
+        fortuneresults(
+            this.$route.query.fortuneId
+            ).then(res => {
+           if (res.data.status == 99) {
+                this.$toast(res.data.message ? res.data.message : '操作失败')
+                this.$router.push({name: res.data.data.url})
+            }
+            this.comment = res.data.data.pingyu
+        })
+        },
         onClickLeft () {
             this.$router.push({path: '/Index'})
          },
          submitOpinion () {
-              let comment = this.comment
-              let fortuneId = this.fortuneId
+            let comment = this.comment
+            let fortuneId =  this.$route.query.fortuneId
              issueComment (comment,fortuneId).then(res => {    
                     this.$toast(res.data.message ? res.data.message : '操作失败')
+                    console.log(fortuneId)
                     if (res.data.status == 0) {
-                        this.$router.push({
-                          name: 'contentfortune',
-                          query: {
-                              comment: '',
-                              fortuneId
-                          }});
+                        this.$router.push({name: 'contentfortune',
+                        query: {
+                            fortuneId: fortuneId
+                        }});
                     } else if (res.data.status == 99) {
                         this.$toast(res.data.message ? res.data.message : '操作失败')
                         this.$router.push({name: res.data.data.url})
@@ -97,7 +108,10 @@ export default {
                 }).catch(err => {
                     return err
                 })
-         }
+         },    
+    },
+    created () {
+        this.getData();
     },
     components: {
         Results,

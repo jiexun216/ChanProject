@@ -2,7 +2,8 @@ import {postData,getData} from '../api.js'
 //算命列表接口
 export function fortunetellers () {
     const url = 'fortune/list'
-    const data ={}
+    const data ={
+    }
     return getData(url, data)
 }
 

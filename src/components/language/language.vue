@@ -34,7 +34,7 @@
        </div> -->
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
           <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
-                    @click="$router.push({ name: 'index', query: { languageType}})">{{value.name}}</el-radio>
+                     :click="languaging(index)">{{value.name}} </el-radio>
        </el-radio-group>
        <my-file @input="input($event)"></my-file>
    </div>    
@@ -58,13 +58,15 @@ export default {
     }
   },
   methods: {
+    languaging () {
+      console.log(this.radio2)
+    },
     getData () {
       getCartList ().then( res => {
         if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
-                    this.$router.push({name: res.data.data.url})
-                }
-                
+                    this.$router.push({name: "index"})
+                }  
              }) 
     },
     changeLang (lang) {

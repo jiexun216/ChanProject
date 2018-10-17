@@ -156,9 +156,6 @@ export default {
   border-bottom: 1px solid #f0f0f0;
   position: relative;
 }
-.login-tell input{
-  width: 70%;
-}
 .tel {
   line-height: 0.7rem;
   font-size: 0.4rem;

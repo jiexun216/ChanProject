@@ -19,8 +19,7 @@
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
                     <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
                  </div>
-                 </div>
-                 
+                 </div> 
              </div>
         </div>
         <Add :show="show"  @changeYincang="changeYincang"></Add>
@@ -57,13 +56,10 @@ export default {
          },
          //请求数据
          getData () {
-             fortunetellers().then (res => {
+             fortunetellers ().then (res => {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
-                }
-                if (res.data.data.list.length == 0) {
-                    this.$router.push({name: "fortuneNoLog"})
                 }
                  this.perlist  = res.data.data.list
              }) 
