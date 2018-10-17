@@ -9,7 +9,7 @@
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tell">
-         <label for="" class="space">{{$t(username)}}</label>
+         <label  class="space">{{$t(username)}}</label>
          <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)" :maxlength="11">
      </div>
      <div class="login-tell">
@@ -152,9 +152,6 @@ export default {
 .login-tell input{
   font-size: 0.3rem;
   width: 70%;
-}
-.space {
-  margin-right: 0.5rem;
 }
 .tel {
   line-height: 0.7rem;

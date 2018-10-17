@@ -122,7 +122,7 @@ Vue.use(NavBar);
             birthtime: 'common.birthtime',
             birthaddress: 'common.birthaddress',
             username:'common.placeholder.username',
-            //show: false,
+            show: false,
             radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',

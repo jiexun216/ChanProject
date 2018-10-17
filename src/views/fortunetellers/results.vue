@@ -70,15 +70,15 @@
                       <span class="resultshead">重量</span>
                       <span class="resultsright"> {{basic.weight}}</span>
                   </div>
-                   <div class="resultdis">
+                   <!-- <div class="resultdis">
                       <span class="resultshead">评语</span>
                       <span class="resultsright">{{basic.comment}}</span>
-                  </div>
+                  </div> -->
                 </div>
                   
             </div>
       </div>
-       <div class="resultsone">
+       <!-- <div class="resultsone">
             <div class="resultscon">
                 <div style="margin:0.4rem;">
                     <p class="resultscg">五行信息</p>
@@ -94,10 +94,9 @@
                       <span class="resultshead">参考祀神</span>
                       <span class="resultsright">{{basic.cankaojishen}}</span>
                   </div>
-                </div>
-                  
+                </div>  
             </div>
-      </div>
+      </div> -->
    </div>    
 </template>
 

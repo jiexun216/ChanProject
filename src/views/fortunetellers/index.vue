@@ -10,7 +10,8 @@
         </van-nav-bar>
         <div class="suanming">
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
-                 <div class="personaldata">
+                 <div class="personalstyle">
+                    <div class="personaldata">
                       <h3>{{perlists.fullName}}</h3>
                       <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
                  </div>
@@ -18,6 +19,7 @@
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
                     <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
                  </div>
+                 </div> 
              </div>
         </div>
         <Add :show="show"  @changeYincang="changeYincang"></Add>
@@ -54,13 +56,10 @@ export default {
          },
          //请求数据
          getData () {
-             fortunetellers().then (res => {
+             fortunetellers ().then (res => {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
-                }
-                if (res.data.data.list.length == 0) {
-                    this.$router.push({name: "fortuneNoLog"})
                 }
                  this.perlist  = res.data.data.list
              }) 
@@ -114,7 +113,6 @@ export default {
 }
 .suanming{
     border: 1px solid #ccc;
-    border-bottom: 0.2rem solid #ccc;
 }
 .buttom{
     display: flex;
@@ -132,6 +130,9 @@ export default {
 .butcolor{
     color: #f00;
     border: 1px solid #f00;
+}
+.personalstyle{
+    border-bottom: 0.1rem solid #ccc;
 }
 .personaldata{
     margin: 0.4rem;
