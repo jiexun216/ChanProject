@@ -18,7 +18,7 @@
        </div>
        <div class="xipanstyle">
            <div class="xipantop">
-               <p >点击大运和流年的干支可去切换到上面</p>
+               <!-- <p >点击大运和流年的干支可去切换到上面</p> -->
               <ul class="xipanitem xipanbtom">
                   <ul v-for="item in liunian" :key="item.index" class="xpul">
                    <li v-for="value in item" :key="value.index" class="xpli">{{value}}</li>
