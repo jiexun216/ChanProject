@@ -95,6 +95,7 @@
                     @add-cart="onAddToCart"
                         />       
 
+
                         
    </div> 
 </template>
