@@ -21,6 +21,7 @@ import { Toast } from "mint-ui";
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
 import { getAddressInfo,saveAddressInfo } from "@/api/address/index.js";
+Vue.use(AddressEdit);
 export default {
   components: {
     "van-address-edit": AddressEdit
