@@ -136,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .orderdetop {
   font-size: 0.4rem;
   width: 100%;
@@ -220,7 +220,7 @@ export default {
 .van-popup{
    width: 100%;
    /* height: 4rem; */
-   text-align: center;
+   /* text-align: center; */
 }
 .el-button--text{
   color: #000;
