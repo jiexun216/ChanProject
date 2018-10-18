@@ -219,7 +219,7 @@ export default {
 }
 .van-popup{
    width: 100%;
-   height: 4rem;
+   /* height: 4rem; */
    text-align: center;
 }
 .el-button--text{
