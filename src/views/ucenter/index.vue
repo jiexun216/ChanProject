@@ -2,11 +2,13 @@
     <div v-if="loading">
         <div class="personal-top">
             <div class="members clearfloat">
-                 <img src="../../assets/img/24.png"  class="membersimg">
+                 <!-- <img src="../../assets/img/24.png"  class="membersimg"> -->
              </div>
             <div class="member">  
                 <div class="loginafter">
-                    <i class="memberImg"><img :src="personalitem.memberData.headImg" />
+                    <i class="memberImg">
+                        <!-- <img :src="personalitem.memberData.headImg" /> -->
+                        <img src="../../assets/img/tx.png" alt="">
                                          </i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>
@@ -17,7 +19,7 @@
             <div class="order">
                  <div class="orderitem">
                         <span>{{$t(myorder)}}</span>
-                        <span @click="allorder">{{$t(allorders)}} ＞</span>
+                        <span @click="allorder">{{$t(allding)}} ＞</span>
                  </div>
             </div>
             <div class="shoppitem">
@@ -88,7 +90,7 @@ export default {
                  couponCount:'',
              },
              myorder: 'common.myorder',
-             allorders: 'common.allorder',
+             allding: 'common.allorders',
              waitpay: 'common.waitpay',
              waitgoods: 'common.waitgoods',
              completed: 'common.completed',
@@ -108,6 +110,7 @@ export default {
                      this.$router.push({name: res.data.data.url})
                  }
                  this.personalitem =res.data.data;
+                 console.log( this.personalitem)
                  this.memberData = res.data.data.memberData
                  this.loading = true;
              }).catch(err => {

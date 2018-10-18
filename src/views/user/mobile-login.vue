@@ -38,7 +38,7 @@
             {{$t(userpwd)}}
          </router-link>
      </div> 
-     <div class="otherLogin">
+     <!-- <div class="otherLogin">
           <div class="icons">
             <i class="icon weixin"></i>
             <p class="name">{{$t(wx)}}</p>
@@ -51,7 +51,7 @@
             <i class="icon weibo"></i>
             <p class="name">{{$t(wb)}}</p>
           </div>
-     </div>
+     </div> -->
   </div>
 </template>
 

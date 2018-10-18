@@ -1,10 +1,10 @@
 <template>
-   <div>
+   <div style="margin-top:0.2rem;">
       <div class="theLogin-top">
           <p @click="$router.back(-1)" slot="left" class="theLogin-back"></p>
       </div>
       <div class="fastLogin">
-        <p class="faLogin">{{$t(phoneretrieval)}}</p>
+        <!-- <p class="faLogin">{{$t(phoneretrieval)}}</p> -->
         <p class="faLogin-more">{{$t(retrpwd)}}</p>
      </div>
      <div class="login-tell">

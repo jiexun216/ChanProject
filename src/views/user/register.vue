@@ -26,7 +26,7 @@
          <p class="cli-login" @click="memberRegister">{{$t(register)}}</p>
          <!-- <span class="agree-reg">点击注册按钮代表您已同意“<span class="agree-color">用户协议</span>”</span> -->
      </div> 
-     <div class="otherLogin">
+     <!-- <div class="otherLogin">
           <div class="icons">
             <i class="icon weixin"></i>
             <p class="name">{{$t(wx)}}</p>
@@ -39,7 +39,7 @@
             <i class="icon weibo"></i>
             <p class="name">{{$t(wb)}}</p>
           </div>
-     </div>
+     </div> -->
   </div>   
 </template>
 <script>

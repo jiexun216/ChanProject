@@ -34,9 +34,10 @@
        </div> -->
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
           <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
-                     :click="languaging(index)">{{value.name}} </el-radio>
+                     :click="languaging(index)">{{value.name}}
+          </el-radio>
        </el-radio-group>
-       <my-file @input="input($event)"></my-file>
+       <!-- <my-file @input="input($event)"></my-file> -->
    </div>    
 </template>
 

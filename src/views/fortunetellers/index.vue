@@ -5,10 +5,11 @@
             left-arrow
             @click-left="onClickLeft"
         >
-         <van-icon name="search" slot="right" />
+         <!-- <van-icon name="search" slot="right" /> -->
          <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
-        <div class="suanming">
+        <Addfortun v-if="perlist.length == 0"></Addfortun>
+        <div class="suanming" >
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
                     <div class="personaldata">

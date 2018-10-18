@@ -273,4 +273,12 @@ export default {
   position: fixed;
   bottom: 0;
 }
+.van-popup--bottom{
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  right:auto;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+}
  </style>
