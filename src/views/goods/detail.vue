@@ -488,12 +488,4 @@ Vue.use(Sku)
 .van-button--bottom-action{
     background: #ff525a;
 }
-.van-popup--bottom{
-    width:100%;
-    top: auto;
-    bottom:0;
-    right: auto;
-    left:50%;
-    transform: translate3d(-50%,0,0);
-}
 </style>
