@@ -11,7 +11,7 @@
               show-set-default
               show-search-result
               @save="onSave"   
-            />    
+            /> 
 </div>        
 </template>
 
@@ -165,7 +165,7 @@ export default {
 .orderaddress{
   font-size: 0.45rem;
 }
-.recipi {
+/* .recipi {
   border-top: 1px solid #ccc;
   padding: 0.4rem;
 }
@@ -216,13 +216,13 @@ export default {
 }
 .closeaddress span a {
   color: #f00;
-}
+} */
 /* .van-popup{
    width: 100%;
    height: 4rem;
    text-align: center;
 } */
-.el-button--text{
+/* .el-button--text{
   color: #000;
   margin-right: 0.4rem;
 }
@@ -272,5 +272,5 @@ export default {
   width: 100%;
   position: fixed;
   bottom: 0;
-}
+} */
  </style>

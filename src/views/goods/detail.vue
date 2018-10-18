@@ -52,7 +52,9 @@
                             <van-tab  >
                                 <div slot="title">{{$t(twdetails)}}
                                 </div>
-                                <div class="goodstu" v-html="goodsInfos.content">
+                                <div class="goodstu" >
+                                    <div v-html="goodsInfos.content">
+                                    </div>
                                 </div>
                             </van-tab>
                             <van-tab  >
