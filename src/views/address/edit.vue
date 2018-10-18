@@ -116,7 +116,7 @@ export default {
     // 添加地址链接 zhangjie 0919
     addAddressHandle () {
       this.$router.push({
-        name:'addressEdit',
+        name:'s',
         query: {
           buyType: this.$route.query.buyType,
           cartIds: this.$route.query.cartIds,
@@ -274,17 +274,18 @@ export default {
    width: 100%;
    /* height: 4rem; */
    text-align: center;
-   overflow-y: 0;
+   /* overflow-y: auto; */
    position: fixed;
-    max-height: 100%;
-
+   max-height: 100%;
 }
 .van-popup--bottom{
-      width: 100%;
+    position:fixed;
+    width: 100%;
+    top: auto;
     bottom: 0;
     right: auto;
     left: 50%;
-    -webkit-transform: translate3d(-50%,0,0);
-    transform: translate3d(-50%,0,0);
+    /* -webkit-transform: translate3d(-50%,0,0);
+    transform: translate3d(-50%,0,0); */
 }
  </style>
