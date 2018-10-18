@@ -136,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .orderdetop {
   font-size: 0.4rem;
   width: 100%;
