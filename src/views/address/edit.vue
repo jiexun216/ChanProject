@@ -218,11 +218,12 @@ export default {
 .closeaddress span a {
   color: #f00;
 } */
-/* .van-popup{
+.van-popup{
    width: 100%;
-   height: 4rem;
+   /* height: 4rem; */
    text-align: center;
-} */
+   overflow-y: 0;
+}
 /* .el-button--text{
   color: #000;
   margin-right: 0.4rem;

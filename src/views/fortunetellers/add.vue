@@ -323,14 +323,14 @@ Vue.use(NavBar);
     width: 70%;
     text-align:left;
 }
-.van-picker{
+/* .van-picker{
     z-index: 3000;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 5rem;
-}
+} */
 .van-radio{
     margin-right: 0.4rem;
 }
