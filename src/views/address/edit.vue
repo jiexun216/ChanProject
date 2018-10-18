@@ -218,12 +218,7 @@ export default {
 .closeaddress span a {
   color: #f00;
 } */
-.van-popup{
-   width: 100%;
-   /* height: 4rem; */
-   text-align: center;
-   overflow-y: 0;
-}
+
 /* .el-button--text{
   color: #000;
   margin-right: 0.4rem;
@@ -275,4 +270,21 @@ export default {
   position: fixed;
   bottom: 0;
 } */
+.van-popup{
+   width: 100%;
+   /* height: 4rem; */
+   text-align: center;
+   overflow-y: 0;
+   position: fixed;
+    max-height: 100%;
+
+}
+.van-popup--bottom{
+      width: 100%;
+    bottom: 0;
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,0,0);
+    transform: translate3d(-50%,0,0);
+}
  </style>
