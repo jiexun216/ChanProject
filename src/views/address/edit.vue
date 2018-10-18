@@ -217,11 +217,11 @@ export default {
 .closeaddress span a {
   color: #f00;
 }
-.van-popup{
+/* .van-popup{
    width: 100%;
-   /* height: 4rem; */
+   height: 4rem;
    text-align: center;
-}
+} */
 .el-button--text{
   color: #000;
   margin-right: 0.4rem;
@@ -272,13 +272,5 @@ export default {
   width: 100%;
   position: fixed;
   bottom: 0;
-}
-.van-popup--bottom{
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  right:auto;
-  left:50%;
-  transform: translate3d(-50%,0,0);
 }
  </style>

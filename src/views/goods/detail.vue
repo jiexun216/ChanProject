@@ -84,7 +84,7 @@
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
             <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
-        <van-sku
+        <!-- <van-sku
                     v-model="showBase"
                     :sku="sku"
                     :goods="goods"
@@ -93,9 +93,18 @@
                     :show-add-cart-btn = "showAddCartBtn"
                     @buy-clicked="onBuyClicked"
                     @add-cart="onAddToCart"
-                        />       
+                        />        -->
 
-
+       <van-sku
+            v-model="showBase"
+            :sku="sku"
+            :goods="goods"
+            :goods-id="goodsId"
+            :hide-stock="sku.hide_stock"
+            :show-add-cart-btn = "showAddCartBtn"
+            @buy-clicked="onBuyClicked"
+            @add-cart="onAddToCart"
+            /> 
                         
    </div> 
 </template>
