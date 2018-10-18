@@ -250,7 +250,7 @@ Vue.use(Sku)
     }
 </script>
 
-<style>
+<style scoped>
 .details-top{
     text-align: center;
 }
