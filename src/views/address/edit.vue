@@ -139,13 +139,13 @@ export default {
         }
       })
     },
-      created() {
+    },
+    created() {
         this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
         if (this.formData.id != 0) {
           this.getData();
         }
       }
-    }
 }
 </script>
 
