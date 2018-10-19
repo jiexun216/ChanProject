@@ -54,6 +54,7 @@
                             @cancel="onCancel"
                             @confirm="onConfirm"
                             @change="onChange"
+                            style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                            />
                     <!-- 出生日期 -->
                     <van-datetime-picker
@@ -63,6 +64,7 @@
                             @cancel="onCancel"
                             @confirm="onConfirmt"
                             @change="onChanget"
+                            style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                             />
                     <!-- 出生地 -->
                     <van-area :area-list="areaList"
@@ -70,6 +72,7 @@
                               @cancel= "onCancel"
                               @confirm="onConfirmth"
                               @change="onChangeth"
+                              style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                               />     
              </div>
         </div>
