@@ -23,7 +23,7 @@
                  </div> 
              </div>
         </div>
-        <!-- <Add :show="show"  @changeYincang="changeYincang"></Add> -->
+        <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
 </template>
@@ -88,6 +88,7 @@ export default {
     },
     created () {
         this.getData();
+       
     },
     components: {
        Addfortun,

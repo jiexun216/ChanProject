@@ -200,7 +200,8 @@ Vue.use(NavBar);
                               birthAddress: this.$route.query.birthAddress,
                           }
                       })
-                      this.getData()
+                      this.getData();
+                       window.location.reload(); 
                   }
              }) 
             } else {
