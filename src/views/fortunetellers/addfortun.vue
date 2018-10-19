@@ -11,7 +11,7 @@
                     :title="$t(bazi)"
                     show-cancel-button
                     :before-close="beforeClose"
-                    :save="save"  
+                    :save="save"
                     >
                     <div class="birth">
                         <span class="birthmd">
@@ -59,6 +59,7 @@
                             @cancel="onCancel"
                             @confirm="onConfirm"
                             @change="onChange"
+                            style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                            />
                     <!-- 出生日期 -->
                     <van-datetime-picker
@@ -68,6 +69,7 @@
                             @cancel="onCancel"
                             @confirm="onConfirmt"
                             @change="onChanget"
+                             style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                             />
                     <!-- 出生地 -->
                     <van-area :area-list="areaList"
@@ -75,6 +77,7 @@
                               @cancel= "onCancel"
                               @confirm="onConfirmth"
                               @change="onChangeth"
+                               style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
                               />     
              </div>
              <Footer></Footer>
@@ -338,13 +341,19 @@ Vue.use(NavBar);
     width: 70%;
     text-align:left;
 }
-.van-picker{
-    z-index: 3000;
+.van-dialog{
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5rem;
+    top: 50%;
+    left: 50%;
+    width: 85%;
+    font-size: 16px;
+    overflow: hidden;
+    -webkit-transition: .3s;
+    transition: .3s;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
 }
 .van-radio{
     margin-right: 0.4rem;

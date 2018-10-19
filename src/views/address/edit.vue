@@ -5,13 +5,20 @@
                 <span class="orderaddress">编辑/添加地址</span>
                 <span class="myorder"></span>
             </div>    
-            <van-address-edit
+            <!-- <van-address-edit
               :area-list="areaList"
               :address-info="formData"
               show-set-default
               show-search-result
               @save="onSave"   
-            /> 
+            />  -->
+            <van-address-edit
+                :area-list="areaList"
+                show-set-default
+                show-search-result
+                :address-info="formData"
+                @save="onSave"
+              />
 </div>        
 </template>
 
@@ -21,6 +28,11 @@ import { Toast } from "mint-ui";
 import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
 import { getAddressInfo,saveAddressInfo } from "@/api/address/index.js";
+import { Dialog } from 'vant';
+import { Picker } from 'vant';
+
+Vue.use(Picker);
+Vue.use(Dialog);
 Vue.use(AddressEdit);
 export default {
   components: {
@@ -270,22 +282,10 @@ export default {
   position: fixed;
   bottom: 0;
 } */
-.van-popup{
-   width: 100%;
-   /* height: 4rem; */
-   text-align: center;
-   /* overflow-y: auto; */
-   position: fixed;
-   max-height: 100%;
+.van-area{
+    border: 1px solid #eee;
+    z-index: 10000;
+    background: #fff;
 }
-.van-popup--bottom{
-    position:fixed;
-    width: 100%;
-    top: auto;
-    bottom: 0;
-    right: auto;
-    left: 50%;
-    /* -webkit-transform: translate3d(-50%,0,0);
-    transform: translate3d(-50%,0,0); */
-}
+
  </style>
