@@ -8,7 +8,7 @@
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
                 <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
-                       @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}" @onkeypress="EnterPress(event)"/>
+                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -129,9 +129,9 @@ export default {
         })
     },
     // 搜索商品
-    searchGoods(e) { 
-      var a=e||window.event
-      var e = event ? event:(window.event ? window.event: null);
+    searchGoods(e,$event) { 
+      var event=e||window.event
+      var event = event ? event:(window.event ? window.event: null);
       if (event.keyCode == 13) {     
         event.preventDefault();
         this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
@@ -144,8 +144,6 @@ export default {
       }
       document.onkeydown = function (event) {
 	    	e = event ? event : (window.event ? window.event : null);
-      // var currKey = 0;
-      // currKey = e.keyCode || e.which || e.charCode;
       if (e == 13){
         this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
       }
@@ -159,24 +157,12 @@ export default {
     }
 
     },
-    EnterPress (e) {
-      var e = e || window.event;
-      if(e.keyCode == 13){
-        this.$router.push({name: 'goodsList' , query: {keyword: this.keyword}})
-      }
-      if(e.target.value == ""){
-        this.$router.push({
-          path: '/'
-        });
-        this.$toast("请输入搜索内容")
-      }
-    },
     goPage(page) {
       this.$store.commit("getPage", page);
     },
-    searchleft (data) {
-        this.Iscenter = false
-      }
+    searchleft (data,$event,e) {
+      this.Iscenter = false;
+    },
   },
   created() {
     this.getData()
@@ -186,7 +172,6 @@ export default {
     if (this.lang === 'english') this.language = 'english'
     else if (this.lang === 'character') this.language = '繁體中文'
     else this.language = '简体中文'
-    
   },
   computed: {
       ...mapState(['lang'])
