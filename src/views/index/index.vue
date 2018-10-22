@@ -8,7 +8,7 @@
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
                 <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
-                       @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
+                       @click="searchleft" :class="{'search': Iscenter,'searchleft': !Iscenter}" @onkeypress="EnterPress(event)"/>
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -28,13 +28,8 @@
             </ul>
         </div>
        <div class="swiper-container" >
-        <!-- <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
-            <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
-               <img :src="banner.picture" style="width:100%"> 
-            </el-carousel-item >
-        </el-carousel> -->
         <van-swipe :autoplay="3000" :showIndicators='false'>
-          <van-swipe-item v-for="banner in bannerList" :key="banner.index">
+          <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
             <img :src="banner.picture" style="width:100%;">
           </van-swipe-item>
         </van-swipe>
@@ -118,7 +113,8 @@ export default {
       more: 'common.more',
       gobuy: 'common.gobuy',
       allsearch: 'common.placeholder.allsearch',
-      Iscenter: true
+      Iscenter: true,
+      autoplay: true
     };
   },
   methods: {
@@ -133,33 +129,64 @@ export default {
         })
     },
     // 搜索商品
-    searchGoods() {
-      if (event.keyCode == 13) {
+    searchGoods(e) { 
+      var a=e||window.event
+      var e = event ? event:(window.event ? window.event: null);
+      if (event.keyCode == 13) {     
         event.preventDefault();
         this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
       }
       if (event.target.value == "") {
         this.$router.push({
-          path: "index"
+         path: '/'
         });
         this.$toast("请输入搜索内容");
+      }
+      document.onkeydown = function (event) {
+	    	e = event ? event : (window.event ? window.event : null);
+      // var currKey = 0;
+      // currKey = e.keyCode || e.which || e.charCode;
+      if (e == 13){
+        this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
+      }
+      if(e.target.value == ""){
+        this.$router.push({
+          path: '/'
+          
+        });
+        this.$toast("请输入搜索内容")
+      }
+    }
+
+    },
+    EnterPress (e) {
+      var e = e || window.event;
+      if(e.keyCode == 13){
+        this.$router.push({name: 'goodsList' , query: {keyword: this.keyword}})
+      }
+      if(e.target.value == ""){
+        this.$router.push({
+          path: '/'
+        });
+        this.$toast("请输入搜索内容")
       }
     },
     goPage(page) {
       this.$store.commit("getPage", page);
     },
     searchleft (data) {
-        this.Iscenter = !this.Iscenter
+        this.Iscenter = false
       }
   },
   created() {
     this.getData()
   },
-
-  mounted() {
+  
+  mounted(e) {
     if (this.lang === 'english') this.language = 'english'
     else if (this.lang === 'character') this.language = '繁體中文'
     else this.language = '简体中文'
+    
   },
   computed: {
       ...mapState(['lang'])
@@ -195,7 +222,7 @@ a {
 .index-search {
   background: #f5f5f5;
   border-radius: 0.5rem;
-  width: 68%;
+  width: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,6 +232,7 @@ a {
   width: 68%;
   text-align: center;
   font-size: 0.3rem;
+  z-index: 1000;
 }
 .searchleft{
   text-align: left;

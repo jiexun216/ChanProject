@@ -33,7 +33,7 @@
    break 
    case 'common.telling': this.$router.push('/fortunetellers/index') 
    break 
-   case 'common.cart': this.$router.push('/cart/list') 
+   case 'common.cart': this.$router.push('/cart/list')
    break 
    case 'common.personal': this.$router.push('/ucenter/index') 
    break 

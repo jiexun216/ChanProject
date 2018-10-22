@@ -73,7 +73,7 @@
                               @confirm="onConfirmth"
                               @change="onChangeth"
                               style="z-index:100000;position:fixed;bottom:0;top:auto;width:100%;"
-                              />     
+                              />
              </div>
         </div>
 </template>
@@ -337,5 +337,7 @@ Vue.use(NavBar);
 .van-radio{
     margin-right: 0.4rem;
 }
-
+.van-dialog__confirm, .van-dialog__confirm:active{
+    color: #f00
+}
 </style>

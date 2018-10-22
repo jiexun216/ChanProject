@@ -1,13 +1,13 @@
 <template>
      <div>
         <div class="index-top">
-            <span class="language">
+            <span class="language" style="font-size: 10px">
                 <router-link to="/language">
                    EN</router-link>
             </span>
             <div class="index-search" > 
                 <i class="icon search-bg"></i>
-                <input type="search" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"  >
+                <input type="search" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods" style="-webkit-user-select:auto;" >
             </div>
             <div>
                 <router-link to="/Message">
@@ -167,6 +167,7 @@ import Footer from './footer'
 }
 .language{
    margin: 0.3rem;  
+   
 }
 .index-search{
     background: #f5f5f5;
@@ -177,6 +178,8 @@ import Footer from './footer'
     line-height:0.8rem;
     width:80%;
     text-align: left;
+    -webkit-user-select:auto;
+    user-select: auto;
 }
 .icon{
   display:inline-block;

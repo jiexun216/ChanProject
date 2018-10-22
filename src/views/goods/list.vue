@@ -5,7 +5,7 @@
          <div class="search-header">
          <div class="search-top">
            <i class="search-icon search-bg"></i>
-           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" >      
+           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
