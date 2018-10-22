@@ -1,7 +1,7 @@
 <template>
     <div>
      <div class="theLogin-top">
-        <p class="theLogin-close"></p>  
+        <p class="theLogin-close" @click="$router.push({path: '/'})"></p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">

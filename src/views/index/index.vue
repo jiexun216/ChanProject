@@ -28,7 +28,7 @@
             </ul>
         </div>
        <div class="swiper-container" >
-        <van-swipe :autoplay="3000" :showIndicators='false'>
+        <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='3000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
             <img :src="banner.picture" style="width:100%;">
           </van-swipe-item>
@@ -159,7 +159,7 @@ export default {
     },
     goPage(page) {
       this.$store.commit("getPage", page);
-    },
+    }, 
     searchleft (data,$event,e) {
       this.Iscenter = false;
     },
