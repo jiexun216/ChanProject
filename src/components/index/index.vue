@@ -171,13 +171,13 @@ import Footer from './footer'
 }
 .index-search{
     background: #f5f5f5;
-    border-radius: 0.5rem;
+    border-radius: 15px;
     width: 80%;
 }
 .search{
-    line-height:0.8rem;
-    width:80%;
+    line-height:25px;
     text-align: left;
+    font-size: 12px;
     -webkit-user-select:auto;
     user-select: auto;
 }

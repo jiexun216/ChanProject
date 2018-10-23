@@ -8,18 +8,18 @@
         <p class="faLogin">{{$t(creat)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
-     <div class="login-tell">
+     <div class="login-tellre">
          <input type="text" class="tel" v-model="telephone" :placeholder="$t(userphone)">
          <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
          <!-- <span class="restsend" >重新发送(<span>30</span>s)</span> -->
      </div>
-      <div class="login-tell">
+      <div class="login-tellre">
          <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">
      </div>
-     <div class="login-tell">
+     <div class="login-tellre">
          <input type="password" class="yzm" v-model="password" :placeholder="$t(userpwd)">
      </div>
-     <div class="login-tell">
+     <div class="login-tellre">
          <input type="password" class="yzm" v-model="fpassword" :placeholder="$t(resetpwd)">
      </div>
      <div class="click-login"> 
@@ -181,7 +181,7 @@ import { messageSend, registerMember } from '@/api/user/index.js'
   color:#999999;
   line-height: 1rem;
 }
-.login-tell{
+.login-tellre{
   margin: 0.4rem;
   font-size: 0.4rem;
   line-height:0.7rem;

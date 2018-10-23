@@ -19,11 +19,12 @@
    {title: 'common.telling', url: require('../assets/img/4301.png'), url_one: require('../assets/img/43.png')}, 
    {title: 'common.cart', url: require('../assets/img/4401.png'), url_one: require('../assets/img/44.png')},
    {title: 'common.personal', url: require('../assets/img/4501.png'), url_one: require('../assets/img/45.png')}
-  ]
+  ],
   }
  },
  created () {
   this.isSelect = this.$route.meta.title
+
  },
  methods: {
   selectNav (title) { 

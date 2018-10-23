@@ -5,7 +5,7 @@
                 <router-link to="/Personal">
                     <i class="back backs"></i>     
                 </router-link>
-                <span class="stt">意见反馈</span>
+                <span class="yjfk">意见反馈</span>
           </div>
         </div>
         <div class="feed">
@@ -46,7 +46,7 @@
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .yjfk {
      margin:0 auto;
      font-size: 0.5rem;
  }

@@ -5,7 +5,7 @@
                 <div @click="$router.back(-1)">
                     <i class="back backs"></i>     
                 </div>
-                <span class="stt">绑定支付宝</span>
+                <span class="bingingzfb">绑定支付宝</span>
           </div>
         </div>
         <div class="bindingwx bindingwx1">
@@ -77,7 +77,7 @@
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .bingingzfb {
      margin:0 auto;
      font-size: 0.5rem;
  }

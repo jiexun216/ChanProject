@@ -2,7 +2,7 @@
      <div>
          <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="stt">{{$t(setup)}}</span>
+            <span class="setupup">{{$t(setup)}}</span>
         </div>
         <div class="setitem">
              <div class="setitems" @click="setitemhead">
@@ -142,7 +142,7 @@ import { exitLogon } from '@/api/ucenter/index.js'
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .setupup {
      margin:0 auto;
  }
  .setitem{

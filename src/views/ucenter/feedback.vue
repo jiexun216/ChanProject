@@ -3,7 +3,7 @@
        <div>
             <div class="feedtop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="stt">{{$t(fellback)}}</span>
+                <span class="fankui">{{$t(fellback)}}</span>
           </div>
         </div>
         <div class="feed">
@@ -64,7 +64,7 @@ import { issueOpinion } from '@/api/ucenter/index.js'
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .fankui {
      margin:0 auto;
      font-size: 0.5rem;
  }

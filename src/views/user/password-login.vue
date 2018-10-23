@@ -1,18 +1,18 @@
 <template>
     <div>
      <div class="theLogin-top">
-        <p class="theLogin-close"></p>  
+        <p class="theLogin-close" @click="$router.push({path: '/'})"></p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
         <p class="faLogin">{{$t(uselogin)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
-     <div class="login-tell">
+     <div class="login-tellpass">
          <label  class="space">{{$t(username)}}</label>
          <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)" :maxlength="11">
      </div>
-     <div class="login-tell">
+     <div class="login-tellpass">
          <label for="" class="space">{{$t(passwd)}}</label> 
          <input type="password" class="yzm" v-model="pwd" :placeholder="$t(userpwd)" :minlength="6" :maxlength="16">
      </div>
@@ -137,21 +137,22 @@ export default {
   color: #999999;
   line-height: 1rem;
 }
-.login-tell {
+.login-tellpass {
   margin: 0.4rem;
   font-size: 0.4rem;
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
 }
-.login-tell label{
+.login-tellpass label{
   display: inline-block;
   width: 95px;
   text-align: right;
   margin-left: -20px;
 }
-.login-tell input{
-  font-size: 0.3rem;
-  width: 70%;
+.login-tellpass input{
+  font-size: 0.3rem;   
+   /* 在找回密码页面显示正常 */
+  /* width: 70%; */
 }
 .tel {
   line-height: 0.7rem;

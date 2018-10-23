@@ -4,7 +4,7 @@
             <router-link to="/Personal">
                 <i class="back backs"></i>     
             </router-link>
-            <span class="stt">设置</span>
+            <span class="setshezhi">设置</span>
         </div>
         <div class="setitem">
              <div class="setitems" @click="setitemhead">
@@ -121,7 +121,7 @@
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .setshezhi {
      margin:0 auto;
  }
  .setitem{

@@ -5,7 +5,7 @@
                 <div  @click="$router.back(-1)">
                     <i class="back backs"></i>     
                 </div>
-                <span class="stt">{{$t(binding)}}</span>
+                <span class="bangding">{{$t(binding)}}</span>
           </div>
         </div>
         <div class="bindingwx">
@@ -78,7 +78,7 @@
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .bangding {
      margin:0 auto;
      font-size: 0.4rem;
  }

@@ -9,7 +9,7 @@
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
-        </div>
+        </div>  
      <div>
         <div class="goodsposition">
            <div class="goodsleft">

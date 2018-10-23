@@ -488,4 +488,7 @@ Vue.use(Sku)
 .van-button--bottom-action{
     background: #ff525a;
 }
+.van-dialog__confirm {
+    color: #ff525a;
+}
 </style>
