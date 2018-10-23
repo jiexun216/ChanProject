@@ -4,7 +4,7 @@
             <router-link to="/Setup">
                 <i class="back backs"></i>     
             </router-link>
-            <span class="stt">修改个人资料</span>
+            <span class="xgper">修改个人资料</span>
             <span class="deter" @click="deter">确定</span>
         </div>
         <div class="userdata"> 
@@ -55,7 +55,7 @@
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .xgper {
      margin:0 auto;
      font-size: 0.4rem;
  }

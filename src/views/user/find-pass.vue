@@ -14,7 +14,7 @@
            :placeholder="$t(userphone)">
            <div class="restsend">
              <input type="button" 
-                    style="width:100%;"
+                    style="width:100%"
                     class="sends" 
                     value=" 重新发送" 
                     v-show="sendAuthCode"
@@ -31,7 +31,7 @@
      </div>
      <div class="click-login">
         <p> 
-        <button class="cli-login" @click="nextStep">{{$t(next)}}</button>
+           <button class="cli-login" @click="nextStep">{{$t(next)}}</button>
         </p>
        
      </div>
@@ -160,6 +160,7 @@ export default {
   line-height: 0.7rem;
   font-size: 0.4rem;
   border: none;
+
 }
 .restsend {
   float: right;

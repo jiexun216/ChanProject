@@ -5,7 +5,7 @@
                 <i class="carback  carbacks" @click="$router.back(-1)"></i>     
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                    <span >{{$t(completes)}}</span>
+                    <!-- <span >{{$t(completes)}}</span> -->
                 </div>
         </div>
          <div class="cargoods">
@@ -55,7 +55,7 @@ Vue.use(Stepper);
       carts: 'common.carts',
       completes: 'common.completes',
       TotalSelection: 'common.Totalselection',
-      deletes: 'common.deletes'
+      deletes: 'common.deletes',
     }
   },
   methods: {
@@ -76,16 +76,17 @@ Vue.use(Stepper);
           data.length === this.goods.length ? this.checked = true : this.checked = false
         },
     // 删除购物车 zhangjie 0919
-    deleteCartHandle () {
+    deleteCartHandle (cartIds) {
         if (this.checkedGoods.length == 0) {
             this.$toast('请选择需要删除的商品')
             return false
         }
         var cartIds = ''
         this.checkedGoods.forEach(val => {
-            cartIds += val + ','
+            cartIds += val.id + ','
         });
         deleteCart (cartIds).then(res => {
+            
             this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
@@ -96,7 +97,8 @@ Vue.use(Stepper);
     },
     // 购物车数量修改 zhangjie 0919
     cartNumChangeHandle (cartId,goodsQuantity) {
-        changeCartQuantity (cartId, goodsQuantity).then(res => {
+         console.log(this.$route.query.cartIds)
+         changeCartQuantity (cartId, goodsQuantity).then(res => {
             this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})

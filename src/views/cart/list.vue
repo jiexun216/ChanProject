@@ -20,7 +20,7 @@
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
                     <span @click="editor">{{$t(editors)}}</span>
-                    <i class="carback carbackcoups"></i>
+                    <!-- <i class="carback carbackcoups"></i> -->
                 </div>
         </div>
         <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
@@ -124,6 +124,7 @@ Vue.use(Stepper);
       var cartIds = ''
       this.checkedGoods.forEach(val => {
         cartIds += val + ','
+        console.log(cartIds)
       });
       orderSettlement (1,cartIds,0,0,0,0).then(res => {
         this.$toast(res.data.message ? res.data.message : '操作失败')
@@ -234,7 +235,7 @@ Vue.use(Stepper);
   align-items: center;
 }
 .van-stepper__minus{
-  border-radius: 40% 0% 0% 40%; 
+  border-radius: 40% 0% 0% 40%;
   width: 30px;
 }
 .van-stepper__plus{

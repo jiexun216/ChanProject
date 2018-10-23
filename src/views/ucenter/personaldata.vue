@@ -2,7 +2,7 @@
    <div class="pertop">
       <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
-            <span class="stt">{{$t(setpersonal)}}</span>
+            <span class="setpersonal">{{$t(setpersonal)}}</span>
             <span class="deter" @click="confirmModify()">{{$t(determine)}}</span>
         </div>
         <div class="userdata"> 
@@ -22,7 +22,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
         data () {
             return {
                 nickname: '',
-                setpersonal: 'commonsetpersonal',
+                setpersonal: 'common.setpersonal',
                 determine: 'common.determine',
                 username: 'common.placeholder.username'
             }
@@ -76,7 +76,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  .backs {
    background: url(../../assets/img/42.png) no-repeat center center;
  }
- .stt {
+ .setpersonal {
      margin:0 auto;
      font-size: 0.4rem;
  }
@@ -87,16 +87,22 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
  }
  .userdata{
      width: 100%;
+     -webkit-user-select: text !important;
  }
  .userdata input{
      margin-left: 0.3rem;
-     line-height: 0.9rem;
+     height: 50px;
      font-size: 0.4rem;
+     width: 90%;
+     line-height: 50px;
+     -webkit-user-select:text;
+     -moz-user-select:text;
+     user-select:text;
  }
  .perfoot{
      background: #f7f7f7;  
      position: fixed;
-     top: 2rem;
+     top: 2.3rem;
      left: 0;
      width: 100%;
      height: 100%;

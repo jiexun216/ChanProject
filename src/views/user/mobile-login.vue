@@ -1,17 +1,17 @@
 <template>
   <div>
      <div class="theLogin-top">
-        <p class="theLogin-close" @click="$router.push({path: '/'})"></p>
+        <p class="theLogin-close" ></p>
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
         <p class="faLogin">{{$t(phone)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
-     <div class="login-tell">
+     <div class="login-tellmo">
          <input type="telephone" 
            v-model="tel"
-           class="tel" 
+           class="telmo" 
            :placeholder="$t(userphone)">
            <div class="restsend">
              <input type="button" 
@@ -27,7 +27,7 @@
                   v-model="auth_time">       
            </div>  
      </div>
-     <div class="login-tell">
+     <div class="login-telmolmo">
          <input type="text" class="yzm" v-model="yzm" :placeholder="$t(enteryzm)">
      </div>
      <div class="click-login"> 
@@ -63,7 +63,7 @@ import { rsaJsencrypt } from "@/common/js/rsa.js";
 export default {
   data () {
     return {
-        tel: '',
+        telmo: '',
         yzm: '',
         sendAuthCode:true,
         auth_time:0,
@@ -180,11 +180,16 @@ export default {
   color:#999999;
   line-height: 1rem;
 }
-.login-tell{
+.login-tellmo{
   margin: 0.4rem;
   font-size: 0.4rem;
   line-height:0.8rem;
   border-bottom:1px solid #f0f0f0;
+}
+.telmo{
+  line-height: 0.7rem;
+  font-size: 1rem;
+  border: none;
 }
 .restsend{
   float:right;

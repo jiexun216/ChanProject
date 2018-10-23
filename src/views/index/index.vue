@@ -8,7 +8,7 @@
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
                 <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
-                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
+                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}" style="-webkit-user-select:auto;-moz-user-select:auto;user-select:auto;" />
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -33,6 +33,11 @@
             <img :src="banner.picture" style="width:100%;">
           </van-swipe-item>
         </van-swipe>
+        <!-- <el-carousel tag="ul" indicator-position="none" arrow="never" :autoplay="true">
+            <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
+               <img :src="banner.picture" style="width:100%;"> 
+            </el-carousel-item >
+        </el-carousel> -->
        </div> 
         <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
@@ -142,20 +147,6 @@ export default {
         });
         this.$toast("请输入搜索内容");
       }
-      document.onkeydown = function (event) {
-	    	e = event ? event : (window.event ? window.event : null);
-      if (e == 13){
-        this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
-      }
-      if(e.target.value == ""){
-        this.$router.push({
-          path: '/'
-          
-        });
-        this.$toast("请输入搜索内容")
-      }
-    }
-
     },
     goPage(page) {
       this.$store.commit("getPage", page);
@@ -213,10 +204,10 @@ a {
   align-items: center;
 }
 .search {
-  line-height: 0.8rem;
+  line-height: 25px;
   width: 68%;
   text-align: center;
-  font-size: 0.3rem;
+  font-size: 12px;
   z-index: 1000;
 }
 .searchleft{
@@ -224,7 +215,7 @@ a {
 }
 .icon {
   display: inline-block;
-  width: 0.7rem;
+  width:  0.7rem;
   height: 0.7rem;
   background-size: cover;
   vertical-align: middle;
@@ -233,7 +224,7 @@ a {
 }
 .search-bg {
   background: url(../../assets/img/34@0.5x.png) no-repeat center center;
-  background-size: 0.5rem;
+  background-size: 0.4rem;
 }
 .notice {
   background: url(../../assets/img/53.png) no-repeat center center;

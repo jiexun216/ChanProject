@@ -30,7 +30,9 @@
                         <p class="van-card-p">套装种类</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥ 990</p>
-                            <p> <van-stepper  /></p>
+                            <p>
+                               <van-stepper  />
+                               </p>
                         </div>
                     </div>
                 </div>
