@@ -22,7 +22,7 @@
                     <span class="settx">＞</span>
                 </span>
             </div>
-             <router-link to='/Binding'>
+             <!-- <router-link to='/Binding'>
                 <div class="setitems">
                     <span>
                         {{$t(bindingz)}} </span>
@@ -31,7 +31,7 @@
                         <span class="settx">＞</span>
                     </span>
                 </div>
-             </router-link>
+             </router-link> -->
              
             <div class="setitems" @click="$router.push({name: 'ucenterFeedback'})">
                 <span>
