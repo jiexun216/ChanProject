@@ -197,7 +197,7 @@ Vue.use(Stepper);
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-right: 0.3rem;
+   padding:0.2rem;
 }
 .van-card{
     box-shadow: 0px 0px 10px 5px #fbfbfb;
@@ -224,15 +224,17 @@ Vue.use(Stepper);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;   
+    margin-top: 0.2rem;   
 }
 .van-price-p{
-  margin-right: 0.3rem;
+   color: #f00;
+   margin-right: 0.5rem;
 }
 .van-stepper{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 .van-stepper__minus{
   border-radius: 40% 0% 0% 40%;
@@ -269,5 +271,10 @@ Vue.use(Stepper);
    display: flex;
    justify-content:space-around;
    align-content:center;
+ }
+ .van-stepper__input{
+   height: 26px;
+   padding:1px;
+   line-height: 0px;
  }
 </style>

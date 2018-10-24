@@ -39,9 +39,7 @@
                 <span>
                     <span class="settx">＞</span>
                 </span>
-            </div>
-            
-             
+            </div>  
              <!-- <div class="setitems">
                  <span>
                      清理缓存 </span>
@@ -57,7 +55,6 @@
                  </span>
              </div> -->
         </div>
-
         <div class="headerpro" @touchmove.prevent v-if="headerpro"> 
             <div class="headfoot"  >
                 <p>{{$t(shot)}}</p>
@@ -69,11 +66,15 @@
             <img src="../../assets/img/outlo.png" alt="">
              <p>{{$t(exitlogon)}}</p>
         </div>
+        <my-file @input="input($event)" v-if="myfileshow"></my-file>
      </div>   
+      
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { exitLogon } from '@/api/ucenter/index.js'
+import myFile from '@/components/upLoadImg/myFile.vue'
     export default {
          data () {
              return {
@@ -88,7 +89,8 @@ import { exitLogon } from '@/api/ucenter/index.js'
                  shot: 'common.shot',
                  chooseimg: 'common.chooseimg',
                  cancel: 'common.cancelqx',
-                 exitlogon: 'common.exitlogon'
+                 exitlogon: 'common.exitlogon',
+                 myfileshow:false
              }
          },
          created () {
@@ -98,7 +100,6 @@ import { exitLogon } from '@/api/ucenter/index.js'
                      this.$router.push({name: res.data.data.url})
                  }
                   this.data = res.data.data;
-                  console.log(this.data)
              }).catch(err =>{
                   return err
              })
@@ -115,12 +116,18 @@ import { exitLogon } from '@/api/ucenter/index.js'
             },
             headdown () {
                 this.headerpro = false;
-           },
+            },
              setitemhead () {
                  this.headerpro = true;
-             },  
-         }
-         
+            }, 
+            input(val) {
+            this.photosList = val  //获取到的图片路径base64
+            } 
+         },
+         computed: {
+            ...mapState(['lang'])
+        },
+        components: {myFile}
     }
 </script>
 

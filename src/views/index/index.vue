@@ -8,7 +8,7 @@
             <div class="index-search"> 
                 <i class="icon search-bg"></i>
                 <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
-                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}" style="-webkit-user-select:auto;-moz-user-select:auto;user-select:auto;" />
+                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}" style="-webkit-user-select:text;-moz-user-select:text;user-select:text;" />
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -28,18 +28,18 @@
             </ul>
         </div>
        <div class="swiper-container" >
-        <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='3000'>
+        <!-- <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='3000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
             <img :src="banner.picture" style="width:100%;">
           </van-swipe-item>
-        </van-swipe>
-        <!-- <el-carousel tag="ul" indicator-position="none" arrow="never" :autoplay="true">
+        </van-swipe> -->
+        <el-carousel tag="ul" indicator-position="none" arrow="never" :autoplay="true" style="height:100%;">
             <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
                <img :src="banner.picture" style="width:100%;"> 
             </el-carousel-item >
-        </el-carousel> -->
+        </el-carousel>
        </div> 
-        <ul class="thatmore" style="width:100%；">
+        <!-- <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg"></i>
@@ -64,7 +64,7 @@
              </div>
              <div>{{$t(more)}}</div>
            </router-link>
-        </ul>
+        </ul> -->
 
         <div class="moregoods">
             <ul> 
@@ -202,13 +202,18 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: text !important;
 }
 .search {
+  height: 25px;
   line-height: 25px;
   width: 68%;
   text-align: center;
   font-size: 12px;
   z-index: 1000;
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  user-select:text;
 }
 .searchleft{
   text-align: left;
@@ -315,5 +320,11 @@ a {
 .moregoodsli{
   width: 100%;
   height: 100%;
+}
+.el-carousel__container{
+  position: relative;
+}
+.el-carousel__container .el-carousel__item img{
+  height:80%;
 }
 </style>

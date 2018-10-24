@@ -10,7 +10,6 @@
         </div>
          <div class="cargoods">
               <van-checkbox-group class="card-goods" @change="changeGoods" v-model="checkedGoods">
-                
                 <div class="van-card" v-for="(item,index) in goods" :key="index">
                     <van-checkbox class="card-goods__item" :name="item" ></van-checkbox>
                     <div>
@@ -20,8 +19,8 @@
                         <p>{{item.name}}</p>
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
-                            <p class="van-price-p" >￥ {{item.price}}</p>
-                            <van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" v-model="item.goodsQuantity"  />
+                            <p class="van-price-p" >￥{{item.price}}</p>
+                            <p><van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity"  /></p>
                         </div>
                     </div>
                 </div>
@@ -152,9 +151,6 @@ Vue.use(Stepper);
 .van-icon-success:before{
     content: '\F055';
 }
-.van-card{
-   background: #fff;  
-}
 .card-goods__item{
    display: flex;
    justify-content: center;
@@ -180,28 +176,37 @@ Vue.use(Stepper);
 .van-card-p{
     color: #707070;
     font-size: 0.3rem;
-    margin:0.1rem 0;
 }
 .van-card-price{
     color: #f00;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
 }
 .van-stepper{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 0.3rem;
 }
 .van-stepper__minus{
   border-radius: 40% 0% 0% 40%; 
   width: 30px;
+  height: 30px;
 }
 .van-stepper__plus{
   border-radius: 0% 40% 40% 0%; 
   width: 30px;
 }
+ .van-stepper__input{
+   height: 26px;
+   padding:1px;
+   line-height: 0px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
 .carfoot{
     width: 100%;
     height: 1.5rem;

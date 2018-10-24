@@ -7,7 +7,7 @@
             </span>
             <div class="index-search" > 
                 <i class="icon search-bg"></i>
-                <input type="search" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods" style="-webkit-user-select:auto;" >
+                <input type="text" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods" style="-webkit-user-select:auto;" >
             </div>
             <div>
                 <router-link to="/Message">
