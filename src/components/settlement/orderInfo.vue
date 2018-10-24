@@ -58,7 +58,7 @@ Vue.use(Toast)
               return {
                   orderTextStatus: false,
                   remark: '',
-                  enterxq: 'common.palceholder.enterxq'
+                  enterxq: 'common.placeholder.enterxq'
               }
           },
           // 监听
@@ -199,5 +199,6 @@ Vue.use(Toast)
 }
 .payInforight input{
     color: #000;
+    font-size: 0.3rem;
 }
 </style>

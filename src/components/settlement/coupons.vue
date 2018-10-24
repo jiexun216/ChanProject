@@ -44,9 +44,8 @@ Vue.use(Checkbox).use(CheckboxGroup);
         data () {
             return {
                 couponsheader: false,
-                checked: true,
+                checked: false,
                  radio: '1',
-
             }
         },
         props: {

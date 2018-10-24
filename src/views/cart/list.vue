@@ -33,8 +33,8 @@
                       >
                       </van-checkbox>
                   </van-checkbox-group>
-                    <div >
-                        <img :src="item.goodsCoverImg" alt="" class="van-card-img">
+                    <div>
+                         <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})">       
                     </div>
                     <div class="van-card-right">
                         <p>{{item.name}}</p>
@@ -63,6 +63,7 @@ import Vue from "vue";
 import { Checkbox, CheckboxGroup, SubmitBar, Toast } from 'vant';
 import { getCartList,orderSettlement } from '@/api/cart/index.js';
 import {deleteCart, changeCartQuantity } from '@/api/cart/index.js'
+import { getMainData } from "@/api/index/index.js";
 import { Stepper } from 'vant';
 Vue.use(Stepper);
  export default {
@@ -77,6 +78,7 @@ Vue.use(Stepper);
       checkedGoods: [],
       cartGoodsList: [],
       goodsList: [],
+      goodsListitem: [],
       goodsQuantity: 1,
       carts: 'common.carts',
       editors: 'common.editor'
@@ -102,7 +104,9 @@ Vue.use(Stepper);
           this.$router.push({name: res.data.data.url})
         }
         this.cartGoodsList  = res.data.data.list
+        console.log(this.cartGoodsList)
         this.goodsList = res.data.data.goodsList
+        
       });
     },
     // 获取商品数量

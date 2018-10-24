@@ -9,7 +9,14 @@ export function getCouponList(status) {
     return getData(url, data)
 
 }
-
+//删除过期优惠券
+export function deleteCouponList (){
+    const url = 'ucenter/deleteCoupon'
+    const data = {
+        
+    }
+    return postData(url, data)
+}
 // 取消订单 zhangjie 0911
 export function cancelOrder(orderId) {
     const url = 'Order/cancelOrder'

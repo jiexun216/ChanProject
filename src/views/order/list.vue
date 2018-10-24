@@ -10,7 +10,7 @@
        <div class="all"> 
         <span v-for="val in statusList" :class="{'active-index':status===val.key}" :title="val.title" :key="val.key" @click="handleSwitchTab(val.key)">{{val.title}}</span>
        </div>
-       <router-view></router-view>
+       <!-- <router-view></router-view> -->
        </div>
         <div class="order" v-for="(item, index) in listData" :key="'row' + index">
             <div class="timer">
@@ -35,7 +35,7 @@
                              <p class="ordername">{{orderGoodsInfo.goodsTitle}}</p>
                              <div class="ordersize">
                                 <span>{{orderGoodsInfo.skuInfo}}</span>
-                                 <!-- <span class="ordersizeright">省$1100</span> -->
+                        
                              </div>
                              <div class="ordersize">
                                 <span class="ordersizenum">￥{{orderGoodsInfo.goodsPrice}}</span>

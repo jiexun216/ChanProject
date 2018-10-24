@@ -5,10 +5,10 @@
                 <router-link to="/language">
                    {{language}}</router-link>
             </span>
-            <div class="index-search"> 
+            <div class="index-search" style="-webkit-user-select: text !important;"> 
                 <i class="icon search-bg"></i>
                 <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
-                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}" style="-webkit-user-select:text;-moz-user-select:text;user-select:text;" />
+                       @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
                 <router-link to="/ucenter/message">
@@ -27,17 +27,20 @@
                 </li>
             </ul>
         </div>
-       <div class="swiper-container" >
-        <!-- <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='3000'>
+       <div class="layout">
+        <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
             <img :src="banner.picture" style="width:100%;">
           </van-swipe-item>
-        </van-swipe> -->
-        <el-carousel tag="ul" indicator-position="none" arrow="never" :autoplay="true" style="height:100%;">
-            <el-carousel-item  v-for="banner in bannerList" :key="banner.index" tag="li">
-               <img :src="banner.picture" style="width:100%;"> 
-            </el-carousel-item >
-        </el-carousel>
+        </van-swipe>
+          <!-- <div class="banner">
+             <ul class="clearfix">
+                <li v-for="banner in bannerList" :key="banner.index" >
+                   <img :src="banner.picture">
+                </li>
+             </ul>
+          </div> -->
+
        </div> 
         <!-- <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
@@ -54,7 +57,7 @@
            </router-link>
            <router-link :to="{name:''}" tag="li"> 
              <div>
-                 <i class="icon thatmroeimg3" ></i>
+                 <i class="icon thatmroeimg3" ></img>
              </div>
              <div>{{$t(jpclass)}}</div>
            </router-link>
@@ -96,6 +99,7 @@
 </template>
 <script>
 import Vue from "vue";
+import {wcSwiper, wcSlide} from 'wc-swiper'
 import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
 import { Swipe, SwipeItem } from 'vant';
@@ -103,7 +107,9 @@ import { mapState } from 'vuex'
 Vue.use(Swipe).use(SwipeItem);
 export default {
   components: {
-    Footer
+    Footer,
+    wcSwiper,
+    wcSlide
   },
   data() {
     return {
@@ -207,7 +213,7 @@ a {
 .search {
   height: 25px;
   line-height: 25px;
-  width: 68%;
+  width: 100%;
   text-align: center;
   font-size: 12px;
   z-index: 1000;
@@ -327,4 +333,14 @@ a {
 .el-carousel__container .el-carousel__item img{
   height:80%;
 }
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
 </style>

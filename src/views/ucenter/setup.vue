@@ -90,7 +90,7 @@ import myFile from '@/components/upLoadImg/myFile.vue'
                  chooseimg: 'common.chooseimg',
                  cancel: 'common.cancelqx',
                  exitlogon: 'common.exitlogon',
-                 myfileshow:false
+                 myfileshow: true
              }
          },
          created () {
@@ -127,7 +127,9 @@ import myFile from '@/components/upLoadImg/myFile.vue'
          computed: {
             ...mapState(['lang'])
         },
-        components: {myFile}
+        components: {
+            myFile
+            }
     }
 </script>
 

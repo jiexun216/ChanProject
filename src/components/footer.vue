@@ -62,14 +62,15 @@ position: fixed;
   text-align: center; 
   cursor: pointer; 
   list-style: none;
-  padding: 0.2rem 0;
+  padding: 0.1rem 0;
 }
 .common_foot p{
-  font-size: 0.2rem;color: #7f7f7f;
+  font-size: 0.2rem;
+  color: #7f7f7f;
 }
 .common_foot img{
-     width: 0.8rem; 
-     height: 0.8rem; 
+     width: 0.7rem; 
+     height: 0.7rem; 
 }
 .common_foot .active{
   color: #f44; 

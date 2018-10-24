@@ -6,7 +6,7 @@
             </router-link>
             <span >{{$t(mycoupon)}}</span>
             <span class="myorder">
-                <i class="back backcoups"></i>
+                <i class="back backcoups" @click="delecoupon"></i>
             </span>
         </div>
         <div class="usecoupons">
@@ -28,15 +28,27 @@
                   </div>
              </div>
              <div class="couponright" v-if="item.couponStatus == 'waitingUse'">
-                   <p>{{$t(goUse)}}</p>
+                   <p @click="$router.push({path: '/Index'})">{{$t(goUse)}}</p>
              </div>
         </div>
+        <van-popup v-model="show" position="bottom">
+           <div class="delebottom">
+              <p class="deleyi" @click="deleyi">删除已过期优惠券</p>
+              <p @click="concaldele">取消</p>
+           </div>
+           <div>
+           </div>
+        </van-popup>
     </div>
 </template>
 
 <script>
+import Vue  from 'vue';
 import { Dialog } from "vant";
-import { getCouponList } from "@/api/coupon/index.js";
+import { getCouponList, deleteCouponList} from "@/api/coupon/index.js";
+import { Popup } from 'vant';
+
+Vue.use(Popup);
 export default {
   data() {
     return {
@@ -58,7 +70,8 @@ export default {
       ],
       loading: false,
       status: "waitingUse",
-      listData: []
+      listData: [],
+      show:false
     };
   },
   methods: {
@@ -73,7 +86,18 @@ export default {
         })
         .catch(err => {
           return err;
-        });
+        });  
+    },
+    postData () {
+       deleteCouponList().then(res => {
+         if(this.res.data.status == 99) {
+           this.$toast(res.data.message ? res.data.message: '操作失败')
+           this.$router.push({name:res.data.data.url})
+         }
+       })
+       .catch(err => {
+          return err
+       })
     },
     handleSwitchTab(key) {
       this.status = key;
@@ -91,10 +115,29 @@ export default {
         : "waitingUse";
       this.listData = [];
       this.getData();
+    },
+    delecoupon() {
+      this.show = true
+    },
+    concaldele () {
+      this.show = false
+    },
+    deleyi () {
+      Dialog.confirm({
+        title: '确认删除',
+        message: '确认要删除过期优惠券吗？'
+      }).then(() => {
+        this.postData()
+        this.show= false;
+         window.location.reload()
+      }).catch(() => {
+        this.show = false
+      });
     }
   },
   created () {
       this.refreshData();
+      
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -206,5 +249,15 @@ export default {
 }
 .couponman {
  margin: 0.3rem;
+}
+.delebottom{
+  text-align: center;
+  font-size: 0.4rem;
+  line-height: 1rem;
+  color: #ccc;
+}
+.deleyi{
+  border-bottom: 1px solid #eee;
+  color: #000;
 }
 </style>

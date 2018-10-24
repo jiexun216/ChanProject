@@ -84,8 +84,7 @@ Vue.use(Stepper);
         this.checkedGoods.forEach(val => {
             cartIds += val.id + ','
         });
-        deleteCart (cartIds).then(res => {
-            
+        deleteCart (cartIds).then(res => {   
             this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})

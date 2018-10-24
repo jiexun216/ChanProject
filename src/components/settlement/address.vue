@@ -19,7 +19,7 @@
     export default {
         data () {
             return {
-               defaults: 'common.default'
+               defaults: 'common.defaults'
             }
         },
         methods: {

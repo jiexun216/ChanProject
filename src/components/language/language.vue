@@ -117,6 +117,13 @@ export default {
     font-size: 0.5rem;
     line-height: 1rem;
 }
+.el-radio-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
 .el-radio {
   width: 100%;
   padding: 0 30px 20px 30px;

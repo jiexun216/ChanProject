@@ -68,11 +68,11 @@
             
             
         </div>
-        <div class="orderfooter">
+        <!-- <div class="orderfooter">
               <router-link to="/Orderdetails">
                  <span>{{$t(gopay)}}</span>
               </router-link>
-        </div>
+        </div> -->
     </div>
 </template>
 
