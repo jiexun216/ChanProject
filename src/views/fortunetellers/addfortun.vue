@@ -246,7 +246,6 @@ Vue.use(NavBar);
         onChange(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
                this.dataTime = picker.getValues()
-            console.log(this.datavalue)
         },
         //年月日 和日期是分开写的  这个是日期 的
         onConfirmt (value) {
@@ -258,7 +257,6 @@ Vue.use(NavBar);
         },
         onChanget(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
-            console.log(this.datavalue)
         },
         //这个是地址  
         onConfirmth (value) {

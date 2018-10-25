@@ -95,7 +95,6 @@ export default {
             let fortuneId =  this.$route.query.fortuneId
              issueComment (comment,fortuneId).then(res => {    
                     this.$toast(res.data.message ? res.data.message : '操作失败')
-                    console.log(fortuneId)
                     if (res.data.status == 0) {
                         this.$router.push({name: 'contentfortune',
                         query: {

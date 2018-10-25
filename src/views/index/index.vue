@@ -7,7 +7,7 @@
             </span>
             <div class="index-search" style="-webkit-user-select: text !important;"> 
                 <i class="icon search-bg"></i>
-                <input type="search" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
+                <input type="text" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
                        @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
             </div>
             <div>
@@ -40,7 +40,6 @@
                 </li>
              </ul>
           </div> -->
-
        </div> 
         <!-- <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 

@@ -95,7 +95,6 @@ Vue.use(Stepper);
     },
     // 购物车数量修改 zhangjie 0919
     cartNumChangeHandle (cartId,goodsQuantity) {
-         console.log(this.$route.query.cartIds)
          changeCartQuantity (cartId, goodsQuantity).then(res => {
             this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {

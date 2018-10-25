@@ -235,7 +235,6 @@ Vue.use(NavBar);
         onChange(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
                this.dataTime = picker.getValues()
-            console.log(this.datavalue)
         },
         //日期的确认按钮
         onConfirmt (value) {
@@ -247,7 +246,6 @@ Vue.use(NavBar);
         },
         onChanget(picker,value,index) {
                this.datavalue = picker.getValues().join('-');
-            console.log(this.datavalue)
         },
         //这个是地址  
         onConfirmth (value) {

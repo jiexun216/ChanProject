@@ -230,7 +230,7 @@ Vue.use(Sku)
                this.showBase = true;
            },
            gobuy () {
-                console.log("加入购物车")
+           
            }
         },
        components: {

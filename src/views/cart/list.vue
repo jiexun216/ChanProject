@@ -104,7 +104,6 @@ Vue.use(Stepper);
           this.$router.push({name: res.data.data.url})
         }
         this.cartGoodsList  = res.data.data.list
-        console.log(this.cartGoodsList)
         this.goodsList = res.data.data.goodsList
         
       });
@@ -114,7 +113,6 @@ Vue.use(Stepper);
           this,goodsQuantity = data
        changeCartQuantity (data,cartId, goodsQuantity).then(res => {
            this.goodsQuantity = cartId
-           console.log(this.goodsQuantity)
             this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
@@ -128,7 +126,6 @@ Vue.use(Stepper);
       var cartIds = ''
       this.checkedGoods.forEach(val => {
         cartIds += val + ','
-        console.log(cartIds)
       });
       orderSettlement (1,cartIds,0,0,0,0).then(res => {
         this.$toast(res.data.message ? res.data.message : '操作失败')

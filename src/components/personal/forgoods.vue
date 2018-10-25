@@ -56,7 +56,6 @@
        created () {
            this.$getData('order/list').then(res =>{
               this.list  = res
-              console.log(this.list)
            }).catch(err => {
                return err
            })

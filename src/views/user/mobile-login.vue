@@ -97,7 +97,6 @@ export default {
           type: '0'
         }
       }).then(res => {  
-        console.log(res)
       }).catch(err => {
         return err
       })

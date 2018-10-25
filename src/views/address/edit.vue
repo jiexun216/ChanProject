@@ -65,7 +65,6 @@ export default {
     },
     // 添加、修改地址保存
     onSave(content) {
-      console.log(content);
       saveAddressInfo(
         content.id,
         content.name,

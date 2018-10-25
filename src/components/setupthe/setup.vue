@@ -86,7 +86,6 @@
          created () {
              this.$getData('ucenter/index').then(res => {
                   this.data = res.data.data;
-                  console.log(this.data)
              }).catch(err =>{
                   return err
              })

@@ -65,10 +65,11 @@ export default {
     getData () {
       getCartList ().then( res => {
         if (res.data.status == 99) {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
-                    this.$router.push({name: "index"})
-                }  
-             }) 
+              this.$toast(res.data.message ? res.data.message : '操作失败')
+              this.$router.push({name: "index"})
+           }  
+        
+        }) 
     },
     changeLang (lang) {
       this.$store.commit('SET_LANG', lang)

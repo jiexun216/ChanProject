@@ -135,7 +135,6 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
 			}).then(() => {
               // on confirm
 				cancelOrder(id).then((res) => {
-                    console.log(res)
 					if (res.data.status == 0) {
 	                    this.$toast('订单取消成功')
 					} else {
@@ -157,7 +156,6 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
 			}).then(() => {
               // on confirm
 				orderConfirm(id).then((res) => {
-                    console.log(res)
 					if (res.data.status == 0) {
 	                    this.$toast('订单确认成功')
 					} else {
