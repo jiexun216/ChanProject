@@ -1,7 +1,7 @@
 <template>
     <div class="fortunecontent">
              <div class="fortunecon">
-                 <img src="../../assets/img/25.png" class="fortuneimg">
+                <img src="../../assets/img/25.png" alt="">
                 <p class="fortunep">{{$t(nobirth)}}</p>
                 <button class="fortunebutton" @click="showAdd">{{$t(add)}}</button>
              </div>
@@ -144,7 +144,7 @@ Vue.use(NavBar);
                 birthDate: '',
                 birthTime: '',
                 birthAddress: '',
-            }
+            },
         }
      },
       components: {
@@ -289,16 +289,17 @@ Vue.use(NavBar);
 .fortunecon{
     width: 9rem;
     height: 6rem;
-   position:absolute;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   top: 10rem;
-   margin: auto;
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 10rem;
+    margin: auto;
 }
 .fortunep{
     color: #ccc;
     font-size: 0.4rem;
+    margin-top: 0.3rem;
 }
 .fortunebutton{
     padding: 0.15rem 0.6rem;
@@ -357,5 +358,13 @@ Vue.use(NavBar);
 .van-radio{
     margin-right: 0.4rem;
 }
-
+.fortuneimg{
+  /* display:inline-block;
+  width: 5.5rem; ;
+  height:5.5rem;
+  background-size: cover;
+  vertical-align: middle;
+  text-align: center;
+  background: url(../../assets/img/25.png) no-repeat center center; */
+}
 </style>
