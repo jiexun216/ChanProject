@@ -7,7 +7,7 @@
                 </router-link>
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                   <i class="carback carbackss"></i>
+                   <!-- <i class="carback carbackss"></i> -->
                 </div>
         </div>
             <emptygoods :goodsList="goodsList"></emptygoods>
@@ -111,9 +111,9 @@ Vue.use(Stepper);
     // 获取商品数量
     getGoodsNumber (data, cartId, goodsQuantity) { 
           this,goodsQuantity = data
-       changeCartQuantity (data,cartId, goodsQuantity).then(res => {
+          changeCartQuantity (data,cartId, goodsQuantity).then(res => {
            this.goodsQuantity = cartId
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            //this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
             } else if (res.data.status == 0) {

@@ -7,14 +7,15 @@
             </span>
             <div class="index-search" style="-webkit-user-select: text !important;"> 
                 <i class="icon search-bg"></i>
-                <input type="text" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keypress.stop.prevent="searchGoods"
+                <form class="forminput" action="javascript:true">
+                  <input type="text" v-model="keyword" :placeholder="$t(allsearch)" class="search" @keyup="searchGoods"
                        @click="searchleft($event)" :class="{'search': Iscenter,'searchleft': !Iscenter}"/>
+                </form>  
             </div>
             <div>
                 <router-link to="/ucenter/message">
                      <i class="icon notice"></i>
-                </router-link>
-                
+                </router-link>        
             </div>
         </div>
         <div class="store-sale">
@@ -30,7 +31,7 @@
        <div class="layout">
         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
-            <img :src="banner.picture" style="width:100%;">
+                   <img :src="banner.picture" style="width:100%;" @click="$router.push({ name: 'goodsDetail', query: { url: banner.url }})">
           </van-swipe-item>
         </van-swipe>
           <!-- <div class="banner">
@@ -77,7 +78,7 @@
                           <p class="goodname">
                               {{good.name}}</p>
                            <p  class="goodsale">
-                               已售{{good.salesVolume}}件
+                               {{$t(yishou)}} {{good.salesVolume}} {{$t(jian)}}
                            </p>
                            <span class="goodprice">
                                ￥{{good.price}}
@@ -123,6 +124,8 @@ export default {
       more: 'common.more',
       gobuy: 'common.gobuy',
       allsearch: 'common.placeholder.allsearch',
+      yishou: 'common.yishou',
+      jian: 'common.jian',
       Iscenter: true,
       autoplay: true
     };
@@ -156,7 +159,7 @@ export default {
     goPage(page) {
       this.$store.commit("getPage", page);
     }, 
-    searchleft (data,$event,e) {
+    searchleft ($event) {
       this.Iscenter = false;
     },
   },
@@ -209,10 +212,14 @@ a {
   align-items: center;
   -webkit-user-select: text !important;
 }
+.forminput{
+   width:100%;
+   z-index: 99999;
+}
 .search {
-  height: 25px;
-  line-height: 25px;
-  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  width: 80%;
   text-align: center;
   font-size: 12px;
   z-index: 1000;

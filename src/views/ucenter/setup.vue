@@ -66,7 +66,7 @@
             <img src="../../assets/img/outlo.png" alt="">
              <p>{{$t(exitlogon)}}</p>
         </div>
-        <my-file @input="input($event)" v-if="myfileshow"></my-file>
+        <!-- <my-file @input="input($event)" v-if="myfileshow"></my-file> -->
      </div>   
       
 </template>

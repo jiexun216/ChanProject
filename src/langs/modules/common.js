@@ -113,7 +113,9 @@ module.exports = {
    birthtime: '出生时辰',
    birthaddress: '出生地',
    fellback: '意见反馈',
-   liuyan:'如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！'
+   liuyan:'如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！',
+   yishou: '已售',
+   jian:'件'
   },
   char: {
     home: '首頁',
@@ -228,12 +230,14 @@ module.exports = {
    birthtime: '出生時辰',
    birthaddress: '出生地',
    fellback: '意見反饋',
-   liuyan: '如果您在網站和微商城發現任何問題，或者有更好的建議，歡迎給我們留言！'
+   liuyan: '如果您在網站和微商城發現任何問題，或者有更好的建議，歡迎給我們留言！',
+   yishou: '已售',
+   jian: '件'
   },
   en: {
     home: 'Home',
     telling: 'FortuneTelling',
-    cart: 'Shopping Cart',
+    cart: 'Cart',
     personal: 'Personal',
     birth: 'Ba Zi',
     wds: 'Ask a master',
@@ -345,7 +349,8 @@ module.exports = {
    birthaddress: 'Born address',
    fellback: 'Feedback',
    liuyan: 'If you find any problems on the website or wechat, or have better Suggestions, please leave us a message!',
-   
+   yishou: 'sold',
+   jian: 'piece'
   } 
   
 }

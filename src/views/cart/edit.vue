@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-                
                   </van-checkbox-group>
          </div>  
         <div class="carfoot">

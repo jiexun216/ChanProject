@@ -73,9 +73,9 @@ Vue.use(ElementUI);
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log(valid)
+           // console.log(valid)
           } else {
-            console.log('error submit!!');
+           // console.log('error submit!!');
             return false;
           }
           this.ruleForm2.tel  = this.$route.query.tel ? this.$route.query.tel : ''
@@ -95,7 +95,7 @@ Vue.use(ElementUI);
               type: ''
             }
           }).then(res => {
-             console.log(res);
+            // console.log(res);
           }).catch(err =>{
              return err
           })

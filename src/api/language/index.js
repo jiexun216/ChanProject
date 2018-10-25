@@ -1,8 +1,8 @@
 import {postData, getData} from '../api.js'
-export function getCartList(languageType) {
+export function languageList(languageType) {
     const url = 'main/languageSwitch'
     const data = {
         languageType
     }
-    return getData(url, data)
+    return postData(url, data)
 }

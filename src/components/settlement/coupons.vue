@@ -26,7 +26,7 @@
                                     <h4>满{{item.condition}}元</h4>
                                     <p class="coupricep">{{item.startDate}}-{{item.endDate}}</p>
                             </div>   
-                            <van-checkbox v-model="checked" :name="item.memberCouponId"></van-checkbox>
+                            <van-radio v-model="checked" :name="item.memberCouponId"></van-radio>
                         </div>
                         </van-radio-group>
                        

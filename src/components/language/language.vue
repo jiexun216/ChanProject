@@ -6,35 +6,10 @@
            </router-link>
           <p class="choose">{{language}}</p>
        </div>
-       <!-- <div class="lang-con">
-           <div class="lang-zn">
-               <span>简体中文</span>
-               <el-switch
-                    v-model="value2"
-                    active-color="#13ce66"
-                    inactive-color="#ff4949">
-                    </el-switch>
-           </div>
-            <div class="lang-zn">
-               <span>繁體中文</span>
-               <el-switch
-                    v-model="value3"
-                    active-color="#13ce66"
-                    inactive-color="#ff4949">
-                    </el-switch>
-           </div>
-           <div class="lang-zn">
-               <span>English</span>
-               <el-switch
-                    v-model="value4"
-                    active-color="#13ce66"
-                    inactive-color="#ff4949">
-                    </el-switch>
-           </div>
-       </div> -->
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
           <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
-                     :click="languaging(index)">{{value.name}}
+                     :click="languaging(index)" style="margin-left:0;"> {{value.name}}
+
           </el-radio>
        </el-radio-group>
        <!-- <my-file @input="input($event)"></my-file> -->
@@ -44,7 +19,7 @@
 <script>
 import { mapState } from 'vuex'
 import myFile from '@/components/upLoadImg/myFile.vue'
-import {  getCartList } from '@/api/language/index.js'
+import {  languageList } from '@/api/language/index.js'
 export default {
   data () {
     return {
@@ -58,18 +33,16 @@ export default {
       ]
     }
   },
-  methods: {
-    languaging () {
-      console.log(this.radio2)
-    },
-    getData () {
-      getCartList ().then( res => {
-        if (res.data.status == 99) {
-              this.$toast(res.data.message ? res.data.message : '操作失败')
-              this.$router.push({name: "index"})
-           }  
-        
+  methods: { 
+    postData () {
+      var languageType =  this.radio2
+      languageList (languageType).then( res => {
+      // this.$toast(res.data.message ? res.data.message : '操作失败')
         }) 
+    },
+    languaging () {
+      // console.log(this.radio2)
+      this.postData();
     },
     changeLang (lang) {
       this.$store.commit('SET_LANG', lang)
@@ -108,31 +81,22 @@ export default {
 .choose{
     margin: 0 auto;
 }
-.lang-con{
-    margin: 0.4rem;
-}
-.lang-zn{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.5rem;
-    line-height: 1rem;
-}
 .el-radio-group{
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 0.5rem;
+ 
 }
 .el-radio {
   width: 100%;
   padding: 0 30px 20px 30px;
   box-sizing: border-box;
 }
-.el-radio+.el-radio {
+/* .el-radio +.el-radio {
   margin-left: 0;
-}
+} */
 .el-radio__label {
   float: right;
 }

@@ -18,7 +18,7 @@
                      <img :src="item.goodsCoverImg" alt="">
                      <div class="likelefts">
                         <h4>{{item.name}}</h4>
-                        <p>已售{{item.salesVolume}}件</p>
+                        <p>{{$t(yishou)}}  {{item.salesVolume}}  {{$t(jian)}}</p>
                         <div class="likemon">
                             <span class="likeone">￥{{item.price}}</span>
                             <span class="liketwo">￥{{item.market_price}}</span>
@@ -43,7 +43,9 @@ export default {
             empty: 'common.emptygoods',
             hot: 'common.goodshot',
             youlike: 'common.youlike',
-            chushou: 'common.chushou'
+            chushou: 'common.chushou',
+            yishou: 'common.yishou',
+            jian: 'common.jian'
         }
     },
     components: {

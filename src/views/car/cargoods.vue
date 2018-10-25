@@ -9,7 +9,7 @@
                   
                 </span>
                 <div class="carmyorder">
-                    <span @click="editor">编辑</span>
+                    <span @click="editor">{{$t(editor)}}</span>
                     <i class="carback carbackcoups"></i>
                 </div>
         </div>
@@ -76,6 +76,7 @@ Vue.use(Stepper);
         price: 990,
       }]
     };
+    editor: 'common.editor'
   },
     computed: {
     submitBarText() {

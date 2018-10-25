@@ -10,10 +10,10 @@
                <i class="de-icon de-iconimg2">
                    <router-link to="/cart/list"> </router-link>
                </i>
-               <i class="de-icon de-iconimg3">
+               <!-- <i class="de-icon de-iconimg3">
                    <router-link to="/goodsDetails">
                    </router-link>
-                </i> 
+                </i>  -->
              </div>          
            </el-header>
        </div> 
@@ -30,7 +30,7 @@
                           <p class="goodname">
                               {{goodsInfos.name}}</p>
                            <p  class="goodsale">
-                               已售{{goodsInfos.salesVolume}}件
+                              {{$t(yishou)}} {{goodsInfos.salesVolume}}  {{$t(jian)}}
                            </p>
                            <span class="goodprice">
                                ￥{{goodsInfos.price}}
@@ -131,7 +131,9 @@ Vue.use(Sku)
                 attention: 'common.attention',
                 customerservice: 'common.customerservice',
                 joinbuys: 'common.joinbuy',
-                buy: 'common.buy'
+                buy: 'common.buy',
+                yishou: 'common.yishou',
+                jian: 'common.jian'
             }
         },
         created () {
@@ -160,7 +162,7 @@ Vue.use(Sku)
             },
             // 加入购物车 zhangjie 0918
             onAddToCart (skuData) {
-                console.log(skuData)
+             //   console.log(skuData)
                 let cartGoodsId = skuData.goodsId
                 let goodsQuantity = skuData.selectedNum
                 let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0

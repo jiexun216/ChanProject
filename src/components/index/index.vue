@@ -71,7 +71,7 @@
                           <p class="goodname">
                               {{good.name}}</p>
                            <p  class="goodsale">
-                               已售{{good.salesVolume}}件
+                             {{$t(yishou)}} {{good.salesVolume}} {{$t(jian)}}
                            </p>
                            <span class="goodprice">
                                ￥{{good.price}}
@@ -103,6 +103,8 @@ import Footer from './footer'
                 course: '精品课程',
                 more: '更多',
                 tobuy: '去购买',
+                yishou: 'common.yishou',
+                jian: 'common.jian',
                 goodsId: '',
                 types: [],
                 banners: [],

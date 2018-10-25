@@ -163,11 +163,12 @@ export default {
             }
         });
         // 判断是否满足使用条件
-        if (couponInfo.condition > this.orderAmount) {
+        if (parseFloat(couponInfo.condition) > this.orderAmount/100) {
             this.payParam.memberCouponId = 0
             this.$toast('此优惠券不满足使用条件')
+            return false;
         } else {
-            this.payParam.memberCouponId = couponInfo.id
+            this.payParam.memberCouponId = memberCouponId
             this.orderAmount = Number((this.orderData.orderAmount - couponInfo.preferentialAmount) * 100)
         }
     },
