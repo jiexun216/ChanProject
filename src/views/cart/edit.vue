@@ -10,7 +10,7 @@
         </div>
          <div class="cargoods">
               <van-checkbox-group class="card-goods" @change="changeGoods" v-model="checkedGoods">
-                <div class="van-card" v-for="(item,index) in goods" :key="index">
+                <div class="van-cardedit" v-for="(item,index) in goods" :key="index">
                     <van-checkbox class="card-goods__item" :name="item" ></van-checkbox>
                     <div>
                         <img :src="item.goodsCoverImg" alt="" class="van-card-img">
@@ -154,7 +154,7 @@ Vue.use(Stepper);
    align-items: center;
    padding: 0.2rem;
 }
-.van-card{
+.van-cardedit{
     box-shadow: 0px 0px 10px 5px #fafafa;
     border: 1px solid #fbfbfb;
     margin: 0.2rem;

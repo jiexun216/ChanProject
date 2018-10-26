@@ -333,11 +333,11 @@ Vue.use(Sku)
   background: #fff;
   box-shadow: 0px 2px 20px #f0f0f0;
   width: 100%; 
+  height: 1.4rem;
   display: flex;
   align-items: center;
   text-align: center;
-  z-index: 10;
-  border: 1px solid #f00;
+  z-index: 100;
 }
 .customer{
     font-size:0.4rem;
@@ -352,6 +352,7 @@ Vue.use(Sku)
 }
 .inbuys{
     width: 42.5%;
+    height: 1.4rem;
     font-size: 0.4rem;
     background: #ff525a;
     color: #fff;

@@ -7,7 +7,7 @@
                      <i class="wxpayimg wxpayimgs"></i>
                  <div class="wxpayright">
                     <h3>{{$t(wxpay)}}</h3>
-                    <p>{{$t(tuiwx)}}</p>
+                    <!-- <p>{{$t(tuiwx)}}</p> -->
                  </div>
                  </div>
                  <div>
@@ -19,7 +19,7 @@
                     <i class="wxpayimg wxpayimgtwo"></i>
                                     <div class="wxpayright">
                                         <h3>{{$t(alipay)}}</h3>
-                                        <p>{{$t(tuialipay)}}</p>
+                                        <!-- <p>{{$t(tuialipay)}}</p> -->
                                     </div>
                  </div>
                  <div>
@@ -31,7 +31,7 @@
                                  <i class="wxpayimg wxpayimgthr"></i>
                                     <div class="wxpayright">
                                         <h3>Visa</h3>
-                                        <p>{{$t(tuivisapay)}}</p>                                    
+                                        <!-- <p>{{$t(tuivisapay)}}</p>                                     -->
                                     </div>
                   </div>
                 <div>
@@ -83,17 +83,12 @@ export default{
     box-shadow: 0px 0px 10px 5px #fafafa;
     font-size: 0.4rem;
     padding: 0.4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
 }
 .wxpay{
-    width: 100%;
+    height: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
 }
 .wxpaycen{
     display: flex;

@@ -17,7 +17,7 @@
                   :key="item.id"
                   :name="item.id"
                 >
-                <div class="van-card">
+                <div class="van-cardshang">
                     <div >
                         <img src="../../assets/img/order.png" alt="" class="van-card-img">
                     </div>
@@ -110,7 +110,7 @@ Vue.use(Stepper);
 .van-icon-success:before{
     content: '\F055';
 }
-.van-card{
+.van-cardshang{
    background: #fff;  
 }
 .card-goods__item{

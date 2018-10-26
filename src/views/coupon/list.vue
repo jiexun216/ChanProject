@@ -59,11 +59,11 @@ export default {
       statusList: [
         {
           key: "waitingUse",
-          title: "已使用"
+          title: "未使用"
         },
         {
           key: "alreadyUse",
-          title: '未使用'
+          title: '已使用'
         },
         {
           key: "haveExpired",
@@ -219,12 +219,12 @@ export default {
   align-items: center;
 }
 .couponimg{
-  background: url('../../assets/img/27.png') no-repeat center center;
+  /* background: url('../../assets/img/27.png') no-repeat center center; */
 }
 .couponmoney {
-  font-size: 0.3rem;
+  font-size: 0.5rem;
   font-weight: bold;
-  color: #fff;
+  color: #000;
   position: absolute;
   top: 0;
   left: 0;

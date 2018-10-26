@@ -52,7 +52,7 @@
                       @submit="onSubmit"
                       class="payfor"
                       />
-              </div>      
+        </div>      
      </div>  
    </div>    
 </template>
@@ -113,7 +113,7 @@ Vue.use(Stepper);
           this,goodsQuantity = data
           changeCartQuantity (data,cartId, goodsQuantity).then(res => {
            this.goodsQuantity = cartId
-            //this.$toast(res.data.message ? res.data.message : '操作失败')
+            // this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
             } else if (res.data.status == 0) {
@@ -272,6 +272,8 @@ Vue.use(Stepper);
    display: flex;
    justify-content:space-around;
    align-content:center;
+   width:90%;
+   margin: auto;
  }
  .van-stepper__input{
    height: 26px;

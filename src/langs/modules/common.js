@@ -283,7 +283,12 @@ module.exports = {
    nowdefault: '當前默認',
    updefault: '設為默認',
    addressjia: '+ 新建地址',
-   editoradd: '編輯/添加地址'
+   editoradd: '編輯/添加地址',
+   deleteguoqi: '刪除已過期優惠券',
+   jiesuan: '結算',
+   submitorder: '提交訂單',
+   yibuy: '已購買',
+   restsend: '重新發送'
   },
   en: {
     home: 'Home',
@@ -423,7 +428,12 @@ module.exports = {
    addresscomplate: 'finish ',
    nowdefault: 'current default ',
    addressjia: '+ new address ',
-   editoradd: 'edit/add address'
+   editoradd: 'edit/add address',
+   deleteguoqi: 'delete expired coupons ',
+   jiesuan: 'settlement ',
+   submitorder: 'submitorder ',
+   yibuy: 'bought ',
+   restsend: 'resend'
   } 
   
 }
