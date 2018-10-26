@@ -33,8 +33,8 @@
         </div>
         <van-popup v-model="show" position="bottom">
            <div class="delebottom">
-              <p class="deleyi" @click="deleyi">删除已过期优惠券</p>
-              <p @click="concaldele">取消</p>
+              <p class="deleyi" @click="deleyi">{{$t(deleteguoqi)}}</p>
+              <p @click="concaldele">{{$t(cancel)}}</p>
            </div>
            <div>
            </div>
@@ -54,14 +54,16 @@ export default {
     return {
       mycoupon: 'common.mycoupon',
       goUse: 'common.gouse',
+      deleteguoqi: 'common.deleteguoqi',
+      cancel: 'common.cancel',
       statusList: [
         {
           key: "waitingUse",
-          title: "未使用"
+          title: "已使用"
         },
         {
           key: "alreadyUse",
-          title: "已使用"
+          title: '未使用'
         },
         {
           key: "haveExpired",
@@ -71,7 +73,7 @@ export default {
       loading: false,
       status: "waitingUse",
       listData: [],
-      show:false
+      show:false,
     };
   },
   methods: {
@@ -181,6 +183,7 @@ export default {
 }
 .useitembg {
   margin:0.2rem 0.4rem;
+  font-size: 0.4rem;
 }
 .useitembgs {
   color: #f00;

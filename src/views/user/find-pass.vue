@@ -16,7 +16,7 @@
              <input type="button" 
                     style="width:100%"
                     class="sends" 
-                    value=" 重新发送" 
+                    :value=" $t(restsend)" 
                     v-show="sendAuthCode"
                     @click="getAuthCode">     
               <input type="button" 
@@ -57,7 +57,8 @@ export default {
       retrpwd: 'common.retrpwd',
       next: 'common.next',
       userphone: 'common.placeholder.userphone',
-      enteryzm: 'common.placeholder.enteryzm'
+      enteryzm: 'common.placeholder.enteryzm',
+      restsend: 'common.restsend'
     };
   },
   methods: {

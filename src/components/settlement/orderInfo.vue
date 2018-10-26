@@ -1,6 +1,6 @@
 <template>
    <div class="orderInfo">
-             <p>订单信息</p>
+             <p>{{$t(orderinfo)}}</p>
              <div class="orderInfoImg" >
                  <ul class="orderimg" >
                      <li v-for="(item, index) in goodsList" :key="index"><img :src="item.goodsCoverImg" alt=""></li>
@@ -8,7 +8,7 @@
                       <div class="overlayerorderinfo" @touchmove.prevent v-if="orderTextStatus">
                             <div class="orders">
                                 <div class="orderstop">
-                                     <span>商品清单（共{{orderData.totalQuantity}}件）</span>
+                                     <span>{{$t(ordergoodslist)}}（共{{orderData.totalQuantity}}件）</span>
                                      <span  class="closeorder" @click="closeorder">
                                          <i class="orderInfoimg orderInfoimgs"></i>
                                      </span>
@@ -30,18 +30,18 @@
                  </ul>
              </div>
              <div class="deliveryinfo">
-                 <span class="deliveryone">发货信息</span>
+                 <span class="deliveryone">{{$t(orderdily)}}</span>
                  <span>{{orderData.shippingInformation}}</span>
              </div>
              <div class="deliveryinfo">
-                  <span class="deliveryone">支付信息</span>
+                  <span class="deliveryone">{{$t(orderinfopay)}}</span>
                   <div class="payInforight">
-                       <span>总计 <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
+                       <span>{{$t(ordertal)}} <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
                        <span>共{{orderData.totalQuantity}}件</span>
                   </div>
              </div>
              <div class="deliveryinfo note">
-                  <span class="deliveryone">备注</span>
+                  <span class="deliveryone">{{$t(orderbz)}}</span>
                   <div class="payInforight">
                        <input type="text" v-model="remark" :placeholder="$t(enterxq)">
                   </div>
@@ -58,7 +58,13 @@ Vue.use(Toast)
               return {
                   orderTextStatus: false,
                   remark: '',
-                  enterxq: 'common.placeholder.enterxq'
+                  enterxq: 'common.placeholder.enterxq',
+                  orderinfo: 'common.orderinfo',
+                  ordergoodslist: 'common.ordergoodslist',
+                  orderdily: 'common.orderdily',
+                  orderinfopay: 'common.orderinfopay',
+                  ordertal: 'common.ordertal',
+                  orderbz: 'common.orderbz'
               }
           },
           // 监听

@@ -2,23 +2,23 @@
     <div>
         <div class="header" v-if="listData.length == 0">
          <div class="orderdetop">
-            <i class="back backs" @click="$router.push({path: '/cartSettlement'})"></i>     
-            <span class="orderaddress">收货地址</span>
+            <i class="back backs" @click="$router.push({path: '/ucenter/index'})"></i>     
+            <span class="orderaddress">{{$t(shipaddress)}}</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
             </span>
          </div>
         <div class="address">
                 <img src="../../assets/img/13.png" alt="">
-                <p class="addressji">没有收货地址寄不了快递哦</p>
-                <button @click="$router.push({name:'addressEdit'})" class="add">添加</button>
+                <p class="addressji">{{$t(noshipaddress)}}</p>
+                <button @click="$router.push({name:'addressEdit'})" class="add">{{$t(addressadd)}}</button>
         </div>
        </div>
         <div v-else> 
             <div class="orderdetop orderdetop1">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span >收货地址</span>
-                <span class="oks" @click="$router.back(-1)">完成</span>
+                <span >{{$t(shipaddress)}}</span>
+                <span class="oks" @click="$router.back(-1)">{{$t(completes)}}</span>
                 </div>
                 <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
                 <div class="oldname">
@@ -31,15 +31,15 @@
                                 <i class="defaimg defaimgs" ></i>
                                 </span>
                             <span v-if="item.isDefault == 1" class="defamr">
-                                当前默认
+                                {{$t( nowdefault)}}
                             </span> 
                             <span v-else class="defamr defamrtwo">
-                                设为默认
+                                {{$t( updefault)}}
                             </span>     
                             </div>
                         <div>
-                            <span class="compile" @click="$router.push({name:'addressEdit', query: {id: item.id}})">编辑</span>
-                            <span class="compile compiles" @click="deleteAddress(item.id)">删除</span> 
+                            <span class="compile" @click="$router.push({name:'addressEdit', query: {id: item.id}})">{{$t(editor)}}</span>
+                            <span class="compile compiles" @click="deleteAddress(item.id)">{{$t(deletes)}}</span> 
                         </div>
                         </div>   
                     </div>         
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="addressfooter" @click="addAddressHandle">
-                    <p>+ 新建地址</p>
+                    <p>{{$t(addressadd)}}</p>
                 </div>
         </div>
     </div>
@@ -70,7 +70,16 @@ export default {
       listData: [],
       total: 0,
       pageCount: 1,
-      isLoadingFinished: false
+      isLoadingFinished: false,
+      shipaddress:'common.shipaddress',
+      noshipaddress: 'common.noshipaddress',
+      addressadd: 'common.addressadd',
+      completes: 'common.completes',
+      nowdefault: 'common.nowdefault',
+      updefault: 'common.updefault',
+      editor: 'common.editor',
+      deletes: 'common.deletes',
+      addressjia: 'common.addressjia'
     };
   },
   methods: {

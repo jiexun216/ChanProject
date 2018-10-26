@@ -5,8 +5,8 @@
             left-arrow
             @click-left="onClickLeft"
         >
-         <van-icon name="search" slot="right" />
-         <van-icon name='add-o' slot="right"/>
+         <!-- <van-icon name="search" slot="right" /> -->
+         <van-icon name='add-o' slot="right" @click="showDialog"/>
         </van-nav-bar>
       <van-tabs v-model="active" :swipe-threshold="6">
         <van-tab >
@@ -51,19 +51,23 @@
           </div>
         </van-tab>
         </van-tabs>
+        <Add :show="show"  @changeYincang="changeYincang"></Add>
    </div>       
 </template>
 
 <script>
 import  Vue from "vue";
 import { Tab, Tabs } from 'vant';
+import { Icon,Dialog } from 'vant';
 import Results from '@/views/fortunetellers/results'
 import Mingpan from '@/views/fortunetellers/mingpan'
 import Xipan from '@/views/fortunetellers/xipan'
 import Dayun from '@/views/fortunetellers/dayun'
 import Liunian from '@/views/fortunetellers/liunian'
 import { issueComment,fortuneresults } from '@/api/fortunetellers/index.js'
+import Add from '@/views/fortunetellers/add'
 Vue.use(Tab).use(Tabs); 
+Vue.use(Icon);
 export default {
     data () {
         return {
@@ -72,7 +76,8 @@ export default {
             sm: 'common.sm',
             fortuneId: '',
             comment: '',
-            perlists: []
+            perlists: [],
+            show: false
         }
     },
     methods: {
@@ -88,7 +93,8 @@ export default {
         })
         },
         onClickLeft () {
-            this.$router.push({path: '/Index'})
+            // this.$router.push({path: '/Index'})
+            this.$router.back(-1)
          },
          submitOpinion () {
             let comment = this.comment
@@ -107,7 +113,13 @@ export default {
                 }).catch(err => {
                     return err
                 })
-         },    
+         },  
+         changeYincang(boolval) {
+             this.show  = boolval
+         },  
+         showDialog () {
+             this.show  = true
+         },
     },
     created () {
         this.getData();
@@ -117,7 +129,8 @@ export default {
         Mingpan,
         Xipan,
         Dayun,
-        Liunian
+        Liunian,
+        Add
     }
 }
 </script>

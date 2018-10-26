@@ -3,7 +3,7 @@
              <div class="usecoup" @click="usecoupon">
                  <div class="usecoupii">
                      <i class="wxpayimg wxpayimgfour"></i>
-                     <p>可用优惠券</p> 
+                     <p>{{$t(useyouhui)}}</p> 
                  </div>
                    <i class="wxpayimg wxpayimgfive" ></i> 
              </div>
@@ -11,7 +11,7 @@
              <div class="overlayer" @touchmove.prevent v-if="couponsheader" >
                    <div class="couponsuse">
                         <div class="couponstop" >
-                            <span>可用优惠券</span>
+                            <span>{{$t(useyouhui)}}</span>
                             <i class="wxpayimg wxpayimgsix" @click="couponsclose"></i>
                         </div>
                         <van-radio-group v-model="radio" @change="couponChange">
@@ -45,7 +45,8 @@ Vue.use(Checkbox).use(CheckboxGroup);
             return {
                 couponsheader: false,
                 checked: false,
-                 radio: '1',
+                radio: '1',
+                useyouhui: 'common.useyouhui'
             }
         },
         props: {

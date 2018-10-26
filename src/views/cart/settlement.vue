@@ -1,7 +1,7 @@
 <template>
      <div>
          <van-nav-bar
-            title="结算"
+            :title="$t(jiesuan)"
             left-text=""
             right-text="订单中心"
             left-arrow
@@ -11,8 +11,8 @@
             <div class="newaddtop" v-if="addressStatus === 0">
             <div class="newaddress" @click="addAddressHandle">
                 <div>
-                    <p class="newaddressone">新建收货地址</p>
-                    <p>新建收获地址，保证商品顺利送达</p> 
+                    <p class="newaddressone">{{$t(newaddress)}}</p>
+                    <p>{{$t(addressshou)}}</p> 
                 </div>
                 <i class="newaddressimg newaddressimgs"></i>   
             </div>
@@ -24,7 +24,7 @@
         <div class="foot">
              <van-submit-bar
                 :price="orderAmount"
-                button-text="提交订单"
+                :button-text="$t(submitorder)"
                 @submit="onSubmit"
                 />
         </div>
@@ -70,7 +70,11 @@ export default {
         memberCouponId: 0,
         remark: "",
         payWay: 0
-      }
+      },
+      newaddress: 'common.newaddress',
+      addressshou: 'common.addressshou',
+      jiesuan:'common.jiesuan',
+      submitorder: 'common.submitorder'
     };
   },
   methods: {

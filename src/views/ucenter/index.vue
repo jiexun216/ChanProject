@@ -160,7 +160,7 @@ export default {
 .shoppitem{
     border-bottom: 5px solid #f7f7f7;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .waitpay{

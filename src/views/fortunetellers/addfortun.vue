@@ -98,6 +98,7 @@ import { AddressEdit } from "vant";
 import areaList from "@/common/js/area.js";
 import {addfortune, fortunetellers } from '@/api/fortunetellers/index.js'
 import utils from '@/utils'
+import Add from '@/views/fortunetellers/add'
 Vue.use(AddressEdit);
 Vue.use(Area);
 Vue.use(DatetimePicker);
@@ -150,7 +151,8 @@ Vue.use(NavBar);
      },
       components: {
           Footer,
-          "van-address-edit": AddressEdit
+          "van-address-edit": AddressEdit,
+          Add
       },
      methods: {
          getData () {

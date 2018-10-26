@@ -85,9 +85,9 @@
      line-height: 1.3rem;
      width: 100%;   
  }
- .bindingwx1{
+ /* .bindingwx1{
      border-bottom: 1px solid #ccc;
- }
+ } */
  .bindicon{
     display: inline-block;
     width: 0.6rem;

@@ -1,13 +1,13 @@
 <template >
      <div class="payment">
-             <p>支付方式</p>
+             <p>{{$t(paystyle)}}</p>
              <van-radio-group v-model="radio" @change="payWayChange">
              <div class="wxpay">
                  <div class="wxpaycen">
                      <i class="wxpayimg wxpayimgs"></i>
                  <div class="wxpayright">
-                    <h3>微信支付</h3>
-                    <p>推荐已在微信中绑定银行卡的用户使用</p>
+                    <h3>{{$t(wxpay)}}</h3>
+                    <p>{{$t(tuiwx)}}</p>
                  </div>
                  </div>
                  <div>
@@ -18,8 +18,8 @@
                  <div class="wxpaycen">
                     <i class="wxpayimg wxpayimgtwo"></i>
                                     <div class="wxpayright">
-                                        <h3>支付宝支付</h3>
-                                        <p>安全快捷，可支持银行卡支付</p>
+                                        <h3>{{$t(alipay)}}</h3>
+                                        <p>{{$t(tuialipay)}}</p>
                                     </div>
                  </div>
                  <div>
@@ -31,7 +31,7 @@
                                  <i class="wxpayimg wxpayimgthr"></i>
                                     <div class="wxpayright">
                                         <h3>Visa</h3>
-                                        <p>支持国际支付</p>                                    
+                                        <p>{{$t(tuivisapay)}}</p>                                    
                                     </div>
                   </div>
                 <div>
@@ -55,8 +55,13 @@ export default{
      data () {
         return {
            checked: true,
-            radio: ''
-           
+            radio: '',
+            paystyle: 'common.paystyle',
+            wxpay: 'common.wxpay',
+            tuiwx: 'common.tuiwx',
+            alipay: 'common.alipay',
+            tuialipay: 'common.tuialipay',
+            tuivisapay: 'common.tuivisapay'
         }
      },
      methods: {
@@ -78,12 +83,17 @@ export default{
     box-shadow: 0px 0px 10px 5px #fafafa;
     font-size: 0.4rem;
     padding: 0.4rem;
-}
-.wxpay{
-    height: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+}
+.wxpay{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
 }
 .wxpaycen{
     display: flex;
@@ -91,11 +101,11 @@ export default{
     align-items: center;
 }
 .wxpayimg{
-    display: inline-block;
-   width: 0.8rem;
-   height: 0.8rem;
+   display: inline-block;
+   width: 28px;
+   height: 28px;
    background-size: cover;
-   margin-left: 0.2rem;
+   padding: 0;
 }
 .wxpayimgs{
     background: url(../../assets/img/31.png) no-repeat center center;
@@ -116,6 +126,7 @@ export default{
     background: url(../../assets/img/39.png) no-repeat center center;
 }
 .wxpayright{
+    margin-right: 0.5rem;
     margin-left: 0.3rem;
 }
 .wxpayright p{

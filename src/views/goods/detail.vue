@@ -21,7 +21,7 @@
             <ul> 
                 <li style="width:100%;">
                       <div class="goodcover" >
-                        <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
+                        <el-carousel tag="ul"  indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
                               <img :src="goodsImage"  style="width:100%"> 
                              </el-carousel-item >
@@ -39,7 +39,7 @@
                                 ￥{{goodsInfos.marketPrice}}
                            </span>
                            <span class="buy">
-                               {{goodsInfos.purchaseNumber}}人已购买
+                               {{goodsInfos.purchaseNumber}}人{{$t(yibuy)}}
                            </span>
                       </div>    
                       </div>     
@@ -133,7 +133,8 @@ Vue.use(Sku)
                 joinbuys: 'common.joinbuy',
                 buy: 'common.buy',
                 yishou: 'common.yishou',
-                jian: 'common.jian'
+                jian: 'common.jian',
+                yibuy: 'common.yibuy'
             }
         },
         created () {
@@ -254,7 +255,7 @@ Vue.use(Sku)
     text-align: center;
 }
 .details-top  span{
-    font-size: 0.5rem;
+    font-size: 0.45rem;
     font-weight: bold;
 }
 .details-right{
@@ -336,6 +337,7 @@ Vue.use(Sku)
   align-items: center;
   text-align: center;
   z-index: 10;
+  border: 1px solid #f00;
 }
 .customer{
     font-size:0.4rem;
@@ -344,13 +346,13 @@ Vue.use(Sku)
 }
 .inbuy{
     width: 42.5%;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: #ff525a;
     line-height: 1.4rem;
 }
 .inbuys{
     width: 42.5%;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     background: #ff525a;
     color: #fff;
     line-height: 1.4rem;

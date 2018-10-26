@@ -21,7 +21,7 @@
          <div class="operbtm">
              <p>{{$t(AllMarkedRead)}}</p>
              <p @click="keyempty">{{$t(AkeyEmpty)}}</p> 
-              <!-- 这个是一键清空 -->
+              <!-- 一键清空 -->
              <p class="operbtmp" @click="operhide">{{$t(cancel)}}</p>
          </div>
      </div>
@@ -32,7 +32,7 @@
                <div class="cender">
                    <span @click="dercencal">{{$t(cancel)}}</span>
                    <span class="dermine" @click="dermine">{{$t(determine)}}</span>
-                     <!-- 点击这个确定消息隐藏 -->
+                     <!-- 点击确定消息隐藏 -->
                </div>
           </div>
      </div>

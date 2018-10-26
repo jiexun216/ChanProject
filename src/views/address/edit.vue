@@ -2,7 +2,7 @@
 <div>
             <div class="orderdetop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="orderaddress">编辑/添加地址</span>
+                <span class="orderaddress">{{$t(editoradd)}}</span>
                 <span class="myorder"></span>
             </div>    
             <!-- <van-address-edit
@@ -42,6 +42,7 @@ export default {
     return {
       loading: false,
       areaList,
+      editoradd: 'common.editoradd',
       formData: {
         id: 0,
         name: "",
@@ -51,7 +52,7 @@ export default {
         county: "",
         addressDetail: "",
         areaCode: "",
-        isDefault: true
+        isDefault: true,
       },
     };
   },

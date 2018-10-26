@@ -8,7 +8,7 @@
                 <span class="bangding">{{$t(binding)}}</span>
           </div>
         </div>
-        <div class="bindingwx">
+        <div class="bindingwx" style="border-bottom: none;">
               <i class="bindicon bindiconimgwx"></i>
               <span>微信</span>
               <span class="mylove">(My Love)</span>
@@ -48,7 +48,11 @@
       data () {
           return {
               binditem: '',
-              binding: 'common.binding'
+              binding: 'common.binding',
+              bindwx: 'common.bindwx',
+              bindali: 'common.bindali',
+              bindqq: 'common.bindqq',
+              bindwb: 'common.bindwb'
           }
       },
       methods: {
@@ -86,9 +90,9 @@
      line-height: 1.3rem;
      width: 100%;   
  }
- /* .bindingwx1{
-     border-bottom: 1px solid #ccc;
- } */
+ .bindingwx1{
+     border-bottom: none;
+ }
 
  .bindicon{
     display: inline-block;

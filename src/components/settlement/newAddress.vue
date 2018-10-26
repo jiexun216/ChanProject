@@ -2,8 +2,8 @@
          <div class="newaddtop">
             <div class="newaddress">
                 <div>
-                    <p class="newaddressone">新建收货地址</p>
-                    <p>新建收获地址，保证商品顺利送达</p> 
+                    <p class="newaddressone">$t(newaddress)</p>
+                    <p>$t(addressshou)</p> 
                 </div>
                 <i class="newaddressimg newaddressimgs"></i>
                  
@@ -12,7 +12,14 @@
 </template>
 
 <script>
-    
+    export default {
+        data () {
+            return {
+                newaddress: 'common.newaddress',
+                addressshou: 'common.addressshou'
+            }
+        }
+    }
 </script>
 
 <style>
