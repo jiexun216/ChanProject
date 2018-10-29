@@ -159,7 +159,7 @@ Vue.use(Toast)
     justify-content: space-between;
     align-items: center;
     margin: 0.4rem;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
 }
 .ordertopimg{
     width: 0.8rem;
@@ -172,12 +172,12 @@ Vue.use(Toast)
     padding-bottom: 0.3rem;
 }
 .orderrightone{
-    font-size: 0.45rem;
+    font-size: 0.4rem;
     font-weight: bold;
 }
 .orderrighttwo{
     color: #ccc;
-    font-size: 0.35rem;
+    font-size: 0.3rem;
     line-height: 0.8rem;
 }
 .orderprice{
@@ -188,7 +188,7 @@ Vue.use(Toast)
 }
 .orderpricecolor{
     color: #f00;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
 }
 .orderimg li img{
     width: 0.8rem;

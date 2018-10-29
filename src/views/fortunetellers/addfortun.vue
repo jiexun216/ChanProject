@@ -1,8 +1,8 @@
 <template>
     <div class="fortunecontent" >
              <div class="fortunecon">
-                <!-- <img src="../../assets/img/25.png" alt=""> -->
-                <i class="fortuneicon fortuneicons"></i>
+                <img src="../../assets/img/43@3x.png" alt="">
+                <!-- <i class="fortuneicon fortuneicons"></i> -->
                 <p class="fortunep">{{$t(nobirth)}}</p>
                 <button class="fortunebutton" @click="showAdd">{{$t(add)}}</button>
              </div>
@@ -370,6 +370,6 @@ Vue.use(NavBar);
     text-align: center;
 }
 .fortuneicons{
-    background: url(../../assets/img/25.png) no-repeat center center;
+    background: url("../../assets/img/25.png") no-repeat center center;
 }
 </style>
