@@ -4,38 +4,38 @@
              <van-radio-group v-model="radio" @change="payWayChange"> 
              <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
-                     <i class="wxpayimg wxpayimgs"></i>
-                 <div class="wxpayright">
-                    <h3>{{$t(wxpay)}}</h3>
-                    <!-- <p>{{$t(tuiwx)}}</p> -->
-                 </div>
-                 </div>
-                 <div>
-                      <van-radio name="1"></van-radio>
+                     <div class="wxwxwx">
+                        <i class="wxpayimg wxpayimgs"></i>
+                        <h4>{{$t(wxpay)}}</h4>  
+                     </div>       
+                     <div>
+                         <van-radio name="1"></van-radio>
+                     </div>  
                  </div>
              </div>
              <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
-                    <i class="wxpayimg wxpayimgtwo"></i>
-                                    <div class="wxpayright">
-                                        <h3>{{$t(alipay)}}</h3>
-                                        <!-- <p>{{$t(tuialipay)}}</p> -->
-                                    </div>
-                 </div>
-                 <div>
-                    <van-radio name="2"></van-radio>
+                     <div class="wxwxwx">
+                        <i class="wxpayimg wxpayimgtwo"></i>
+                        <h4>{{$t(alipay)}}</h4> 
+                     </div>  
+                    <div>
+                       <van-radio name="2"></van-radio> 
+                    </div>
+                    
                  </div>
              </div>
               <div class="wxpay" style="width:100%;">
                   <div class="wxpaycen">
-                                 <i class="wxpayimg wxpayimgthr"></i>
-                                    <div class="wxpayright">
-                                        <h3>Visa</h3>
-                                        <!-- <p>{{$t(tuivisapay)}}</p>                                     -->
-                                    </div>
-                  </div>
-                <div>
-                    <van-radio name="3"></van-radio>
+                      <div class="wxwxwx">
+                        <i class="wxpayimg wxpayimgthr"></i>
+                        <h4>Visa</h4>  
+                      </div>
+                        
+                        <div>
+                           <van-radio name="3"></van-radio> 
+                        </div>
+                        
                  </div>
              </div>
              </van-radio-group>
@@ -84,15 +84,15 @@ export default{
     font-size: 0.4rem;
     padding: 0.4rem;
 }
-.wxpay{
-    height: 1rem;
+.wxpaycen{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.wxpaycen{
+.wxwxwx{
+    height: 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 .wxpayimg{
@@ -101,6 +101,7 @@ export default{
    height: 28px;
    background-size: cover;
    padding: 0;
+   margin-right: 0.3rem;
 }
 .wxpayimgs{
     background: url(../../assets/img/31.png) no-repeat center center;

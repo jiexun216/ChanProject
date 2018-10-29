@@ -39,7 +39,7 @@ export default {
     postData () {
       var languageType =  this.radio2
       languageList (languageType).then( res => {
-      // this.$toast(res.data.message ? res.data.message : '操作失败')
+       // this.$toast(res.data.message ? res.data.message : '操作失败')
         }) 
     },
     languaging () {
@@ -58,7 +58,7 @@ export default {
     ...mapState(['lang'])
   },
   mounted() {
-    this.radio2 = this.lang ? this.lang : 'chinese'
+      this.radio2 = this.lang ? this.lang : 'chinese'
   },
   components: {myFile}
 }

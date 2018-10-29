@@ -1,6 +1,6 @@
 <template>
  <div class="footer">
-    <ul class="foot">
+    <ul class="footfoot">
       <router-link  :to="{name:'Index'}" tag="li" exact>
         <div>
           <i class="iconf iconimg"></i>
@@ -56,17 +56,17 @@
   content:'';
   clear: both;
 }
-.foot{
+.footfoot{
   display: flex;
   justify-content:space-around;
   align-items: center;
   padding:0.2rem 0;
 }
-.foot li{
+.footfoot li{
   float:left;
   text-align: center;
 }
-.foot li div{
+.footfoot li div{
   font-size: 0.2rem;
 }
 .iconf{

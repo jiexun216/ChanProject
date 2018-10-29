@@ -13,7 +13,7 @@ export default new Vuex.Store({
     price: '',
     marketPrice: '',
     value: '',
-    lang: 'chinese',
+    lang: 'chinese', 
   },
   mutations: {
     increment: state => state.count++,

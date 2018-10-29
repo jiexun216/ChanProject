@@ -84,7 +84,7 @@
                 <p>{{$t(customerservice)}}</p>
             </div>
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
-            <button class="inbuys" @click="joinbuy" style="line-height:1.55rem;">{{$t(buy)}}</button>
+            <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
        <van-sku
             v-model="showBase"
@@ -218,8 +218,7 @@ Vue.use(Sku)
                             message: '您还未登录，立即前往登录'
                         }).then(() => {
                             // on confirm
-                            this.$router.push({name: res.data.data.url})
-                            
+                            this.$router.push({name: res.data.data.url})                      
                         }).catch(() => {
                         });
                     } else {
@@ -330,7 +329,7 @@ Vue.use(Sku)
   position: fixed;
   bottom: 0;
   left: 0;
-  /* background: #fff; */
+  background: #fff;
   box-shadow: 0px 2px 10px #f0f0f0;
   width: 100%; 
   display: flex;
@@ -341,17 +340,19 @@ Vue.use(Sku)
 .customer{
     font-size:0.4rem;
     width: 15%;
-    border-right: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0
 }
 .inbuy{
     width: 42.5%;
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     color: #ff525a;
-    line-height: 1.4rem;
+    margin: 0;
+    padding: 0;
 }
 .inbuys{
     width: 42.5%;
-    font-size: 0.4rem;
+    height: 1.3rem;
+    font-size: 0.5rem;
     background: #ff525a;
     color: #fff;
 }
@@ -457,7 +458,7 @@ Vue.use(Sku)
     text-align:left;
     display: block;
     flex-wrap: wrap;
-
+    font-size: 0.3rem;
 }
 .goodstu img{
     width: 100%;
@@ -469,7 +470,6 @@ Vue.use(Sku)
    justify-content: space-between;
    align-items: center;
    flex-wrap: wrap;
-   font-size: 0.2rem;
    width: 100%;
 }
 .goodstu ul  li{
@@ -492,5 +492,11 @@ Vue.use(Sku)
 }
 .van-dialog__confirm {
     color: #ff525a;
+}
+.mint-toast {
+    z-index: 10000;
+}
+.mint-toast .is-placemiddle {
+            z-index: 10000;
 }
 </style>

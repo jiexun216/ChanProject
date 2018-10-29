@@ -242,6 +242,7 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
     width: 100%;
     border-radius: 0.1rem;
     box-shadow: 0 0 0.5rem #ccc;
+    font-size: 0.3rem;
 }
 .timer{
     border-bottom:1px solid #ccc;
@@ -289,7 +290,7 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
     border-bottom: 1px solid #ccc;
 }
 .ordercontent {
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -299,7 +300,7 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
 }
 .ordername {
     flex-wrap: wrap;
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     margin-right: 0.4rem;
 }
 .ordersize{
@@ -307,20 +308,20 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
     font-size: 0.3rem;
     display: flex;
     justify-content: space-between;
-    line-height: 1rem;
-    margin-right: 0.4rem;
+    line-height: 0.6rem;
+    margin-right: 0.5rem;
 }
 .ordersizenum {
     color: #ff525a;
-    font-size: 0.5rem;
+    font-size: 0.3rem;
 }
 .sizecolor{
     color: #ff525a;
     font-weight: bold;
-    font-size: 0.45rem;
+    font-size: 0.3rem;
 }
 .total {
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     margin: 0.4rem;
     line-height: 1.2rem;
     display: flex;
@@ -332,13 +333,13 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
      border: 1px solid #ccc;
      border-radius: 0.3rem;
      color: #ccc;
-     font-size: 0.4rem;
+     font-size: 0.2rem;
 }
 .totalitemtwo{
      padding:0.1rem 0.3rem;
      border: 1px solid #ff525a;
      border-radius: 0.3rem;
      color: #ff525a;
-     font-size: 0.4rem;
+     font-size: 0.2rem;
 }
 </style>

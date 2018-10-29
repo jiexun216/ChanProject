@@ -20,9 +20,9 @@
                     <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
                     <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
                  </div>
-                 </div> 
+                 </div>
              </div>
-        </div>
+        </div>        
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
@@ -33,7 +33,6 @@ import { Icon,Dialog } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
 import Add from '@/views/fortunetellers/add'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
-import FortuneList from '@/views/fortunetellers/fortunelist'
 import { fortunetellers,addfortune,deleteFortune } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
@@ -95,7 +94,6 @@ export default {
        Addfortun,
        ContentFortune,
        Add,
-       FortuneList
     }
 }
 </script>

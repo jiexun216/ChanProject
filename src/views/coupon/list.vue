@@ -17,7 +17,6 @@
         <div class="couponsitem" v-for="(item,index) in listData" :key="index">
              <div class="couponitem">
                   <div class="couponmon">
-                    <!-- <img src="../../assets/img/27.png"  class="couponimgs"> -->
                     <span class="couponmoney couponimgs couponimg">
                         ￥{{item.preferentialAmount}}
                     </span>
@@ -200,17 +199,11 @@ export default {
   width: 80%;
   border-radius: 0rem 0.4rem 0.4rem 0rem;
   display: flex;
-  
+  justify-content: space-between;
   align-items: center;
 }
 .couponmon {
-  position: relative;
   margin: 0.2rem 0.3rem;
-  width: 2.5rem;
-  height: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .couponimgs {
   position: relative;  
@@ -218,19 +211,13 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.couponimg{
-  /* background: url('../../assets/img/27.png') no-repeat center center; */
-}
+/* .couponimg{
+  background: url('../../assets/img/27.png') no-repeat center center;
+} */
 .couponmoney {
   font-size: 0.5rem;
   font-weight: bold;
   color: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
 }
 .couponmanp {
   font-weight: bold;

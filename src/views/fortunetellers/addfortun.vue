@@ -1,5 +1,5 @@
 <template>
-    <div class="fortunecontent">
+    <div class="fortunecontent" >
              <div class="fortunecon">
                 <!-- <img src="../../assets/img/25.png" alt=""> -->
                 <i class="fortuneicon fortuneicons"></i>
@@ -156,8 +156,7 @@ Vue.use(NavBar);
       },
      methods: {
          getData () {
-            fortunetellers ().then(res =>{
-            })
+            fortunetellers ().then(res =>{})
          },
          showAdd() {
              this.show = true;
@@ -194,7 +193,7 @@ Vue.use(NavBar);
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   if(res.data.status === 0){
                       this.$router.push({
-                          name: 'fortuneList',
+                          name: 'fortuneTellers',
                           query: {
                               fullName: this.$route.query.fullName,
                               sex: this.$route.query.sex,
@@ -204,7 +203,8 @@ Vue.use(NavBar);
                           }
                       })
                       this.getData();
-                     //  window.location.reload(); 
+                      window.location.reload(); 
+                      
                   }
              }) 
             } else {

@@ -21,7 +21,7 @@
         <pay @getRadio = "handleChangePayWay"></pay>
         <coupons :couponList="this.couponList" @getCoupon = "handleChangeCoupon"></coupons>
         <orderInfo :orderData="this.orderData" :orderAmount="orderAmount" :goodsList="this.goodsList" @getRemark = "handleGetRemark"></orderInfo>
-        <div class="foot">
+        <div class="footsubmit">
              <van-submit-bar
                 :price="orderAmount"
                 :button-text="$t(submitorder)"
