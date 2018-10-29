@@ -131,7 +131,7 @@ export default {
       }).then(() => {
         this.postData()
         this.show= false;
-         window.location.reload()
+        // window.location.reload()
       }).catch(() => {
         this.show = false
       });

@@ -14,7 +14,7 @@
                     <p class="newaddressone">{{$t(newaddress)}}</p>
                     <p>{{$t(addressshou)}}</p> 
                 </div>
-                <i class="newaddressimg newaddressimgs"></i>   
+                <i class="newaddressimg newaddressimgs"></i>
             </div>
            </div>
         <oldaddress @getAddress="selectAddressHandle" :deliveryPerson="addressInfo.deliveryPerson" :deliveryPhone="addressInfo.deliveryPhone" :fullAddress="addressInfo.fullAddress" v-else></oldaddress>

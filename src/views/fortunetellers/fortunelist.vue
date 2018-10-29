@@ -1,14 +1,14 @@
 <template>
-    <div class="navitem">
-        <van-nav-bar
-            :title="$t(sm)"
-            left-arrow
-            @click-left="onClickLeft"
-        >
-         <!-- <van-icon name="search" slot="right" /> -->
-         <van-icon name='add-o' slot="right" @click="showDialog" />
-        </van-nav-bar>
-        <Addfortun v-if="perlist.length == 0"></Addfortun>
+    <div>
+        <!-- <div class="navitem">
+            <van-nav-bar
+                :title="$t(sm)"
+                left-arrow
+                @click-left="onClickLeft"
+            >
+            <van-icon name='add-o' slot="right" @click="showDialog" />
+            </van-nav-bar>
+        </div> -->
         <div class="suanming" >
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
@@ -23,21 +23,21 @@
                  </div> 
              </div>
         </div>
-        <Add :show="show"  @changeYincang="changeYincang"></Add>
-        <!-- <ContentFortune ></ContentFortune> -->
+        <Footer></Footer>
     </div>
 </template>
+
 <script>
 import Vue from 'vue'
 import { Icon,Dialog } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
 import Add from '@/views/fortunetellers/add'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
-import FortuneList from '@/views/fortunetellers/fortunelist'
+import Footer from '@/components/footer';
 import { fortunetellers,addfortune,deleteFortune } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
-    data () {
+     data () {
          return {
              sm: 'common.sm',
              perlist: [],
@@ -45,10 +45,10 @@ export default {
              show: false,
          }
     },
-    methods: {
-        onClickLeft () {
+     methods: {
+         onClickLeft () {
             this.$router.push({path: '/Index'})
-         }, 
+         },
          showDialog () {
              this.show  = true
          },
@@ -85,21 +85,18 @@ export default {
                 this.$toast("记录删除失败"); 
             });
       });
-         }
-    },
-    created () {
-        this.getData();
-       
+     }
     },
     components: {
        Addfortun,
        ContentFortune,
        Add,
-       FortuneList
+       Footer
     }
 }
 </script>
-<style>
+
+<style scoped>
 .navitem{
     position: relative;
 }
@@ -150,4 +147,3 @@ export default {
     line-height: 1rem;
 }
 </style>
-

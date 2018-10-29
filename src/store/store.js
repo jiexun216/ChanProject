@@ -20,7 +20,7 @@ export default new Vuex.Store({
     decrement: state => state.count--,
     getPage (state, data) {
       state.page = data
-    },
+    }
   },
   actions,
   mutations

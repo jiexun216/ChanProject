@@ -129,7 +129,7 @@ Vue.use(Checkbox).use(CheckboxGroup);
    margin-left: 0.2rem;
 }
 .couponimgs{
-    background: url(../../assets/img/27.png) no-repeat center center;
+    /* background: url(../../assets/img/27.png) no-repeat center center; */
 }
 .couponsmons{
     position: relative; 

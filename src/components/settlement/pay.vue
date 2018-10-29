@@ -1,8 +1,8 @@
 <template >
      <div class="payment">
              <p>{{$t(paystyle)}}</p>
-             <van-radio-group v-model="radio" @change="payWayChange">
-             <div class="wxpay">
+             <van-radio-group v-model="radio" @change="payWayChange"> 
+             <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <i class="wxpayimg wxpayimgs"></i>
                  <div class="wxpayright">
@@ -14,7 +14,7 @@
                       <van-radio name="1"></van-radio>
                  </div>
              </div>
-             <div class="wxpay">
+             <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                     <i class="wxpayimg wxpayimgtwo"></i>
                                     <div class="wxpayright">
@@ -26,7 +26,7 @@
                     <van-radio name="2"></van-radio>
                  </div>
              </div>
-              <div class="wxpay">
+              <div class="wxpay" style="width:100%;">
                   <div class="wxpaycen">
                                  <i class="wxpayimg wxpayimgthr"></i>
                                     <div class="wxpayright">

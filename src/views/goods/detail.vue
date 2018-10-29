@@ -84,7 +84,7 @@
                 <p>{{$t(customerservice)}}</p>
             </div>
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
-            <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
+            <button class="inbuys" @click="joinbuy" style="line-height:1.55rem;">{{$t(buy)}}</button>
         </div>
        <van-sku
             v-model="showBase"
@@ -330,10 +330,9 @@ Vue.use(Sku)
   position: fixed;
   bottom: 0;
   left: 0;
-  background: #fff;
-  box-shadow: 0px 2px 20px #f0f0f0;
+  /* background: #fff; */
+  box-shadow: 0px 2px 10px #f0f0f0;
   width: 100%; 
-  height: 1.4rem;
   display: flex;
   align-items: center;
   text-align: center;
@@ -352,11 +351,9 @@ Vue.use(Sku)
 }
 .inbuys{
     width: 42.5%;
-    height: 1.4rem;
     font-size: 0.4rem;
     background: #ff525a;
     color: #fff;
-    line-height: 1.4rem;
 }
 /* .overlayer {
     position:fixed;

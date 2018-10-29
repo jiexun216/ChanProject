@@ -9,7 +9,6 @@
        <el-radio-group v-model="radio2" @change="changeLang(radio2)">
           <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
                      :click="languaging(index)" style="margin-left:0;"> {{value.name}}
-
           </el-radio>
        </el-radio-group>
        <!-- <my-file @input="input($event)"></my-file> -->
@@ -33,6 +32,9 @@ export default {
       ]
     }
   },
+  created () {
+    
+  },
   methods: { 
     postData () {
       var languageType =  this.radio2
@@ -50,7 +52,7 @@ export default {
     },
     input(val) {
       this.photosList = val  //获取到的图片路径base64
-    }
+    },
   },
   computed: {
     ...mapState(['lang'])

@@ -93,7 +93,7 @@ export default {
        passwordLogin (this.tel, this.password).then(res => {
          this.$toast(res.data.message ? res.data.message : '操作失败')
          if (res.data.status == 0) {
-           this.$router.push({name: 'ucenterIndex'})
+           this.$router.push({path: '/'})
          }
        }).catch(err => {
          return err

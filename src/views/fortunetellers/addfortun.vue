@@ -127,7 +127,7 @@ Vue.use(NavBar);
             radioSex: '男',
             currentDate: new Date(),
             currentDatetime: '12:00',
-            minDate: new Date(1990),
+            minDate: new Date(1900),
             maxDate: new Date(2119, 10, 1),
             showcurrentDate: false,
             showTime: false,
@@ -194,7 +194,7 @@ Vue.use(NavBar);
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   if(res.data.status === 0){
                       this.$router.push({
-                          name: 'fortuneTellers',
+                          name: 'fortuneList',
                           query: {
                               fullName: this.$route.query.fullName,
                               sex: this.$route.query.sex,
@@ -204,7 +204,7 @@ Vue.use(NavBar);
                           }
                       })
                       this.getData();
-                       window.location.reload(); 
+                     //  window.location.reload(); 
                   }
              }) 
             } else {
