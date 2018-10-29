@@ -1,7 +1,7 @@
 <template>
     <div class="fortunecontent" >
              <div class="fortunecon">
-                <img src="../../assets/img/25.png" alt="">
+                <img src="../../assets/img/25@3x.png" alt="">
                 <!-- <i class="fortuneicon fortuneicons"></i> -->
                 <p class="fortunep">{{$t(nobirth)}}</p>
                 <button class="fortunebutton" @click="showAdd">{{$t(add)}}</button>
