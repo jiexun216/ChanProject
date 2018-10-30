@@ -4,7 +4,7 @@
           <div class="messimg">
                     <img src="../../assets/img/7.png" alt="">
               </div>
-          <div class="messcon" v-for="lis in list.list" :key="lis.index">
+          <div class="messcon" v-for="lis in list" :key="lis.index">
                <div class="mestitle" style="100%;">
                 <span>{{lis.title}}</span>
                 <span class="messright">{{lis.create_time}}</span>  
@@ -24,8 +24,8 @@
         },
         created () {
             this.$getData('ucenter/myMessage').then(res => {
-                  this.list = res.data.data;
-                //   console.log(this.list)
+                  this.list = res.data.data.list;
+                  console.log(this.list)
             }).catch(err => {
                 return err;
             })

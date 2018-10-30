@@ -6,44 +6,36 @@
             </router-link>
             <span >{{$t(messagecenter)}}</span>
             <span class="myorder">
-                <span><i class="back backcoups" @click="showinfo"></i></span>
+                <!-- <span><i class="back backcoups" @click="showinfo"></i></span> -->
             </span>
         </div>  
         <div class="message">  
-            <nav v-for="(item, index) in tabText" :key="index">        
-    　　　　　　<a href="javascript:void(0);" @click="toggleTabs(item.text,item.keys);"
-                  :class="{ msgbg:changeRed == item.keys}">
-                   {{item.text}}</a>
-    　　　　</nav>
+            <div class="usecoupons">
+                    <div v-for="val in cate" :key="val.cateId"  @click="handleSwitchTab(val.cateId)"
+                     class="useitembg" :class="{'useitembgs':cateId===val.cateId}">
+                        <span>{{val.title}}</span>
+                    </div>
+                </div>
         </div>
-     <announcement :is='currentView' keep-alive class="ann" v-if="annshow"></announcement>
-     <div class="opertion" @touchmove.prevent v-if="opertionshow">
-         <div class="operbtm">
-             <p>{{$t(AllMarkedRead)}}</p>
-             <p @click="keyempty">{{$t(AkeyEmpty)}}</p> 
-              <!-- 一键清空 -->
-             <p class="operbtmp" @click="operhide">{{$t(cancel)}}</p>
+        <div v-for="(item,index) in list" :key="index" class="messtime">
+                 <div>
+                    <h3>{{item.create_time}}</h3> 
+                 </div>
+                 <div style="margin-top:0.3rem;">
+                     {{item.description}}
+                 </div>
          </div>
-     </div>
-     <div class="opertion" @touchmove.prevent v-if="clearshow">
-          <div class="clear">
-               <p class="clearall">{{$t(emptyAll)}}</p>
-               <p class="clearno">{{$t(carefulEmpty)}}</p>
-               <div class="cender">
-                   <span @click="dercencal">{{$t(cancel)}}</span>
-                   <span class="dermine" @click="dermine">{{$t(determine)}}</span>
-                     <!-- 点击确定消息隐藏 -->
-               </div>
-          </div>
-     </div>
-   </div>    
+    </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import { Tab, Tabs } from 'vant';
 import announcement from "@/components/message/announcement";
 import luck from '@/components/message/luck'
 import mynews from '@/components/message/mynews'
+import { messageList} from "@/api/ucenter/index.js"
+Vue.use(Tab).use(Tabs);
     export default {
         data () {
             return {
@@ -56,23 +48,12 @@ import mynews from '@/components/message/mynews'
                 determine: 'common.determine',
                 changeRed:'announcement',
                 currentView: 'announcement',
-                tabText: [
-                    {
-                        keys: 'announcement',
-                        text: '平台公告',
-                    },
-                    {
-                        keys: 'luck',
-                        text: '运势资讯',
-                    },
-                    {
-                        keys: 'mynews',
-                        text: '我的消息',
-                    },
-                ],
+                list: [],
+                cate: [],
+                cateId:1,
                 opertionshow: false, 
                 clearshow: false,
-                annshow: true,   //这个是消息的true
+                annshow: true, 
             }
         },
         created () {
@@ -80,8 +61,10 @@ import mynews from '@/components/message/mynews'
         },
         methods: {
             getMessage () {
-                this.$getData('ucenter/myMessage').then(res => {
+                messageList(this.cateId,1).then(res => {
                    this.list = res.data.data.list;
+                   this.cate= res.data.data.cate;
+                   console.log(this.list)
                    if (this.list.length === 0) {
                        this.annshow = false
                    }
@@ -119,7 +102,11 @@ import mynews from '@/components/message/mynews'
             },
             showinfo (){
                 this.opertionshow = true
-            }
+            },
+            handleSwitchTab(cateId) {
+                this.cateId = cateId;
+                this.getMessage()
+            },
         },
         components: {
            announcement,
@@ -237,5 +224,25 @@ a{
 }
 .cender .dermine{
     color: #ff525a
+}
+.vantabs{
+    margin:0.2rem;
+}
+.useitembg {
+  margin:0.2rem 0.4rem;
+  font-size: 0.4rem;
+}
+.useitembgs {
+  color: #f00;
+}
+.messtime{
+    margin: 0.3rem;
+    padding:0.3rem;
+    box-shadow: 0px 0px 5px 5px #f5f5f5; 
+}
+.usecoupons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>

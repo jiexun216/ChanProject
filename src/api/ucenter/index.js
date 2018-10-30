@@ -38,3 +38,13 @@ export function exitLogon() {
     const data = {}
     return getData(url, data)
 }
+
+// 消息列表
+export function messageList(cateId, page) {
+    const url = 'ucenter/myMessage'
+    const data = {
+        cateId,
+        page,
+    }
+    return getData(url, data)
+}

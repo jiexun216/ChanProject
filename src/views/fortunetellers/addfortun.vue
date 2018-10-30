@@ -193,7 +193,7 @@ Vue.use(NavBar);
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   if(res.data.status === 0){
                       this.$router.push({
-                          name: 'fortuneTellers',
+                          name: 'fortunelist',
                           query: {
                               fullName: this.$route.query.fullName,
                               sex: this.$route.query.sex,

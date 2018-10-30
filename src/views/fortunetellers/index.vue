@@ -22,6 +22,7 @@
                  </div>
              </div>
         </div>     
+        <!-- <Fortunelist></Fortunelist> -->
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
@@ -32,6 +33,7 @@ import { Icon,Dialog } from 'vant';
 import Addfortun from '@/views/fortunetellers/addfortun'
 import Add from '@/views/fortunetellers/add'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
+import Fortunelist from '@/views/fortunetellers/fortunelist'
 import { fortunetellers,addfortune,deleteFortune } from '@/api/fortunetellers/index.js'
 Vue.use(Icon);
 export default {
@@ -92,6 +94,7 @@ export default {
        Addfortun,
        ContentFortune,
        Add,
+       Fortunelist
     }
 }
 </script>

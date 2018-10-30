@@ -34,6 +34,7 @@ import FortuneIndex from '@/views/fortunetellers/index'
 import FortuneNoLog from '@/views/fortunetellers/no-fortune-log'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
 import Results from '@/views/fortunetellers/results'
+import fortunelist from '@/views/fortunetellers/fortunelist'
 Vue.use(Router)
 
 export default new Router({
@@ -180,6 +181,11 @@ export default new Router({
       name: 'fortuneTellers',
       path: '/fortunetellers/index',
       component: FortuneIndex
+    },
+    {
+      name: 'fortuneList',
+      path: '/fortunetellers/fortunelist',
+      component: fortunelist
     },
     {
       name: 'fortuneNoLog',
