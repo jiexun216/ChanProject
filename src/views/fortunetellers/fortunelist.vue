@@ -9,7 +9,7 @@
             <van-icon name='add-o' slot="right" @click="showDialog" />
             </van-nav-bar>
         </div> -->
-        <div class="suanming" >
+        <div class="suanming">
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
                     <div class="personaldata">
@@ -24,6 +24,7 @@
              </div>
         </div>
         <Footer></Footer>
+        <Add :show="show"  @changeYincang="changeYincang"></Add>
     </div>
 </template>
 
@@ -59,6 +60,7 @@ export default {
          //请求数据
          getData () {
              fortunetellers ().then (res => {
+                 console.log(res)
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
                     this.$router.push({name: res.data.data.url})
@@ -114,6 +116,8 @@ export default {
 }
 .suanming{
     border: 1px solid #ccc;
+    z-index: 100;
+    border: 1px solid #ff0000;
 }
 .buttom{
     display: flex;

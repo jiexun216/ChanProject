@@ -3,13 +3,12 @@
         <van-nav-bar
             :title="$t(sm)"
             left-arrow
-            @click-left="onClickLeft"
-        >
+            @click-left="onClickLeft">
          <!-- <van-icon name="search" slot="right" /> -->
          <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
         <Addfortun v-if="perlist.length == 0"></Addfortun>
-        <div class="suanming" >
+        <div class="suanming">
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
                     <div class="personaldata">

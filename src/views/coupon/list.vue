@@ -17,7 +17,7 @@
         <div class="couponsitem" v-for="(item,index) in listData" :key="index">
              <div class="couponitem">
                   <div class="couponmon">
-                    <span class="couponmoney couponimgs couponimg">
+                    <span class="couponmoney">
                         ￥{{item.preferentialAmount}}
                     </span>
                   </div>
@@ -203,7 +203,10 @@ export default {
   align-items: center;
 }
 .couponmon {
-  margin: 0.2rem 0.3rem;
+  margin: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .couponimgs {
   position: relative;  
@@ -238,7 +241,7 @@ export default {
   align-items: center;
 }
 .couponman {
- margin: 0.3rem;
+ margin: 0.2rem;
 }
 .delebottom{
   text-align: center;

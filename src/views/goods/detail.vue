@@ -23,7 +23,7 @@
                       <div class="goodcover" >
                         <el-carousel tag="ul"  indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
-                              <img :src="goodsImage"  style="width:100%"> 
+                              <img :src="goodsImage"> 
                              </el-carousel-item >
                         </el-carousel>  
                       <div class="goods">
@@ -498,5 +498,8 @@ Vue.use(Sku)
 }
 .mint-toast .is-placemiddle {
             z-index: 10000;
+}
+.el-carousel__item img{
+       width:100%;
 }
 </style>

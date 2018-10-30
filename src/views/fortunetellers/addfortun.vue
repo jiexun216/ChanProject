@@ -204,7 +204,6 @@ Vue.use(NavBar);
                       })
                       this.getData();
                       window.location.reload(); 
-                      
                   }
              }) 
             } else {

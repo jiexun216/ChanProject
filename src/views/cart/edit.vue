@@ -1,7 +1,6 @@
 <template>
  <div>
       <div class="cartop">
-                
                 <i class="carback  carbacks" @click="$router.back(-1)"></i>     
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
@@ -161,7 +160,7 @@ Vue.use(Stepper);
     display: flex;
     justify-content: space-around;
     justify-content: center;
-    padding: 0.2rem;
+    padding: 0.1rem;
 }
 .van-card-img{
     width: 3rem;
@@ -185,7 +184,7 @@ Vue.use(Stepper);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 0.3rem;
+  margin-left: 0.2rem;
 }
 .van-stepper__minus{
   border-radius: 40% 0% 0% 40%; 

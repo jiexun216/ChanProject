@@ -190,8 +190,7 @@ Vue.use(NavBar);
              ).then(res =>{
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   this.$router.push({path: '/fortunetellers/index'})
-                  if(res.data.status === 0){
-                       
+                  if(res.data.status === 0){  
                     //   window.location.reload()
                   }
              }) 

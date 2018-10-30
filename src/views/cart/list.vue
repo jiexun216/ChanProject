@@ -30,7 +30,7 @@
                         class="card-goods__item"
                         :key="item.id"
                         :name="item.id"
-                      >
+>
                       </van-checkbox>
                   </van-checkbox-group>
                     <div>
@@ -207,7 +207,7 @@ Vue.use(Stepper);
     display: flex;
     justify-content:space-around; 
     align-items: center;
-    padding: 0.2rem;
+    padding: 0.1rem;
 }
 .van-card-img{
     width: 3rem;
@@ -229,13 +229,12 @@ Vue.use(Stepper);
 }
 .van-price-p{
    color: #f00;
-   margin-right: 0.5rem;
+   margin-right: 0.4rem;
 }
 .van-stepper{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 .van-stepper__minus{
   border-radius: 40% 0% 0% 40%;
@@ -247,13 +246,6 @@ Vue.use(Stepper);
 }
 .payfor{
   box-shadow: 0px 0px 10px 5px #fbfbfb;
-}
-.cartop{
-  font-size: 0.4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 1.5rem;
 }
 .carback{
    display: inline-block;

@@ -35,7 +35,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 1.5rem;
 }
 .carback{
    display: inline-block;
