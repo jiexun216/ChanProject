@@ -6,8 +6,7 @@
                      <p>{{$t(useyouhui)}}</p> 
                  </div>
                    <i class="wxpayimg wxpayimgfive" ></i> 
-             </div>
-            
+             </div>  
              <div class="overlayer" @touchmove.prevent v-if="couponsheader" >
                    <div class="couponsuse">
                         <div class="couponstop" >
@@ -29,7 +28,6 @@
                             <van-radio v-model="checked" :name="item.memberCouponId"></van-radio>
                         </div>
                         </van-radio-group>
-                       
                     </div> 
              </div>
         </div>    

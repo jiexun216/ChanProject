@@ -194,7 +194,7 @@ module.exports = {
     waitpay: '待付款',
     waitgoods: '待收貨',
     completed: '已完成',
-    service: '售後服務',
+    serviced: '售後服務',
     myaddress: '我的地址',
     OnlineService: '在線客服',
     setup: '設置',

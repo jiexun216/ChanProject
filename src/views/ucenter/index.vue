@@ -175,8 +175,8 @@ export default {
 }
 .iconf{
     display: inline-block;
-   width: 0.8rem;
-   height: 0.8rem;
+   width: 38px;
+   height: 38px;
    background-size: cover;
    margin-left: 0.2rem;
 }

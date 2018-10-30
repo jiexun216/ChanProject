@@ -1,14 +1,15 @@
 <template>
    <div>
-      <div class="messtop"> 
-           <div class="messimg">
+      <div class="messtopa"> 
+           <div class="messimga">
                     <img src="../../assets/img/1.png" alt="">
               </div>
-          <div class="messcon" v-for="lis in list.list" :key="lis.index">         
-                       <span>{{lis.title}}</span>
-                       <span class="messright">{{lis.create_time}}</span>
-                       <p>{{lis.description}}</p> 
-         
+          <div class="messcona" v-for="lis in list.list" :key="lis.index"> 
+              <div class="mestitlea" style="100%;">
+                <span>{{lis.title}}</span>
+                <span class="messrighta">{{lis.create_time}}</span>  
+              </div>                              
+              <p>{{lis.description}}</p>
           </div>
       </div>
    </div>    
@@ -24,41 +25,35 @@
         created () {
             this.$getData('ucenter/myMessage').then(res => {
                   this.list = res.data.data;
-                //   console.log(this.list)
             }).catch(err => {
                 return err;
             })
         }
     }
 </script>
-
 <style>
-.messtop{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.messtopa{
     margin: 0.4rem;
-    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.messimg{
-   position: absolute;
-   top:0;
-   left: 0;
-   margin: 0.1rem;
+.messimga{
+   align-self: flex-start;
 }
-.messcon{
+.messcona{
     margin-left:1.3rem;
     font-size: 0.4rem;
     border-bottom: 1px solid #ccc;
 }
-.messcon span{
+.mestitlea{
+    width:100%;
+}
+.mestitlea span{
     line-height: 1rem;
 }
-.messcon p{
+.messcona p{
     margin-bottom: 0.5rem;
     color: #ccc;
-}
-.messright{
-    float:right;
 }
 </style>

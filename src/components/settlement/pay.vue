@@ -88,6 +88,7 @@ export default{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0.2rem;
 }
 .wxwxwx{
     height: 1rem;
@@ -128,6 +129,12 @@ export default{
 .wxpayright p{
     font-size: 0.2rem;
     color: #ccc;
+}
+.payment  .van-radio-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .van-checkbox__icon--checked .van-icon{
     background: #f00;

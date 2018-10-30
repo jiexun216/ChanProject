@@ -5,8 +5,10 @@
                     <img src="../../assets/img/7.png" alt="">
               </div>
           <div class="messcon" v-for="lis in list.list" :key="lis.index">
-               <span>{{lis.title}}</span>
-               <span class="messright">{{lis.create_time}}</span>
+               <div class="mestitle" style="100%;">
+                <span>{{lis.title}}</span>
+                <span class="messright">{{lis.create_time}}</span>  
+              </div>  
                <p>{{lis.description}}</p>
           </div>
       </div>
@@ -33,17 +35,13 @@
 
 <style>
 .messtop{
+    margin: 0.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.4rem;
-    position: relative;
 }
 .messimg{
-   position: absolute;
-   top:0;
-   left: 0;
-   margin: 0.1rem;
+   align-self: flex-start;
 }
 .messcon{
     margin-left: 1.3rem;

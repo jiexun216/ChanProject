@@ -82,7 +82,6 @@ import mynews from '@/components/message/mynews'
             getMessage () {
                 this.$getData('ucenter/myMessage').then(res => {
                    this.list = res.data.data.list;
-                //    console.log(this.list)
                    if (this.list.length === 0) {
                        this.annshow = false
                    }

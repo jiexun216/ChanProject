@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div v-if="cartGoodsList.length == 0">
+      <div v-if="cartGoodsList.length == 0" v-cloak>
       <div class="cartop">
                 <router-link to="/">
                     <i class="carback  carbacks"></i>     
@@ -272,4 +272,7 @@ Vue.use(Stepper);
    padding:1px;
    line-height: 0px;
  }
+ [v-cloak] {
+  display: none;
+}
 </style>

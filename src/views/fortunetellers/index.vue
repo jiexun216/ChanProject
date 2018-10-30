@@ -7,8 +7,8 @@
          <!-- <van-icon name="search" slot="right" /> -->
          <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
-        <Addfortun v-if="perlist.length == 0"></Addfortun>
-        <div class="suanming">
+        <Addfortun v-if="perlist.length == 0" v-cloak></Addfortun>
+        <div class="suanming" >
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
                     <div class="personaldata">
@@ -21,7 +21,7 @@
                  </div>
                  </div>
              </div>
-        </div>        
+        </div>     
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
@@ -86,8 +86,7 @@ export default {
          }
     },
     created () {
-        this.getData();
-       
+        this.getData(); 
     },
     components: {
        Addfortun,
@@ -145,6 +144,9 @@ export default {
     color: #999999;
     font-size: 0.35rem;
     line-height: 1rem;
+}
+[v-cloak] {
+  display: none;
 }
 </style>
 
