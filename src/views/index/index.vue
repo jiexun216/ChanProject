@@ -327,7 +327,7 @@ a {
   font-size: 0.3rem;
 }
 .moregoods{
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 .moregoodsli{
   width: 100%;

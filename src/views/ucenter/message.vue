@@ -10,7 +10,7 @@
             </span>
         </div>  
         <div class="message">  
-            <div class="usecoupons">
+            <div class="messagelist">
                     <div v-for="val in cate" :key="val.cateId"  @click="handleSwitchTab(val.cateId)"
                      class="useitembg" :class="{'useitembgs':cateId===val.cateId}">
                         <span>{{val.title}}</span>
@@ -240,7 +240,7 @@ a{
     padding:0.3rem;
     box-shadow: 0px 0px 5px 5px #f5f5f5; 
 }
-.usecoupons{
+.messagelist{
     display: flex;
     justify-content: space-between;
     align-items: center;

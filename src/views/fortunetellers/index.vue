@@ -22,7 +22,6 @@
                  </div>
              </div>
         </div>     
-        <!-- <Fortunelist></Fortunelist> -->
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
@@ -149,7 +148,7 @@ export default {
     line-height: 1rem;
 }
 [v-cloak] {
-  display: none;
+  display: none !important;
 }
 </style>
 

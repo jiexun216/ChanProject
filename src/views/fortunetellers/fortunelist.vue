@@ -44,6 +44,26 @@ export default {
                  this.perlist  = res.data.data.list
              }) 
          },
+         // 删除算命记录
+         handleDelete (fortuneId) {
+             Dialog.confirm({
+                    title: "删除确认",
+                    message: "此操作不可逆,确认要删除该记录吗?"
+                }).then(() => {
+            deleteFortune(fortuneId)
+            .then(res => {
+                if (res.data.status == 0) {
+                this.$toast("记录删除成功");
+                } else {
+                this.$toast(res.data.message ? res.data.message : "记录删除失败");
+                }
+                this.getData();
+            })
+            .catch(() => {
+                this.$toast("记录删除失败"); 
+            });
+      });
+         }
     },
     created () {
         this.getData(); 
