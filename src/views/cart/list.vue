@@ -40,7 +40,8 @@
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥{{item.price}}</p>
-                            <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity"/></p>
+                            <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity" 
+                                  /></p>
                         </div>
                     </div>
                 </div>
@@ -80,7 +81,8 @@ Vue.use(Stepper);
       goodsListitem: [],
       goodsQuantity: 1,
       carts: 'common.carts',
-      editors: 'common.editor'
+      editors: 'common.editor',
+      yesno: false
     };
   },
     computed: {
@@ -113,11 +115,14 @@ Vue.use(Stepper);
           this,goodsQuantity = data
           changeCartQuantity (data,cartId, goodsQuantity).then(res => {
            this.goodsQuantity = cartId
-            // this.$toast(res.data.message ? res.data.message : '操作失败')
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
+
             } else if (res.data.status == 0) {
                 this.getData();
+            } else {
+              this.$toast(res.data.message ? res.data.message : '操作失败')
+              this.yesno = true
             }
         })
     },  
@@ -143,7 +148,12 @@ Vue.use(Stepper);
 							}
 						})
         }
-      });
+      })
+    },
+    plus () {
+
+      this.yesno = true
+      
     },
     editor () {
       this.$router.push({name:'cartEdit'})

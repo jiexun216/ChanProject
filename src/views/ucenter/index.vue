@@ -42,7 +42,6 @@
                   </div> 
              </div>
              <div class="buyitems">
-                    
                      <div class="coupons" @click="$router.push({name: 'couponList'})">
                        <i class="iconc couponsone"></i>
                        <span>{{$t(mycoupon)}}</span>
@@ -64,7 +63,7 @@
                 <div class="coupons" @click="$router.push({name: 'ucenterSetup'})">
                     <i class="iconc couponsfour"></i>
                     <span>{{$t(setup)}}</span>
-                    <span class="couponsnum"> 0＞</span>
+                    <!-- <span class="couponsnum"> 0＞</span> -->
                 </div>
                 
              </div>

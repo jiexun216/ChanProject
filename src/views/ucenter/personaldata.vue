@@ -3,7 +3,9 @@
       <div class="settop">
             <i class="back backs" @click="$router.back(-1)"></i>     
             <span class="setpersonal">{{$t(setpersonal)}}</span>
-            <span class="deter" @click="confirmModify()">{{$t(determine)}}</span>
+            <span class="deter" @click="confirmModify()">
+                {{$t(determine)}}
+                </span>
         </div>
         <div class="userdata"> 
             <form action="javascript:return true;">

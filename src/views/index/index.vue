@@ -31,7 +31,7 @@
        <div class="layout">
         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
-                   <img :src="banner.picture" style="width:100%;" @click="$router.push({ name: 'goodsDetail', query: { url: banner.url }})">
+                   <img :src="banner.picture" style="width:100%;" @click="handdleClick(banner.url)">
           </van-swipe-item>
         </van-swipe>
           <!-- <div class="banner">
@@ -155,6 +155,9 @@ export default {
         });
         this.$toast("请输入搜索内容");
       }
+    },
+    handdleClick(url) {
+      window.location.href = url;
     },
     goPage(page) {
       this.$store.commit("getPage", page);

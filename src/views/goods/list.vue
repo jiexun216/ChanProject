@@ -5,7 +5,8 @@
          <div class="search-header">
          <div class="search-top">
            <i class="search-icon search-bg"></i>
-           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword">      
+           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword"
+                                @keyup="searchGoods"  @click="searchleft($event)">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
@@ -101,7 +102,10 @@ import { getGoodsList } from '@/api/goods/index.js'
                this.result1 = this.input1;
                this.result1 = " ";
                this.$router.push('/Index')
-           }
+           },
+           searchleft ($event) {
+      this.Iscenter = false;
+    },
          },
          
     }

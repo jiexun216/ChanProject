@@ -49,6 +49,7 @@ export default {
     changeLang (lang) {
       this.$store.commit('SET_LANG', lang)
       this.$i18n.locale = lang
+      this.$router.push({path:'/'})
     },
     input(val) {
       this.photosList = val  //获取到的图片路径base64

@@ -2,7 +2,7 @@
 <div>
             <div class="orderdetop">
                 <i class="back backs" @click="$router.back(-1)"></i>     
-                <span class="orderaddress">{{$t(editoradd)}}</span>
+                <!-- <span class="orderaddress">{{$t(editoradd)}}</span> -->
                 <span class="myorder"></span>
             </div>    
             <!-- <van-address-edit

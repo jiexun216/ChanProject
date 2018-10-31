@@ -18,7 +18,10 @@
             <div class="orderdetop orderdetop1">
                 <i class="back backs" @click="$router.back(-1)"></i>     
                 <span >{{$t(shipaddress)}}</span>
-                <span class="oks" @click="$router.back(-1)">{{$t(completes)}}</span>
+                <span class="oks" @click="$router.back(-1)">
+                  <!-- {{$t(completes)}} -->
+
+                </span>
                 </div>
                 <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
                 <div class="oldname">
