@@ -13,7 +13,7 @@
            v-model="tel"
            class="telmo" 
            :placeholder="$t(userphone)">
-           <div class="restsend">
+           <div class="restsends">
              <input type="button" 
                     style="width:100%;"
                     class="sends" 
@@ -190,8 +190,7 @@ export default {
   font-size: 1rem;
   border: none;
 }
-.restsend{
-  float:right;
+.restsends{
   color: #ff525a;
   font-size: 0.4rem;
 }

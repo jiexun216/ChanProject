@@ -12,7 +12,7 @@
            v-model="tel"
            class="tel" 
            :placeholder="$t(userphone)">
-           <div class="restsend">
+           <div class="restsendse">
              <input type="button" 
                     style="width:100%"
                     class="sends" 
@@ -163,13 +163,9 @@ export default {
   border: none;
 
 }
-.restsend {
-  float: right;
+.restsendse {
   color: #ff525a;
   z-index: 20;
-  position: absolute;
-  top: 0;
-  right: 0; 
 }
 .sends {
   color: #f00;

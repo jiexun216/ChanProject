@@ -8,7 +8,7 @@
          <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
         <Addfortun v-if="perlist.length == 0" v-cloak style="[v-cloak] {display: none !important;transition-duration: 0s;-webkit-transition-duration:0s;}"></Addfortun>
-        <div class="suanming">
+        <div class="suanming" v-else>
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
                     <div class="personaldata">

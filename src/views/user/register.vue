@@ -14,7 +14,7 @@
            v-model="tel"
            class="tel" 
            :placeholder="$t(userphone)">
-          <div class="restsend">
+          <div class="restsendsend">
              <input type="button" 
                     style="width:100%"
                     class="sends" 
@@ -207,8 +207,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
   margin-left:0.15rem;
   width:1.2rem;
   height:1.2rem;
-  background: url(../../assets/img/39.png) no-repeat center;
-  
+  background: url(../../assets/img/39.png) no-repeat center; 
 }
 .registered{
   float:right;
@@ -240,6 +239,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
 }
 .logintel{
   display: flex;
+  display:-webkit-flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -247,10 +247,10 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
   line-height:0.7rem;
   font-size: 0.4rem;
   border:none;
+  width:70%;
 }
-.restsend{
+.restsendsend{
   color: #ff525a;
-  
 }
 .yzm{
   line-height:0.7rem;
