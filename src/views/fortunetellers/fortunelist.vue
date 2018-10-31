@@ -1,5 +1,12 @@
 <template>
     <div>
+        <van-nav-bar
+            :title="$t(sm)"
+            left-arrow
+            @click-left="onClickLeft">
+         <!-- <van-icon name="search" slot="right" /> -->
+         <van-icon name='add-o' slot="right" @click="showDialog" />
+        </van-nav-bar>
         <div class="suanming" >
              <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                  <div class="personalstyle">
@@ -14,6 +21,7 @@
                  </div>
              </div>
         </div> 
+        <Add :show="show"  @changeYincang="changeYincang"></Add>
     </div>
 </template>
 
@@ -35,7 +43,16 @@ export default {
          }
     },
     methods: {
-      getData () {
+        onClickLeft () {
+            this.$router.push({path: '/Index'})
+         },
+         showDialog () {
+             this.show  = true
+         },
+         changeYincang(boolval) {
+             this.show  = boolval
+         },
+         getData () {
              fortunetellers ().then (res => {
                  if (res.data.status == 99) {
                     this.$toast(res.data.message ? res.data.message : '操作失败')

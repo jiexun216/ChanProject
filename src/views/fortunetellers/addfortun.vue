@@ -193,7 +193,8 @@ Vue.use(NavBar);
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   if(res.data.status === 0){
                       this.$router.push({
-                          name: 'fortunelist',
+                          name: 'fortuneTellers',
+                          redirect: 'fortuneTellers',
                           query: {
                               fullName: this.$route.query.fullName,
                               sex: this.$route.query.sex,
@@ -202,9 +203,10 @@ Vue.use(NavBar);
                               birthAddress: this.$route.query.birthAddress,
                           }
                       })
-                      this.getData();
-                      window.location.reload(); 
+                      this.getData() 
+                      window.location.reload()
                   }
+                  
              }) 
             } else {
               done();
@@ -276,7 +278,7 @@ Vue.use(NavBar);
         },
     },
     created () {
-        console.log(this.isshow)
+       
     }
     
      }

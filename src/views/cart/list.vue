@@ -29,8 +29,7 @@
                       <van-checkbox
                         class="card-goods__item"
                         :key="item.id"
-                        :name="item.id"
->
+                        :name="item.id">
                       </van-checkbox>
                   </van-checkbox-group>
                     <div>
@@ -105,6 +104,7 @@ Vue.use(Stepper);
         }
         this.cartGoodsList  = res.data.data.list
         this.goodsList = res.data.data.goodsList
+        
         
       });
     },

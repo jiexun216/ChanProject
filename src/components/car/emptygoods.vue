@@ -15,7 +15,7 @@
             <p class="liketop">{{$t(youlike)}}</p>
             <div class="likes">
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
-                     <img :src="item.goodsCoverImg" alt="">
+                     <img :src="item.goodsCoverImg" alt="" style="height:200px;">
                      <div class="likelefts">
                         <h4>{{item.name}}</h4>
                         <p>{{$t(yishou)}}  {{item.salesVolume}}  {{$t(jian)}}</p>

@@ -8,9 +8,26 @@
         <p class="faLogin">{{$t(creat)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
-     <div class="login-tellre">
-         <input type="text" class="tel" v-model="telephone" :placeholder="$t(userphone)">
-         <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
+     <div class="login-tellre logintel">
+         <!-- <input type="text" class="tel" v-model="telephone" :placeholder="$t(userphone)"> -->
+         <input type="telephone" 
+           v-model="tel"
+           class="tel" 
+           :placeholder="$t(userphone)">
+          <div class="restsend">
+             <input type="button" 
+                    style="width:100%"
+                    class="sends" 
+                    :value=" $t(restsend)" 
+                    v-show="sendAuthCode"
+                    @click="getAuthCode">     
+              <input type="button" 
+                  class="sends" 
+                  v-show="!sendAuthCode"
+                  style="display:none"
+                  v-model="auth_time">       
+           </div>  
+         <!-- <span class="restsend" @click="getAuthCode">{{$t(send)}}</span> -->
          <!-- <span class="restsend" >重新发送(<span>30</span>s)</span> -->
      </div>
       <div class="login-tellre">
@@ -45,18 +62,21 @@
 <script>
 import { Dialog } from 'vant';
 import { rsaJsencrypt } from "@/common/js/rsa.js";
-import { messageSend, registerMember } from '@/api/user/index.js'
+import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.js'
     export default {
        name: 'register',
        data () {
          return {
-           telephone: "",
+           tel: "",
            verifyCode: "",
            password: "",
            fpassword: "",
            wx: 'common.wx',
            qq: 'common.qq',
            wb: 'common.wb',
+           sendAuthCode: true,
+           auth_time: 0,
+           restsend: 'common.restsend',
            phonekc: 'common.phonekc',
            creat: 'common.creat',
            forget: 'common.forget',
@@ -71,28 +91,59 @@ import { messageSend, registerMember } from '@/api/user/index.js'
        },
        methods: {
          // 发送验证码
-         sendMessage () {
-           let tel = this.telephone.trim();
-           let reg = /^1\d{10}$/;
-           if (!reg.test(tel)) {
-             this.$toast({
-             message: "请输入正确格式的手机号",
-             position: "top"
-             });
-             return false;
-           }
-           messageSend (tel, 0).then(res => {
-             this.$toast(res.data.message ? res.data.message : '操作失败')
-             if (res.data.status == 0) {
-                  Dialog.confirm({
-                    title: '温馨提示',
-                    message: '您的短信验证码为'+res.data.data.verifyCode
-                  })
-             }
-           }).catch(err => {
-             return err
-           })
-         },
+         getAuthCode: function() {
+            let reg = /^1\d{10}$/;
+            if (!reg.test(this.tel)) {
+              this.$toast({
+                message: "请输入正确格式的手机号",
+                position: "top"
+              });
+              return false;
+            }
+            messageSend(this.tel, 2).then(res => {
+              this.$toast(res.data.message ? res.data.message : "操作失败");
+              if (res.data.status == 0) {
+                Dialog.confirm({
+                  title: "温馨提示",
+                  message: "您的短信验证码为" + res.data.data.verifyCode
+                });
+                this.sendAuthCode = false;
+                this.auth_time = 30;
+                var auth_timer = setInterval(() => {
+                  this.auth_time--;
+                  if (this.auth_time <= 0) {
+                    this.sendAuthCode = true;
+                    clearInterval(auth_timer);
+                  }
+                }, 1000);
+              }
+            });
+          },
+          // 下一步 验证验证码
+          nextStep: function() {
+            let reg = /^1\d{10}$/;
+            if (!reg.test(this.tel)) {
+              this.$toast({
+                message: "请输入正确格式的手机号",
+                position: "top"
+              });
+              return false;
+            }
+            if (!this.code) {
+              this.$toast({
+                message: "请输入短信验证码",
+                position: "top"
+              });
+              return false;
+            }
+            // 验证码验证方法
+            verifyMessageCode (this.tel, this.code, 2).then(res => {
+              this.$toast(res.data.message ? res.data.message : '操作失败')
+              if (res.data.status == 0) {
+                this.$router.push({name:'resetPassword', query: {tel: this.tel,code:this.code}})
+              }
+            })
+          },
          // 会员注册
          memberRegister () {
            let reg = /^1\d{10}$/;
@@ -187,14 +238,19 @@ import { messageSend, registerMember } from '@/api/user/index.js'
   line-height:0.7rem;
   border-bottom:1px solid #f0f0f0;
 }
+.logintel{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .tel{
   line-height:0.7rem;
   font-size: 0.4rem;
   border:none;
 }
 .restsend{
-  float:right;
   color: #ff525a;
+  
 }
 .yzm{
   line-height:0.7rem;

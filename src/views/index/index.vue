@@ -168,7 +168,7 @@ export default {
   },
   
   mounted(e) {
-    if (this.lang === 'english') this.language = 'english'
+    if (this.lang === 'english') this.language = 'English'
     else if (this.lang === 'character') this.language = '繁體中文'
     else this.language = '简体中文'
   },
