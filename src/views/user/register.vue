@@ -12,19 +12,19 @@
          <!-- <input type="text" class="tel" v-model="telephone" :placeholder="$t(userphone)"> -->
          <input type="telephone" 
            v-model="tel"
-           class="tel" 
+           class="tel"
            :placeholder="$t(userphone)">
           <div class="restsendsend">
-             <input type="button" 
+             <input type="button"
                     style="width:100%"
                     class="sends" 
                     :value=" $t(restsend)" 
                     v-show="sendAuthCode"
                     @click="getAuthCode">     
               <input type="button" 
-                  class="sends" 
+                  class="restsendsend" 
                   v-show="!sendAuthCode"
-                  style="display:none"
+                  style="display:none;color: #ff525a;"
                   v-model="auth_time">       
            </div>  
          <!-- <span class="restsend" @click="getAuthCode">{{$t(send)}}</span> -->
@@ -76,6 +76,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            wb: 'common.wb',
            sendAuthCode: true,
            auth_time: 0,
+           code: '',
            restsend: 'common.restsend',
            phonekc: 'common.phonekc',
            creat: 'common.creat',
@@ -92,7 +93,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
        methods: {
          // 发送验证码
          getAuthCode: function() {
-            let reg = /^1\d{10}$/;
+            let reg =11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
             if (!reg.test(this.tel)) {
               this.$toast({
                 message: "请输入正确格式的手机号",
@@ -118,31 +119,6 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
                 }, 1000);
               }
             });
-          },
-          // 下一步 验证验证码
-          nextStep: function() {
-            let reg = /^1\d{10}$/;
-            if (!reg.test(this.tel)) {
-              this.$toast({
-                message: "请输入正确格式的手机号",
-                position: "top"
-              });
-              return false;
-            }
-            if (!this.code) {
-              this.$toast({
-                message: "请输入短信验证码",
-                position: "top"
-              });
-              return false;
-            }
-            // 验证码验证方法
-            verifyMessageCode (this.tel, this.code, 2).then(res => {
-              this.$toast(res.data.message ? res.data.message : '操作失败')
-              if (res.data.status == 0) {
-                this.$router.push({name:'resetPassword', query: {tel: this.tel,code:this.code}})
-              }
-            })
           },
          // 会员注册
          memberRegister () {

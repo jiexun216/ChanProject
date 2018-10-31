@@ -14,14 +14,31 @@ export default new Vuex.Store({
     marketPrice: '',
     value: '',
     lang: 'chinese', 
+    //加载loading
+    loading: {
+      status:false,
+      text: ''
+    }
   },
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--,
     getPage (state, data) {
       state.page = data
-    }
+    },
+    //修改loading状态
+    updateLoadingStatus(state, status) {
+      state.loading.status = status.status;
+      state.loading.text = status.text;
+    },
   },
-  actions,
+  actions:{
+    //控制loading
+    startLoding({state, commit},status){
+
+      commit('updateLoadingStatus', status)
+    },
+
+  },
   mutations
 })

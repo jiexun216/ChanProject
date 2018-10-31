@@ -194,7 +194,6 @@ Vue.use(NavBar);
                   if(res.data.status === 0){
                       this.$router.push({
                           name: 'fortuneTellers',
-                          redirect: 'fortuneTellers',
                           query: {
                               fullName: this.$route.query.fullName,
                               sex: this.$route.query.sex,
@@ -203,6 +202,7 @@ Vue.use(NavBar);
                               birthAddress: this.$route.query.birthAddress,
                           }
                       })
+                      loading,
                       this.getData() 
                       window.location.reload()
                   }
