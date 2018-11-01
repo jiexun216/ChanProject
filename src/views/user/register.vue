@@ -93,7 +93,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
        methods: {
          // 发送验证码
          getAuthCode: function() {
-            let reg =11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
+            let reg =/^1\d{10}$/;
             if (!reg.test(this.tel)) {
               this.$toast({
                 message: "请输入正确格式的手机号",
@@ -101,7 +101,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
               });
               return false;
             }
-            messageSend(this.tel, 2).then(res => {
+            messageSend(this.tel, 0).then(res => {
               this.$toast(res.data.message ? res.data.message : "操作失败");
               if (res.data.status == 0) {
                 Dialog.confirm({
@@ -123,7 +123,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
          // 会员注册
          memberRegister () {
            let reg = /^1\d{10}$/;
-           if (!reg.test(this.telephone)) {
+           if (!reg.test(this.tel)) {
               this.$toast({
               message: "请输入正确格式的手机号",
               position: "top"
@@ -160,7 +160,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            }
            let password = rsaJsencrypt(this.password);
            let fpassword = rsaJsencrypt(this.fpassword);
-           registerMember (this.telephone, this.verifyCode, password, fpassword).then(res => {
+           registerMember (this.tel, this.verifyCode, password, fpassword).then(res => {
              this.$toast(res.data.message ? res.data.message : '操作失败');
              if (res.data.status == 0) {
                this.$router.push({name: 'PasswordLogin'})
