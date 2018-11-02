@@ -7,21 +7,24 @@
          <!-- <van-icon name="search" slot="right" /> -->
          <van-icon name='add-o' slot="right" @click="showDialog" />
         </van-nav-bar>
-        <Addfortun v-if="perlist.length == 0" v-cloak style="[v-cloak] {display: none !important;transition-duration: 0s;-webkit-transition-duration:0s;}"></Addfortun>
-        <div class="suanming" v-else>
-             <div v-for="perlists in perlist" :key="perlists.fortuneId" >
-                 <div class="personalstyle">
-                    <div class="personaldata">
-                      <h3>{{perlists.fullName}}</h3>
-                      <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
-                 </div>
-                 <div class="buttom">
-                    <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
-                    <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
-                 </div>
-                 </div>
-             </div>
-        </div>  
+        <div class="navitembor">
+            <Addfortun v-if="perlist.length == 0" v-cloak style="[v-cloak] {display: none !important;transition-duration: 0s;-webkit-transition-duration:0s;}"></Addfortun>
+            <!-- <div class="suanming" v-else>
+                <div v-for="perlists in perlist" :key="perlists.fortuneId" >
+                    <div class="personalstyle">
+                        <div class="personaldata">
+                        <h3>{{perlists.fullName}}</h3>
+                        <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
+                    </div>
+                    <div class="buttom">
+                        <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
+                        <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
+                    </div>
+                    </div>
+                </div>
+            </div>   -->
+            <Fortunelist v-else></Fortunelist>
+        </div> 
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
     </div>
@@ -149,6 +152,9 @@ export default {
 }
 [v-cloak] {
   display: none !important;
+}
+.navitembor{
+    border: 1px solid #f00;
 }
 </style>
 

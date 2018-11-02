@@ -6,7 +6,7 @@
          <div class="search-top">
            <i class="search-icon search-bg"></i>
            <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword"
-                                @keyup="searchGoods"  @click="searchleft($event)">      
+                                @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
@@ -104,8 +104,23 @@ import { getGoodsList } from '@/api/goods/index.js'
                this.$router.push('/Index')
            },
            searchleft ($event) {
-      this.Iscenter = false;
-    },
+            this.Iscenter = false;
+            },
+            // 搜索商品
+            searchGoods(e,$event) { 
+            var event=e||window.event
+            var event = event ? event:(window.event ? window.event: null);
+            if (event.keyCode == 13) {     
+                event.preventDefault();
+                this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
+            }
+            if (event.target.value == "") {
+                this.$router.push({
+                path: '/goods/list'
+                });
+                this.$toast("请输入搜索内容");
+            }
+            },
          },
          
     }

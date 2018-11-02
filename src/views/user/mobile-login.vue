@@ -155,7 +155,7 @@ export default {
   margin-left:0.15rem;
   width:1.2rem;
   height:1.2rem;
-  background: url(../../assets/img/39.png) no-repeat center; 
+  /* background: url(../../assets/img/39.png) no-repeat center;  */
 }
 .registered{
   float:right;

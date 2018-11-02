@@ -1,7 +1,7 @@
 <template>
     <div>
      <div class="theLogin-top">
-        <p class="theLogin-close" @click="$router.push({path: '/'})"></p>  
+        <p class="theLogin-closese" @click="$router.push({path: '/'})"></p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
@@ -109,14 +109,14 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.theLogin-close {
+.theLogin-closese {
   margin-left: 0.15rem;
   width: 1.2rem;
   height: 1.2rem;
-  background: url(../../assets/img/39.png) no-repeat center;
+  /* background: url(../../assets/img/39.png) no-repeat center; */
 }
 .registered {
-  float: right;
+  align-self: right;
   font-size: 0.45rem;
   color: #ff525a;
   margin-right: 0.5rem;

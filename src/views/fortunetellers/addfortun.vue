@@ -154,7 +154,7 @@ Vue.use(NavBar);
           "van-address-edit": AddressEdit,
           Add
       },
-     methods: {
+      methods: {
          getData () {
             fortunetellers ().then(res =>{})
          },
@@ -202,13 +202,11 @@ Vue.use(NavBar);
                               birthAddress: this.$route.query.birthAddress,
                           }
                       })
-                      loading,
-                      this.getData() 
+                      this.getData()
                       window.location.reload()
                   }
-                  
              }) 
-            } else {
+            }else {
               done();
             //   this.$emit('changeYincang', false)
               this.showTime = false
