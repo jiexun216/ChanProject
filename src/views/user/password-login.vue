@@ -1,7 +1,7 @@
 <template>
     <div>
      <div class="theLogin-top">
-        <p class="theLogin-closese" @click="$router.push({path: '/'})"></p>  
+        <p class="theLogin-closese" @click="$router.push({path: '/'})">点击进入首页</p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
@@ -108,11 +108,13 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0.2rem 0;
 }
 .theLogin-closese {
   margin-left: 0.15rem;
-  width: 1.2rem;
-  height: 1.2rem;
+  color: #f00;
+  /* width: 1.2rem;
+  height: 1.2rem; */
   /* background: url(../../assets/img/39.png) no-repeat center; */
 }
 .registered {
