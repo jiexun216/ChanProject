@@ -116,8 +116,8 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            })
          },
          // 发送验证码
-         getAuthCode () {
-            let reg = /^\d$/;
+         getAuthCode: function() {
+            let reg =/^\d$/;
             if (!reg.test(this.tel)) {
               this.$toast({
                 message: "请输入正确格式的手机号",

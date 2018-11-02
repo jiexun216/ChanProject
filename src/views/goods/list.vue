@@ -6,7 +6,7 @@
          <div class="search-top">
            <i class="search-icon search-bg"></i>
            <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword"
-                                @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
+                                  @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
@@ -15,7 +15,7 @@
         <div class="goodsposition">
            <div class="goodsleft">
              <div class="goodsCategoryList">
-                 <ul v-for="(goodsCategoryList,index) in goodsCategoryLists" 
+                 <ul v-for="(goodsCategoryList,index) in goodsCategoryLists"
                      :key="index" 
                      class="goodsul">
                      <li @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''"> 
