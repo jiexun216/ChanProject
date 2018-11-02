@@ -1,7 +1,7 @@
 <template>
  <div>
      <div class="theLogin-top">
-        <p  class="theLogin-close"></p>
+        <p  class="theLogin-closere" @click="$router.push({path: '/'})">点击进入首页</p>
         <p @click="$router.push({name: 'PasswordLogin'})" class="registered">{{$t(login)}}</p>
      </div>
      <div class="fastLogin">
@@ -95,14 +95,14 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
          //发送验证码
          sendMessage () {
            let tel = this.tel.trim();
-           let reg = /^\d$/;
-           if (!reg.test(tel)) {
-             this.$toast({
-             message: "请输入正确格式的手机号",
-             position: "top"
-             });
-             return false;
-           }
+          //  let reg = /^\d$/;
+          //  if (!reg.test(tel)) {
+          //    this.$toast({
+          //    message: "请输入正确格式的手机号",
+          //    position: "top"
+          //    });
+          //    return false;
+          //  }
            messageSend (tel, 0).then(res => {
              this.$toast(res.data.message ? res.data.message : '操作失败')
              if (res.data.status == 0) {
@@ -117,14 +117,14 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
          },
          // 发送验证码
          getAuthCode: function() {
-            let reg =/^\d$/;
-            if (!reg.test(this.tel)) {
-              this.$toast({
-                message: "请输入正确格式的手机号",
-                position: "top"
-              });
-              return false;
-            }
+            // let reg =/^\d$/;
+            // if (!reg.test(this.tel)) {
+            //   this.$toast({
+            //     message: "请输入正确格式的手机号",
+            //     position: "top"
+            //   });
+            //   return false;
+            // }
             messageSend(this.tel, 0).then(res => {
               this.$toast(res.data.message ? res.data.message : "操作失败");
               if (res.data.status == 0) {
@@ -146,14 +146,14 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
           },
          // 会员注册
          memberRegister () {
-           let reg = /^\d$/;
-           if (!reg.test(this.tel)) {
-              this.$toast({
-              message: "请输入正确格式的手机号",
-              position: "top"
-              });
-              return false;
-           }
+          //  let reg = /^\d$/;
+          //  if (!reg.test(this.tel)) {
+          //     this.$toast({
+          //     message: "请输入正确格式的手机号",
+          //     position: "top"
+          //     });
+          //     return false;
+          //  }
            if (!this.verifyCode) {
               this.$toast({
               message: "请输入验证码",
@@ -203,11 +203,12 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
   justify-content:space-between;
   align-items:center;
 }
-.theLogin-close{
+.theLogin-closere{
   margin-left:0.15rem;
-  width:1.2rem;
+  color: #ff525a;
+  /* width:1.2rem;
   height:1.2rem;
-  background: url(../../assets/img/39.png) no-repeat center; 
+  background: url(../../assets/img/39.png) no-repeat center;  */
 }
 .registered{
   float:right;

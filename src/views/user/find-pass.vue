@@ -64,7 +64,7 @@ export default {
   methods: {
     // 发送验证码
     getAuthCode: function() {
-      let reg = /^1\d{10}$/;
+      let reg = /^\d$/;
       if (!reg.test(this.tel)) {
         this.$toast({
           message: "请输入正确格式的手机号",
@@ -93,7 +93,7 @@ export default {
     },
     // 下一步 验证验证码
     nextStep: function() {
-      let reg = /^1\d{10}$/;
+      let reg = /^\d$/;
       if (!reg.test(this.tel)) {
         this.$toast({
           message: "请输入正确格式的手机号",

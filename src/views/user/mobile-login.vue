@@ -104,7 +104,7 @@ export default {
     login: function (e) {
       let tel = this.tel.trim()
       let yzm = this.yzm
-      let reg =  /^1\d{10}$/
+      let reg =  /^\d$/
       if(yzm === '') {
         this.$toast({
           message:'手机号或验证码不能为空',

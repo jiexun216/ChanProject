@@ -95,8 +95,7 @@
             :show-add-cart-btn = "showAddCartBtn"
             @buy-clicked="onBuyClicked"
             @add-cart="onAddToCart"
-            /> 
-                        
+            />           
    </div> 
 </template>
 

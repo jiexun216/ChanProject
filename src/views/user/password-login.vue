@@ -74,14 +74,14 @@ export default {
     memberPassLogin () {
       let tel = this.tel.trim();
       let pwd = this.pwd;
-      let reg = /^1\d{10}$/;
-      if (!reg.test(tel)) {
-          this.$toast({
-            message: "请输入正确格式的手机号",
-            position: "top"
-          });
-          return false;
-      }
+      // let reg = /^\d$/;
+      // if (!reg.test(tel)) {
+      //     this.$toast({
+      //       message: "请输入正确格式的手机号",
+      //       position: "top"
+      //     });
+      //     return false;
+      // }
       if (pwd === "") {
         this.$toast({
           message: "登录密码不能为空",
@@ -91,7 +91,7 @@ export default {
       }
        this.password = rsaJsencrypt(this.pwd);
        passwordLogin (this.tel, this.password).then(res => {
-         this.$toast(res.data.message ? res.data.message : '操作失败')
+        this.$toast(res.data.message ? res.data.message : '操作失败')
          if (res.data.status == 0) {
            this.$router.push({path: '/'})
          }

@@ -140,6 +140,6 @@ export default {
   display: none !important;
 }
 .navitembor{
-    border: 1px solid #f00;
+    /* border: 1px solid #f00; */
 }
 </style>
