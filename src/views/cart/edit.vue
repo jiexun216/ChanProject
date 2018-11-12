@@ -12,7 +12,7 @@
                 <div class="van-card" v-for="(item,index) in goods" :key="index">
                     <van-checkbox class="card-goods__item" :name="item" ></van-checkbox>
                     <div>
-                        <img :src="item.goodsCoverImg" alt="" class="van-card-img">
+                        <img :src="item.goodsCoverImg" alt="" class="van-card-img" style="width:100%;height:100%;">
                     </div>
                     <div class="van-card-right">
                         <p>{{item.name}}</p>

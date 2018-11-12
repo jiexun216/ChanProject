@@ -29,7 +29,7 @@
                  <div v-for="orderGoodsInfo in item.orderGoodsList" :key="orderGoodsInfo.id">
                      <div class="ordercontent">
                         <div class="orderstyle">
-                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;">
+                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{orderGoodsInfo.goodsTitle}}</p>

@@ -26,7 +26,7 @@
         </div>
         <div class="goodsright">
           <ul class="glist" v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
-           <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" />
+            <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" />
          </ul>  
         </div>
          
@@ -56,7 +56,8 @@ import { getGoodsList } from '@/api/goods/index.js'
                 categoryId:0,
                 isLoadingFinished: false,
                 cancels: 'common.cancel',
-                search: 'common.placeholder.search'
+                search: 'common.placeholder.search',
+                Iscenter:true
             }
         },
         created () {

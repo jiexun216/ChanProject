@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     // 账号密码登录方法 zj 0914
-    memberPassLogin () {
+    memberPassLogin () {             
       let tel = this.tel.trim();
       let pwd = this.pwd;
       // let reg = /^\d$/;

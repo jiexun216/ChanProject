@@ -14,7 +14,7 @@
                                      </span>
                                 </div>
                                 <div class="ordergoods" v-for="(item, index) in goodsList" :key="index">
-                                     <img :src="item.goodsCoverImg" alt="" style="width:3rem;height:3rem;margin-right:0.2rem"> 
+                                     <img :src="item.goodsCoverImg" alt="" style="width:3rem;height:100%;margin-right:0.2rem"> 
                                      <div class="ordergoodright">
                                          <p class="orderrightone">{{item.name}}</p>
                                          <p class="orderrighttwo">{{item.skuInfo}}</p>

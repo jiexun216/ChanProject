@@ -10,10 +10,7 @@
                <i class="de-icon de-iconimg2">
                    <router-link to="/cart/list"> </router-link>
                </i>
-               <!-- <i class="de-icon de-iconimg3">
-                   <router-link to="/goodsDetails">
-                   </router-link>
-                </i>  -->
+              
              </div>          
            </el-header>
        </div> 
@@ -21,11 +18,17 @@
             <ul> 
                 <li style="width:100%;">
                       <div class="goodcover" >
-                        <el-carousel tag="ul"  indicator-position="none" arrow="none">
+                        <!-- <el-carousel tag="ul"  indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
-                              <img :src="goodsImage"> 
+                               <img :src="goodsImage"> 
                              </el-carousel-item >
-                        </el-carousel>  
+                        </el-carousel>   -->
+                        <van-swipe :autoplay="3000" :showIndicators="true" :data-auto-play='4000'>
+                            <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
+                                    <img :src="goodsImage.picture" style="width:!00%;height:400px;">
+                            </van-swipe-item>
+                        </van-swipe>
+                        
                       <div class="goods">
                           <p class="goodname">
                               {{goodsInfos.name}}</p>
@@ -100,14 +103,20 @@
 </template>
 
 <script>
-
+import Vue from "vue"
+import {wcSwiper, wcSlide} from 'wc-swiper'
 import { getGoodsInfo } from '@/api/goods/index.js'
 import { addGoodsToCart,orderSettlement } from "@/api/cart/index.js";
-import Vue from "vue"
+
 import { Sku } from 'vant'
+import { mapState } from 'vuex'
 import { Tab, Tabs, Dialog } from 'vant';
 Vue.use(Tab).use(Tabs);
-Vue.use(Sku)
+Vue.use(Sku);
+import { Swipe, SwipeItem } from 'vant';
+
+Vue.use(Swipe).use(SwipeItem);
+
     export default {
         data () {
             return {
@@ -133,7 +142,8 @@ Vue.use(Sku)
                 buy: 'common.buy',
                 yishou: 'common.yishou',
                 jian: 'common.jian',
-                yibuy: 'common.yibuy'
+                yibuy: 'common.yibuy',
+                autoplay:true
             }
         },
         created () {
@@ -151,6 +161,7 @@ Vue.use(Sku)
                     this.goods.title = res.data.data.goodsInfo.name
                     this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
+                    console.log(this.goodsImages)
                     // if (this.goodsInfos.isSku == 1) {
                     //     this.sku = res.data.data.sku;
                     // }
@@ -227,6 +238,9 @@ Vue.use(Sku)
             },
             detailsbg () {
             },
+            handdleClick(url) {
+            window.location.href = url;
+            },
            joinbuy () {
                this.showBase = true;
            },
@@ -278,6 +292,7 @@ Vue.use(Sku)
 }
 .goodcover img{
     width: 100%;
+    height: 100%;
     border-top: 5px solid #f7f7f7;
 }
 .goods{
@@ -498,7 +513,5 @@ Vue.use(Sku)
 .mint-toast .is-placemiddle {
             z-index: 10000;
 }
-.el-carousel__item img{
-       width:100%;
-}
+
 </style>

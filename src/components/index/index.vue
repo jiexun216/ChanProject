@@ -1,6 +1,6 @@
 <template>
      <div>
-        <div class="index-top">
+        <!-- <div class="index-top">
             <span class="language" style="font-size: 10px">
                 <router-link to="/language">
                    EN</router-link>
@@ -15,8 +15,8 @@
                 </router-link>
                 
             </div>
-        </div>
-        <div class="store-sale">
+        </div> -->
+        <!-- <div class="store-sale">
             <ul class="store-list">
                 <li class="store-items">                  
                        <span>{{store}}</span>
@@ -27,15 +27,15 @@
                     </router-link>
                 </li>
             </ul>
-        </div>
+        </div> -->
        <div class="swiper-container">
-        <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
+        <!-- <el-carousel tag="ul" height="4rem" indicator-position="none" arrow="none">
             <el-carousel-item  v-for="banner in banners" :key="banner.index" tag="li">
-               <img :src="banner.picture" style="width:100%"> 
+               <img :src="banner.picture" style="width:100%;height:400px;"> 
             </el-carousel-item >
-        </el-carousel>
+        </el-carousel> -->
        </div> 
-        <ul class="thatmore" style="width:100%；">
+        <!-- <ul class="thatmore" style="width:100%；">
            <router-link :to="{name:''}" tag="li"> 
              <div>
                  <i class="icon thatmroeimg"></i>
@@ -60,13 +60,13 @@
              </div>
              <div>{{more}}</div>
            </router-link>
-        </ul>
-
-        <div class="moregoods">
+        </ul> -->
+       
+        <!-- <div class="moregoods">
             <ul> 
                 <li style="width:100%;">
                       <div class="goodcover" v-for="good in goods" :key="good.index" >
-                           <img :src="good.goodsCoverImg">
+                           <img :src="good.goodsCoverImg" style="height:100%;">
                       <div class="goods">
                           <p class="goodname">
                               {{good.name}}</p>
@@ -86,8 +86,8 @@
                       </div>     
                 </li> 
             </ul>
-        </div>
-        <Footer></Footer>
+        </div> -->
+        <!-- <Footer></Footer> -->
      </div>
 </template>
 <script>
@@ -242,6 +242,7 @@ import Footer from './footer'
 }
 .goodcover img{
     width: 100%;
+    /* height: 100%; */
     border-top: 5px solid #f7f7f7;
 }
 .goods{

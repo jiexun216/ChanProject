@@ -33,7 +33,7 @@
                       </van-checkbox>
                   </van-checkbox-group>
                     <div>
-                         <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})">       
+                         <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">       
                     </div>
                     <div class="van-card-right">
                         <p>{{item.name}}</p>

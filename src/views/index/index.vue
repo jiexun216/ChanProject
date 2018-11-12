@@ -31,7 +31,7 @@
        <div class="layout">
         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000'>
           <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
-                   <img :src="banner.picture" style="width:100%;" @click="handdleClick(banner.url)">
+                   <img :src="banner.picture" style="width:100%;height:100%;" @click="handdleClick(banner.url)">
           </van-swipe-item>
         </van-swipe>
           <!-- <div class="banner">
@@ -73,7 +73,7 @@
             <ul> 
                 <li class="moregoodsli">
                       <div class="goodcover" v-for="good in goodsList" :key="good.index" >
-                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
+                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:100%;">
                       <div class="goods">
                           <p class="goodname">
                               {{good.name}}</p>
@@ -293,6 +293,7 @@ a {
 }
 .goodcover img {
   width: 100%;
+  height:100%;
   border-top: 5px solid #f7f7f7;
 }
 .goods {
@@ -330,18 +331,19 @@ a {
   font-size: 0.3rem;
 }
 .moregoods{
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 .moregoodsli{
   width: 100%;
   height: 100%;
 }
-.el-carousel__container{
+/* .el-carousel__container{
   position: relative;
 }
 .el-carousel__container .el-carousel__item img{
-  height:80%;
-}
+  height:100%;
+  width:100%;
+} */
 .clearfix::before,
 .clearfix::after{
     content: "";

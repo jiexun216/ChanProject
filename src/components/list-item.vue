@@ -1,6 +1,6 @@
 <template>
    <div class="gcList">
-       <div class="goodheader">
+       <!-- <div class="goodheader">
            <ul>
                <div class="goodscate">
                    <router-link to="" tag="li">
@@ -17,7 +17,7 @@
                     </span>
                </div> 
            </ul>
-       </div>
+       </div> -->
    </div>    
 </template>
 

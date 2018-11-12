@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="orderdetop">
+        <!-- <div class="orderdetop">
             
             <i class="back backs" @click="$router.back(-1)"></i>     
             <span >{{$t(myorder)}}</span>
@@ -12,8 +12,8 @@
                   <span>{{receiverInfo.receiverMobile}}</span>
                   <p>{{receiverInfo.receiverAddress}}</p>
              </div>
-        </div>
-        <div class="orderheader" v-if="orderInfo.orderStatus >= 2">
+        </div> -->
+        <!-- <div class="orderheader" v-if="orderInfo.orderStatus >= 2">
              <div class="orderusercar">
                  <router-link to="/Logisticsinfo">
                    <i class="back car"></i>
@@ -25,45 +25,45 @@
                  <p><span>{{$t(system)}}</span>{{$t(orderpay)}}</p>
                  <p>2018.8.30.18.43</p>
              </div>
-        </div>
+        </div> -->
         <div>
             <div class="orderheader ">
-                     <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
+                     <!-- <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
                         <div class="orderstyle">
-                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;">
+                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{item.goodsName}}</p>
                              <div class="ordersize">
                                 <span>{{item.skuInfo}}</span>
-                                 <!-- <span class="ordersizeright">省$1100</span> -->
+                                 
                              </div>
                              <div class="ordersize">
                                 <span class="ordersizenum">￥{{item.goodsPrice}}</span>
                                  <span class="ordersizeright">x{{item.goodsQuantity}}</span>
                              </div>
                         </div>
-                     </div>
-              <div class="produmoney">
+                     </div> -->
+              <!-- <div class="produmoney">
                 <p><span class="produtop">{{$t(payment)}}</span> 
                    <span>共{{orderInfo.totalQuantity}}件，总计￥{{orderInfo.orderAmount}}</span></p>
-            </div>
-            <div class="produmoney">
+              </div> -->
+            <!-- <div class="produmoney">
                 <p><span class="produtop">{{$t(note)}}</span> 
                    <span>{{orderInfo.remark}}</span></p>
-            </div> 
-            <div class="produmoney">
+            </div>  -->
+            <!-- <div class="produmoney">
                 <p><span class="produtop">{{$t(ordernum)}}</span> 
                    <span>{{orderInfo.orderSn}}</span></p>
-            </div> 
-            <div class="produmoney">
+            </div>  -->
+            <!-- <div class="produmoney">
                 <p><span class="produtop">{{$t(ordertime)}}</span> 
                    <span>{{orderInfo.orderTime}}</span></p>
-            </div>  
-            <div class="produmoney">
+            </div>   -->
+            <!-- <div class="produmoney">
                 <p><span class="produtop">{{$t(paymethod)}}</span> 
                    <span>{{orderInfo.payWay}}</span></p>
-            </div>     
+            </div>      -->
            </div>
             
             
