@@ -28,7 +28,8 @@
           <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
             <!-- <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" /> -->
                <div class="goodsrightImg">
-                   <li><img :src="item.goodsCoverImg" alt=""></li>
+                    <li><img :src="item.goodsCoverImg" alt=""></li>
+                    <li>{{item.name}}</li>
                     <li><span class="goodsrightspan">{{item.price}}</span>   <span class="goodsrightspantwo">{{item.marketPrice}}</span></li>
                </div>
          </div>  
@@ -180,6 +181,10 @@ import { getGoodsList } from '@/api/goods/index.js'
 }
 .goodsrightImg{
     margin:0.3rem;
+}
+.goodsrightImg img{
+    width:4rem;
+    height: 3rem;
 }
 .goodsrightspan {
   font-size:0.45rem;
