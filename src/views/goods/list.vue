@@ -24,10 +24,14 @@
                  </ul>           
              </div>
         </div>
-        <div class="goodsright">
-          <ul class="glist" v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
-            <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" />
-         </ul>  
+        <div class="goodsrighttt">
+          <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
+            <!-- <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" /> -->
+               <div class="goodsrightImg">
+                   <li><img :src="item.goodsCoverImg" alt=""></li>
+                    <li><span class="goodsrightspan">{{item.price}}</span>   <span class="goodsrightspantwo">{{item.marketPrice}}</span></li>
+               </div>
+         </div>  
         </div>
          
         </div>
@@ -71,6 +75,7 @@ import { getGoodsList } from '@/api/goods/index.js'
                    this.loading = false;
                    this.goodsCategoryLists = res.data.data.goodsCategoryList;
                    this.listData = res.data.data.goodsList;
+                   console.log(this.listData)
                    this.total = res.data.data.total
                    this.pageCount = res.data.data.pageCount
                    if (this.page >= this.pageCount) {
@@ -162,7 +167,7 @@ import { getGoodsList } from '@/api/goods/index.js'
     background: #f7f7f7;
     font-size: 0.4rem;
 }
-.goodsright{
+.goodsrighttt{
     width: 70%;
     position: fixed;
     left: 25%;
@@ -170,7 +175,18 @@ import { getGoodsList } from '@/api/goods/index.js'
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;  
+    flex-wrap: wrap; 
+    font-size:0.4rem;
+}
+.goodsrightImg{
+    margin:0.3rem;
+}
+.goodsrightspan {
+  font-size:0.45rem;
+  color: #f00;
+}
+.goodsrightspantwo{
+    text-decoration:line-through;
 }
 .goodsul{
     margin: 0;padding: 0;
