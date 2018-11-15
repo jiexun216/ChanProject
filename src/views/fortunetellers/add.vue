@@ -8,41 +8,42 @@
                     :before-close="beforeClose"
                     :save="save"  
                     >
-                    <div class="birth">
-                        <span class="birthmd">
-                            {{$t(name)}}
-                        </span>
-                         <input type="text" v-model="save.fullName" :placeholder="$t(username)">
-                    </div>
-                    <!-- 性别 -->
-                     <van-radio-group v-model="radioSex" title="性别" @change="handleSex">
-                         <span class="birthmd">
-                            {{$t(gender)}}
-                        </span>
-                            <van-radio name="男" checked>{{$t(nan)}}</van-radio>
-                            <van-radio name="女">{{$t(nv)}}</van-radio>   
-                    </van-radio-group>
-                     <!-- 出生年月              -->
-                    <div class="birth" >
-                        <span class="birthmd">
-                            {{$t(birthyear)}}
-                        </span>
-                        <span class="birthchoose" @click="birthchoose" v-html="time"></span>
-                    </div>
-                     <!-- 出生日期 -->
-                    <div class="birth">
-                        <span class="birthmd">
-                            {{$t(birthtime)}}
-                        </span>
-                        <span class="birthchoose" @click="timechoose" v-html="times"></span>
-                    </div>
-                     <!-- 出生地 -->
-                   <div class="birth">
-                        <span class="birthmd">
-                            {{$t(birthaddress)}}
-                        </span>
-                        <span class="birthchoose" @click="showaddress" v-html="timeth"></span>
-                    </div>
+                        <div class="birth">
+                            <span class="birthmd">
+                                {{$t(name)}}
+                            </span>
+                            <input type="text" v-model="save.fullName" :placeholder="$t(username)">
+                        </div>
+                        <!-- 性别 -->
+                        <van-radio-group v-model="radioSex" title="性别" @change="handleSex">
+                            <span class="birthmd">
+                                {{$t(gender)}}
+                            </span>
+                                <van-radio name="男" checked>{{$t(nan)}}</van-radio>
+                                <van-radio name="女">{{$t(nv)}}</van-radio>   
+                        </van-radio-group>
+                        <!-- 出生年月              -->
+                        <div class="birth" >
+                            <span class="birthmd">
+                                {{$t(birthyear)}}
+                            </span>
+                            <span class="birthchoose" @click="birthchoose" v-html="time"></span>
+                        </div>
+                        <!-- 出生日期 -->
+                        <div class="birth">
+                            <span class="birthmd">
+                                {{$t(birthtime)}}
+                            </span>
+                            <span class="birthchoose" @click="timechoose" v-html="times"></span>
+                        </div>
+                        <!-- 出生地 -->
+                        <div class="birth">
+                            <span class="birthmd">
+                                {{$t(birthaddress)}}
+                            </span>
+                            <span class="birthchoose" @click="showaddress" v-html="timeth"></span>
+                        </div>
+                        <!-- 外国人填写 -->
                     </van-dialog>   
                     <!-- 出生年月              -->
                     <van-datetime-picker
@@ -128,9 +129,9 @@ Vue.use(NavBar);
             show: false,
             radioSex: '男',
             currentDate: new Date(),
-            currentDatetime: '12:00',
-            minDate: new Date(1990),
-            maxDate: new Date(2119, 10, 1),
+            currentDatetime: '00:00',
+            minDate: new Date(1900, 10, 1),
+            maxDate: new Date(2050, 10, 1),
             showcurrentDate: false,
             showTime: false,
             formatter:'-',
@@ -140,7 +141,7 @@ Vue.use(NavBar);
             datavalue: '',
             dataTime: {},
             time: '请选择',
-            times:'请选择',
+            times:'若时间不详，请选择默认时间',
             timeth: '请选择',
             save: {
                 fullName: '',
@@ -191,7 +192,7 @@ Vue.use(NavBar);
                   this.$toast(res.data.message ? res.data.message : '操作失败')
                   this.$router.push({path: '/fortunetellers/index'})
                   if(res.data.status === 0){  
-                    //   window.location.reload()
+                      window.location.reload()
                   }
              }) 
             } else {

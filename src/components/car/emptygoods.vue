@@ -1,6 +1,6 @@
 <template>
 <div>
-    <!-- <div class="emptyheader">
+    <div class="emptyheader">
         <div class="empty">
         <div>
             <img src="../../assets/img/26.png" alt="">
@@ -9,8 +9,8 @@
                 <button @click="$router.push({name:'goodsList'})" class="hot">{{$t(hot)}}</button>
             </div>
         </div> 
-    </div>   -->
-    <!-- <div class="emptycon">
+    </div>  
+    <div class="emptycon">
         <div class="like">
             <p class="liketop">{{$t(youlike)}}</p>
             <div class="likes">
@@ -29,7 +29,7 @@
         </div>
     </div>
     <Footer></Footer>
-    </div> -->
+    </div>
     
 </div>
 

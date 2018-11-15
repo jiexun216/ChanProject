@@ -1,50 +1,50 @@
 <template>
    <div>
+     <div class="cartop">
+                <router-link to="/">
+                    <i class="carback  carbacks"></i>     
+                </router-link>
+                <span >{{$t(carts)}}</span>
+                <div class="carmyorder">
+                   <span @click="editor">{{$t(editors)}}</span>
+                </div>
+        </div>
       <div v-if="cartGoodsList.length == 0" v-cloak>
-      <div class="cartop">
-                <router-link to="/">
-                    <i class="carback  carbacks"></i>     
-                </router-link>
-                <span >{{$t(carts)}}</span>
-                <div class="carmyorder">
-                   <!-- <i class="carback carbackss"></i> -->
-                </div>
-        </div>
             <emptygoods :goodsList="goodsList"></emptygoods>
-        </div>
-     <div v-else>
-        <div class="cartop">
-                <router-link to="/">
-                    <i class="carback  carbacks"></i>     
-                </router-link>
-                <span >{{$t(carts)}}</span>
-                <div class="carmyorder">
-                    <span @click="editor">{{$t(editors)}}</span>
-                    <!-- <i class="carback carbackcoups"></i> -->
-                </div>
-        </div>
-        <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
-                <div class="van-card">
-                  <van-checkbox-group class="card-goods" v-model="checkedGoods">
-                      <van-checkbox
-                        class="card-goods__item"
-                        :key="item.id"
-                        :name="item.id">
-                      </van-checkbox>
-                  </van-checkbox-group>
-                    <div>
-                         <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">       
+      </div>
+      <div v-else loading>
+            <!-- <div class="cartop">
+                    <router-link to="/">
+                        <i class="carback  carbacks"></i>     
+                    </router-link>
+                    <span >{{$t(carts)}}</span>
+                    <div class="carmyorder">
+                        <span @click="editor">{{$t(editors)}}</span>
+                        
                     </div>
-                    <div class="van-card-right">
-                        <p>{{item.name}}</p>
-                        <p class="van-card-p">{{item.skuInfo}}</p>
-                        <div class="van-card-price">
-                            <p class="van-price-p" >￥{{item.price}}</p>
-                            <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity" 
-                                  /></p>
+            </div> -->
+            <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
+                    <div class="van-card">
+                      <van-checkbox-group class="card-goods" v-model="checkedGoods">
+                          <van-checkbox
+                            class="card-goods__item"
+                            :key="item.id"
+                            :name="item.id">
+                          </van-checkbox>
+                      </van-checkbox-group>
+                        <div>
+                            <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">       
+                        </div>
+                        <div class="van-card-right">
+                            <p>{{item.name}}</p>
+                            <p class="van-card-p">{{item.skuInfo}}</p>
+                            <div class="van-card-price">
+                                <p class="van-price-p" >￥{{item.price}}</p>
+                                <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity" 
+                                      /></p>
+                            </div>
                         </div>
                     </div>
-                </div>
                   <van-submit-bar
                       :price="totalPrice"
                       :disabled="!checkedGoods.length"
@@ -82,7 +82,7 @@ Vue.use(Stepper);
       goodsQuantity: 1,
       carts: 'common.carts',
       editors: 'common.editor',
-      yesno: false
+      yesno: false,
     };
   },
     computed: {
@@ -203,6 +203,7 @@ Vue.use(Stepper);
 }
 .van-card{
    background: #fff;  
+   width:100%;
 }
 .card-goods__item{
    display: flex;

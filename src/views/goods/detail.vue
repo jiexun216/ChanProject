@@ -15,20 +15,19 @@
            </el-header>
        </div> 
        <div class="moregoods moregoodss">
-            <ul> 
-                <li style="width:100%;">
-                      <div class="goodcover" >
+            <div> 
+                <div style="width:100%;">
+                      <div class="layout" >
                         <!-- <el-carousel tag="ul"  indicator-position="none" arrow="none">
                             <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
                                <img :src="goodsImage"> 
                              </el-carousel-item >
                         </el-carousel>   -->
-                        <van-swipe :autoplay="3000" :showIndicators="true" :data-auto-play='4000'>
-                            <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
-                                    <img :src="goodsImage.picture" style="width:!00%;height:400px;">
-                            </van-swipe-item>
+                        <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000' style="width:100%;">
+                                <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
+                                       <img :src="goodsImage" style="width:100%;height:100%;" />
+                                </van-swipe-item>
                         </van-swipe>
-                        
                       <div class="goods">
                           <p class="goodname">
                               {{goodsInfos.name}}</p>
@@ -46,8 +45,8 @@
                            </span>
                       </div>    
                       </div>     
-                </li> 
-            </ul>
+                </div> 
+            </div>
         </div>
         <div>
             <div class="details"> 
@@ -107,14 +106,13 @@ import Vue from "vue"
 import {wcSwiper, wcSlide} from 'wc-swiper'
 import { getGoodsInfo } from '@/api/goods/index.js'
 import { addGoodsToCart,orderSettlement } from "@/api/cart/index.js";
-
 import { Sku } from 'vant'
 import { mapState } from 'vuex'
 import { Tab, Tabs, Dialog } from 'vant';
-Vue.use(Tab).use(Tabs);
-Vue.use(Sku);
 import { Swipe, SwipeItem } from 'vant';
 
+Vue.use(Swipe).use(SwipeItem);
+Vue.use(Sku);
 Vue.use(Swipe).use(SwipeItem);
 
     export default {
@@ -122,7 +120,10 @@ Vue.use(Swipe).use(SwipeItem);
             return {
                 goodsId: 0,
                 goodsInfos: [], 
-                goodsImages: [],  
+                goodsImages: [
+                    {a:'12134'},
+                    {a: '113346'}
+                ],  
                 num1: 1,  
                 active: 0,
                 skuAtterInfo:[],
@@ -161,10 +162,6 @@ Vue.use(Swipe).use(SwipeItem);
                     this.goods.title = res.data.data.goodsInfo.name
                     this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                     this.goodsImages = res.data.data.goodsInfo.goodsImages; 
-                    console.log(this.goodsImages)
-                    // if (this.goodsInfos.isSku == 1) {
-                    //     this.sku = res.data.data.sku;
-                    // }
                     this.sku = res.data.data.sku;
                     
                 }).catch(err => {
@@ -287,14 +284,7 @@ Vue.use(Swipe).use(SwipeItem);
 .moregoodss{
     border-bottom: 5px solid #f7f7f7;
 }
-.goodcover{
-    margin-bottom: 0.5rem;
-}
-.goodcover img{
-    width: 100%;
-    height: 100%;
-    border-top: 5px solid #f7f7f7;
-}
+
 .goods{
     font-size: 0.4rem; 
     text-align: left;

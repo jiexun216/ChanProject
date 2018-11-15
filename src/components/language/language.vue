@@ -6,11 +6,14 @@
            </router-link>
           <p class="choose">{{language}}</p>
        </div>
-       <el-radio-group v-model="radio2" @change="changeLang(radio2)">
-          <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
-                     :click="languaging(index)" style="margin-left:0;"> {{value.name}}
-          </el-radio>
-       </el-radio-group>
+       <keep-alive> 
+         <el-radio-group v-model="radio2" @change="changeLang(radio2)">
+            <el-radio :label="value.lang" v-for="(value, index) in raioLang" :key="index" 
+                      :click="languaging(index)" style="margin-left:0;"> {{value.name}}
+            </el-radio>
+         </el-radio-group>
+       </keep-alive>
+       
        <!-- <my-file @input="input($event)"></my-file> -->
    </div>    
 </template>
@@ -50,6 +53,7 @@ export default {
       this.$store.commit('SET_LANG', lang)
       this.$i18n.locale = lang
       this.$router.push({path:'/'})
+      localStorage.setItem('local',lang)
     },
     input(val) {
       this.photosList = val  //获取到的图片路径base64

@@ -126,7 +126,7 @@ Vue.use(NavBar);
             radio: '1',
             radioSex: '男',
             currentDate: new Date(),
-            currentDatetime: '12:00',
+            currentDatetime: '00:00',
             minDate: new Date(1900),
             maxDate: new Date(2119, 10, 1),
             showcurrentDate: false,
@@ -138,7 +138,7 @@ Vue.use(NavBar);
             datavalue: '',
             dataTime: {},
             time: '请选择',
-            times:'请选择',
+            times:'若时间不详，请选择00:00',
             timeth: '请选择',
             save: {
                 fullName: '',

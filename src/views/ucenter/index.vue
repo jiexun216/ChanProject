@@ -109,7 +109,6 @@ export default {
                      this.$router.push({name: res.data.data.url})
                  }
                  this.personalitem =res.data.data;
-                 console.log( this.personalitem)
                  this.memberData = res.data.data.memberData
                  this.loading = true;
              }).catch(err => {

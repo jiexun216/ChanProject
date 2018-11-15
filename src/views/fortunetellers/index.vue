@@ -9,7 +9,7 @@
         </van-nav-bar>
         <div class="navitembor">
             <Addfortun v-if="perlist.length == 0" v-cloak style="[v-cloak] {display: none !important;transition-duration: 0s;-webkit-transition-duration:0s;}"></Addfortun>
-            <!-- <div class="suanming" v-else>
+            <div class="suanming" v-else>
                 <div v-for="perlists in perlist" :key="perlists.fortuneId" >
                     <div class="personalstyle">
                         <div class="personaldata">
@@ -17,13 +17,13 @@
                         <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
                     </div>
                     <div class="buttom">
-                        <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
-                        <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
+                        <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">{{$t(lookresult)}}</button>
+                        <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">{{$t(cancel)}}</button>
                     </div>
                     </div>
                 </div>
-            </div>   -->
-            <Fortunelist v-else></Fortunelist>
+            </div>  
+            <!-- <Fortunelist v-else></Fortunelist> -->
         </div> 
         <Add :show="show"  @changeYincang="changeYincang"></Add>
         <!-- <ContentFortune ></ContentFortune> -->
@@ -45,6 +45,8 @@ export default {
              perlist: [],
              fortuneshow: false,
              show: false,
+             lookresult: 'common.lookresult',
+             cancel: 'common.deletes',
          }
     },
     methods: {
