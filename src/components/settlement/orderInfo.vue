@@ -206,6 +206,7 @@ Vue.use(Toast)
 .payInforight input{
     color: #000;
     font-size: 0.3rem;
-    margin-right: 0.3rem;
+    width:100%;
+    margin-right:0.2rem;
 }
 </style>

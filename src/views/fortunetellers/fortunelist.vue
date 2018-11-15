@@ -8,8 +8,8 @@
                       <span >{{perlists.sex}} | {{perlists.birthDate}} | {{perlists.birthTime}} | {{perlists.birthAddress}}</span>
                  </div>
                  <div class="buttom">
-                    <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">查看结果</button>
-                    <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">删除</button>
+                    <button class="butstyle" @click="$router.push({ name: 'contentfortune', query: { fortuneId: perlists.fortuneId }})">{{$t(lookresult)}}</button>
+                    <button class="butstyle butcolor" @click="handleDelete(perlists.fortuneId)">{{$t(cancel)}}</button>
                  </div>
                  </div>
              </div>
@@ -30,6 +30,8 @@ export default {
     data () {
          return {
              sm: 'common.sm',
+             lookresult: 'common.lookresult',
+             cancel: 'common.deletes',
              perlist: [],
              fortuneshow: false,
              show: false,

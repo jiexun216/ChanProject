@@ -9,32 +9,32 @@
         </van-nav-bar>
       <van-tabs v-model="active" :swipe-threshold="6">
         <van-tab >
-             <div slot="title">基本
+             <div slot="title">{{$t(jiben)}}
              </div>            
              <Results></Results >                           
         </van-tab>
         <van-tab >
-             <div slot="title">命盘
+             <div slot="title">{{$t(mingpan)}}
              </div>
                 <Mingpan></Mingpan>
         </van-tab>
         <van-tab >
-             <div slot="title">细盘
+             <div slot="title">{{$t(xipan)}}
              </div>
                 <Xipan></Xipan>
         </van-tab>
         <van-tab >
-             <div slot="title">大运
+             <div slot="title">{{$t(dayun)}}
              </div>
              <Dayun></Dayun>
         </van-tab>
         <van-tab >
-             <div slot="title">流年
+             <div slot="title">{{$t(liunian)}}
              </div>
              <Liunian></Liunian>
         </van-tab>
         <van-tab >
-             <div slot="title">评语
+             <div slot="title">{{$t(pingyu)}}
              </div>
             <!-- <div class="fortunelist">
                  <div class="fortunecon">
@@ -45,8 +45,8 @@
                 <button class="fortunesubmit" @click="submitpingyu()">提交</button>
             </div> -->
             <div class="pleaseinputs">
-            <textarea v-model="comment" cols="40" rows="8" placeholder="请输入..." class="pleasesrs"> </textarea>
-            <button type="submit" @click="submitOpinion()" class="submits" >提交</button>
+                <textarea v-model="comment" rows="8" :placeholder='$t(entering)' class="pleasesrs"> </textarea>
+                <button type="submit" @click="submitOpinion()" class="submits" >{{$t(submit)}}</button>
           </div>
         </van-tab>
         </van-tabs>
@@ -72,11 +72,19 @@ export default {
         return {
             active: 0,
             swipeThreshold: '',
-            sm: 'common.sm',
             fortuneId: '',
             comment: '',
             perlists: [],
-            show: false
+            show: false,
+            sm: 'common.sm',
+            jiben: 'common.jiben',
+            mingpan: 'common.mingpan',
+            xipan: 'common.xipan',
+            dayun: 'common.dayun',
+            liunian: 'common.liunian',
+            pingyu: 'common.pingyu',
+            entering: 'common.placeholder.entering',
+            submit: 'common.submit'
         }
     },
     methods: {
@@ -181,7 +189,7 @@ export default {
 
 }
 .pleaseinputs{
-    text-align: center;
+    text-align: left;
     margin: 0.3rem;
     font-size: 0.4rem;
     color: #ccc;
@@ -191,6 +199,7 @@ export default {
     border: none;
     padding: 0.2rem;
     color: #000;
+    width:88%;
 }
 .pleaseinputs .submits{
     width: 90%;

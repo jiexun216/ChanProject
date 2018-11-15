@@ -13,8 +13,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuex from 'vuex'
 import store from './store/store'
-import i18n from './langs'
-// import i18n from './langs'
+import i18n from './langs/index'
 import {getData, postData, deleteData, putData} from './api/api'
 import { JSEncrypt } from 'jsencrypt'
 Vue.prototype.$getData = getData
@@ -34,7 +33,7 @@ Vue.use(ElementUI, {
 Vue.prototype.$store = store
 Vue.prototype.$store.commit('GET_LANG')
 Vue.config.productionTip = false
-
+window.i18n = i18n
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

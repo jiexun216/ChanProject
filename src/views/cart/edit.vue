@@ -4,7 +4,7 @@
                 <i class="carback  carbacks" @click="$router.back(-1)"></i>     
                 <span >{{$t(carts)}}</span>
                 <div class="carmyorder">
-                    <!-- <span >{{$t(completes)}}</span> -->
+                   
                 </div>
         </div>
          <div class="cargoods">
@@ -161,6 +161,7 @@ Vue.use(Stepper);
     justify-content: space-between;
     justify-content: center;
     padding: 0.1rem;
+    width:90%;
 }
 .van-card-img{
     width: 3rem;

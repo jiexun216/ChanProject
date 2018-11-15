@@ -4,21 +4,18 @@
                 <i class="back backs" @click="$router.back(-1)"></i>     
                 <!-- <span class="orderaddress">{{$t(editoradd)}}</span> -->
                 <span class="myorder"></span>
-            </div>    
-            <!-- <van-address-edit
-              :area-list="areaList"
-              :address-info="formData"
-              show-set-default
-              show-search-result
-              @save="onSave"   
-            />  -->
+            </div>   
+            <!-- 地址编辑列表  -->
             <van-address-edit
                 :area-list="areaList"
                 show-set-default
                 show-search-result
                 :address-info="formData"
+                :tel-validator="validaphone"
+                :validator="() => ''"
                 @save="onSave"
               />
+              <p style="margin:0 0.4rem;color:#f00;">{{$t(deaddress)}}</p> 
 </div>        
 </template>
 
@@ -39,10 +36,23 @@ export default {
     "van-address-edit": AddressEdit
   },
   data() {
+    var reg = /^[0-9]*$/
+    var  validatephone = function(value){
+      if(!value){
+        this.$toast('请输入手机号')
+        return true
+      }else if(reg.test(value)){
+        return true
+      } else {
+        this.$toast('请输入正确的手机号')
+        return true
+      }
+    }
     return {
       loading: false,
       areaList,
       editoradd: 'common.editoradd',
+      deaddress: 'common.deaddress',
       formData: {
         id: 0,
         name: "",
@@ -54,6 +64,8 @@ export default {
         areaCode: "",
         isDefault: true,
       },
+      tel: '',
+      validaphone: validatephone
     };
   },
   methods: {
@@ -84,13 +96,14 @@ export default {
                 query: {
                   buyType: this.$route.query.buyType,
                   cartIds: this.$route.query.cartIds,
-                  addressId: this.$route.query.addressId,
+                  addressId: this.$route.query.addressId,    
                   goodsId: this.$route.query.goodsId,
                   skuId: this.$route.query.skuId,
                   goodsQuantity: this.$route.query.goodsQuantity
                 }
               });
           }
+        
       });
     },
     // 编辑地址数据
@@ -145,7 +158,7 @@ export default {
         if (this.formData.id != 0) {
           this.getData();
         }
-      }
+    }
 }
 </script>
 
@@ -287,5 +300,24 @@ export default {
     z-index: 10000;
     background: #fff;
 }
+.addressedit{
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+    height: 3rem;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
 
+}
+.addressname{
+  border-bottom:1px solid #eee;
+  width:100%;
+  border:1px solid #f00;
+}
+
+.addressspan {
+  width:20%;
+  margin:0.3rem;
+  display: inline-block;
+}
  </style>

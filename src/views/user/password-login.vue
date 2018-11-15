@@ -1,7 +1,7 @@
 <template>
     <div>
      <div class="theLogin-top">
-        <p class="theLogin-closese" @click="$router.push({path: '/'})">点击进入首页</p>  
+        <p class="theLogin-closese" @click="$router.push({path: '/'})">{{$t(backhome)}}</p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
      <div class="fastLogin">
@@ -66,7 +66,8 @@ export default {
         forget: 'common.forget',
         register: 'common.register',
         userphone: 'common.placeholder.userphone',
-        userpwd: 'common.placeholder.userpwd'
+        userpwd: 'common.placeholder.userpwd',
+        backhome: 'common.backhome'
     };
   },
   methods: {

@@ -166,6 +166,7 @@ export default {
 .restsendse {
   color: #ff525a;
   z-index: 20;
+  float:right;
 }
 .sends {
   color: #f00;

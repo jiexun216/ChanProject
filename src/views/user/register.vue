@@ -1,7 +1,7 @@
 <template>
  <div>
      <div class="theLogin-top">
-        <p  class="theLogin-closere" @click="$router.push({path: '/'})">点击进入首页</p>
+        <p  class="theLogin-closere" @click="$router.push({path: '/'})">{{$t(backhome)}}</p>
         <p @click="$router.push({name: 'PasswordLogin'})" class="registered">{{$t(login)}}</p>
      </div>
      <div class="fastLogin">
@@ -88,7 +88,8 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            userphone: 'common.placeholder.userphone',
            enteryzm: 'common.placeholder.enteryzm',
            userpwd: 'common.placeholder.userpwd',
-           resetpwd: 'common.placeholder.resetpwd'
+           resetpwd: 'common.placeholder.resetpwd',
+           backhome: 'common.backhome'
          }
        },
        methods: {
