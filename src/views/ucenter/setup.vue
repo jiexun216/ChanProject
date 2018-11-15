@@ -109,8 +109,12 @@ import myFile from '@/components/upLoadImg/myFile.vue'
             loginOut () {
                 exitLogon ().then(res => {
                     this.$toast(res.data.message ? res.data.message : '操作失败')
+
                     if (res.data.status == 0) {
+                        // Vue.prototype.$store = store
+                        // Vue.prototype.$store.commit('local')
                         this.$router.push({name: 'PasswordLogin'})
+
                     }
                 })
             },
