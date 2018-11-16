@@ -480,7 +480,7 @@ module.exports = {
    lookresult: 'Results',
    jiben: 'Basic',
    mingpan: 'Chart',
-   xipan: 'Thin Plate',
+   xipan: 'Plate',
    dayun: ' Universiade',
    liunian: 'We',
    pingyu: 'Comments',
