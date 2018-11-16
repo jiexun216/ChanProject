@@ -3,7 +3,7 @@
          <van-nav-bar
             :title="$t(jiesuan)"
             left-text=""
-            right-text="订单中心"
+            :right-text="$t(ordercenter)"
             left-arrow
             @click-left="onClickLeft"
             @click-right="onClickRight"
@@ -74,7 +74,8 @@ export default {
       newaddress: 'common.newaddress',
       addressshou: 'common.addressshou',
       jiesuan:'common.jiesuan',
-      submitorder: 'common.submitorder'
+      submitorder: 'common.submitorder',
+      ordercenter: 'common.ordercenter'
     };
   },
   methods: {
