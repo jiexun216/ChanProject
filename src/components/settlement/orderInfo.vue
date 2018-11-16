@@ -8,7 +8,7 @@
                       <div class="overlayerorderinfo" @touchmove.prevent v-if="orderTextStatus">
                             <div class="orders">
                                 <div class="orderstop">
-                                     <span>{{$t(ordergoodslist)}}（共{{orderData.totalQuantity}}件）</span>
+                                     <span>{{$t(ordergoodslist)}}（{{$t(gong)}}{{orderData.totalQuantity}}件）</span>
                                      <span  class="closeorder" @click="closeorder">
                                          <i class="orderInfoimg orderInfoimgs"></i>
                                      </span>
@@ -64,7 +64,9 @@ Vue.use(Toast)
                   orderdily: 'common.orderdily',
                   orderinfopay: 'common.orderinfopay',
                   ordertal: 'common.ordertal',
-                  orderbz: 'common.orderbz'
+                  orderbz: 'common.orderbz',
+                  gong: 'common.gong',
+                  jian: 'common.jian'
               }
           },
           // 监听

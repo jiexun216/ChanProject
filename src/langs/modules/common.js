@@ -116,6 +116,7 @@ module.exports = {
    liuyan:'如果您在网站和微商城发现任何问题，或者有更好的建议，欢迎给我们留言！',
    yishou: '已售',
    jian:'件',
+   gong: '共',
    paystyle: '支付方式',
    wxpay: '微信支付',
    tuiwx: '推荐已在微信中绑定银行卡的用户使用',
@@ -163,7 +164,8 @@ module.exports = {
    taiyuan: '胎元',
    taixi: '胎息',
    chenggu: '袁天罡称骨',
-   weight: '重量'
+   weight: '重量',
+   ordercenter:'订单中心'
   },
   char: {
     home: '首頁',
@@ -281,6 +283,7 @@ module.exports = {
    liuyan: '如果您在網站和微商城發現任何問題，或者有更好的建議，歡迎給我們留言！',
    yishou: '已售',
    jian: '件',
+   gong: '共',
    paystyle: '支付方式',
    wxpay: '微信支付',
    tuiwx: '推薦已在微信中綁定銀行卡的用戶使用',
@@ -329,7 +332,8 @@ module.exports = {
    taiyuan: '胎元',
    taixi: '胎息',
    chenggu: '袁天罡稱骨',
-   weight: '重量'
+   weight: '重量',
+   ordercenter:'訂單中心'
   },
   en: {
     home: 'Home',
@@ -448,6 +452,7 @@ module.exports = {
    liuyan: 'If you find any problems on the website or wechat, or have better Suggestions, please leave us a message!',
    yishou: 'sold',
    jian: 'piece',
+   gong: 'Total',
    paystyle: 'payment method ',
    wxpay: 'WeChat pay',
    tuiwx: 'recommended for users who are already tied to bank CARDS in WeChat',
@@ -495,7 +500,8 @@ module.exports = {
    taiyuan: 'Tire Yuan',
    taixi: 'Child Interest',
    chenggu: 'Highest day said yuan bone',
-   weight: 'Weight'
+   weight: 'Weight',
+   ordercenter:'Order center'
   } 
   
 }
