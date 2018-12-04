@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- <div class="orderdetop">
+        <div class="orderdetop">
             
             <i class="back backs" @click="$router.back(-1)"></i>     
             <span >{{$t(myorder)}}</span>
@@ -12,8 +12,8 @@
                   <span>{{receiverInfo.receiverMobile}}</span>
                   <p>{{receiverInfo.receiverAddress}}</p>
              </div>
-        </div> -->
-        <!-- <div class="orderheader" v-if="orderInfo.orderStatus >= 2">
+        </div>
+        <div class="orderheader" v-if="orderInfo.orderStatus >= 2">
              <div class="orderusercar">
                  <router-link to="/Logisticsinfo">
                    <i class="back car"></i>
@@ -25,12 +25,12 @@
                  <p><span>{{$t(system)}}</span>{{$t(orderpay)}}</p>
                  <p>2018.8.30.18.43</p>
              </div>
-        </div> -->
+        </div>
         <div>
             <div class="orderheader ">
-                     <!-- <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
+                     <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
                         <div class="orderstyle">
-                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;">
+                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;" @click="goodData()">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{item.goodsName}}</p>
@@ -43,27 +43,27 @@
                                  <span class="ordersizeright">x{{item.goodsQuantity}}</span>
                              </div>
                         </div>
-                     </div> -->
-              <!-- <div class="produmoney">
+                     </div>
+              <div class="produmoney">
                 <p><span class="produtop">{{$t(payment)}}</span> 
                    <span>共{{orderInfo.totalQuantity}}件，总计￥{{orderInfo.orderAmount}}</span></p>
-              </div> -->
-            <!-- <div class="produmoney">
+              </div>
+            <div class="produmoney">
                 <p><span class="produtop">{{$t(note)}}</span> 
                    <span>{{orderInfo.remark}}</span></p>
-            </div>  -->
-            <!-- <div class="produmoney">
+            </div> 
+            <div class="produmoney">
                 <p><span class="produtop">{{$t(ordernum)}}</span> 
                    <span>{{orderInfo.orderSn}}</span></p>
-            </div>  -->
-            <!-- <div class="produmoney">
+            </div> 
+            <div class="produmoney">
                 <p><span class="produtop">{{$t(ordertime)}}</span> 
                    <span>{{orderInfo.orderTime}}</span></p>
-            </div>   -->
-            <!-- <div class="produmoney">
+            </div>  
+            <div class="produmoney">
                 <p><span class="produtop">{{$t(paymethod)}}</span> 
                    <span>{{orderInfo.payWay}}</span></p>
-            </div>      -->
+            </div>     
            </div>
             
             
@@ -78,6 +78,7 @@
 
 <script>
 import {getOrderInfo} from '@/api/order/index.js'
+import { getGoodsInfo } from '@/api/goods/index.js'
   export default {
       data () {
           return {
@@ -120,18 +121,32 @@ import {getOrderInfo} from '@/api/order/index.js'
               let id = this.$route.query.id
               this.loading = true
               getOrderInfo(id).then((res) => {
-                  if (res.data.status == 99) {
-                      this.$toast(res.data.message ? res.data.message : '操作失败')
-                      this.$router.push({name: res.data.data.url})
+                 if (res.data.status == 99) {
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+                    this.$router.push({name: res.data.data.url})
                   }
                   this.orderInfo = res.data.data.orderInfo
                   this.receiverInfo = res.data.data.receiverInfo
                   this.goodsList = res.data.data.goodsList
-              })
-          }
+                  
+              })  
+          },
+        //   goodData () {
+        //     //   let id = this.$router.query.id
+        //       getGoodsInfo().then((res) => {
+        //           console.log(res)
+        //           this.goods = res.data.data.goodsList
+        //           if(res.data.status == 1){
+        //               this.$toast(res.data.message ? res.data.message :'')
+        //           }else{
+        //               this.$router.push({ name: 'goodsDetail', query: { goodsId: res.data.data.id }})
+        //           }
+        //       })
+        //   }
       },
       created () {
            this.getData()
+        //    this.goodData()
        },
   }    
 

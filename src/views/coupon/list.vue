@@ -58,15 +58,15 @@ export default {
       statusList: [
         {
           key: "waitingUse",
-          title: "未使用"
+          title: this.$t("common.Dontuse")
         },
         {
           key: "alreadyUse",
-          title: '已使用'
+          title: this.$t("common.used")
         },
         {
           key: "haveExpired",
-          title: "已过期"
+          title: this.$t("common.expired")
         }
       ],
       loading: false,
@@ -80,7 +80,7 @@ export default {
       getCouponList(this.status)
         .then(res => {
           if (res.data.status == 99) {
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             this.$router.push({name: res.data.data.url})
           }
           this.listData = res.data.data.list;
@@ -92,7 +92,7 @@ export default {
     postData () {
        deleteCouponList().then(res => {
          if(this.res.data.status == 99) {
-           this.$toast(res.data.message ? res.data.message: '操作失败')
+           this.$toast(res.data.message ? res.data.message: this.$t("common.failuredcaozuo"))
            this.$router.push({name:res.data.data.url})
          }
        })
@@ -125,8 +125,8 @@ export default {
     },
     deleyi () {
       Dialog.confirm({
-        title: '确认删除',
-        message: '确认要删除过期优惠券吗？'
+        title: this.$t("common.confirmdelete"),
+        message: this.$t("common.deleteexpiredcoupons")
       }).then(() => {
         this.postData()
         this.show= false;

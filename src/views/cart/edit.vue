@@ -60,7 +60,7 @@ Vue.use(Stepper);
     getData () {
       getCartList ().then(res => {
         if (res.data.status == 99) {
-          this.$toast(res.data.message ? res.data.message : '操作失败')
+          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           this.$router.push({name: res.data.data.url})
             }
             this.goods  = res.data.data.list
@@ -75,7 +75,7 @@ Vue.use(Stepper);
     // 删除购物车 zhangjie 0919
     deleteCartHandle (cartIds) {
         if (this.checkedGoods.length == 0) {
-            this.$toast('请选择需要删除的商品')
+            this.$toast(this.$t("common.choosedeletegoods"))
             return false
         }
         var cartIds = ''
@@ -83,7 +83,7 @@ Vue.use(Stepper);
             cartIds += val.id + ','
         });
         deleteCart (cartIds).then(res => {   
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
             } else if (res.data.status == 0) {
@@ -94,7 +94,7 @@ Vue.use(Stepper);
     // 购物车数量修改 zhangjie 0919
     cartNumChangeHandle (cartId,goodsQuantity) {
          changeCartQuantity (cartId, goodsQuantity).then(res => {
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
             } else if (res.data.status == 0) {
@@ -169,6 +169,7 @@ Vue.use(Stepper);
 }
 .van-card-right{
     font-size: 0.3rem;
+    margin-left:0.2rem;
 }
 .van-card-p{
     color: #707070;

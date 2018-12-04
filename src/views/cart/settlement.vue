@@ -107,7 +107,7 @@ export default {
         this.payParam.skuId,
         this.payParam.goodsQuantity
       ).then(res => {
-          this.$toast(res.data.message ? res.data.message : '操作失败')
+          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           if (res.data.status == 99) {
               this.$router.push({name: res.data.data.url})
           } else if (res.data.status == 0) {
@@ -170,7 +170,7 @@ export default {
         // 判断是否满足使用条件
         if (parseFloat(couponInfo.condition) > this.orderAmount/100) {
             this.payParam.memberCouponId = 0
-            this.$toast('此优惠券不满足使用条件')
+            this.$toast(this.$t("common.couponsdosenot"))
             return false;
         } else {
             this.payParam.memberCouponId = memberCouponId
@@ -180,7 +180,7 @@ export default {
     // 提交生成订单
     onSubmit() {
         if (this.payParam.addressId == 0) {
-            this.$toast('请先选择收货地址')
+            this.$toast(this.$t("common.chooseaddress"))
             return false
         }
         // if (this.payParam.remark == '') {
@@ -188,7 +188,7 @@ export default {
         //     return false
         // }
         if (this.payParam.payWay == 0) {
-            this.$toast('请选择支付方式')
+            this.$toast(this.$t("common.choosepayfize"))
             return false
         }
         generatingOrder(
@@ -202,7 +202,7 @@ export default {
         this.payParam.remark,
         this.payParam.payWay
       ).then(res => {
-          this.$toast(res.data.message ? res.data.message : '操作失败')
+          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           if (res.data.status == 99) {
               this.$router.push({name: res.data.data.url})
           } else if (res.data.status == 0) {

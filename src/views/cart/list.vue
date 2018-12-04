@@ -101,7 +101,7 @@ Vue.use(Stepper);
     getData () {
       getCartList ().then(res => {
         if (res.data.status == 99) {
-          this.$toast(res.data.message ? res.data.message : '操作失败')
+          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           this.$router.push({name: res.data.data.url})
         }
         this.cartGoodsList  = res.data.data.list
@@ -121,7 +121,7 @@ Vue.use(Stepper);
             } else if (res.data.status == 0) {
                 this.getData();
             } else {
-              this.$toast(res.data.message ? res.data.message : '操作失败')
+              this.$toast(res.data.message ? res.data.message :this.$t("common.failuredcaozuo"))
               this.yesno = true
             }
         })
@@ -133,7 +133,7 @@ Vue.use(Stepper);
         cartIds += val + ','
       });
       orderSettlement (1,cartIds,0,0,0,0).then(res => {
-        this.$toast(res.data.message ? res.data.message : '操作失败')
+        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
         if (res.data.status == 0) {
           this.$router.push({
 							name: 'cartSettlement',
@@ -226,6 +226,7 @@ Vue.use(Stepper);
 }
 .van-card-right{
     font-size: 0.3rem;
+    margin-left:0.2rem;
 }
 .van-card-p{
     color: #707070;

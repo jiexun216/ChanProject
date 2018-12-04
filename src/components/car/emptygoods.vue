@@ -15,13 +15,19 @@
             <p class="liketop">{{$t(youlike)}}</p>
             <div class="likes">
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
-                     <img :src="item.goodsCoverImg" alt="" style="height:100%;">
+                     <div class="likesImgwidth">
+                        <img :src="item.goodsCoverImg" alt="" style="height:4.3rem;width:100%;">
+                     </div>
+                     
                      <div class="likelefts">
                         <h4>{{item.name}}</h4>
                         <p>{{$t(yishou)}}  {{item.salesVolume}}  {{$t(jian)}}</p>
                         <div class="likemon">
-                            <span class="likeone">￥{{item.price}}</span>
-                            <span class="liketwo">￥{{item.market_price}}</span>
+                            <div>
+                                <span class="likeone">￥{{item.price}}</span><br>
+                                <span class="liketwo">￥{{item.market_price}}</span>
+                            </div>
+                            <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;">
                         </div>
                      </div>
                 </div>
@@ -107,8 +113,9 @@ export default {
     background: #fff;
     margin-top: 0.2rem;
 }
-.likeleft img{
-    width: 100%;
+.likesImgwidth{
+  width: 4.2rem;
+  margin: auto;
 }
 .likelefts{
     margin: 0.1rem;
@@ -116,14 +123,21 @@ export default {
 .likelefts p{
     color: #ccc;
     line-height: 0.8rem;
+    font-size:0.3rem;
+}
+.likemon{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 .likeone{
     font-weight: bold;
     font-size: 0.4rem;
+    color: #ff525a;
 }
 .liketwo{
     color: #ccc;
-    font-size: 0.3rem;
+    font-size: 0.25rem;
     text-decoration: line-through;
 }
 </style>

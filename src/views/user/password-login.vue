@@ -92,7 +92,7 @@ export default {
       }
        this.password = rsaJsencrypt(this.pwd);
        passwordLogin (this.tel, this.password).then(res => {
-        this.$toast(res.data.message ? res.data.message : '操作失败')
+        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
          if (res.data.status == 0) {
            this.$router.push({path: '/'})
          }

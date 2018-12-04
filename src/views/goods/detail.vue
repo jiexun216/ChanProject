@@ -18,11 +18,6 @@
             <div> 
                 <div style="width:100%;">
                       <div class="layout" >
-                        <!-- <el-carousel tag="ul"  indicator-position="none" arrow="none">
-                            <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
-                               <img :src="goodsImage"> 
-                             </el-carousel-item >
-                        </el-carousel>   -->
                         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000' style="width:100%;">
                                 <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
                                        <img :src="goodsImage" style="width:100%;height:100%;" />
@@ -158,12 +153,17 @@ Vue.use(Swipe).use(SwipeItem);
             // 获取商品详情数据
             getData () {
                 getGoodsInfo (this.goodsId).then(res => {
-                    this.goodsInfos = res.data.data.goodsInfo;
-                    this.goods.title = res.data.data.goodsInfo.name
-                    this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
-                    this.goodsImages = res.data.data.goodsInfo.goodsImages; 
-                    this.sku = res.data.data.sku;
-                    
+                    if(res.data.status == 0){   
+                        this.goodsInfos = res.data.data.goodsInfo;
+                        this.goods.title = res.data.data.goodsInfo.name
+                        this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
+                        this.goodsImages = res.data.data.goodsInfo.goodsImages; 
+                        this.sku = res.data.data.sku;
+                    }
+                    // else if(res.data.status == 1){
+                    //     this.$toast(res.data.message ? res.data.message : '')
+                    //     // this.$router.push(this.$router.query.redirect)                 
+                    // }
                 }).catch(err => {
                     return err
                 })
@@ -177,8 +177,8 @@ Vue.use(Swipe).use(SwipeItem);
                 addGoodsToCart (cartGoodsId,goodsQuantity,cartSkuId).then(res => {
                     if (res.data.status == 99) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '您还未登录，立即前往登录'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.gologin")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: res.data.data.url})
@@ -187,8 +187,8 @@ Vue.use(Swipe).use(SwipeItem);
                         });
                     } else if (res.data.status == 0) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '加入购物车成功，立即前往购物车查看'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.lookcart")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: 'cartList'})
@@ -197,7 +197,7 @@ Vue.use(Swipe).use(SwipeItem);
                         });
                         // window.location.reload()
                     } else {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message :this.$t("common.failuredcaozuo"))
                     }
                 })
             },
@@ -221,15 +221,15 @@ Vue.use(Swipe).use(SwipeItem);
 						})
                     } else if (res.data.status == 99) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '您还未登录，立即前往登录'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.gologin")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: res.data.data.url})                      
                         }).catch(() => {
                         });
                     } else {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     }
                 });
             },

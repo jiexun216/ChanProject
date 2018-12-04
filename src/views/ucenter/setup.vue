@@ -96,7 +96,7 @@ import myFile from '@/components/upLoadImg/myFile.vue'
          created () {
              this.$getData('ucenter/index').then(res => {
                  if (res.data.status == 99) {
-                     this.$toast(res.data.message ? res.data.message : '操作失败')
+                     this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                      this.$router.push({name: res.data.data.url})
                  }
                   this.data = res.data.data;
@@ -108,7 +108,7 @@ import myFile from '@/components/upLoadImg/myFile.vue'
             // 退出登录
             loginOut () {
                 exitLogon ().then(res => {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
 
                     if (res.data.status == 0) {
                         // Vue.prototype.$store = store

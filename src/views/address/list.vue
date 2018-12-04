@@ -37,7 +37,7 @@
                                 {{$t( nowdefault)}}
                             </span> 
                             <span v-else class="defamr defamrtwo">
-                                {{$t( updefault)}}
+                                {{$t(updefault)}}
                             </span>     
                             </div>
                         <div>
@@ -92,7 +92,7 @@ export default {
       getAddressList(this.page)
         .then(res => {
           if (res.data.status == 99) {
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             this.$router.push({name: res.data.data.url})
           }
           this.loading = false;
@@ -112,20 +112,20 @@ export default {
     // 删除地址
     deleteAddress(id) {
       Dialog.confirm({
-        title: "删除确认",
-        message: "此操作不可逆,确认要删除该收货地址吗?"
+        title: this.$t("common.delecon"),
+        message: this.$t("common.caredelete")
       }).then(() => {
         addressDelete(id)
           .then(res => {
             if (res.data.status == 0) {
-              this.$toast("地址删除成功");
+              this.$toast(this.$t("common.addressdelete"));
             } else {
-              this.$toast(res.data.message ? res.data.message : "地址删除失败");
+              this.$toast(res.data.message ? res.data.message : this.$t("common.addressnode"));
             }
             this.getData();
           })
           .catch(() => {
-            this.$toast("地址删除失败");
+            this.$toast(this.$t("common.addressnode"));
           });
       });
     },
@@ -134,23 +134,23 @@ export default {
       defaultAddressSet(id)
         .then(res => {
           if (res.data.status == 0) {
-            this.$toast("默认地址设置成功");
+            this.$toast(this.$t("common.setdefaultaddress"));
           } else {
             this.$toast(
-              res.data.message ? res.data.message : "默认地址设置失败"
+              res.data.message ? res.data.message : this.$t("common.setdefaultaddressno")
             );
           }
           this.getData();
         })
         .catch(() => {
-          this.$toast("默认地址设置失败");
+          this.$toast( this.$t("common.setdefaultaddressno"));
         });
     },
     // 下单选择地址
     choiceAddressHandle (addressId) {
       if (this.$route.query.buyType == 1 || this.$route.query.buyType == 2) {
         if (!addressId) {
-          this.$toast("地址选择错误");
+          this.$toast(this.$t("common.addresschooseerror"));
           return false;
         }
         this.$router.push({
@@ -318,8 +318,9 @@ export default {
 .addressfooter {
   color: #ff525a;
   text-align: center;
-  line-height: 1rem;
+  line-height: 1.2rem;
   font-size: 0.5rem;
+  background:#fff;
   box-shadow: 0 0 0.5rem #ccc;
   width: 100%;
   position: fixed;

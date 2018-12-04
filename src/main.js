@@ -20,7 +20,6 @@ Vue.prototype.$getData = getData
 Vue.prototype.$postData = postData
 Vue.prototype.$deleteData = deleteData
 Vue.prototype.$putData = putData
- 
 
 Vue.use(Vuex)
 Vue.use(VueRouter)

@@ -6,7 +6,12 @@
                 <span class="myorder"></span>
             </div>   
             <!-- 地址编辑列表  -->
-            <van-address-edit
+
+              <my-form  :formList="formList" 
+                        :defaultData="defaultData" 
+                        :regList="regList" 
+                        ></my-form>
+            <!-- <van-address-edit
                 :area-list="areaList"
                 show-set-default
                 show-search-result
@@ -14,8 +19,8 @@
                 :tel-validator="validaphone"
                 :validator="() => ''"
                 @save="onSave"
-              />
-              <p style="margin:0 0.4rem;color:#f00;">{{$t(deaddress)}}</p> 
+              /> -->
+              <!-- <p style="margin:0 0.4rem;color:#f00;">{{$t(deaddress)}}</p>  -->
 </div>        
 </template>
 
@@ -27,24 +32,25 @@ import areaList from "@/common/js/area.js";
 import { getAddressInfo,saveAddressInfo } from "@/api/address/index.js";
 import { Dialog } from 'vant';
 import { Picker } from 'vant';
-
+import MyForm from './form'
 Vue.use(Picker);
 Vue.use(Dialog);
 Vue.use(AddressEdit);
 export default {
   components: {
-    "van-address-edit": AddressEdit
+    "van-address-edit": AddressEdit,
+     MyForm
   },
   data() {
     var reg = /^[0-9]*$/
     var  validatephone = function(value){
       if(!value){
-        this.$toast('请输入手机号')
+        this.$toast(this.$t("common.placeholder.userphone"))
         return true
       }else if(reg.test(value)){
         return true
       } else {
-        this.$toast('请输入正确的手机号')
+        this.$toast(this.$t("common.correctphone"))
         return true
       }
     }
@@ -53,6 +59,15 @@ export default {
       areaList,
       editoradd: 'common.editoradd',
       deaddress: 'common.deaddress',
+      formList: [
+        {label: this.$t("common.addname"), placeholder: this.$t("common.addinputname"), alias: 'name', type: 'text'},
+        {label: this.$t("common.addphone"), placeholder: this.$t("common.addinputphone"), alias: 'mobile', type: 'text'},
+        {label: this.$t("common.adderea"), placeholder: this.$t("common.addinputerea"), alias: 'areaText', type: 'selectArea'},
+        {label: this.$t("common.adddetail"), placeholder: this.$t("common.addinputdetail"), alias: 'addressDetail', type: 'text'},
+        {label: this.$t("common.addgoodsdetail"), placeholder: '', alias: 'isDefault', type: 'selectCell'}
+      ],
+      regList: ['name', 'mobile', 'areaCode', 'addressDetail', 'postalCode'],
+      defaultData: {name: '', mobile: '', country: '', province: '', city: '', county: '', areaCode: '', postalCode: '', addressDetail: '', isDefault: true},
       formData: {
         id: 0,
         name: "",
@@ -89,7 +104,8 @@ export default {
         content.areaCode,
         content.isDefault
       ).then(res => {
-          this.$toast(res.data.message ? res.data.message : '操作失败')
+        console.log(res)
+          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           if (res.data.status == 0) {
               this.$router.push({
                 name: 'addressList',
@@ -120,20 +136,20 @@ export default {
             this.formData.areaCode = res.data.data.areaCode;
             this.formData.isDefault = res.data.data.isDefault == 1;
           } else if (res.data.status == 99) {
-            this.$toast(res.data.message ? res.data.message : '操作失败')
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             this.$router.push({name: res.data.data.url})
           } else {
             Toast({
               message: res.data.message
                 ? res.data.message
-                : "获取用户地址失败，请稍后再试",
+                : this.$t("common.addresswaiting"),
               duration: 1500
             });
           }
         })
         .catch(() => {
           Toast({
-            message: "获取用户地址失败，请稍后再试",
+            message: this.$t("common.addresswaiting"),
             duration: 1500
           });
         });
@@ -151,20 +167,15 @@ export default {
           goodsQuantity: this.$route.query.goodsQuantity
         }
       })
-    },
-    },
-    created() {
-        this.formData.id = this.$route.query.id ? this.$route.query.id : 0;
-        if (this.formData.id != 0) {
-          this.getData();
-        }
     }
+    }
+   
 }
 </script>
 
 <style>
 .orderdetop {
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -307,7 +318,6 @@ export default {
     display: flex;
     justify-content:space-between;
     align-items: center;
-
 }
 .addressname{
   border-bottom:1px solid #eee;

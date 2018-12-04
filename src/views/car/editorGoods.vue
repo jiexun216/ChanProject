@@ -133,7 +133,8 @@ Vue.use(Stepper);
     margin-right: 0.2rem;
 }
 .van-card-right{
-    font-size: 0.4rem;
+    font-size: 0.3rem;
+    margin-left:0.2rem;
 }
 .van-card-p{
     color: #707070;

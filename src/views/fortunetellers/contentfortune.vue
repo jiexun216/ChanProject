@@ -93,7 +93,7 @@ export default {
             this.$route.query.fortuneId
             ).then(res => {
            if (res.data.status == 99) {
-                this.$toast(res.data.message ? res.data.message : '操作失败')
+                this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                 this.$router.push({name: res.data.data.url})
             }
             this.comment = res.data.data.pingyu
@@ -107,14 +107,14 @@ export default {
             let comment = this.comment
             let fortuneId =  this.$route.query.fortuneId
              issueComment (comment,fortuneId).then(res => {    
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     if (res.data.status == 0) {
                         this.$router.push({name: 'contentfortune',
                         query: {
                             fortuneId: fortuneId
                         }});
                     } else if (res.data.status == 99) {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                         this.$router.push({name: res.data.data.url})
                     }
                 }).catch(err => {

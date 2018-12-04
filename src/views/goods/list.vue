@@ -5,7 +5,7 @@
          <div class="search-header">
          <div class="search-top">
            <i class="search-icon search-bg"></i>
-           <input type="search" class="searchs" style="line-height:1rem;" :placeholder="$t(search)" v-model="keyword"
+           <input type="search" class="searchs"  :placeholder="$t(search)" v-model="keyword"
                                   @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
@@ -24,15 +24,29 @@
                  </ul>           
              </div>
         </div>
-        <div class="goodsrighttt">
+        <div class="goodsabsolute">
+            <div class="goodsrighttt">
           <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
             <!-- <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" /> -->
                <div class="goodsrightImg">
-                    <li><img :src="item.goodsCoverImg" alt=""></li>
-                    <li>{{item.name}}</li>
-                    <li><span class="goodsrightspan">{{item.price}}</span>   <span class="goodsrightspantwo">{{item.marketPrice}}</span></li>
+                    <div><img :src="item.goodsCoverImg" alt=""></div>
+                    <div class="goodsnamespan">
+                        <div>
+                            <span>{{item.name}}</span>
+                            <div class="goodsspanimg">
+                                <div>  <span class="goodsrightspan">{{item.price}}</span> <br> 
+                                    <span class="goodsrightspantwo">{{item.marketPrice}}</span>
+                                </div>
+                                <div >
+                                    <img src="../../assets/img/26@0.5x.png" style="width:0.4rem;height:0.4rem;float:right;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                </div>
          </div>  
+        </div>
         </div>
          
         </div>
@@ -89,7 +103,7 @@ import { getGoodsList } from '@/api/goods/index.js'
                    return err
                })
            },
-           // 接收帅选搜索参数
+           // 接收筛选搜索参数
            refreshData () {
             this.categoryId = this.$route.query.categoryId ? this.$route.query.categoryId : 0
             this.keyword = this.$route.query.keyword ? this.$route.query.keyword : ''
@@ -125,7 +139,7 @@ import { getGoodsList } from '@/api/goods/index.js'
                 this.$router.push({
                 path: '/goods/list'
                 });
-                this.$toast("请输入搜索内容");
+                this.$toast(this.$t("common.searchcontent"));
             }
             },
          },
@@ -156,13 +170,13 @@ import { getGoodsList } from '@/api/goods/index.js'
 .search-bg{
        background: url(../../assets/img/34@0.5x.png) no-repeat center center;
    }
-   .goodsposition{
-       position: relative;
+.goodsposition{
+    position: relative;
    }
 .goodsleft{
     position: fixed;  
     left: 0;
-    top:2.5rem; 
+    top:1.5rem; 
     width: 25%;
     height: 100%;
     background: #f7f7f7;
@@ -170,28 +184,41 @@ import { getGoodsList } from '@/api/goods/index.js'
 }
 .goodsrighttt{
     width: 70%;
-    position: fixed;
+    position: absolute;
     left: 25%;
-    top: 2.3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; 
-    font-size:0.4rem;
+    top:0.4rem;
 }
 .goodsrightImg{
     margin:0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+.goodsnamespan{
+    margin-left:0.3rem;
+    width:100%;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #f00; */
+}
+.goodsspanimg{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 .goodsrightImg img{
-    width:4rem;
-    height: 3rem;
+    width:2.7rem;
+    height:2rem;
 }
 .goodsrightspan {
-  font-size:0.45rem;
+  font-size:0.3rem;
   color: #f00;
 }
 .goodsrightspantwo{
     text-decoration:line-through;
+    font-size: 0.2rem;
+    color: #ccc;
 }
 .goodsul{
     margin: 0;padding: 0;
