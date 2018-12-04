@@ -128,21 +128,21 @@ export default {
     },
     // 区域选择
     onAreaConfirm (values) {
-      this.showAreaPopup = false
-      this.assignAreaValues()
+      this.showAreaPopup = false    //关闭地址弹出框
+      this.assignAreaValues()       //调用地址弹窗框
       this.$emit('change-area', values)
     },
-    assignAreaValues (values) {
+    assignAreaValues (values) {     //作用  将选中的地址添加到input中
       const { area } = this.$refs
       if (area) {
-        const detail = area.getArea()
+        const detail = area.getArea()       
         detail.areaCode = detail.code
         delete detail.code
         Object.assign(this.data, detail)
       }
     },
     getArea () {
-      return this.$refs.area ? this.$refs.area.getValues() : []
+      return this.$refs.area ? this.$refs.area.getValues() : []    //获取area的值
     },
     setAreaCode (code) {
       this.data.areaCode = code || ''
@@ -155,7 +155,7 @@ export default {
     onSave () {
       const items = this.regList
       const isValid = items.every(item => {
-        const msg = this.getErrorMessage(item)
+        const msg = this.getErrorMessage(item)    //对value进行验证
         if (msg) {
           this.errorInfo[item] = true
           this.$toast(msg)
@@ -163,10 +163,9 @@ export default {
         return !msg 
       })
       if (isValid) {
-        this.$emit('save', this.data)
+        this.$emit('save', this.data)  
       }
-      console.log(this.data)
-      saveAddressInfo(
+      saveAddressInfo(    //请求接口传值
         '',
         this.data.name,
         this.data.mobile,

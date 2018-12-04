@@ -97,7 +97,7 @@
                              <!-- <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                                {{$t(gobuy)}}
                              </span> -->
-                             <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;">
+                             <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                            </div>
                       </div>    
                       </div>  

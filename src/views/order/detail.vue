@@ -30,7 +30,7 @@
             <div class="orderheader ">
                      <div class="ordercontent" v-for="(item, index) in goodsList" :key="index">
                         <div class="orderstyle">
-                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;" @click="goodData()">
+                            <img :src="item.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;" @click="goodData(item.goodsId)">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{item.goodsName}}</p>
@@ -131,22 +131,22 @@ import { getGoodsInfo } from '@/api/goods/index.js'
                   
               })  
           },
-        //   goodData () {
-        //     //   let id = this.$router.query.id
-        //       getGoodsInfo().then((res) => {
-        //           console.log(res)
-        //           this.goods = res.data.data.goodsList
-        //           if(res.data.status == 1){
-        //               this.$toast(res.data.message ? res.data.message :'')
-        //           }else{
-        //               this.$router.push({ name: 'goodsDetail', query: { goodsId: res.data.data.id }})
-        //           }
-        //       })
-        //   }
+          goodData (id) {
+            //   let id = this.$router.query.id
+              getGoodsInfo(id).then((res) => {
+                  console.log(res)
+                  
+                  if(res.data.status == 1){
+                      this.$toast(res.data.message ? res.data.message :'')
+                    
+                  }else{
+                      this.$router.push({ name: 'goodsDetail', query: { goodsId: id }})
+                  }
+              })
+          }
       },
       created () {
            this.getData()
-        //    this.goodData()
        },
   }    
 
@@ -154,7 +154,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 
 <style>
 .orderdetop{
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -208,11 +208,11 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 }
 .ordering {
     margin: 0.4rem;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     line-height: 1rem;
 }
 .ordercontent {
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -222,7 +222,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 }
 .ordername {
     flex-wrap: wrap;
-    font-size: 0.45rem;
+    font-size: 0.35rem;
     margin-right: 0.4rem;
 }
 .ordersize{
@@ -257,7 +257,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
     background: #ff525a;
     width: 100%;
     text-align: center;
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     line-height: 1.3rem;
 }
 .orderfooter a{

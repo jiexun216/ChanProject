@@ -160,10 +160,7 @@ Vue.use(Swipe).use(SwipeItem);
                         this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                         this.sku = res.data.data.sku;
                     }
-                    // else if(res.data.status == 1){
-                    //     this.$toast(res.data.message ? res.data.message : '')
-                    //     // this.$router.push(this.$router.query.redirect)                 
-                    // }
+
                 }).catch(err => {
                     return err
                 })
@@ -433,7 +430,7 @@ Vue.use(Swipe).use(SwipeItem);
     padding-right: 0.5rem;
 }
 .van-stepper__input{
-    line-height: 1rem;
+    line-height: 1.1rem;
 }
 .van-sku-row__item--disabled{
     background: #fff;

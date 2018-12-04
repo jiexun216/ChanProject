@@ -40,11 +40,17 @@
                             <p class="van-card-p">{{item.skuInfo}}</p>
                             <div class="van-card-price">
                                 <p class="van-price-p" >￥{{item.price}}</p>
-                                <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity" 
-                                      /></p>
+                                <p> <van-stepper @change="getGoodsNumber(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity" /></p>
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="settotal">
+                          <div class="totalright">
+                               <span>总计</span>
+                               <span><span :value="totals">{{0}}</span>￥</span>
+                               <button class="totalpay" @submit="onSubmit">去支付</button>
+                          </div>
+                    </div> -->
                   <van-submit-bar
                       :price="totalPrice"
                       :disabled="!checkedGoods.length"
@@ -83,12 +89,13 @@ Vue.use(Stepper);
       carts: 'common.carts',
       editors: 'common.editor',
       yesno: false,
+      totals: '',
     };
   },
     computed: {
     submitBarText() {
       const count = this.checkedGoods.length;
-      return '去支付' + (count ? `(${count})` : '');
+      return this.$t('common.cartgobuy') + (count ? `(${count})` : '');
     },
     totalPrice() {
       return this.cartGoodsList.reduce((total, item) => 
@@ -151,9 +158,7 @@ Vue.use(Stepper);
       })
     },
     plus () {
-
       this.yesno = true
-      
     },
     editor () {
       this.$router.push({name:'cartEdit'})
@@ -227,6 +232,29 @@ Vue.use(Stepper);
 .van-card-right{
     font-size: 0.3rem;
     margin-left:0.2rem;
+}
+.settotal{
+  position: fixed;
+  bottom:0;
+  box-shadow: 0px 0px 10px 5px #fbfbfb;
+  width:100%;
+  height:1.3rem;
+  
+}
+.totalright{
+  text-align: right;
+}
+.totalright span{
+  margin-right:0.2rem;
+}
+.totalpay{
+  width:30%;
+  height:1.3rem;
+  text-align: center;
+  line-height: 1.3rem;
+  background: #f00;
+  color: #fff;
+  font-size:0.45rem;
 }
 .van-card-p{
     color: #707070;
