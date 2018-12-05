@@ -16,11 +16,13 @@
        </div> 
        <div class="moregoods moregoodss">
             <div> 
-                <div style="width:100%;">
+                <div >
                       <div class="layout" >
                         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000' style="width:100%;">
                                 <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
-                                       <img :src="goodsImage" style="width:100%;height:100%;" />
+                                    <div style="width:100%;height:100%;">
+                                         <img :src="goodsImage" style="width:100%;height:100%;" />
+                                    </div>
                                 </van-swipe-item>
                         </van-swipe>
                       <div class="goods">
@@ -89,7 +91,7 @@
             :goods="goods"
             :goods-id="goodsId"
             :hide-stock="sku.hide_stock"
-            :show-add-cart-btn = "showAddCartBtn"
+            :show-add-cart-btn="showAddCartBtn"
             @buy-clicked="onBuyClicked"
             @add-cart="onAddToCart"
             />           
@@ -159,6 +161,7 @@ Vue.use(Swipe).use(SwipeItem);
                         this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                         this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                         this.sku = res.data.data.sku;
+                        console.log(this.sku)
                     }
 
                 }).catch(err => {

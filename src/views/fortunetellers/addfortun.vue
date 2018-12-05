@@ -137,9 +137,9 @@ Vue.use(NavBar);
             getValues: [],
             datavalue: '',
             dataTime: {},
-            time: '请选择',
-            times:'若时间不详，请选择00:00',
-            timeth: '请选择',
+            time: this.$t("common.fortime"),
+            times:this.$t("common.fortimes"),
+            timeth:this.$t("common.fortimeth"),
             save: {
                 fullName: '',
                 sex: '男',

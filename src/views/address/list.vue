@@ -16,7 +16,7 @@
        </div>
         <div v-else> 
             <div class="orderdetop orderdetop1">
-                <i class="back backs" @click="$router.back(-1)"></i>     
+                <i class="back backs" @click="$router.push({path: '/ucenter/index'})"></i>     
                 <span >{{$t(shipaddress)}}</span>
                 <span class="oks" @click="$router.back(-1)">
                   <!-- {{$t(completes)}} -->

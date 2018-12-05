@@ -79,7 +79,7 @@
                            <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:4.5rem;">
                         </div>
                         
-                        <div class="goods">
+                        <div class="goods"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           <p class="goodname">
                               {{good.name}}</p>
                            <p  class="goodsale">
@@ -97,7 +97,7 @@
                              <!-- <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                                {{$t(gobuy)}}
                              </span> -->
-                             <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
+                             <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;">
                            </div>
                       </div>    
                       </div>  
@@ -353,6 +353,9 @@ a {
   font-weight: bold;
   padding: 0.1rem 0.2rem;
   font-size: 0.25rem;
+}
+.moregoods{
+  padding-bottom:0.5rem;
 }
 .moreGoodscon{
   display: flex;
