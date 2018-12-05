@@ -83,7 +83,7 @@
                 <p>{{$t(customerservice)}}</p>
             </div>
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
-            <!-- <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button> -->
+            <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
         <div class="sku-container">
             <van-sku
@@ -361,17 +361,18 @@ Vue.use(Swipe).use(SwipeItem);
     border-right: 1px solid #f0f0f0
 }
 .inbuy{
-    width: 85%;
+    width: 42.5%;
     height:1.4rem;
     font-size: 0.5rem;
     color: #fff;
     margin: 0;
     padding: 0;
-    background:#ff525a; 
+    /* background:#ff525a;  */
+    color: #ff525a;
 }
 .inbuys{
     width: 42.5%;
-    height: 1.3rem;
+    height: 1.4rem;
     font-size: 0.5rem;
     background: #ff525a;
     color: #fff;
