@@ -104,7 +104,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding-bottom:0.6rem;
+    padding-bottom:0.8rem;
 }
 .liketop{
     line-height: 0.8rem;

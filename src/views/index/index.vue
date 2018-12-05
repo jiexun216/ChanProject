@@ -362,7 +362,7 @@ a {
   justify-content: space-between;
   align-items:center;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 

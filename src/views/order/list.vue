@@ -1,5 +1,5 @@
 <template>
-    <div style="margin:0.4rem;">
+    <div>
         <div>
         <div class="lang-top">
            <router-link to="/index">
