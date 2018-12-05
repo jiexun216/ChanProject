@@ -1,7 +1,7 @@
 <template>
      <div>
          <van-nav-bar
-            :title="$t(jiesuan)"
+            :title="vantitle"
             left-text=""
             :right-text="$t(ordercenter)"
             left-arrow
@@ -75,7 +75,8 @@ export default {
       addressshou: 'common.addressshou',
       jiesuan:'common.jiesuan',
       submitorder: 'common.submitorder',
-      ordercenter: 'common.ordercenter'
+      ordercenter: 'common.ordercenter',
+      vantitle:''
     };
   },
   methods: {
@@ -228,6 +229,10 @@ export default {
 </script>
 
 <style>
+.van-nav-bar{
+   height:25px;
+   line-height:29px;
+}
 .van-nav-bar .van-icon {
   color: #ccc;
 }

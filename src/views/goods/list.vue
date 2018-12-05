@@ -90,7 +90,6 @@ import { getGoodsList } from '@/api/goods/index.js'
                    this.loading = false;
                    this.goodsCategoryLists = res.data.data.goodsCategoryList;
                    this.listData = res.data.data.goodsList;
-                   console.log(this.listData)
                    this.total = res.data.data.total
                    this.pageCount = res.data.data.pageCount
                    if (this.page >= this.pageCount) {

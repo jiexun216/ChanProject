@@ -83,18 +83,31 @@
                 <p>{{$t(customerservice)}}</p>
             </div>
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
-            <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
+            <!-- <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button> -->
         </div>
-       <van-sku
-            v-model="showBase"
-            :sku="sku"
-            :goods="goods"
-            :goods-id="goodsId"
-            :hide-stock="sku.hide_stock"
-            :show-add-cart-btn="showAddCartBtn"
-            @buy-clicked="onBuyClicked"
-            @add-cart="onAddToCart"
-            />           
+        <div class="sku-container">
+            <van-sku
+                v-model="showBase"
+                :sku="sku"
+                :goods="goods"
+                :goods-id="goodsId"
+                :hide-stock="sku.hide_stock"
+                :show-add-cart-btn="showAddCartBtn"
+                @buy-clicked="onBuyClicked"
+                @add-cart="onAddToCart"
+                >
+                <template slot="sku-actions" slot-scope="props">
+                    <div class="van-sku-actions">
+                        <van-button bottom-action @click="props.skuEventBus.$emit('sku:addCart')" 
+                        style="background:#ff976a;border-radius:0px 0px 0px 6px;">{{$t(addCarts)}}</van-button>
+                        <van-button bottom-action @click="props.skuEventBus.$emit('sku:buy')"
+                        style="border-radius:0px 0px 6px 0px;">{{$t(buy)}}</van-button>
+                    </div>
+                </template>
+            </van-sku>
+        </div>
+         
+               
    </div> 
 </template>
 
@@ -107,7 +120,8 @@ import { Sku } from 'vant'
 import { mapState } from 'vuex'
 import { Tab, Tabs, Dialog } from 'vant';
 import { Swipe, SwipeItem } from 'vant';
-
+import { Button } from 'vant';
+Vue.use(Button);
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Sku);
 Vue.use(Swipe).use(SwipeItem);
@@ -141,7 +155,8 @@ Vue.use(Swipe).use(SwipeItem);
                 yishou: 'common.yishou',
                 jian: 'common.jian',
                 yibuy: 'common.yibuy',
-                autoplay:true
+                autoplay:true,
+                addCarts: 'common.addCarts'
             }
         },
         created () {
@@ -161,7 +176,6 @@ Vue.use(Swipe).use(SwipeItem);
                         this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                         this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                         this.sku = res.data.data.sku;
-                        console.log(this.sku)
                     }
 
                 }).catch(err => {
@@ -170,7 +184,6 @@ Vue.use(Swipe).use(SwipeItem);
             },
             // 加入购物车 zhangjie 0918
             onAddToCart (skuData) {
-             //   console.log(skuData)
                 let cartGoodsId = skuData.goodsId
                 let goodsQuantity = skuData.selectedNum
                 let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
@@ -203,8 +216,8 @@ Vue.use(Swipe).use(SwipeItem);
             },
             // 立即购买 zhangjie 0919
             onBuyClicked (skuData) {
-                let goodsId = skuData.goodsId
-                let goodsQuantity = skuData.selectedNum
+                let goodsId = skuData.goodsId  
+                let goodsQuantity = skuData.selectedNum  
                 let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
                     if (res.data.status == 0) {
@@ -283,6 +296,7 @@ Vue.use(Swipe).use(SwipeItem);
 }
 .moregoodss{
     border-bottom: 5px solid #f7f7f7;
+    
 }
 
 .goods{
@@ -347,11 +361,13 @@ Vue.use(Swipe).use(SwipeItem);
     border-right: 1px solid #f0f0f0
 }
 .inbuy{
-    width: 42.5%;
+    width: 85%;
+    height:1.4rem;
     font-size: 0.5rem;
-    color: #ff525a;
+    color: #fff;
     margin: 0;
     padding: 0;
+    background:#ff525a; 
 }
 .inbuys{
     width: 42.5%;

@@ -81,7 +81,8 @@
                         
                         <div class="goods"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           <p class="goodname">
-                              {{good.name}}</p>
+                              {{good.name}}
+                              </p>
                            <p  class="goodsale">
                                {{$t(yishou)}} {{good.salesVolume}} {{$t(jian)}}
                            </p>
@@ -324,6 +325,10 @@ a {
   text-align: left;
   margin: 0.3rem;
 }
+.goodname{
+  overflow: hidden;
+  text-overflow:ellipsis ;
+}
 .goodsale {
   color: #c5c5c5;
   font-size: 0.3rem;
@@ -362,7 +367,7 @@ a {
   justify-content: space-between;
   align-items:center;
   flex-wrap: wrap;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.95rem;
 }
 
 

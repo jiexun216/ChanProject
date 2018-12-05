@@ -127,18 +127,13 @@ import { getGoodsInfo } from '@/api/goods/index.js'
                   }
                   this.orderInfo = res.data.data.orderInfo
                   this.receiverInfo = res.data.data.receiverInfo
-                  this.goodsList = res.data.data.goodsList
-                  
-              })  
+                  this.goodsList = res.data.data.goodsList  
+              })
           },
           goodData (id) {
-            //   let id = this.$router.query.id
               getGoodsInfo(id).then((res) => {
-                  console.log(res)
-                  
                   if(res.data.status == 1){
                       this.$toast(res.data.message ? res.data.message :'')
-                    
                   }else{
                       this.$router.push({ name: 'goodsDetail', query: { goodsId: id }})
                   }

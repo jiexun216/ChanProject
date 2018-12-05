@@ -227,7 +227,9 @@ module.exports = {
    addsave: '保存',
    addcorrectphone: '请输入正确格式手机号',
    //cart/list
-   cartgobuy:'去支付'
+   cartgobuy:'去支付',
+   //goods/detail
+   addCarts: '加入购物车'
 
   },
   char: {
@@ -447,7 +449,9 @@ module.exports = {
    addgoodsdetail: '設為默認收獲地址',
    addsave: '保存',
    addcorrectphone: '請輸入正確格式手機號',
-   cartgobuy:'去支付'
+   cartgobuy:'去支付',
+   addCarts: '加入購物車'
+
   },
   en: {
     home: 'Home',
@@ -676,7 +680,8 @@ module.exports = {
    addgoodsdetail: 'Harvest is set to the default address',
    addsave: 'Save',
    addcorrectphone: 'Please input correct format of phone number',
-   cartgobuy:'To pay for'
+   cartgobuy:'To pay for',
+   addCarts: 'Add to cart'
   } 
   
 }

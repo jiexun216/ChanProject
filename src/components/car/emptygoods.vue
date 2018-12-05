@@ -20,7 +20,7 @@
                      </div>
                      
                      <div class="likelefts">
-                        <h4>{{item.name}}</h4>
+                        <h5 class="likename">{{item.name}}</h5>
                         <p>{{$t(yishou)}}  {{item.salesVolume}}  {{$t(jian)}}</p>
                         <div class="likemon">
                             <div>
@@ -104,7 +104,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding-bottom:0.8rem;
+    padding-bottom:0.9rem;
 }
 .liketop{
     line-height: 0.8rem;
@@ -119,12 +119,16 @@ export default {
   margin: auto;
 }
 .likelefts{
-    margin: 0.1rem;
+    margin:0.2rem 0.3rem;
 }
 .likelefts p{
     color: #ccc;
     line-height: 0.8rem;
     font-size:0.3rem;
+}
+.likename{
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 .likemon{
     display: flex;
