@@ -46,7 +46,7 @@
                      </div>
               <div class="produmoney">
                 <p><span class="produtop">{{$t(payment)}}</span> 
-                   <span>共{{orderInfo.totalQuantity}}件，总计￥{{orderInfo.orderAmount}}</span></p>
+                   <span> {{$t(gong)}} {{orderInfo.totalQuantity}} {{$t(jian)}}，{{$t(ordertal)}} ￥ {{orderInfo.orderAmount}}</span></p>
               </div>
             <div class="produmoney">
                 <p><span class="produtop">{{$t(note)}}</span> 
@@ -93,6 +93,9 @@ import { getGoodsInfo } from '@/api/goods/index.js'
             ordertime: 'common.ordertime',
             paymethod: 'common.paymethod',
             gopay: 'common.gopay',
+            gong: 'common.gong',
+            jian: 'common.jian',
+            ordertal: 'common.ordertal',
             loading: false,
             orderInfo: {
                 orderStatus:0,
@@ -209,7 +212,7 @@ import { getGoodsInfo } from '@/api/goods/index.js'
 .ordercontent {
     font-size: 0.3rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 .orderstyle{

@@ -10,7 +10,6 @@
                <i class="de-icon de-iconimg2">
                    <router-link to="/cart/list"> </router-link>
                </i>
-              
              </div>          
            </el-header>
        </div> 
@@ -86,15 +85,18 @@
             <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
         <div class="sku-container">
+           
             <van-sku
                 v-model="showBase"
                 :sku="sku"
                 :goods="goods"
                 :goods-id="goodsId"
                 :hide-stock="sku.hide_stock"
-                :show-add-cart-btn="showAddCartBtn"
+                :close-on-click-overlay="closeOnClickOverlay = true"
+                :stepper-title="$t(stepperTitle)"
                 @buy-clicked="onBuyClicked"
                 @add-cart="onAddToCart"
+                :get-container="getContainer"
                 >
                 <template slot="sku-actions" slot-scope="props">
                     <div class="van-sku-actions">
@@ -127,6 +129,9 @@ Vue.use(Sku);
 Vue.use(Swipe).use(SwipeItem);
 
     export default {
+        props: {
+           customStepperConfig: Object
+        },
         data () {
             return {
                 goodsId: 0,
@@ -156,16 +161,27 @@ Vue.use(Swipe).use(SwipeItem);
                 jian: 'common.jian',
                 yibuy: 'common.yibuy',
                 autoplay:true,
-                addCarts: 'common.addCarts'
+                addCarts: 'common.addCarts',
+                goodsnum: 1,
+                stepperTitle: 'common.stepperTitle',
+                getContainer: Function
             }
         },
         created () {
             this.goodsId = this.$route.query.goodsId ? this.$route.query.goodsId : 0
+            this.vanSkuStock = 'stock'
             if (this.goodsId != 0) {
                 this.getData()
-            }  
-             
-        }, 
+            }
+        },
+        computed: {
+            stockText() {
+            const { stockFormatter } = this.customStepperConfig;
+            if (stockFormatter) return stockFormatter(this.stock);
+
+            return `<span>剩余</span>${this.stock}><span>件</span>`;
+            },
+        },
         methods: {
             // 获取商品详情数据
             getData () {
@@ -176,8 +192,8 @@ Vue.use(Swipe).use(SwipeItem);
                         this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
                         this.goodsImages = res.data.data.goodsInfo.goodsImages; 
                         this.sku = res.data.data.sku;
+                        
                     }
-
                 }).catch(err => {
                     return err
                 })
@@ -217,7 +233,7 @@ Vue.use(Swipe).use(SwipeItem);
             // 立即购买 zhangjie 0919
             onBuyClicked (skuData) {
                 let goodsId = skuData.goodsId  
-                let goodsQuantity = skuData.selectedNum  
+                let goodsQuantity = skuData.selectedNum
                 let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
                     if (res.data.status == 0) {
@@ -246,6 +262,7 @@ Vue.use(Swipe).use(SwipeItem);
                     }
                 });
             },
+
             detailsbg () {
             },
             handdleClick(url) {
@@ -520,5 +537,16 @@ Vue.use(Swipe).use(SwipeItem);
 .mint-toast .is-placemiddle {
             z-index: 10000;
 }
-
+.van-sku-stepper{
+    margin:0.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.van-sku__stepper .van-stepper{
+    line-height: 1rem;
+}
+.van-stepper__input{
+    height: 26.5px;
+}
 </style>

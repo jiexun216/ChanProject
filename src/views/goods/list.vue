@@ -6,7 +6,7 @@
          <div class="search-top">
            <i class="search-icon search-bg"></i>
            <input type="search" class="searchs"  :placeholder="$t(search)" v-model="keyword"
-                                  @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
+                                @click="searchleft($event)"  @keyup="searchGoods"  :class="{'search': Iscenter,'searchleft': !Iscenter}">      
          </div>
            <p class="concel" @click="concel">{{$t(cancels)}}</p>
         </div>
@@ -20,13 +20,13 @@
                      class="goodsul">
                      <li @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''"> 
                         {{goodsCategoryList.name}}
-                     </li>  
+                     </li>
                  </ul>           
              </div>
         </div>
         <div class="goodsabsolute">
             <div class="goodsrighttt">
-          <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
+            <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
             <!-- <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" /> -->
                <div class="goodsrightImg">
                     <div><img :src="item.goodsCoverImg" alt=""></div>
@@ -133,6 +133,7 @@ import { getGoodsList } from '@/api/goods/index.js'
             if (event.keyCode == 13) {     
                 event.preventDefault();
                 this.$router.push({name:'goodsList', query: {keyword: this.keyword}})
+                window.location.reload(); 
             }
             if (event.target.value == "") {
                 this.$router.push({
@@ -151,13 +152,32 @@ import { getGoodsList } from '@/api/goods/index.js'
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top:0;
+    width:100%;
+    height: 1.2rem;
+    z-index: 10;
+    background: #fff;
+    margin: 0;padding: 0;
 }
 .search-top{
-       width: 80%;
-       border-radius: 0.5rem;
-       background: #f5f5f5;
-       margin:0 0.3rem;   
+    width: 80%;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background: #f5f5f5;
+    margin:0 0.3rem; 
    }
+.searchs{
+  height: 30px;
+  line-height: 30px;
+  width: 80%;
+  text-align: center;
+  font-size: 12px;
+  z-index: 1000;
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  user-select:text;
+}
 .search-icon{
   display:inline-block;
   width: 0.8rem;
@@ -185,7 +205,7 @@ import { getGoodsList } from '@/api/goods/index.js'
     width: 70%;
     position: absolute;
     left: 25%;
-    top:0.4rem;
+    top:1.3rem;
 }
 .goodsrightImg{
     margin:0.3rem;

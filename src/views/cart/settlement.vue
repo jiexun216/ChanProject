@@ -26,6 +26,7 @@
                 :price="orderAmount"
                 :button-text="$t(submitorder)"
                 @submit="onSubmit"
+                :label="$t(totallable)"
                 />
         </div>
      </div>
@@ -76,7 +77,8 @@ export default {
       jiesuan:'common.jiesuan',
       submitorder: 'common.submitorder',
       ordercenter: 'common.ordercenter',
-      vantitle:''
+      vantitle:'',
+      totallable: 'common.totallable'
     };
   },
   methods: {

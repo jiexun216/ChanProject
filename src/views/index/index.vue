@@ -76,13 +76,16 @@
                   <div class="moreGoodscon">
                       <div class="goodcover" v-for="good in goodsList" :key="good.index">
                         <div class="moregoodsli">
-                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:4.5rem;">
+                          <div class="moregoodsImg">
+                             <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:auto;display:block;">
+                          </div>
+                           
                         </div>
                         
                         <div class="goods"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           <p class="goodname">
                               {{good.name}}
-                              </p>
+                          </p>
                            <p  class="goodsale">
                                {{$t(yishou)}} {{good.salesVolume}} {{$t(jian)}}
                            </p>
@@ -233,8 +236,8 @@ a {
    z-index: 99999;
 }
 .search {
-  height: 35px;
-  line-height: 35px;
+  height: 30px;
+  line-height: 30px;
   width: 80%;
   text-align: center;
   font-size: 12px;
@@ -306,8 +309,17 @@ a {
   margin: 0.1rem;
 }
 .moregoodsli{
+  /* width:4.5rem;
+  margin: auto; */
+}
+.moregoodsImg{
   width:4.5rem;
-  margin: auto;
+  height:4.7rem;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top:0.1rem;
 }
 .goodcoverimg{
   width:100%;
@@ -326,8 +338,14 @@ a {
   margin: 0.3rem;
 }
 .goodname{
+  /* overflow: hidden;
+  text-overflow:ellipsis ; */
+  width:100%;
   overflow: hidden;
-  text-overflow:ellipsis ;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .goodsale {
   color: #c5c5c5;
@@ -342,7 +360,7 @@ a {
 .pricebuy{
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 .goodmarket {
   font-size: 0.3rem;

@@ -16,9 +16,10 @@
             <div class="likes">
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
                      <div class="likesImgwidth">
-                        <img :src="item.goodsCoverImg" alt="" style="height:4.3rem;width:100%;">
+                         <div class="likeimgcenter">
+                             <img :src="item.goodsCoverImg" alt="" style="height:auto;width:100%;display:block;">
+                         </div>
                      </div>
-                     
                      <div class="likelefts">
                         <h5 class="likename">{{item.name}}</h5>
                         <p>{{$t(yishou)}}  {{item.salesVolume}}  {{$t(jian)}}</p>
@@ -115,8 +116,17 @@ export default {
     margin-top: 0.2rem;
 }
 .likesImgwidth{
-  width: 4.2rem;
-  margin: auto;
+  /* width: 4.2rem;
+  margin: auto; */
+}
+.likeimgcenter{
+    width:4.2rem;
+    height:4.5rem;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:0.1rem;
 }
 .likelefts{
     margin:0.2rem 0.3rem;
@@ -127,13 +137,19 @@ export default {
     font-size:0.3rem;
 }
 .likename{
+    /* overflow: hidden;
+    text-overflow:ellipsis; */
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    width:100%;
 }
 .likemon{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 .likeone{
     font-weight: bold;

@@ -82,10 +82,11 @@ Vue.use(Stepper);
         this.checkedGoods.forEach(val => {
             cartIds += val.id + ','
         });
-        deleteCart (cartIds).then(res => {   
+        deleteCart (cartIds).then(res => { 
             this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             if (res.data.status == 99) {
                  this.$router.push({name: res.data.data.url})
+                  
             } else if (res.data.status == 0) {
                 this.getData();
             }
@@ -151,7 +152,7 @@ Vue.use(Stepper);
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 0.2rem;
+   padding: 0.4rem;
 }
 .van-card{
     box-shadow: 0px 0px 10px 5px #fafafa;

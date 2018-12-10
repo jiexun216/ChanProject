@@ -13,16 +13,6 @@
             <emptygoods :goodsList="goodsList"></emptygoods>
       </div>
       <div v-else loading>
-            <!-- <div class="cartop">
-                    <router-link to="/">
-                        <i class="carback  carbacks"></i>     
-                    </router-link>
-                    <span >{{$t(carts)}}</span>
-                    <div class="carmyorder">
-                        <span @click="editor">{{$t(editors)}}</span>
-                        
-                    </div>
-            </div> -->
             <div class="cargoods" v-for="item in cartGoodsList" :key="item.index" >
                     <div class="van-card">
                       <van-checkbox-group class="card-goods" v-model="checkedGoods">
@@ -33,7 +23,10 @@
                           </van-checkbox>
                       </van-checkbox-group>
                         <div>
-                            <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">       
+                          <div >
+                               <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">  
+                          </div>
+                                
                         </div>
                         <div class="van-card-right">
                             <p>{{item.name}}</p>
@@ -44,13 +37,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="settotal">
-                          <div class="totalright">
-                               <span>总计</span>
-                               <span><span :value="totals">{{0}}</span>￥</span>
-                               <button class="totalpay" @submit="onSubmit">去支付</button>
-                          </div>
-                    </div> -->
                   <van-submit-bar
                       :price="totalPrice"
                       :disabled="!checkedGoods.length"

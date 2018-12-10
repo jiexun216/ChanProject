@@ -229,7 +229,11 @@ module.exports = {
    //cart/list
    cartgobuy:'去支付',
    //goods/detail
-   addCarts: '加入购物车'
+   addCarts: '加入购物车',
+   stepperTitle: '商品库存',
+   //cart/ settlement
+   totallable: '合计: ',
+   //
 
   },
   char: {
@@ -450,7 +454,9 @@ module.exports = {
    addsave: '保存',
    addcorrectphone: '請輸入正確格式手機號',
    cartgobuy:'去支付',
-   addCarts: '加入購物車'
+   addCarts: '加入購物車',
+   stepperTitle: '商品庫存',
+   totallable: '合計: '
 
   },
   en: {
@@ -571,19 +577,19 @@ module.exports = {
    yishou: 'sold',
    jian: 'piece',
    gong: 'Total',
-   paystyle: 'payment method ',
+   paystyle: 'Payment method ',
    wxpay: 'WeChat pay',
    tuiwx: 'recommended for users who are already tied to bank CARDS in WeChat',
    alipay: 'Alipay payment',
    tuialipay: 'safe and fast, bank card payment is supported',
    tuivisapay: 'support for international payments',
    useyouhui: 'Coupons available',
-   orderinfo: 'order information',
-   ordergoodslist: 'the goodslist',
-   orderdily: 'shipping information',
-   orderinfopay: 'payment information',
-   ordertal: 'total',
-   orderbz: 'remarks',
+   orderinfo: 'Order information',
+   ordergoodslist: 'The goodslist',
+   orderdily: 'Shipping information',
+   orderinfopay: 'Payment infor',
+   ordertal: 'Total',
+   orderbz: 'Remarks',
    newaddress: 'new delivery address ',
    addressshou: 'new delivery address to ensure smooth delivery',
    shipaddress :'shipping address',
@@ -596,7 +602,7 @@ module.exports = {
    editoradd: 'edit/add address',
    deleteguoqi: 'delete expired coupons ',
    jiesuan: 'settlement ',
-   submitorder: 'submitorder ',
+   submitorder: 'Submitorder ',
    yibuy: 'bought ',
    restsend: 'resend',
    backhome: 'Home',
@@ -681,7 +687,9 @@ module.exports = {
    addsave: 'Save',
    addcorrectphone: 'Please input correct format of phone number',
    cartgobuy:'To pay for',
-   addCarts: 'Add to cart'
+   addCarts: 'Add to cart',
+   stepperTitle: 'Surplus inventory',
+   totallable: 'A combined: '
   } 
   
 }

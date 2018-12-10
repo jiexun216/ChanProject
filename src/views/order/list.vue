@@ -1,11 +1,14 @@
 <template>
     <div>
-        <div>
+    <div>
         <div class="lang-top">
            <router-link to="/index">
              <i class="icun lang"></i>
            </router-link>
-          <p class="choose">{{$t(myorder)}}</p>
+           <p class="choose">{{$t(myorder)}}</p>
+           <div>
+               <p class="myorderhide">m</p>
+           </div>    
        </div>
        <div class="all"> 
         <span v-for="val in statusList" :class="{'active-index':status===val.key}" :title="val.title" :key="val.key" @click="handleSwitchTab(val.key)">{{val.title}}</span>
@@ -29,7 +32,7 @@
                  <div v-for="orderGoodsInfo in item.orderGoodsList" :key="orderGoodsInfo.id">
                      <div class="ordercontent">
                         <div class="orderstyle">
-                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.2rem;height:100%;">
+                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin: 0 0.3rem;height:100%;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{orderGoodsInfo.goodsTitle}}</p>
@@ -214,35 +217,32 @@ import { getMainData } from "@/api/index/index.js";
     color: #f00;
 }
 .lang-top{
-
-    line-height:1rem;
+    /* line-height:1rem; */
     display: flex;
-    justify-content: left;
+    justify-content:space-between;
+    align-items: center;
 }
 .icun{
   display:block;
   width: 1rem;
   height: 1rem;
   background-size: cover;
-  margin-left:0.1rem;
 }
 .lang{
     background: url(../../assets/img/42.png) no-repeat  center center;
 }
-.choose{
-    margin: 0 auto;
-    font-size: 0.5rem;
+.myorderhide{
+    opacity: 0;
 }
 .all {
     margin: 0.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.45rem;
+    font-size: 0.3rem;
 }
-
 .order{
-    width: 100%;
+    margin: 0.3rem;
     border-radius: 0.1rem;
     box-shadow: 0 0 0.5rem #ccc;
     font-size: 0.3rem;
@@ -295,11 +295,12 @@ import { getMainData } from "@/api/index/index.js";
 .ordercontent {
     font-size: 0.3rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 .orderstyle{
     display: inline-block;
+    /* margin-left: 0.2rem; */
 }
 .ordername {
     flex-wrap: wrap;

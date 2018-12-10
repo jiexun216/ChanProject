@@ -8,7 +8,7 @@
                       <div class="overlayerorderinfo" @touchmove.prevent v-if="orderTextStatus">
                             <div class="orders">
                                 <div class="orderstop">
-                                     <span>{{$t(ordergoodslist)}}（{{$t(gong)}}{{orderData.totalQuantity}}件）</span>
+                                     <span>{{$t(ordergoodslist)}}（{{$t(gong)}} {{orderData.totalQuantity}} {{$t(jian)}}）</span>
                                      <span  class="closeorder" @click="closeorder">
                                          <i class="orderInfoimg orderInfoimgs"></i>
                                      </span>
@@ -36,8 +36,8 @@
              <div class="deliveryinfo">
                   <span class="deliveryone">{{$t(orderinfopay)}}</span>
                   <div class="payInforight">
-                       <span>{{$t(ordertal)}} <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
-                       <span>共{{orderData.totalQuantity}}件</span>
+                       <span> {{$t(ordertal)}} <span class="payInfocolor">￥{{orderAmount/100}}</span></span>
+                       <span>{{$t(gong)}} {{orderData.totalQuantity}} {{$t(jian)}}</span>
                   </div>
              </div>
              <div class="deliveryinfo note">
