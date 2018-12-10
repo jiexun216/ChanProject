@@ -97,6 +97,7 @@
                 @buy-clicked="onBuyClicked"
                 @add-cart="onAddToCart"
                 :get-container="getContainer"
+                :customStepperConfig="customStepperConfig"
                 >
                 <template slot="sku-actions" slot-scope="props">
                     <div class="van-sku-actions">
@@ -130,7 +131,8 @@ Vue.use(Swipe).use(SwipeItem);
 
     export default {
         props: {
-           customStepperConfig: Object
+            getContainer: Function,
+
         },
         data () {
             return {
@@ -164,7 +166,27 @@ Vue.use(Swipe).use(SwipeItem);
                 addCarts: 'common.addCarts',
                 goodsnum: 1,
                 stepperTitle: 'common.stepperTitle',
-                getContainer: Function
+                shengyu: 'common.shengyu',
+                notkucun: 'common.kucun',
+                customStepperConfig: {
+                    shengyu:'common.shengyu',
+                    jian:'common.jian',
+                    stockFormatter: (stock) => ` ${this.$t(this.shengyu)} ${stock} ${this.$t(this.jian)}`,
+                    handleOverLimit: (data) => {
+                    const { action, limitType, quota } = data;
+
+                    if (action === 'minus') {
+                        this.$toast('$t("lastchoose")');
+                    } else if (action === 'plus') {
+                        if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
+
+                        this.$toast(`限购${quota}件`);
+                        } else {
+                        this.$toast('$t("notkucun")');
+                        }
+                    }
+                    }
+            },
             }
         },
         created () {
@@ -174,14 +196,24 @@ Vue.use(Swipe).use(SwipeItem);
                 this.getData()
             }
         },
-        computed: {
-            stockText() {
-            const { stockFormatter } = this.customStepperConfig;
-            if (stockFormatter) return stockFormatter(this.stock);
-
-            return `<span>剩余</span>${this.stock}><span>件</span>`;
-            },
-        },
+        // computed:{
+        //     customStepperConfig: {
+        //         quotaText: '单次限购100件',
+        //         stockFormatter: (stock) => `<span>商品库存剩余</span>${stock}<span>件</span>`,
+        //         handleOverLimit: (data) => {
+        //         const { action, limitType, quota } = data;
+        //         if (action === 'minus') {
+        //             this.$toast('至少选择一件商品');
+        //         } else if (action === 'plus') {
+        //             if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
+        //             this.$toast(`限购${quota}件`);
+        //             } else {
+        //             this.$toast('库存不够了');
+        //             }
+        //         }
+        //         }
+        //     },
+        // },
         methods: {
             // 获取商品详情数据
             getData () {

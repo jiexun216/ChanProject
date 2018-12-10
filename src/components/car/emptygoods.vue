@@ -17,7 +17,7 @@
                 <div class="likeleft" v-for="(item, index) in goodsList" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">
                      <div class="likesImgwidth">
                          <div class="likeimgcenter">
-                             <img :src="item.goodsCoverImg" alt="" style="height:auto;width:100%;display:block;">
+                             <img :src="item.goodsCoverImg" alt="">
                          </div>
                      </div>
                      <div class="likelefts">
@@ -127,6 +127,11 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-top:0.1rem;
+}
+.likeimgcenter img{
+    max-width:100%;
+    max-height:100%;
+
 }
 .likelefts{
     margin:0.2rem 0.3rem;

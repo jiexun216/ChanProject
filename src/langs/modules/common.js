@@ -231,9 +231,12 @@ module.exports = {
    //goods/detail
    addCarts: '加入购物车',
    stepperTitle: '商品库存',
+   shengyu: '剩余',
+   lastchoose:'至少选择一件商品',
+   xiangou:'限购',
+   notkucun: '库存不够了',
    //cart/ settlement
-   totallable: '合计: ',
-   //
+   totallable: '合计: '
 
   },
   char: {
@@ -456,7 +459,11 @@ module.exports = {
    cartgobuy:'去支付',
    addCarts: '加入購物車',
    stepperTitle: '商品庫存',
-   totallable: '合計: '
+   totallable: '合計: ',
+   shengyu: '剩余',
+   lastchoose:'至少選擇壹件商品',
+   xiangou:'限購',
+   notkucun: '庫存不夠了',
 
   },
   en: {
@@ -688,8 +695,12 @@ module.exports = {
    addcorrectphone: 'Please input correct format of phone number',
    cartgobuy:'To pay for',
    addCarts: 'Add to cart',
-   stepperTitle: 'Surplus inventory',
-   totallable: 'A combined: '
+   stepperTitle: 'Inventory',
+   totallable: 'A combined: ',
+   shengyu: 'The remaining',
+   lastchoose:'Choose at least one item',
+   xiangou:'For purchasing',
+   notkucun: 'Out of stock'
   } 
   
 }

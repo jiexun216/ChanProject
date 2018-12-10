@@ -77,7 +77,7 @@
                       <div class="goodcover" v-for="good in goodsList" :key="good.index">
                         <div class="moregoodsli">
                           <div class="moregoodsImg">
-                             <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:auto;display:block;">
+                             <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           </div>
                            
                         </div>
@@ -308,10 +308,6 @@ a {
   border:1px solid #eee;
   margin: 0.1rem;
 }
-.moregoodsli{
-  /* width:4.5rem;
-  margin: auto; */
-}
 .moregoodsImg{
   width:4.5rem;
   height:4.7rem;
@@ -320,6 +316,11 @@ a {
   justify-content: center;
   align-items: center;
   padding-top:0.1rem;
+}
+.moregoodsImg img {
+  max-width:100%;
+  max-height:100%;
+  display: block;
 }
 .goodcoverimg{
   width:100%;
