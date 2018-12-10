@@ -64,16 +64,17 @@ export default {
   methods: {
     // 发送验证码
     getAuthCode: function() {
-      let reg = /^\d$/;
-      if (!reg.test(this.tel)) {
-        this.$toast({
-          message: "请输入正确格式的手机号",
-          position: "top"
-        });
-        return false;
-      }
+      // let reg =  /^\d$/
+      // if (!reg.test(this.tel)) {
+      //   this.$toast({
+      //     message: "请输入正确格式的手机号",
+      //     position: "top"
+      //   });
+      //   return false;
+      // }
       messageSend(this.tel, 2).then(res => {
-        this.$toast(res.data.message ? res.data.message : "操作失败");
+        console.log(res)
+        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
         if (res.data.status == 0) {
           Dialog.confirm({
             title: "温馨提示",
@@ -93,14 +94,14 @@ export default {
     },
     // 下一步 验证验证码
     nextStep: function() {
-      let reg = /^\d$/;
-      if (!reg.test(this.tel)) {
-        this.$toast({
-          message: "请输入正确格式的手机号",
-          position: "top"
-        });
-        return false;
-      }
+      // let reg = /^\d$/;
+      // if (!reg.test(this.tel)) {
+      //   this.$toast({
+      //     message: "请输入正确格式的手机号",
+      //     position: "top"
+      //   });
+      //   return false;
+      // }
       if (!this.code) {
         this.$toast({
           message: "请输入短信验证码",
@@ -110,7 +111,7 @@ export default {
       }
       // 验证码验证方法
       verifyMessageCode (this.tel, this.code, 2).then(res => {
-        this.$toast(res.data.message ? res.data.message : '操作失败')
+        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
         if (res.data.status == 0) {
           this.$router.push({name:'resetPassword', query: {tel: this.tel,code:this.code}})
         }
@@ -152,14 +153,14 @@ export default {
 }
 .login-tell {
   margin: 0.4rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
   position: relative;
 }
 .tel {
   line-height: 0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border: none;
 
 }
@@ -173,7 +174,7 @@ export default {
 }
 .yzm {
   line-height: 0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border: none;
 }
 .click-login {

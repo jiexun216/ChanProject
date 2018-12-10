@@ -16,16 +16,13 @@
        </div> 
        <div class="moregoods moregoodss">
             <div> 
-                <div style="width:100%;">
+                <div >
                       <div class="layout" >
-                        <!-- <el-carousel tag="ul"  indicator-position="none" arrow="none">
-                            <el-carousel-item v-for="goodsImage in goodsImages" :key="goodsImage.index" tag="li">
-                               <img :src="goodsImage"> 
-                             </el-carousel-item >
-                        </el-carousel>   -->
                         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000' style="width:100%;">
                                 <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
-                                       <img :src="goodsImage" style="width:100%;height:100%;" />
+                                    <div style="width:100%;height:100%;">
+                                         <img :src="goodsImage" style="width:100%;height:100%;" />
+                                    </div>
                                 </van-swipe-item>
                         </van-swipe>
                       <div class="goods">
@@ -88,16 +85,29 @@
             <button class="inbuy" @click="joinbuy">{{$t(joinbuys)}}</button>
             <button class="inbuys" @click="joinbuy">{{$t(buy)}}</button>
         </div>
-       <van-sku
-            v-model="showBase"
-            :sku="sku"
-            :goods="goods"
-            :goods-id="goodsId"
-            :hide-stock="sku.hide_stock"
-            :show-add-cart-btn = "showAddCartBtn"
-            @buy-clicked="onBuyClicked"
-            @add-cart="onAddToCart"
-            />           
+        <div class="sku-container">
+            <van-sku
+                v-model="showBase"
+                :sku="sku"
+                :goods="goods"
+                :goods-id="goodsId"
+                :hide-stock="sku.hide_stock"
+                :show-add-cart-btn="showAddCartBtn"
+                @buy-clicked="onBuyClicked"
+                @add-cart="onAddToCart"
+                >
+                <template slot="sku-actions" slot-scope="props">
+                    <div class="van-sku-actions">
+                        <van-button bottom-action @click="props.skuEventBus.$emit('sku:addCart')" 
+                        style="background:#ff976a;border-radius:0px 0px 0px 6px;">{{$t(addCarts)}}</van-button>
+                        <van-button bottom-action @click="props.skuEventBus.$emit('sku:buy')"
+                        style="border-radius:0px 0px 6px 0px;">{{$t(buy)}}</van-button>
+                    </div>
+                </template>
+            </van-sku>
+        </div>
+         
+               
    </div> 
 </template>
 
@@ -110,7 +120,8 @@ import { Sku } from 'vant'
 import { mapState } from 'vuex'
 import { Tab, Tabs, Dialog } from 'vant';
 import { Swipe, SwipeItem } from 'vant';
-
+import { Button } from 'vant';
+Vue.use(Button);
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Sku);
 Vue.use(Swipe).use(SwipeItem);
@@ -144,7 +155,8 @@ Vue.use(Swipe).use(SwipeItem);
                 yishou: 'common.yishou',
                 jian: 'common.jian',
                 yibuy: 'common.yibuy',
-                autoplay:true
+                autoplay:true,
+                addCarts: 'common.addCarts'
             }
         },
         created () {
@@ -158,27 +170,28 @@ Vue.use(Swipe).use(SwipeItem);
             // 获取商品详情数据
             getData () {
                 getGoodsInfo (this.goodsId).then(res => {
-                    this.goodsInfos = res.data.data.goodsInfo;
-                    this.goods.title = res.data.data.goodsInfo.name
-                    this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
-                    this.goodsImages = res.data.data.goodsInfo.goodsImages; 
-                    this.sku = res.data.data.sku;
-                    
+                    if(res.data.status == 0){   
+                        this.goodsInfos = res.data.data.goodsInfo;
+                        this.goods.title = res.data.data.goodsInfo.name
+                        this.goods.picture = res.data.data.goodsInfo.goodsCoverImg
+                        this.goodsImages = res.data.data.goodsInfo.goodsImages; 
+                        this.sku = res.data.data.sku;
+                    }
+
                 }).catch(err => {
                     return err
                 })
             },
             // 加入购物车 zhangjie 0918
             onAddToCart (skuData) {
-             //   console.log(skuData)
                 let cartGoodsId = skuData.goodsId
                 let goodsQuantity = skuData.selectedNum
                 let cartSkuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 addGoodsToCart (cartGoodsId,goodsQuantity,cartSkuId).then(res => {
                     if (res.data.status == 99) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '您还未登录，立即前往登录'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.gologin")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: res.data.data.url})
@@ -187,8 +200,8 @@ Vue.use(Swipe).use(SwipeItem);
                         });
                     } else if (res.data.status == 0) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '加入购物车成功，立即前往购物车查看'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.lookcart")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: 'cartList'})
@@ -197,14 +210,14 @@ Vue.use(Swipe).use(SwipeItem);
                         });
                         // window.location.reload()
                     } else {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message :this.$t("common.failuredcaozuo"))
                     }
                 })
             },
             // 立即购买 zhangjie 0919
             onBuyClicked (skuData) {
-                let goodsId = skuData.goodsId
-                let goodsQuantity = skuData.selectedNum
+                let goodsId = skuData.goodsId  
+                let goodsQuantity = skuData.selectedNum  
                 let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
                     if (res.data.status == 0) {
@@ -221,15 +234,15 @@ Vue.use(Swipe).use(SwipeItem);
 						})
                     } else if (res.data.status == 99) {
                         Dialog.confirm({
-                            title: '温馨提示',
-                            message: '您还未登录，立即前往登录'
+                            title: this.$t("common.warmprompt"),
+                            message: this.$t("common.gologin")
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: res.data.data.url})                      
                         }).catch(() => {
                         });
                     } else {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     }
                 });
             },
@@ -283,6 +296,7 @@ Vue.use(Swipe).use(SwipeItem);
 }
 .moregoodss{
     border-bottom: 5px solid #f7f7f7;
+    
 }
 
 .goods{
@@ -348,14 +362,17 @@ Vue.use(Swipe).use(SwipeItem);
 }
 .inbuy{
     width: 42.5%;
+    height:1.4rem;
     font-size: 0.5rem;
-    color: #ff525a;
+    color: #fff;
     margin: 0;
     padding: 0;
+    /* background:#ff525a;  */
+    color: #ff525a;
 }
 .inbuys{
     width: 42.5%;
-    height: 1.3rem;
+    height: 1.4rem;
     font-size: 0.5rem;
     background: #ff525a;
     color: #fff;
@@ -433,7 +450,7 @@ Vue.use(Swipe).use(SwipeItem);
     padding-right: 0.5rem;
 }
 .van-stepper__input{
-    line-height: 1rem;
+    line-height: 1.1rem;
 }
 .van-sku-row__item--disabled{
     background: #fff;

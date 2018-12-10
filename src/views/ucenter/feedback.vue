@@ -33,11 +33,11 @@ import { issueOpinion } from '@/api/ucenter/index.js'
         methods: {
             submitOpinion () {
                 issueOpinion (this.opinion).then(res => {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     if (res.data.status == 0) {
                         this.$router.push({name: 'ucenterSetup'});
                     } else if (res.data.status == 99) {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                         this.$router.push({name: res.data.data.url})
                     }
                 }).catch(err => {

@@ -137,9 +137,9 @@ Vue.use(NavBar);
             getValues: [],
             datavalue: '',
             dataTime: {},
-            time: '请选择',
-            times:'若时间不详，请选择00:00',
-            timeth: '请选择',
+            time: this.$t("common.fortime"),
+            times:this.$t("common.fortimes"),
+            timeth:this.$t("common.fortimeth"),
             save: {
                 fullName: '',
                 sex: '男',
@@ -190,7 +190,7 @@ Vue.use(NavBar);
                  this.save.birthTime,
                  this.save.birthAddress,
              ).then(res =>{
-                  this.$toast(res.data.message ? res.data.message : '操作失败')
+                  this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                   if(res.data.status === 0){
                       this.$router.push({
                           name: 'fortuneTellers',

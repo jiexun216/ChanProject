@@ -35,6 +35,7 @@ import FortuneNoLog from '@/views/fortunetellers/no-fortune-log'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
 import Results from '@/views/fortunetellers/results'
 import fortunelist from '@/views/fortunetellers/fortunelist'
+import Emptygood from '@/components/car/emptygoods'
 Vue.use(Router)
 
 export default new Router({
@@ -176,6 +177,13 @@ export default new Router({
       component: CartSettlement,
       meta: { title: '结算确认' }
     },
+    // 空购物车
+    {
+      name: 'cartEdit',
+      path: '/car/emptygood',
+      component: Emptygood,
+      meta: { title: '空购物车' }
+    },
     // 算命首页
     {
       name: 'fortuneTellers',
@@ -204,11 +212,6 @@ export default new Router({
       path: '/fortunetellers/results',
       component: Results
     },
-
-
-
-    
-
     {
       path: '/index',
       name: 'Index',

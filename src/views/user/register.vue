@@ -105,7 +105,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
           //    return false;
           //  }
            messageSend (tel, 0).then(res => {
-             this.$toast(res.data.message ? res.data.message : '操作失败')
+             this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
              if (res.data.status == 0) {
                   Dialog.confirm({
                     title: '温馨提示',
@@ -127,7 +127,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
             //   return false;
             // }
             messageSend(this.tel, 0).then(res => {
-              this.$toast(res.data.message ? res.data.message : "操作失败");
+              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
               if (res.data.status == 0) {
                 Dialog.confirm({
                   title: "温馨提示",
@@ -186,7 +186,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            let password = rsaJsencrypt(this.password);
            let fpassword = rsaJsencrypt(this.fpassword);
            registerMember (this.tel, this.verifyCode, password, fpassword).then(res => {
-             this.$toast(res.data.message ? res.data.message : '操作失败');
+             this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
              if (res.data.status == 0) {
                this.$router.push({name: 'PasswordLogin'})
              }
@@ -247,7 +247,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
 }
 .tel{
   line-height:0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border:none;
   width:70%;
 }
@@ -256,7 +256,7 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
 }
 .yzm{
   line-height:0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border:none;
 }
 .click-login{

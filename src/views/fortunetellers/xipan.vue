@@ -46,7 +46,7 @@ import { fortuneresults } from '@/api/fortunetellers/index.js'
                 this.$route.query.fortuneId
                 ).then(res => {
             if (res.data.status == 99) {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                         this.$router.push({name: res.data.data.url})
                 }
                 this.dayunnian = res.data.data.xipan.dayunnian

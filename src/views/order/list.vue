@@ -1,5 +1,5 @@
 <template>
-    <div style="margin:0.4rem;">
+    <div>
         <div>
         <div class="lang-top">
            <router-link to="/index">
@@ -29,13 +29,12 @@
                  <div v-for="orderGoodsInfo in item.orderGoodsList" :key="orderGoodsInfo.id">
                      <div class="ordercontent">
                         <div class="orderstyle">
-                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.4rem;height:100%;">
+                            <img :src="orderGoodsInfo.goodsCoverImg" alt="" style="width:3rem;margin:0.2rem;height:100%;">
                         </div>
                         <div class="orderstyle orderstyles">
                              <p class="ordername">{{orderGoodsInfo.goodsTitle}}</p>
                              <div class="ordersize">
                                 <span>{{orderGoodsInfo.skuInfo}}</span>
-                        
                              </div>
                              <div class="ordersize">
                                 <span class="ordersizenum">￥{{orderGoodsInfo.goodsPrice}}</span>
@@ -46,7 +45,7 @@
                  </div>
             </div>
             <div class="total">
-                <span>共{{ item.orderInfo.goodsQuantityTotal }}件,总计￥{{ item.orderInfo.orderAmount }}</span>
+                <span>{{$t(ordertal)}} {{ item.orderInfo.goodsQuantityTotal }} {{$t(jian)}},{{$t(ordertal)}} ￥{{ item.orderInfo.orderAmount }}</span>
                 <div class="totalitem" v-if="item.orderInfo.orderStatus == 'waitingPay'">
                     <span class="totalitemone" @click="closeOrder(item.orderInfo.id)">{{$t(cancellation)}}</span>
                     <span class="totalitemtwo">{{$t(immepayment)}}</span>
@@ -62,6 +61,7 @@
 <script>
 import { Dialog } from 'vant';
 import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
+import { getMainData } from "@/api/index/index.js";
     export default {
         data () {
           return {
@@ -71,22 +71,25 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
                  immepayment: 'common.immepayment',
                  looklog: 'common.looklog',
                  receipt: 'common.receipt',
+                 gong: 'common.gong',
+                 jian: 'common.jian',
+                 ordertal:'common.ordertal',
                 statusList: [
                 {
                     key: '',
-                    title: '全部',
+                    title: this.$t("common.alls"),
                 },
                 {
                     key: 'waitingPay',
-                    title: '待付款',
+                    title: this.$t("common.waitingpay"),
                 },
                 {
                     key: 'waitingSign',
-                    title: '待收货',
+                    title: this.$t("common.waitinggoods"),
                 },
                 {
                     key: 'haveSigned',
-                    title: '已完成',
+                    title: this.$t("common.completeds"),
                 },
             ], 
             currentdate:'',
@@ -101,7 +104,7 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
            getData () {
                getOrderList(this.status,this.page).then(res => {
                    if (res.data.status == 99) {
-                      this.$toast(res.data.message ? res.data.message : '操作失败')
+                      this.$toast(res.data.message ? res.data.message :this.$t("common.failuredcaozuo"))
                       this.$router.push({name: res.data.data.url})
                     }
                     this.listData  = res.data.data.list
@@ -130,19 +133,19 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
            // 取消订单
            closeOrder (id) {
         	Dialog.confirm({
-			  title: '温馨提示',
-			  message: '确认取消订单吗？'
+			  title: this.$t("common.warmprompt "),
+			  message: this.$t("common.cancelorder")
 			}).then(() => {
               // on confirm
 				cancelOrder(id).then((res) => {
 					if (res.data.status == 0) {
-	                    this.$toast('订单取消成功')
+	                    this.$toast(this.$t("common.cancelsuccess"))
 					} else {
-						this.$toast(res.message ? res.message : '订单取消失败')
+						this.$toast(res.message ? res.message : this.$t("common.cancelerror"))
 					}
 	                this.refreshData()
 				}).catch(() => {
-					this.$toast('订单取消失败')
+					this.$toast(this.$t("common.cancelerror"))
 				})
 			}).catch(() => {
 			});
@@ -151,19 +154,19 @@ import {getOrderList,cancelOrder,orderConfirm} from '@/api/order/index.js'
         // 确认收货
         confirmOrder (id) {
         	Dialog.confirm({
-			  title: '温馨提示',
-			  message: '此操作不可逆,是否确认收货？'
+			  title: this.$t("common.warmprompt"),
+			  message: this.$t("common.irreversible")
 			}).then(() => {
               // on confirm
 				orderConfirm(id).then((res) => {
 					if (res.data.status == 0) {
-	                    this.$toast('订单确认成功')
+	                    this.$toast(this.$t("common.orderconfirm"))
 					} else {
-						this.$toast(res.message ? res.message : '订单确认失败')
+						this.$toast(res.message ? res.message : this.$t("common.orderfailure"))
 					}
 	                this.refreshData()
 				}).catch(() => {
-					this.$toast('订单确认失败')
+					this.$toast(this.$t("common.orderfailure"))
 				})
 			}).catch(() => {
 			});

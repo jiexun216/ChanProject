@@ -70,29 +70,42 @@
         </ul> -->
 
         <div class="moregoods">
-            <ul> 
-                <li class="moregoodsli">
-                      <div class="goodcover" v-for="good in goodsList" :key="good.index" >
-                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:100%;">
-                      <div class="goods">
+            <div class="Goodsnews">
+              <div>
+                <div >
+                  <div class="moreGoodscon">
+                      <div class="goodcover" v-for="good in goodsList" :key="good.index">
+                        <div class="moregoodsli">
+                           <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})" style="width:100%;height:4.5rem;">
+                        </div>
+                        
+                        <div class="goods"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           <p class="goodname">
-                              {{good.name}}</p>
+                              {{good.name}}
+                              </p>
                            <p  class="goodsale">
                                {{$t(yishou)}} {{good.salesVolume}} {{$t(jian)}}
                            </p>
-                           <span class="goodprice">
+                           <div class="pricebuy">
+                             <div >
+                               <span class="goodprice">
                                ￥{{good.price}}
-                           </span>
-                           <span class="goodmarket">
-                                ￥{{good.market_price}}
-                           </span>
-                           <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
+                                </span><br>
+                                <span class="goodmarket">
+                                      ￥{{good.market_price}}
+                                </span><br>
+                             </div>
+                             <!-- <span  class="gobuy" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                                {{$t(gobuy)}}
-                           </span>
+                             </span> -->
+                             <img src="../../assets/img/26@0.5x.png" style="width:0.6rem;">
+                           </div>
                       </div>    
-                      </div>     
-                </li> 
-            </ul>
+                      </div>  
+                  </div>     
+                </div> 
+            </div>
+            </div>
         </div>
         <Footer></Footer>
      </div>
@@ -104,6 +117,7 @@ import Footer from "@/components/footer";
 import { getMainData } from "@/api/index/index.js";
 import { Swipe, SwipeItem } from 'vant';
 import { mapState } from 'vuex'
+
 Vue.use(Swipe).use(SwipeItem);
 export default {
   components: {
@@ -153,7 +167,7 @@ export default {
         this.$router.push({
          path: '/'
         });
-        this.$toast("请输入搜索内容");
+        this.$toast(this.$t("common.searchcontent"));
       }
     },
     handdleClick(url) {
@@ -169,7 +183,6 @@ export default {
   created() {
     this.getData()
   },
-  
   mounted(e) {
     if (this.lang === 'english') this.language = 'English'
     else if (this.lang === 'character') this.language = '繁體中文'
@@ -257,8 +270,6 @@ a {
   flex-wrap: wrap;
 }
 .store-list li a {
-  /* float: left;
-    font-size: 0.3rem; */
   flex-wrap: wrap;
 }
 .thatmore {
@@ -290,16 +301,33 @@ a {
 }
 .goodcover {
   margin-bottom: 0.5rem;
+  width:47%;
+  border:1px solid #eee;
+  margin: 0.1rem;
 }
-.goodcover img {
-  width: 100%;
+.moregoodsli{
+  width:4.5rem;
+  margin: auto;
+}
+.goodcoverimg{
+  width:100%;
   height:100%;
-  border-top: 5px solid #f7f7f7;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goodsImg{
+  width:100%;
+  height: 100%;
 }
 .goods {
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   text-align: left;
-  margin: 0.4rem;
+  margin: 0.3rem;
+}
+.goodname{
+  overflow: hidden;
+  text-overflow:ellipsis ;
 }
 .goodsale {
   color: #c5c5c5;
@@ -309,6 +337,12 @@ a {
 .goodprice {
   font-weight: bold;
   margin-right: 0.2rem;
+  color: #ff525a;
+}
+.pricebuy{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .goodmarket {
   font-size: 0.3rem;
@@ -319,31 +353,24 @@ a {
   border: 1px solid #ff525a;
   border-radius: 0.5rem;
   color: #ff525a;
-  float: right;
-  width: 1.5rem;
   text-align: center;
-  line-height: 0.6rem;
+  line-height: 0.3rem;
   font-weight: bold;
-  padding: 0.1rem 0.3rem;
-}
-.gobuy a {
-  color: #f00;
-  font-size: 0.3rem;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.25rem;
 }
 .moregoods{
-  /* margin-bottom: 1rem; */
+  padding-bottom:0.5rem;
 }
-.moregoodsli{
-  width: 100%;
-  height: 100%;
+.moreGoodscon{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-wrap: wrap;
+  margin-bottom: 0.95rem;
 }
-/* .el-carousel__container{
-  position: relative;
-}
-.el-carousel__container .el-carousel__item img{
-  height:100%;
-  width:100%;
-} */
+
+
 .clearfix::before,
 .clearfix::after{
     content: "";

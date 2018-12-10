@@ -28,7 +28,7 @@ export default {
                 this.$route.query.fortuneId
                 ).then(res => {
             if (res.data.status == 99) {
-                        this.$toast(res.data.message ? res.data.message : '操作失败')
+                        this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                         this.$router.push({name: res.data.data.url})
                 }
                 this.liunian = res.data.data.liunian

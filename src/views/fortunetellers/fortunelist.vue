@@ -50,7 +50,7 @@ export default {
          getData () {
              fortunetellers ().then (res => {
                  if (res.data.status == 99) {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     this.$router.push({name: res.data.data.url})
                 }
                  this.perlist  = res.data.data.list
@@ -59,20 +59,20 @@ export default {
          // 删除算命记录
          handleDelete (fortuneId) {
              Dialog.confirm({
-                    title: "删除确认",
-                    message: "此操作不可逆,确认要删除该记录吗?"
+                    title: this.$t("common.delecon"),
+                    message: this.$t("common.deleteconfirmation")
                 }).then(() => {
             deleteFortune(fortuneId)
             .then(res => {
                 if (res.data.status == 0) {
-                this.$toast("记录删除成功");
+                this.$toast(this.$t("common.deletesuccess"));
                 } else {
-                this.$toast(res.data.message ? res.data.message : "记录删除失败");
+                this.$toast(res.data.message ? res.data.message : this.$t("common.eletefailure"));
                 }
                 this.getData();
             })
             .catch(() => {
-                this.$toast("记录删除失败"); 
+                this.$toast(this.$t("common.eletefailure")); 
             });
       });
          }

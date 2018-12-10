@@ -33,7 +33,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
             getData () {
                 getMemberInfo ().then(res => {
                     if (res.data.status == 99) {
-                     this.$toast(res.data.message ? res.data.message : '操作失败')
+                     this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                      this.$router.push({name: res.data.data.url})
                     }
                     this.nickname = res.data.data.nickName
@@ -46,7 +46,7 @@ import { getMemberInfo,modifyUserName } from '@/api/ucenter/index.js'
             },
             confirmModify () {
                 modifyUserName (this.nickname).then(res => {
-                    this.$toast(res.data.message ? res.data.message : '操作失败')
+                    this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
                     if (res.data.status == 0) {
                         // this.$router.push({name: 'ucenterSetup'});
                     } 
