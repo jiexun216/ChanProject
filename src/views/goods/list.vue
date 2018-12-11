@@ -15,13 +15,13 @@
         <div class="goodsposition">
            <div class="goodsleft">
              <div class="goodsCategoryList">
-                 <ul v-for="(goodsCategoryList,index) in goodsCategoryLists"
+                 <div v-for="(goodsCategoryList,index) in goodsCategoryLists"
                      :key="index" 
                      class="goodsul">
-                     <li @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''"> 
+                     <div @click="handleSwitchCate($event, goodsCategoryList.id)" :class="categoryId == goodsCategoryList.id ? 'classbg' : ''" class="goodsuldiv"> 
                         {{goodsCategoryList.name}}
-                     </li>
-                 </ul>           
+                     </div>
+                 </div>           
              </div>
         </div>
         <div class="goodsabsolute">
@@ -243,7 +243,7 @@ import { getGoodsList } from '@/api/goods/index.js'
 .goodsul{
     margin: 0;padding: 0;
 }
-.goodsul li{
+.goodsuldiv{
     margin: 0;
     padding: 0;
     line-height: 1rem;

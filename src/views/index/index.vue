@@ -341,12 +341,12 @@ a {
 .goodname{
   /* overflow: hidden;
   text-overflow:ellipsis ; */
-  width:100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0;
 }
 .goodsale {
   color: #c5c5c5;
@@ -401,7 +401,7 @@ a {
 }
 .bannervan{
   width:10rem;
-  height:6rem;
+  height:5rem;
   margin:auto;
   display: flex;
   justify-content: center;
