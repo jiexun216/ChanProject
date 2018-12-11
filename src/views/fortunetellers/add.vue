@@ -6,7 +6,9 @@
                     :title="$t(bazi)"
                     show-cancel-button
                     :before-close="beforeClose"
-                    :save="save"  
+                    :save="save"
+                    :confirm-button-text="confirmButtonText"
+                    :cancel-button-text="cancelButtonText"
                     >
                         <div class="birth">
                             <span class="birthmd">
@@ -149,7 +151,9 @@ Vue.use(NavBar);
                 birthDate: '',
                 birthTime: '',
                 birthAddress: '',
-            }
+            },
+            cancelButtonText: this.$t("common.cancelButtonText"),
+            confirmButtonText:this.$t("common.confirmButtonText")
         }
      },
       components: {

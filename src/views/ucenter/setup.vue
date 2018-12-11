@@ -5,7 +5,8 @@
             <span class="setupup">{{$t(setup)}}</span>
         </div>
         <div class="setitem">
-             <div class="setitems" @click="setitemhead">
+             <div class="setitems" >
+                          <!-- 点击出现弹窗  @click="setitemhead" -->
                  <span>
                      {{$t(headportrait)}} </span>
                  <span>
@@ -169,7 +170,7 @@ import myFile from '@/components/upLoadImg/myFile.vue'
      height: 1rem;
  }
 .backtx{
-    background: url(../../assets/img/tx.png) no-repeat center center;
+    background: url(../../assets/img/timg.jpg) no-repeat center center;
     border-radius: 50%;
     margin-bottom: -0.1rem;
 }

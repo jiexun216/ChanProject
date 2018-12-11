@@ -5,10 +5,10 @@
         <span>{{$t(repwd)}}</span>
      </div>
     <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="密码" prop="pass">
+      <el-form-item :label=$t(password) prop="pass">
         <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass">
+      <el-form-item :label=$t(confirmpwd) prop="checkPass" >
         <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
       </el-form-item>
     <el-form-item>
@@ -29,10 +29,9 @@ Vue.use(ElementUI);
 
   export default {
     data() {
-      
       var validatePass = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请输入密码'));
+          callback(new Error(`${this.$t(this.inputpwd)}`));
         } else {
           if (this.ruleForm2.checkPass !== '') {
             this.$refs.ruleForm2.validateField('checkPass');
@@ -42,9 +41,9 @@ Vue.use(ElementUI);
       };
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请再次输入密码'));
+          callback(new Error(`${this.$t(this.againinputpwd)}`));
         } else if (value !== this.ruleForm2.pass) {
-          callback(new Error('两次输入密码不一致!'));
+          callback(new Error(`${this.$t(this.twicepwd)}`));
         } else {
           callback();
         }
@@ -53,6 +52,11 @@ Vue.use(ElementUI);
         repwd: 'common.repwd',
         submit: 'common.submit',
          reset: 'common.reset',
+         password: 'common.pwd',
+         confirmpwd: 'common.confirmpwd',
+         inputpwd: 'common.inputpwd',
+         againinputpwd: 'common.againinputpwd',
+         twicepwd: 'common.twicepwd',
         ruleForm2: {
           pass: '',
           checkPass: '',

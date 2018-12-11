@@ -58,7 +58,9 @@ export default {
       next: 'common.next',
       userphone: 'common.placeholder.userphone',
       enteryzm: 'common.placeholder.enteryzm',
-      restsend: 'common.restsend'
+      restsend: 'common.restsend',
+      duanxin: 'common.duanxin',
+      tishi: 'common.tishi'
     };
   },
   methods: {
@@ -73,12 +75,13 @@ export default {
       //   return false;
       // }
       messageSend(this.tel, 2).then(res => {
-        console.log(res)
         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
         if (res.data.status == 0) {
           Dialog.confirm({
-            title: "温馨提示",
-            message: "您的短信验证码为" + res.data.data.verifyCode
+            title: this.$t(this.tishi),
+            message: this.$t(this.duanxin)   +   res.data.data.verifyCode,
+            confirmButtonText: this.$t('common.confirmButtonText'),
+            cancelButtonText: this.$t('common.cancelButtonText')
           });
           this.sendAuthCode = false;
           this.auth_time = 30;

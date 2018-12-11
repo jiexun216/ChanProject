@@ -23,13 +23,12 @@
                           </van-checkbox>
                       </van-checkbox-group>
                         <div>
-                          <div >
-                               <img :src="item.goodsCoverImg" alt="" class="van-card-img"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})" style="width:100%;height:100%;">  
-                          </div>
-                                
+                          <div class="cartlistImg">
+                               <img :src="item.goodsCoverImg" alt=""  @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.goodsId }})">  
+                          </div>     
                         </div>
                         <div class="van-card-right">
-                            <p>{{item.name}}</p>
+                            <p>{{item.name}}</p> 
                             <p class="van-card-p">{{item.skuInfo}}</p>
                             <div class="van-card-price">
                                 <p class="van-price-p" >￥{{item.price}}</p>
@@ -42,6 +41,7 @@
                       :disabled="!checkedGoods.length"
                       :button-text="submitBarText"
                       @submit="onSubmit"
+                      :label="$t(paytotal)"
                       class="payfor"
                       />
         </div>      
@@ -76,6 +76,7 @@ Vue.use(Stepper);
       editors: 'common.editor',
       yesno: false,
       totals: '',
+      paytotal:'common.paytotal'
     };
   },
     computed: {
@@ -193,14 +194,20 @@ Vue.use(Stepper);
     content: '\F055';
 }
 .van-card{
-   background: #fff;  
-   width:100%;
+    box-shadow: 0px 0px 10px 5px #fafafa;
+    border: 1px solid #fbfbfb;
+    margin: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    padding: 0.1rem;
+    width:100%;
 }
 .card-goods__item{
    display: flex;
    justify-content: center;
    align-items: center;
-   padding:0.2rem;
+   padding:0.1rem;
 }
 .van-card{
     box-shadow: 0px 0px 10px 5px #fbfbfb;
@@ -210,14 +217,26 @@ Vue.use(Stepper);
     justify-content:space-around; 
     align-items: center;
     padding: 0.1rem;
-}
-.van-card-img{
-    width: 3rem;
-    margin-right: 0.2rem;
+    width:100%;
 }
 .van-card-right{
     font-size: 0.3rem;
     margin-left:0.2rem;
+}
+.cartlistImg{
+  width:1.5rem;
+  height:2rem;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top:0.1rem;
+}
+.cartlistImg img{
+  max-width:100%;
+  max-height:100%;
+  display: block;
+  margin-right: 0.2rem;
 }
 .settotal{
   position: fixed;
@@ -272,6 +291,7 @@ Vue.use(Stepper);
 }
 .payfor{
   box-shadow: 0px 0px 10px 5px #fbfbfb;
+  margin-right:0.2rem;
 }
 .carback{
    display: inline-block;
@@ -290,7 +310,7 @@ Vue.use(Stepper);
    display: flex;
    justify-content:space-around;
    align-content:center;
-   width:90%;
+   width:100%;
    margin: auto;
  }
  .van-stepper__input{

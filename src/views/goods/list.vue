@@ -29,7 +29,7 @@
             <div v-for="(item, index) in listData" :key="index" @click="$router.push({ name: 'goodsDetail', query: { goodsId: item.id }})">   
             <!-- <list-item :goodsCoverImg="item.goodsCoverImg" :name="item.name" :price="item.price" :marketPrice="item.marketPrice" /> -->
                <div class="goodsrightImg">
-                    <div><img :src="item.goodsCoverImg" alt=""></div>
+                    <div class="goodsrightimg"><img :src="item.goodsCoverImg" alt=""></div>
                     <div class="goodsnamespan">
                         <div>
                             <span>{{item.name}}</span>
@@ -124,7 +124,7 @@ import { getGoodsList } from '@/api/goods/index.js'
                this.$router.push('/Index')
            },
            searchleft ($event) {
-            this.Iscenter = false;
+              this.Iscenter = false;
             },
             // 搜索商品
             searchGoods(e,$event) { 
@@ -169,7 +169,7 @@ import { getGoodsList } from '@/api/goods/index.js'
    }
 .searchs{
   height: 30px;
-  line-height: 30px;
+  line-height: 25px;
   width: 80%;
   text-align: center;
   font-size: 12px;
@@ -210,7 +210,8 @@ import { getGoodsList } from '@/api/goods/index.js'
 .goodsrightImg{
     margin:0.3rem;
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-start;
+    align-items: center;
 }
 .goodsnamespan{
     margin-left:0.3rem;
@@ -221,12 +222,12 @@ import { getGoodsList } from '@/api/goods/index.js'
     border: 1px solid #f00; */
 }
 .goodsspanimg{
-    width:100%;
+    /* width:100%; */
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: flex-end;
 }
-.goodsrightImg img{
+.goodsrightimg img{
     width:2.7rem;
     height:2rem;
 }
@@ -258,5 +259,7 @@ import { getGoodsList } from '@/api/goods/index.js'
   font-size: 0.4rem;
   margin-right: 0.3rem;
 }
-
+.searchleft{
+  text-align: left;
+}
 </style>

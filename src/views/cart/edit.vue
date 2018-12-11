@@ -11,15 +11,15 @@
               <van-checkbox-group class="card-goods" @change="changeGoods" v-model="checkedGoods">
                 <div class="van-card" v-for="(item,index) in goods" :key="index">
                     <van-checkbox class="card-goods__item" :name="item" ></van-checkbox>
-                    <div>
-                        <img :src="item.goodsCoverImg" alt="" class="van-card-img" style="width:100%;height:100%;">
+                    <div class="vancardimg">
+                        <img :src="item.goodsCoverImg" alt="">
                     </div>
                     <div class="van-card-right">
                         <p>{{item.name}}</p>
                         <p class="van-card-p">{{item.skuInfo}}</p>
                         <div class="van-card-price">
                             <p class="van-price-p" >￥{{item.price}}</p>
-                            <p><van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity"  /></p>
+                            <p><van-stepper @change="cartNumChangeHandle(item.id,item.goodsQuantity)" :min="1" v-model="item.goodsQuantity"/></p>
                         </div>
                     </div>
                 </div>
@@ -135,10 +135,26 @@ Vue.use(Stepper);
  .carmyorder{
      margin-right: 0.3rem;
  }
+ .card-goods{
+     margin-left:0.2rem;
+ }
  .card-goods__item {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.vancardimg{
+    width:2.5rem;
+  height:2.7rem;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top:0.1rem;
+}
+.vancardimg img{
+    max-width:100%;
+    max-height:100%;
 }
 .van-checkbox__icon--checked .van-icon{
     background: #f00;
@@ -153,6 +169,9 @@ Vue.use(Stepper);
    justify-content: center;
    align-items: center;
    padding: 0.4rem;
+}
+.cargoods{
+    width:100%;
 }
 .van-card{
     box-shadow: 0px 0px 10px 5px #fafafa;

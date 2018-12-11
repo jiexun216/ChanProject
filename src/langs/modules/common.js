@@ -84,6 +84,7 @@ module.exports = {
     wb: '微博登录',
     username: '用户名',
     pwd: '密码',
+    confirmpwd:'确认密码',
     creat: '创建账户',
     forget: '忘记密码',
     send: '发送验证码',
@@ -228,6 +229,7 @@ module.exports = {
    addcorrectphone: '请输入正确格式手机号',
    //cart/list
    cartgobuy:'去支付',
+   paytotal: '合计：',
    //goods/detail
    addCarts: '加入购物车',
    stepperTitle: '商品库存',
@@ -235,8 +237,18 @@ module.exports = {
    lastchoose:'至少选择一件商品',
    xiangou:'限购',
    notkucun: '库存不够了',
+   ren: '人',
    //cart/ settlement
-   totallable: '合计: '
+   totallable: '合计: ',
+   cancelButtonText:'取消',
+   confirmButtonText: '确认',
+   inputpwd: '请输入密码',
+   againinputpwd:'请再次输入密码',
+   twicepwd: '两次密码输入不一致!',
+   duanxin: '您的短信验证码为',
+   tishi:'温馨提示',
+   man:'满',
+   yuan: '元'
 
   },
   char: {
@@ -323,6 +335,7 @@ module.exports = {
     wb: '微博登錄',
     username: '用戶名 ',
     pwd: '密碼',
+    confirmpwd:'確認密碼',
     creat: '創建賬戶',
     forget: '忘記密碼',
     send: '發送驗證碼',
@@ -464,7 +477,17 @@ module.exports = {
    lastchoose:'至少選擇壹件商品',
    xiangou:'限購',
    notkucun: '庫存不夠了',
-
+   paytotal: '合計',
+   ren: '人',
+   cancelButtonText:'取消',
+   confirmButtonText: '確認',
+   inputpwd: '請輸入密碼',
+   againinputpwd:'請再次輸入密碼',
+   twicepwd: '兩次密碼輸入不壹致!',
+   duanxin: '您的短信驗證碼為',
+   tishi:'溫馨提示',
+   man:'滿',
+   yuan: '元'
   },
   en: {
     home: 'Home',
@@ -551,6 +574,7 @@ module.exports = {
     uselogin: 'Account login',
     username: 'User',
     pwd: 'Password',
+    confirmpwd:'Confirm password',
     creat: 'Create an account',
     forget: 'Forget the password',
     send: 'Send Code',
@@ -582,7 +606,7 @@ module.exports = {
    fellback: 'Feedback',
    liuyan: 'If you find any problems on the website or wechat, or have better Suggestions, please leave us a message!',
    yishou: 'sold',
-   jian: 'piece',
+   jian: 'pieces',
    gong: 'Total',
    paystyle: 'Payment method ',
    wxpay: 'WeChat pay',
@@ -610,7 +634,7 @@ module.exports = {
    deleteguoqi: 'delete expired coupons ',
    jiesuan: 'settlement ',
    submitorder: 'Submitorder ',
-   yibuy: 'bought ',
+   yibuy: ' Bought ',
    restsend: 'resend',
    backhome: 'Home',
    deaddress: 'If there is no shipping address in the address list, please in the detailed address, fill out the complete address',
@@ -675,9 +699,9 @@ module.exports = {
    orderconfirm: 'Order confirmation success',
    orderfailure: 'Failure to identify the order',
    //fortunetellers/add
-   fortime: 'Please select a',
+   fortime: 'Please select',
    fortimes: 'If the time is unknown, please select the default time',
-   fortimeth: 'Please select a',
+   fortimeth: 'Please select',
    alls: 'All',
    waitingpay: 'Payment',
    waitinggoods: 'Goods',
@@ -700,7 +724,18 @@ module.exports = {
    shengyu: 'The remaining',
    lastchoose:'Choose at least one item',
    xiangou:'For purchasing',
-   notkucun: 'Out of stock'
+   notkucun: 'Out of stock',
+   paytotal: 'A combined  ',
+   ren:'people',
+   cancelButtonText:'cancel',
+   confirmButtonText: 'confirm',
+   inputpwd: 'Please enter your password',
+   againinputpwd:'Please enter your password again',
+   twicepwd: 'The two passwords do not match!',
+   duanxin: 'Your SMS verification code is',
+   tishi:'Warm prompt',
+   man:'Full',
+   yuan: 'yuan'
   } 
   
 }

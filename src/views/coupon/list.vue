@@ -22,7 +22,7 @@
                     </span>
                   </div>
                   <div class="couponman">
-                      <p class="couponmanp">满{{item.condition}}元</p>
+                      <p class="couponmanp">{{$t(man)}} {{item.condition}} {{$t(yuan)}}</p>
                       <p class="couponmantime">{{item.startDate}}-{{item.endDate}}</p>
                   </div>
              </div>
@@ -55,6 +55,8 @@ export default {
       goUse: 'common.gouse',
       deleteguoqi: 'common.deleteguoqi',
       cancel: 'common.cancel',
+      man: 'common.man',
+      yuan: 'common.yuan',
       statusList: [
         {
           key: "waitingUse",
@@ -126,7 +128,9 @@ export default {
     deleyi () {
       Dialog.confirm({
         title: this.$t("common.confirmdelete"),
-        message: this.$t("common.deleteexpiredcoupons")
+        message: this.$t("common.deleteexpiredcoupons"),
+        confirmButtonText: this.$t('common.confirmButtonText'),
+        cancelButtonText: this.$t('common.cancelButtonText')
       }).then(() => {
         this.postData()
         this.show= false;

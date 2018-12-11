@@ -124,7 +124,7 @@ export default {
     height:4.5rem;
     margin:auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-top:0.1rem;
 }

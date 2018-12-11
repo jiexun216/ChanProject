@@ -113,7 +113,9 @@ export default {
     deleteAddress(id) {
       Dialog.confirm({
         title: this.$t("common.delecon"),
-        message: this.$t("common.caredelete")
+        message: this.$t("common.caredelete"),
+        confirmButtonText: this.$t('common.confirmButtonText'),
+        cancelButtonText: this.$t('common.cancelButtonText')
       }).then(() => {
         addressDelete(id)
           .then(res => {

@@ -30,8 +30,8 @@
                  </ul>
              </div>
              <div class="deliveryinfo">
-                 <span class="deliveryone">{{$t(orderdily)}}</span>
-                 <span>{{orderData.shippingInformation}}</span>
+                 <!-- <span class="deliveryone">{{$t(orderdily)}}</span> -->
+                 <!-- <span>{{orderData.shippingInformation}}</span> -->
              </div>
              <div class="deliveryinfo">
                   <span class="deliveryone">{{$t(orderinfopay)}}</span>

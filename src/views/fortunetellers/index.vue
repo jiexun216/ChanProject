@@ -47,6 +47,8 @@ export default {
              show: false,
              lookresult: 'common.lookresult',
              cancel: 'common.deletes',
+             confirmButtonText: 'common.confirmButtonText',
+             cancelButtonText:'common.cancelButtonText'
          }
     },
     methods: {
@@ -74,7 +76,9 @@ export default {
          handleDelete (fortuneId) {
              Dialog.confirm({
                     title: this.$t("common.delecon"),
-                    message: this.$t("common.deleteconfirmation")
+                    message: this.$t("common.deleteconfirmation"),
+                    confirmButtonText: this.$t('common.confirmButtonText'),
+                    cancelButtonText: this.$t('common.cancelButtonText')
                 }).then(() => {
             deleteFortune(fortuneId)
             .then(res => {

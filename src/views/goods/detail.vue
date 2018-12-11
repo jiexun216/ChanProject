@@ -19,8 +19,8 @@
                       <div class="layout" >
                         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000' style="width:100%;">
                                 <van-swipe-item v-for="goodsImage in goodsImages" :key="goodsImage.index" :autoplay="autoplay">
-                                    <div style="width:100%;height:100%;">
-                                         <img :src="goodsImage" style="width:100%;height:100%;" />
+                                    <div class="goodsvan">
+                                         <img :src="goodsImage"/>
                                     </div>
                                 </van-swipe-item>
                         </van-swipe>
@@ -37,7 +37,7 @@
                                 ￥{{goodsInfos.marketPrice}}
                            </span>
                            <span class="buy">
-                               {{goodsInfos.purchaseNumber}}人{{$t(yibuy)}}
+                               {{goodsInfos.purchaseNumber}} {{$t(ren)}}{{$t(yibuy)}}
                            </span>
                       </div>    
                       </div>     
@@ -64,7 +64,7 @@
                                     </ul>
                                 </div>
                             </van-tab>
-                            <van-tab  >
+                            <van-tab>
                                 <div slot="title" >{{$t(attention)}}
                                 </div>
                                 <div class="goodstu">
@@ -168,6 +168,9 @@ Vue.use(Swipe).use(SwipeItem);
                 stepperTitle: 'common.stepperTitle',
                 shengyu: 'common.shengyu',
                 notkucun: 'common.kucun',
+                ren: 'common.ren',
+                lastchoose: 'common.lastchoose',
+                nokucun: 'common.notkucun',
                 customStepperConfig: {
                     shengyu:'common.shengyu',
                     jian:'common.jian',
@@ -176,14 +179,13 @@ Vue.use(Swipe).use(SwipeItem);
                     const { action, limitType, quota } = data;
 
                     if (action === 'minus') {
-                        this.$toast('$t("lastchoose")');
+                        this.$toast(`${this.$t(this.lastchoose)}`);
                     } else if (action === 'plus') {
-                        if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
-
-                        this.$toast(`限购${quota}件`);
-                        } else {
-                        this.$toast('$t("notkucun")');
-                        }
+                        // if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
+                        // this.$toast(`限购${quota}件`);
+                        // } else {
+                        // }
+                        this.$toast(`${this.$t(this.nokucun)}`);
                     }
                     }
             },
@@ -196,24 +198,6 @@ Vue.use(Swipe).use(SwipeItem);
                 this.getData()
             }
         },
-        // computed:{
-        //     customStepperConfig: {
-        //         quotaText: '单次限购100件',
-        //         stockFormatter: (stock) => `<span>商品库存剩余</span>${stock}<span>件</span>`,
-        //         handleOverLimit: (data) => {
-        //         const { action, limitType, quota } = data;
-        //         if (action === 'minus') {
-        //             this.$toast('至少选择一件商品');
-        //         } else if (action === 'plus') {
-        //             if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
-        //             this.$toast(`限购${quota}件`);
-        //             } else {
-        //             this.$toast('库存不够了');
-        //             }
-        //         }
-        //         }
-        //     },
-        // },
         methods: {
             // 获取商品详情数据
             getData () {
@@ -249,7 +233,9 @@ Vue.use(Swipe).use(SwipeItem);
                     } else if (res.data.status == 0) {
                         Dialog.confirm({
                             title: this.$t("common.warmprompt"),
-                            message: this.$t("common.lookcart")
+                            message: this.$t("common.lookcart"),
+                            confirmButtonText: this.$t('common.confirmButtonText'),
+                            cancelButtonText: this.$t('common.cancelButtonText')
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: 'cartList'})
@@ -268,6 +254,7 @@ Vue.use(Swipe).use(SwipeItem);
                 let goodsQuantity = skuData.selectedNum
                 let skuId = skuData.selectedSkuComb.id ? skuData.selectedSkuComb.id : 0
                 orderSettlement (2,'',0,goodsId,skuId,goodsQuantity).then(res => {
+                    console.log(res)
                     if (res.data.status == 0) {
                         this.$router.push({
 							name: 'cartSettlement',
@@ -283,7 +270,9 @@ Vue.use(Swipe).use(SwipeItem);
                     } else if (res.data.status == 99) {
                         Dialog.confirm({
                             title: this.$t("common.warmprompt"),
-                            message: this.$t("common.gologin")
+                            message: this.$t("common.gologin"),
+                            confirmButtonText: this.$t('common.confirmButtonText'),
+                            cancelButtonText: this.$t('common.cancelButtonText')
                         }).then(() => {
                             // on confirm
                             this.$router.push({name: res.data.data.url})                      
@@ -347,7 +336,18 @@ Vue.use(Swipe).use(SwipeItem);
     border-bottom: 5px solid #f7f7f7;
     
 }
-
+.goodsvan{
+    width:10rem;
+    height:6rem;
+    margin:auto;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.goodsvan img{
+    max-width:100%;
+    max-height:100%;
+}
 .goods{
     font-size: 0.4rem; 
     text-align: left;

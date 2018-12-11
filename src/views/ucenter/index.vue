@@ -8,7 +8,7 @@
                 <div class="loginafter">
                     <i class="memberImg">
                         <!-- <img :src="personalitem.memberData.headImg" /> -->
-                        <img src="../../assets/img/tx.png" alt="">
+                        <img src="../../assets/img/timg.jpg" alt="">
                                          </i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>

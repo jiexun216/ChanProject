@@ -195,7 +195,6 @@ export default {
     // 正则验证处理
     getErrorMessage (key) {
       const value = String(this.data[key] || '').trim()
-      console.log(value)
       if (this.validator) {
         const message = this.validator(key, value)
         if (message) {

@@ -30,8 +30,10 @@
         </div>
        <div class="layout">
         <van-swipe :autoplay="3000" :showIndicators='false' :data-auto-play='4000'>
-          <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay">
-                   <img :src="banner.picture" style="width:100%;height:100%;" @click="handdleClick(banner.url)">
+          <van-swipe-item v-for="banner in bannerList" :key="banner.index" :autoplay="autoplay" >
+            <div class="bannervan">
+               <img :src="banner.picture" @click="handdleClick(banner.url)" >
+            </div>     
           </van-swipe-item>
         </van-swipe>
           <!-- <div class="banner">
@@ -78,10 +80,8 @@
                         <div class="moregoodsli">
                           <div class="moregoodsImg">
                              <img :src="good.goodsCoverImg" @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
-                          </div>
-                           
+                          </div>                   
                         </div>
-                        
                         <div class="goods"  @click="$router.push({ name: 'goodsDetail', query: { goodsId: good.id }})">
                           <p class="goodname">
                               {{good.name}}
@@ -399,5 +399,17 @@ a {
     visibility: hidden;
     clear: both;
 }
-
+.bannervan{
+  width:10rem;
+  height:6rem;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bannervan img{
+  width:100%;
+  max-height:100%;
+  height:auto;
+}
 </style>
