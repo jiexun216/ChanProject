@@ -300,11 +300,13 @@ Vue.use(Swipe).use(SwipeItem);
                     title: this.$t("common.ContactUs"),
                     message: `
                       <div> ${this.$t(this.wechat)} 
-                       巽達古文化教室 <br> SE_Southeast</div>
+                       巽達古文化教室 <br> SE_Southeast </div>
+                       <br>
                       <div>
                             ${this.$t(this.wechat1)} 
                             凡 <br>
                             ADAfang15801979923</div>
+                            <br>
                       <p>E-mail：info@southeast.hk</p>
                     `,
                     confirmButtonText: this.$t('common.confirmButtonText'),
