@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="foot">
-            <div class="customer">
+            <div class="customer" @click="showDialog">
                 <img src="../../assets/img/36.png" alt="">
                 <p>{{$t(customerservice)}}</p>
             </div>
@@ -171,6 +171,9 @@ Vue.use(Swipe).use(SwipeItem);
                 ren: 'common.ren',
                 lastchoose: 'common.lastchoose',
                 nokucun: 'common.notkucun',
+                ContactUs: 'common.ContactUs',
+                wechat: 'common.wechat',
+                wechat1: 'common.wechat1',
                 customStepperConfig: {
                     shengyu:'common.shengyu',
                     jian:'common.jian',
@@ -292,8 +295,25 @@ Vue.use(Swipe).use(SwipeItem);
            joinbuy () {
                this.showBase = true;
            },
-           gobuy () {
-           
+           showDialog () {
+               Dialog.confirm({
+                    title: this.$t("common.ContactUs"),
+                    message: `
+                      <div> ${this.$t(this.wechat)} 
+                       巽達古文化教室 <br> SE_Southeast</div>
+                      <div>
+                            ${this.$t(this.wechat1)} 
+                            凡 <br>
+                            ADAfang15801979923</div>
+                      <p>E-mail：info@southeast.hk</p>
+                    `,
+                    confirmButtonText: this.$t('common.confirmButtonText'),
+                    cancelButtonText: this.$t('common.cancelButtonText')
+                    }).then(() => {
+                    // on confirm
+                    }).catch(() => {
+                    // on cancel
+                    });
            }
         },
        components: {

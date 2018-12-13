@@ -252,7 +252,9 @@ module.exports = {
    man:'满',
    yuan: '元',
    SMS: '短信验证码',
-   
+   ContactUs: '联系我们',
+   wechat: '微信(香港)：',
+   wechat1: '微信(上海)：'
 
   },
   char: {
@@ -495,6 +497,9 @@ module.exports = {
    man:'滿',
    yuan: '元',
    SMS: '短信驗證碼',
+   ContactUs: '聯系我們',
+   wechat: '微信(香港)：',
+   wechat1: '微信(上海)：'
   },
   en: {
     home: 'Home',
@@ -745,7 +750,10 @@ module.exports = {
    tishi:'Warm prompt',
    man:'Full',
    yuan: 'yuan',
-   SMS: 'Verification code'
+   SMS: 'Verification code',
+   ContactUs: 'Contact Us',
+   wechat: 'WeChat(HK)：',
+   wechat1: 'WeChat(SHH)：'
   } 
   
 }
