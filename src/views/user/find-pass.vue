@@ -10,7 +10,7 @@
      <div class="login-tell">
          <input type="telephone" 
            v-model="tel"
-           class="tel" 
+           class="findtel" 
            :placeholder="$t(userphone)">
            <div class="restsendse">
              <input type="button" 
@@ -58,14 +58,16 @@ export default {
       next: 'common.next',
       userphone: 'common.placeholder.userphone',
       enteryzm: 'common.placeholder.enteryzm',
-      restsend: 'common.restsend',
+      restsend: 'common.send',
       duanxin: 'common.duanxin',
-      tishi: 'common.tishi'
+      tishi: 'common.tishi',
+      inputSMS:'common.inputSMS'
     };
   },
   methods: {
     // 发送验证码
     getAuthCode: function() {
+      let tel = this.tel.trim();
       // let reg =  /^\d$/
       // if (!reg.test(this.tel)) {
       //   this.$toast({
@@ -76,23 +78,19 @@ export default {
       // }
       messageSend(this.tel, 2).then(res => {
         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
-        if (res.data.status == 0) {
-          Dialog.confirm({
-            title: this.$t(this.tishi),
-            message: this.$t(this.duanxin)   +   res.data.data.verifyCode,
-            confirmButtonText: this.$t('common.confirmButtonText'),
-            cancelButtonText: this.$t('common.cancelButtonText')
-          });
-          this.sendAuthCode = false;
-          this.auth_time = 30;
-          var auth_timer = setInterval(() => {
-            this.auth_time--;
-            if (this.auth_time <= 0) {
-              this.sendAuthCode = true;
-              clearInterval(auth_timer);
-            }
-          }, 1000);
-        }
+        // if (res.data.status == 0) {
+        //   this.sendAuthCode = false;
+        //   this.auth_time = 30;
+        //   var auth_timer = setInterval(() => {
+        //     this.auth_time--;
+        //     if (this.auth_time <= 0) {
+        //       this.sendAuthCode = true;
+        //       clearInterval(auth_timer);
+        //     }
+        //   }, 1000);
+        // }
+      }).catch(err =>{
+          return err;
       });
     },
     // 下一步 验证验证码
@@ -107,7 +105,7 @@ export default {
       // }
       if (!this.code) {
         this.$toast({
-          message: "请输入短信验证码",
+          message: this.$t(inputSMS),
           position: "top"
         });
         return false;
@@ -160,8 +158,11 @@ export default {
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.tel {
+.findtel {
   line-height: 0.7rem;
   font-size: 0.3rem;
   border: none;

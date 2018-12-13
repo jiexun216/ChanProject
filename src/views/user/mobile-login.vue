@@ -192,7 +192,7 @@ export default {
 }
 .restsends{
   color: #ff525a;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
 }
 .sends{
   color:#f00;
@@ -260,4 +260,5 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
+ 
 </style>

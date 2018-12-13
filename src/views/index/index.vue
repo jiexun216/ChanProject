@@ -337,16 +337,19 @@ a {
   font-size: 0.3rem;
   text-align: left;
   margin: 0.3rem;
+  overflow: hidden;
 }
 .goodname{
   /* overflow: hidden;
   text-overflow:ellipsis ; */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  letter-spacing: 0;
+  width:90%;
 }
 .goodsale {
   color: #c5c5c5;

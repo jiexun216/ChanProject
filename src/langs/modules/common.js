@@ -100,7 +100,9 @@ module.exports = {
        enterxq: '请输入您的特殊需求',
        entering: '请输入...',
        username: '请输入用户名',
-       search: '搜索'
+       search: '搜索',
+       inputSMS: '请输入短信验证码',
+       choosearea:'请选择地区',
     },
     nobirth: '你还未添加生辰八字',
     add: '添加',
@@ -248,7 +250,9 @@ module.exports = {
    duanxin: '您的短信验证码为',
    tishi:'温馨提示',
    man:'满',
-   yuan: '元'
+   yuan: '元',
+   SMS: '短信验证码',
+   
 
   },
   char: {
@@ -351,7 +355,9 @@ module.exports = {
       enterxq: '請輸入您的特殊需求',
       entering: '請輸入...',
       username: '請輸入用戶名',
-      search: '搜索'
+      search: '搜索',
+      inputSMS: '請輸入短信驗證碼',
+      choosearea:'請選擇地區'
    },
    nobirth: '妳還未添加生辰八字',
    add: '添加',
@@ -487,7 +493,8 @@ module.exports = {
    duanxin: '您的短信驗證碼為',
    tishi:'溫馨提示',
    man:'滿',
-   yuan: '元'
+   yuan: '元',
+   SMS: '短信驗證碼',
   },
   en: {
     home: 'Home',
@@ -590,7 +597,9 @@ module.exports = {
       enterxq: ' Special requirements',
       entering: 'Please enter the...',
       username: 'Please enter user name',
-      search: 'search'
+      search: 'search',
+      inputSMS: 'Please enter SMS verification code',
+      choosearea:'Select area'
    },
    nobirth: "You haven't added Ba Zi",
    add: 'Add',
@@ -735,7 +744,8 @@ module.exports = {
    duanxin: 'Your SMS verification code is',
    tishi:'Warm prompt',
    man:'Full',
-   yuan: 'yuan'
+   yuan: 'yuan',
+   SMS: 'Verification code'
   } 
   
 }

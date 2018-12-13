@@ -5,7 +5,7 @@
         <span>{{$t(repwd)}}</span>
      </div>
     <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-      <el-form-item :label=$t(password) prop="pass">
+      <el-form-item :label=$t(password) prop="pass" >
         <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item :label=$t(confirmpwd) prop="checkPass" >
@@ -131,7 +131,6 @@ Vue.use(ElementUI);
     color:#f00;
     margin: 0.4rem;
     margin-top:1rem;
-
 }
 .demo-repwd{
     margin-top: 0.5rem;
@@ -139,5 +138,14 @@ Vue.use(ElementUI);
     border-radius: 0.1rem;
     outline: none;
 }
-
+.el-form-item__label{
+  text-align:left;
+}
+.el-form-item .el-form-item--feedback{
+  text-align:center !important;
+  /* margin-left:80px !important; */
+}
+.el-form-item__content{
+  /* margin-left:80px !important; */
+}
 </style>

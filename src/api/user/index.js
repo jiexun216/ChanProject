@@ -12,11 +12,12 @@ export function passwordLogin(mobile,password) {
 }
 
 // 发送短信 zhangjie 0914
-export function messageSend(mobile,type) {
+export function messageSend(mobile,type,district_code) {
     const url = 'member/message'
     const data = {
         mobile,
-        type
+        type,
+        district_code
     }
     return postData(url, data)
 }
@@ -33,13 +34,14 @@ export function verifyMessageCode(telephone,code,type) {
 }
 
 // 手机号注册 zhangjie 0914 
-export function registerMember(telephone, verify_code, password, fpassword) {
+export function registerMember(telephone, verify_code, password, fpassword,district_code) {
     const url = 'member/register'
     const data = {
         telephone,
         verify_code,
         password,
-        fpassword
+        fpassword,
+        district_code
     }
     return postData(url, data)
 }
@@ -56,4 +58,12 @@ export function setMemberPassword(telephone, verify_code, password, fpassword) {
     return postData(url, data)
 }
 
+//国家手机号前缀
+export function countryPhone (district_code) {
+    const url = 'member/getDistrict'
+    const data = {
+        district_code
+    }
+    return postData(url, data)
+}
 

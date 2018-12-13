@@ -10,7 +10,7 @@
      </div>
      <div class="login-tellpass">
          <label  class="space">{{$t(username)}}</label>
-         <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)" :maxlength="11">
+         <input type="text" class="teltel" v-model="tel" :placeholder="$t(userphone)" :maxlength="11">
      </div>
      <div class="login-tellpass">
          <label for="" class="space">{{$t(passwd)}}</label> 
@@ -142,35 +142,38 @@ export default {
 }
 .login-tellpass {
   margin: 0.4rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   line-height: 0.7rem;
   border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .login-tellpass label{
   display: inline-block;
-  width: 95px;
-  text-align: right;
-  margin-left: -20px;
+  /* width: 95px; */
+ 
 }
 .login-tellpass input{
   font-size: 0.3rem;   
    /* 在找回密码页面显示正常 */
   /* width: 70%; */
+  width:80%;
 }
-.tel {
+.teltel {
   line-height: 0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border: none;
 }
 .yzm {
   line-height: 0.7rem;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
   border: none;
 }
 .click-login {
   margin: 0.4rem;
   text-align: center;
-  font-size: 0.4rem;
+  font-size: 0.3rem;
 }
 .cli-login {
   line-height: 1rem;

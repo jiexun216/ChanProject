@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api/v1/': {
-        // target: 'http://www.test-k-chan.com/mobile/',
-        target: 'http://192.168.8.81/mobile',
+         target: 'http://www.test-k-chan.com/mobile/',
+        // target: 'http://192.168.8.81/mobile',
         changeOrigin: true,
         pathRewrite: {
           "^/api/v1": ""

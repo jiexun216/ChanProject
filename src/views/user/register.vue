@@ -9,29 +9,38 @@
         <p class="faLogin-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tellre logintel">
-         <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)">
-         <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
-         <!-- <input type="text" 
-           v-model="tel"
-           class="tel"
-           :placeholder="$t(userphone)">
-          <div class="restsendsend">
-             <input type="button"
-                    style="width:100%"
-                    class="sends" 
-                    :value=" $t(restsend)" 
-                    v-show="sendAuthCode"
-                    @click="getAuthCode">     
-              <input type="button" 
-                  class="restsendsend" 
-                  v-show="!sendAuthCode"
-                  style="display:none;color: #ff525a;"
-                  v-model="auth_time">       
-           </div>   -->
-         <!-- <span class="restsend" >重新发送(<span>30</span>s)</span> -->
+          <template>
+            <el-select v-model='value' :placeholder="$t(choosearea)" @focus="phoneCountry" :value="valueCode">
+              <el-option
+                v-for="item in prephone"
+                :key="item.index"
+                :label="item.countrydes + '+' + item.code"
+                :value="item.code"
+                >
+                <div>
+                    {{item.country + '+' + item.code}}
+                </div>
+              </el-option>
+            </el-select>
+          </template>
+           <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)">
      </div>
-      <div class="login-tellre">
-         <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">
+     <!-- <div class="login-teller">
+         <van-cell-group>
+          <van-field
+            v-model="sms"
+            center
+            clearable
+            :label="$t(SMS)"
+            :placeholder="$t(inputSMS)"
+          >
+            <van-button slot="button" size="small" type="primary" @click="sendMessage">{{$t(send)}}</van-button>
+          </van-field>
+        </van-cell-group>
+     </div> -->
+      <div class="login-tellre login-restsend">
+         <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">   
+          <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
      </div>
      <div class="login-tellre">
          <input type="password" class="yzm" v-model="password" :placeholder="$t(userpwd)">
@@ -60,9 +69,15 @@
   </div>   
 </template>
 <script>
+import Vue from 'vue'
 import { Dialog } from 'vant';
 import { rsaJsencrypt } from "@/common/js/rsa.js";
-import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.js'
+import { messageSend, registerMember,verifyMessageCode, countryPhone } from '@/api/user/index.js'
+import { Field } from 'vant';
+import { Cell, CellGroup } from 'vant';
+
+Vue.use(Cell).use(CellGroup);
+Vue.use(Field);
     export default {
        name: 'register',
        data () {
@@ -77,7 +92,6 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            wb: 'common.wb',
            sendAuthCode: true,
            auth_time: 0,
-           code: '',
            restsend: 'common.restsend',
            phonekc: 'common.phonekc',
            creat: 'common.creat',
@@ -85,14 +99,41 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            login:'common.login',
            register:'common.register',
            send: 'common.send',
+           SMS: 'common.SMS',
+           inputSMS: 'common.placeholder.inputSMS',
            userphone: 'common.placeholder.userphone',
            enteryzm: 'common.placeholder.enteryzm',
            userpwd: 'common.placeholder.userpwd',
            resetpwd: 'common.placeholder.resetpwd',
-           backhome: 'common.backhome'
+           backhome: 'common.backhome',
+           choosearea: 'common.placeholder.choosearea',
+           sms: '',
+           prephone: [],
+           value: '',
+           district_code: '',
+           code: '',
+           countryCode: '',
+           valueCode: ''
          }
        },
+       created () {
+         this.phoneCountry();
+       },
        methods: {
+         //获取地区手机号标识
+         phoneCountry () {
+             countryPhone ().then (res => {
+              //  this.$toast(res.data.message ? res.data.message : '')
+               this.prephone = res.data.data.map(item => {return item})
+               this.value = res.data.data[0].code
+              //  let country = res.data.data.map(item =>{return item.countrydes})[0]
+              //  let code = res.data.data.map(item =>{return item.code})[0]
+              //  this.countryCode = country + "+" + code 
+              //  this.values = this.countryCode
+               
+               
+             })
+         },
          //发送验证码
          sendMessage () {
            let tel = this.tel.trim();
@@ -104,14 +145,15 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
           //    });
           //    return false;
           //  }
-           messageSend (tel, 0).then(res => {
+          let district_code = this.value;
+           messageSend (tel, 0,district_code ).then(res => {     
              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-             if (res.data.status == 0) {
-                  Dialog.confirm({
-                    title: '温馨提示',
-                    message: '您的短信验证码为'+res.data.data.verifyCode
-                  })
-             }
+            //  if (res.data.status == 0) {
+            //       Dialog.confirm({
+            //         title: '温馨提示',
+            //         message: '您的短信验证码为'+res.data.data.verifyCode
+            //       })
+            //  }
            }).catch(err => {
              return err
            })
@@ -126,13 +168,14 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
             //   });
             //   return false;
             // }
-            messageSend(this.tel, 0).then(res => {
+            let district_code = this.value;
+            messageSend(this.tel, 0,district_code).then(res => {
               this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
               if (res.data.status == 0) {
-                Dialog.confirm({
-                  title: "温馨提示",
-                  message: "您的短信验证码为" + res.data.data.verifyCode
-                });
+                // Dialog.confirm({
+                //   title: "温馨提示",
+                //   message: "您的短信验证码为" + res.data.data.verifyCode
+                // });
                 this.sendAuthCode = false;
                 this.auth_time = 30;
                 var auth_timer = setInterval(() => {
@@ -185,7 +228,8 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
            }
            let password = rsaJsencrypt(this.password);
            let fpassword = rsaJsencrypt(this.fpassword);
-           registerMember (this.tel, this.verifyCode, password, fpassword).then(res => {
+           let district_code = this.value
+           registerMember (this.tel, this.verifyCode, password, fpassword,district_code).then(res => {
              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
              if (res.data.status == 0) {
                this.$router.push({name: 'PasswordLogin'})
@@ -233,6 +277,15 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
   color:#999999;
   line-height: 1rem;
 }
+.login-restsend{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.restsend{
+  color: #f00;
+  font-size:0.2rem;
+}
 .login-tellre{
   margin: 0.4rem;
   font-size: 0.4rem;
@@ -249,7 +302,8 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
   line-height:0.7rem;
   font-size: 0.3rem;
   border:none;
-  width:70%;
+  width:150%;
+  margin-left:0.3rem;
 }
 .restsendsend{
   color: #ff525a;
@@ -308,5 +362,25 @@ import { messageSend, registerMember,verifyMessageCode } from '@/api/user/index.
     font-size: 0.4rem;
     float: left;
     line-height:1rem;
+  }
+  /* .van-cell{
+    width:90%;
+    margin: 0.4rem;
+    border-bottom:1px solid #f0f0f0;
+  } */
+  .el-input__inner{
+    height:20px;
+    line-height:20px;
+    font-size:12px;
+    width:2.6rem;
+    overflow: hidden;
+  }
+  .el-input__suffix{
+    /* position: absolute;
+    top:8px; */
+    /* display: none; */
+  }
+  .el-input__icon{
+    line-height: 20px;
   }
 </style>
