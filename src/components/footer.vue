@@ -12,10 +12,10 @@
             <img :src="'/Index' === $route.path ? tabBarImgArr[0].selected  : tabBarImgArr[0].normal" alt="首页">
             <span :class="{active: '/Index' === $route.path}">{{$t(home)}}</span>
         </div>
-    <div class="tab-item" @click="switchTo('/fortunetellers/index')">
+    <!-- <div class="tab-item" @click="switchTo('/fortunetellers/index')">
             <img :src="'/fortunetellers/index' === $route.path ? tabBarImgArr[1].selected : tabBarImgArr[1].normal" alt="算命">
             <span :class="{active: '/fortunetellers/index' === $route.path}">{{$t(telling)}}</span>
-        </div>
+        </div> -->
     <div class="tab-item" @click="switchTo('/cart/list')">
             <img :src="'/cart/list' === $route.path ? tabBarImgArr[2].selected : tabBarImgArr[2].normal" alt="购物车">
             <span :class="{active: '/cart/list' === $route.path}">{{$t(cart)}}</span>
@@ -86,6 +86,9 @@
  width: 100%; 
  overflow: hidden; 
  background-color: white;
+ display:flex;
+ justify-content:space-between;
+ text-align:center;
 }
 .common_foot .tab-item{
   float: left; 
