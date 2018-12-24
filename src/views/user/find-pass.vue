@@ -68,7 +68,7 @@ export default {
     getAuthCode: function() {
       let tel = this.tel.trim();
       // let reg =  /^\d$/
-      if (this.tel == '') {
+      if (!this.tel) {
         this.$toast({
           message: this.$t(this.addcorrectphone),
           position: "top"
@@ -96,7 +96,7 @@ export default {
     nextStep: function() {
       // let reg = /^\d$/;
       let tel = this.tel.trim();
-      if (this.tel == '') {
+      if (!this.tel) {
         this.$toast({
           message: this.$t(this.addcorrectphone),
           position: "top"

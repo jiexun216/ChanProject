@@ -7,14 +7,14 @@
             <div class="member">  
                 <div class="loginafter">
                     <i class="memberImg">
-                        <!-- <img :src="personalitem.memberData.headImg" /> -->
-                        <img src="../../assets/img/timg.jpg" alt="">
-                                         </i>
+                        <img :src="personalitem.memberData.headImg" />
+                        <!-- <img src="../../assets/img/timg.jpg" alt=""> -->
+                    </i>
                     <div class="loginright">
                         <p class="loginname">{{personalitem.memberData.nickname}}</p>
                         <p>{{personalitem.memberData.rankName}}</p>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="order">
                  <div class="orderitem">
@@ -232,7 +232,7 @@ export default {
 .memberImg img{
     height: 1.5rem;
     width: 1.5rem;
-   border-radius: 50%;
+    border-radius: 50%;
 }
 .loginright{
     margin-left: 0.2rem;

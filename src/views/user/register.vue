@@ -130,8 +130,6 @@ Vue.use(Field);
               //  let code = res.data.data.map(item =>{return item.code})[0]
               //  this.countryCode = country + "+" + code 
               //  this.values = this.countryCode
-               
-               
              })
          },
          //发送验证码

@@ -59,10 +59,10 @@ export function setMemberPassword(telephone, verify_code, password, fpassword) {
 }
 
 //国家手机号前缀
-export function countryPhone (district_code) {
+export function countryPhone () {
     const url = 'member/getDistrict'
     const data = {
-        district_code
+       
     }
     return postData(url, data)
 }
