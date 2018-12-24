@@ -38,7 +38,7 @@
           </van-field>
         </van-cell-group>
      </div> -->
-      <div class="login-tellre login-restsend">
+     <div class="login-tellre login-restsend">
          <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">   
           <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
      </div>
@@ -148,12 +148,6 @@ Vue.use(Field);
           let district_code = this.value;
            messageSend (tel, 0,district_code ).then(res => {     
              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-            //  if (res.data.status == 0) {
-            //       Dialog.confirm({
-            //         title: '温馨提示',
-            //         message: '您的短信验证码为'+res.data.data.verifyCode
-            //       })
-            //  }
            }).catch(err => {
              return err
            })
@@ -172,10 +166,6 @@ Vue.use(Field);
             messageSend(this.tel, 0,district_code).then(res => {
               this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
               if (res.data.status == 0) {
-                // Dialog.confirm({
-                //   title: "温馨提示",
-                //   message: "您的短信验证码为" + res.data.data.verifyCode
-                // });
                 this.sendAuthCode = false;
                 this.auth_time = 30;
                 var auth_timer = setInterval(() => {

@@ -1,13 +1,13 @@
 <template>
-   <div style="margin-top:0.2rem;">
+   <div style="margin-top:0.4rem;">
       <div class="theLogin-top">
           <p @click="$router.back(-1)" slot="left" class="theLogin-back"></p>
       </div>
       <div class="fastLogin">
-        <!-- <p class="faLogin">{{$t(phoneretrieval)}}</p> -->
+        <p class="faLogin">{{$t(phoneretrieval)}}</p>
         <p class="faLogin-more">{{$t(retrpwd)}}</p>
      </div>
-     <div class="login-tell">
+     <!-- <div class="login-tell">
          <input type="telephone" 
            v-model="tel"
            class="findtel" 
@@ -15,29 +15,26 @@
            <div class="restsendse">
              <input type="button" 
                     style="width:100%"
-                    class="sends" 
-                    :value=" $t(restsend)" 
+                    class="sends"
+                    :value="$t(restsend)"
                     v-show="sendAuthCode"
-                    @click="getAuthCode">     
-              <input type="button" 
-                  class="sends" 
-                  v-show="!sendAuthCode"
-                  style="display:none"
-                  v-model="auth_time">       
-           </div>  
+                    @click="getAuthCode">
+           </div>
+     </div> -->
+     <div class="find-tellre find-restsend">
+         <input type="text" class="findyzm" v-model="tel" :placeholder="$t(userphone)">
+         <span class="findrestsend" @click="getAuthCode">{{$t(send)}}</span>
      </div>
      <div class="login-tell">
-         <input type="text" class="yzm" v-model="code" :placeholder="$t(enteryzm)">
+         <input type="text" class="find-yzm" v-model="code" :placeholder="$t(enteryzm)">
      </div>
      <div class="click-login">
-        <p> 
+        <p>
            <button class="cli-login" @click="nextStep">{{$t(next)}}</button>
         </p>
-       
      </div>
-     
    </div>
-
+   
 </template>
 
 <script>
@@ -61,7 +58,9 @@ export default {
       restsend: 'common.send',
       duanxin: 'common.duanxin',
       tishi: 'common.tishi',
-      inputSMS:'common.inputSMS'
+      inputSMS:'common.placeholder.inputSMS',
+      send: 'common.send',
+      addcorrectphone: 'common.addcorrectphone'
     };
   },
   methods: {
@@ -69,13 +68,13 @@ export default {
     getAuthCode: function() {
       let tel = this.tel.trim();
       // let reg =  /^\d$/
-      // if (!reg.test(this.tel)) {
-      //   this.$toast({
-      //     message: "请输入正确格式的手机号",
-      //     position: "top"
-      //   });
-      //   return false;
-      // }
+      if (this.tel == '') {
+        this.$toast({
+          message: this.$t(this.addcorrectphone),
+          position: "top"
+        });
+        return false;
+      }
       messageSend(this.tel, 2).then(res => {
         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"));
         // if (res.data.status == 0) {
@@ -93,19 +92,20 @@ export default {
           return err;
       });
     },
-    // 下一步 验证验证码
+    // 下一步 验证手机号和验证码
     nextStep: function() {
       // let reg = /^\d$/;
-      // if (!reg.test(this.tel)) {
-      //   this.$toast({
-      //     message: "请输入正确格式的手机号",
-      //     position: "top"
-      //   });
-      //   return false;
-      // }
+      let tel = this.tel.trim();
+      if (this.tel == '') {
+        this.$toast({
+          message: this.$t(this.addcorrectphone),
+          position: "top"
+        });
+        return false;
+      }
       if (!this.code) {
         this.$toast({
-          message: this.$t(inputSMS),
+          message: this.$t(this.inputSMS),
           position: "top"
         });
         return false;
@@ -117,7 +117,6 @@ export default {
           this.$router.push({name:'resetPassword', query: {tel: this.tel,code:this.code}})
         }
       })
-       
     }
   }
 };
@@ -175,8 +174,9 @@ export default {
 }
 .sends {
   color: #f00;
+  font-size:0.4rem;
 }
-.yzm {
+.find-yzm {
   line-height: 0.7rem;
   font-size: 0.3rem;
   border: none;
@@ -194,5 +194,24 @@ export default {
   border-radius: 0.1rem;
   display: block;
   margin-bottom: 0.2rem;
+}
+.find-tellre{
+  margin: 0.4rem;
+  line-height:0.7rem;
+  border-bottom:1px solid #f0f0f0;
+}
+.find-restsend{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.findyzm{
+  line-height:0.7rem;
+  font-size: 0.3rem;
+  border:none;
+}
+.findrestsend{
+  color: #f00;
+  font-size:0.4rem;
 }
 </style>
