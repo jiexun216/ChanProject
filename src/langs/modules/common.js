@@ -254,7 +254,8 @@ module.exports = {
    SMS: '短信验证码',
    ContactUs: '联系我们',
    wechat: '微信(香港)：',
-   wechat1: '微信(上海)：'
+   wechat1: '微信(上海)：',
+   choosecode:'请选择正确的国家代码!'
 
   },
   char: {
@@ -499,7 +500,8 @@ module.exports = {
    SMS: '短信驗證碼',
    ContactUs: '聯系我們',
    wechat: '微信(香港)：',
-   wechat1: '微信(上海)：'
+   wechat1: '微信(上海)：',
+   choosecode:'請選擇正確的國家代碼! '
   },
   en: {
     home: 'Home',
@@ -753,7 +755,8 @@ module.exports = {
    SMS: 'Verification code',
    ContactUs: 'Contact Us',
    wechat: 'WeChat(HK)：',
-   wechat1: 'WeChat(SHH)：'
+   wechat1: 'WeChat(SHH)：',
+   choosecode: 'Please select the correct country code'
   } 
   
 }

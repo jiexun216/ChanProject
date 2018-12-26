@@ -7,6 +7,9 @@
      <div class="fastLogin">
         <p class="faLogin">{{$t(creat)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
+        <p class="faloginwrain">{{$t(choosecode)}} </p>
+     </div>
+     <div>
      </div>
      <div class="login-tellre logintel">
           <template>
@@ -113,7 +116,8 @@ Vue.use(Field);
            district_code: '',
            code: '',
            countryCode: '',
-           valueCode: ''
+           valueCode: '',
+           choosecode: 'common.choosecode'
          }
        },
        created () {
@@ -251,7 +255,7 @@ Vue.use(Field);
 }
 .fastLogin{
   margin-top:1rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 .fastLogin p{
    margin-left:0.5rem;
@@ -265,6 +269,11 @@ Vue.use(Field);
   color:#999999;
   line-height: 1rem;
 }
+.faloginwrain{
+  color:#f00;
+  font-size:0.3rem;
+  margin-top:0.4rem;
+}
 .login-restsend{
   display: flex;
   justify-content: space-between;
@@ -272,7 +281,7 @@ Vue.use(Field);
 }
 .restsend{
   color: #f00;
-  font-size:0.2rem;
+  font-size:0.4rem;
 }
 .login-tellre{
   margin: 0.4rem;

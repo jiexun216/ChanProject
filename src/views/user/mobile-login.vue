@@ -4,9 +4,9 @@
         <p class="theLogin-close" ></p>
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
-     <div class="fastLogin">
-        <p class="faLogin">{{$t(phone)}}</p>
-        <p class="faLogin-more">{{$t(phonekc)}}</p>
+     <div class="fastLoginmo">
+        <p class="faLoginmo">{{$t(phone)}}</p>
+        <p class="faLoginmo-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tellmo">
          <input type="telephone" 
@@ -163,18 +163,18 @@ export default {
   color: #ff525a;
   margin-right:0.5rem;
 }
-.fastLogin{
+.fastLoginmo{
   margin-top:1rem;
   margin-bottom: 1rem;
 }
-.fastLogin p{
+.fastLoginmo p{
    margin-left:0.5rem;
 }
 .faLogin{
   font-size:0.6rem;
   font-weight:blod;
 }
-.faLogin-more{
+.faLoginmo-more{
   font-size:0.4rem;
   color:#999999;
   line-height: 1rem;

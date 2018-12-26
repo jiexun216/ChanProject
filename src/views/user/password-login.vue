@@ -4,9 +4,9 @@
         <p class="theLogin-closese" @click="$router.push({path: '/'})">{{$t(backhome)}}</p>  
         <p @click="$router.push({name: 'userRegister'})" class="registered">{{$t(register)}}</p>
      </div>
-     <div class="fastLogin">
-        <p class="faLogin">{{$t(uselogin)}}</p>
-        <p class="faLogin-more">{{$t(phonekc)}}</p>
+     <div class="fastLoginpwd">
+        <p class="faLoginpwd">{{$t(uselogin)}}</p>
+        <p class="faLoginpwd-more">{{$t(phonekc)}}</p>
      </div>
      <div class="login-tellpass">
          <label  class="space">{{$t(username)}}</label>
@@ -124,18 +124,18 @@ export default {
   color: #ff525a;
   margin-right: 0.5rem;
 }
-.fastLogin {
+.fastLoginpwd {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.fastLogin p {
+.fastLoginpwd p {
   margin-left: 0.5rem;
 }
 .faLogin {
   font-size: 1rem;
   font-weight: blod;
 }
-.faLogin-more {
+.faLoginpwd-more {
   font-size: 0.4rem;
   color: #999999;
   line-height: 1rem;

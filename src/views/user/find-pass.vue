@@ -3,9 +3,9 @@
       <div class="theLogin-top">
           <p @click="$router.back(-1)" slot="left" class="theLogin-back"></p>
       </div>
-      <div class="fastLogin">
-        <p class="faLogin">{{$t(phoneretrieval)}}</p>
-        <p class="faLogin-more">{{$t(retrpwd)}}</p>
+      <div class="fastLoginfind">
+        <p class="faLoginfind">{{$t(phoneretrieval)}}</p>
+        <p class="faLoginfind-more">{{$t(retrpwd)}}</p>
      </div>
      <!-- <div class="login-tell">
          <input type="telephone" 
@@ -134,11 +134,11 @@ export default {
   height: 1.2rem;
   background: url(../../assets/img/42.png) no-repeat center;
 }
-.fastLogin {
+.fastLoginfind {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.fastLogin p {
+.fastLoginfind p {
   margin-left: 0.5rem;
 }
 .faLogin {
@@ -146,7 +146,7 @@ export default {
   font-weight: blod;
   letter-spacing: 0px;
 }
-.faLogin-more {
+.faLoginfind-more {
   font-size: 0.35rem;
   color: #999999;
   line-height: 1rem;
