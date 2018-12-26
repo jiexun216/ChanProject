@@ -7,7 +7,7 @@
      <div class="fastLogin">
         <p class="faLogin">{{$t(creat)}}</p>
         <p class="faLogin-more">{{$t(phonekc)}}</p>
-        <p class="faloginwrain">{{$t(choosecode)}} </p>
+        <!-- <p class="faloginwrain">{{$t(choosecode)}} </p> -->
      </div>
      <div>
      </div>
@@ -117,7 +117,8 @@ Vue.use(Field);
            code: '',
            countryCode: '',
            valueCode: '',
-           choosecode: 'common.choosecode'
+           choosecode: 'common.choosecode',
+           
          }
        },
        created () {
@@ -138,23 +139,50 @@ Vue.use(Field);
          },
          //发送验证码
          sendMessage () {
-           let tel = this.tel.trim();
-          //  let reg = /^\d$/;
-          //  if (!reg.test(tel)) {
-          //    this.$toast({
-          //    message: "请输入正确格式的手机号",
-          //    position: "top"
-          //    });
-          //    return false;
-          //  }
+          let tel = this.tel.trim();
           let district_code = this.value;
-           messageSend (tel, 0,district_code ).then(res => {     
-             this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-           }).catch(err => {
-             return err
-           })
+          console.log(this.tel)
+          console.log(this.value)
+          
+          if(this.value == 86 && this.tel.length != 11 ) {
+            //  messageSend (tel, 0,district_code ).then(res => {    
+            //     this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            //   }).catch(err => {
+            //     return err
+            // })
+             this.$toast("请填写正确的国家代码和手机号")
+          }else if(this.value == 852 && this.tel.length != 8){
+            //  messageSend (tel, 0,district_code ).then(res => {    
+            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            //               }).catch(err => {
+            //                 return err
+            //             })
+             this.$toast("请填写正确的国家代码和手机号")
+          }else if (this.value == 60 && this.tel.length != 7){
+            //  messageSend (tel, 0,district_code ).then(res => {
+            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            //               }).catch(err => {
+            //                 return err
+            //             })
+             this.$toast("请填写正确的国家代码和手机号")
+          }else if(this.value == 65 && this.tel.length != 8){
+            //  messageSend (tel, 0,district_code ).then(res => {    
+            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            //               }).catch(err => {
+            //                 return err
+            //             })
+             this.$toast("请填写正确的国家代码和手机号")
+          }else {
+            //  this.$toast("请填写正确的国家代码和手机号")
+             messageSend (tel, 0,district_code ).then(res => {    
+                            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+                          }).catch(err => {
+                            return err
+                        })
+          }
+
          },
-         // 发送验证码
+         // 发送验证码倒计时  
          getAuthCode: function() {
             // let reg =/^\d$/;
             // if (!reg.test(this.tel)) {
