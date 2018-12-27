@@ -255,7 +255,8 @@ module.exports = {
    ContactUs: '联系我们',
    wechat: '微信(香港)：',
    wechat1: '微信(上海)：',
-   choosecode:'请选择正确的国家代码!'
+   choosecode:'请选择正确的国家代码!',
+   codeandphone:'请填写正确的国家代码和手机号'
 
   },
   char: {
@@ -501,7 +502,8 @@ module.exports = {
    ContactUs: '聯系我們',
    wechat: '微信(香港)：',
    wechat1: '微信(上海)：',
-   choosecode:'請選擇正確的國家代碼! '
+   choosecode:'請選擇正確的國家代碼! ',
+   codeandphone:'請填寫正確的國家代碼和手機號'
   },
   en: {
     home: 'Home',
@@ -756,7 +758,8 @@ module.exports = {
    ContactUs: 'Contact Us',
    wechat: 'WeChat(HK)：',
    wechat1: 'WeChat(SHH)：',
-   choosecode: 'Please select the correct country code'
+   choosecode: 'Please select the correct country code',
+   codeandphone:'Please fill in the correct country code and mobile phone number'
   } 
   
 }

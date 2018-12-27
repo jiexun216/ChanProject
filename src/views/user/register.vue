@@ -150,28 +150,28 @@ Vue.use(Field);
             //   }).catch(err => {
             //     return err
             // })
-             this.$toast("请填写正确的国家代码和手机号")
+             this.$toast(this.$t("common.codeandphone"))
           }else if(this.value == 852 && this.tel.length != 8){
             //  messageSend (tel, 0,district_code ).then(res => {   
             //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             //               }).catch(err => {
             //                 return err
             //             })
-             this.$toast("请填写正确的国家代码和手机号")
+             this.$toast(this.$t("common.codeandphone"))
           }else if (this.value == 60 && this.tel.length != 7){
             //  messageSend (tel, 0,district_code ).then(res => {
             //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             //               }).catch(err => {
             //                 return err
             //             })
-             this.$toast("请填写正确的国家代码和手机号")
+             this.$toast(this.$t("common.codeandphone"))
           }else if(this.value == 65 && this.tel.length != 8){
             //  messageSend (tel, 0,district_code ).then(res => {    
             //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             //               }).catch(err => {
             //                 return err
             //             })
-             this.$toast("请填写正确的国家代码和手机号")
+             this.$toast(this.$t("common.codeandphone"))
           }else {
             //  this.$toast("请填写正确的国家代码和手机号")
              messageSend (tel, 0,district_code ).then(res => {    
