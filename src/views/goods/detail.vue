@@ -37,7 +37,8 @@
                                 ￥{{goodsInfos.marketPrice}}
                            </span>
                            <span class="buy">
-                               {{goodsInfos.purchaseNumber}} {{$t(ren)}}{{$t(yibuy)}}
+                              <span v-if="goodsInfos.purchaseNumber === 0 || goodsInfos.purchaseNumber === 1"> {{goodsInfos.purchaseNumber}} {{$t(rens)}} {{$t(yibuy)}}</span>
+                              <span v-else> {{goodsInfos.purchaseNumber}} {{$t(ren)}} {{$t(yibuy)}}</span>
                            </span>
                       </div>    
                       </div>     
@@ -169,6 +170,7 @@ Vue.use(Swipe).use(SwipeItem);
                 shengyu: 'common.shengyu',
                 notkucun: 'common.kucun',
                 ren: 'common.ren',
+                rens: 'common.rens',
                 lastchoose: 'common.lastchoose',
                 nokucun: 'common.notkucun',
                 ContactUs: 'common.ContactUs',
@@ -377,7 +379,7 @@ Vue.use(Swipe).use(SwipeItem);
 }
 .goodsale {
     color:#c5c5c5;
-    font-size: 0.3rem;
+    /* font-size: 0.3rem; */
     line-height: 0.8rem;
 }
 .goodprice {

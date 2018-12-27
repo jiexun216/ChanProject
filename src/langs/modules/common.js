@@ -240,6 +240,7 @@ module.exports = {
    xiangou:'限购',
    notkucun: '库存不够了',
    ren: '人',
+   rens: '人',
    //cart/ settlement
    totallable: '合计: ',
    cancelButtonText:'取消',
@@ -489,6 +490,7 @@ module.exports = {
    notkucun: '庫存不夠了',
    paytotal: '合計',
    ren: '人',
+   rens: '人',
    cancelButtonText:'取消',
    confirmButtonText: '確認',
    inputpwd: '請輸入密碼',
@@ -745,6 +747,7 @@ module.exports = {
    notkucun: 'Out of stock',
    paytotal: 'A combined  ',
    ren:'people',
+   rens: 'person',
    cancelButtonText:'cancel',
    confirmButtonText: 'confirm',
    inputpwd: 'Please enter your password',
