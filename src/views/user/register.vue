@@ -143,7 +143,7 @@ Vue.use(Field);
           let district_code = this.value;
           console.log(this.tel)
           console.log(this.value)
-          
+
           if(this.value == 86 && this.tel.length != 11 ) {
             //  messageSend (tel, 0,district_code ).then(res => {    
             //     this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
@@ -152,7 +152,7 @@ Vue.use(Field);
             // })
              this.$toast("请填写正确的国家代码和手机号")
           }else if(this.value == 852 && this.tel.length != 8){
-            //  messageSend (tel, 0,district_code ).then(res => {    
+            //  messageSend (tel, 0,district_code ).then(res => {   
             //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             //               }).catch(err => {
             //                 return err
