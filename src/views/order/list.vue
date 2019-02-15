@@ -41,7 +41,7 @@
                              </div>
                              <div class="ordersize">
                                 <span class="ordersizenum">￥{{orderGoodsInfo.goodsPrice}}</span>
-                                 <span class="ordersizeright">x{{orderGoodsInfo.goodsQuantity}}</span>
+                                <span class="ordersizeright">x{{orderGoodsInfo.goodsQuantity}}</span>
                              </div>
                         </div>
                      </div>
@@ -51,7 +51,7 @@
                 <span>{{$t(ordertal)}} {{ item.orderInfo.goodsQuantityTotal }} {{$t(jian)}},{{$t(ordertal)}} ￥{{ item.orderInfo.orderAmount }}</span>
                 <div class="totalitem" v-if="item.orderInfo.orderStatus == 'waitingPay'">
                     <span class="totalitemone" @click="closeOrder(item.orderInfo.id)">{{$t(cancellation)}}</span>
-                    <span class="totalitemtwo">{{$t(immepayment)}}</span>
+                    <span class="totalitemtwo" @click="$router.push({name:'payment', query: {id: item.orderInfo.id, price: item.orderInfo.orderAmount }})">{{$t(immepayment)}}</span>
                 </div>
                 <div class="totalitem" v-else-if="item.orderInfo.orderStatus == 'waitingSign'">
                     <span class="totalitemone">{{$t(looklog)}}</span>
@@ -141,6 +141,7 @@ import { getMainData } from "@/api/index/index.js";
 			}).then(() => {
               // on confirm
 				cancelOrder(id).then((res) => {
+                    console.log(res)
 					if (res.data.status == 0) {
 	                    this.$toast(this.$t("common.cancelsuccess"))
 					} else {
@@ -153,6 +154,12 @@ import { getMainData } from "@/api/index/index.js";
 			}).catch(() => {
 			});
         	
+        },
+        //立即支付
+        payment (id) {
+            
+            this.$router.push("/cart/payment")
+            
         },
         // 确认收货
         confirmOrder (id) {
@@ -201,7 +208,7 @@ import { getMainData } from "@/api/index/index.js";
         },
        },
        created () {
-           
+        //    this.payment()
        },
        beforeRouteEnter (to, from, next) {
         next(vm => {

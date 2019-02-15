@@ -1,8 +1,8 @@
 <template >
      <div class="payment">
-             <p>{{$t(paystyle)}}</p>
-             <van-radio-group v-model="radio" @change="payWayChange"> 
-             <div class="wxpay" style="width:100%;">
+            <p>{{$t(paystyle)}}</p>
+            <van-radio-group v-model="radio" @change="payWayChange"> 
+            <!-- <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgs"></i>
@@ -12,8 +12,8 @@
                          <van-radio name="1"></van-radio>
                      </div>  
                  </div>
-             </div>
-             <div class="wxpay" style="width:100%;">
+            </div> -->
+            <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgtwo"></i>
@@ -22,10 +22,20 @@
                     <div>
                        <van-radio name="2"></van-radio> 
                     </div>
-                    
                  </div>
-             </div>
-              <div class="wxpay" style="width:100%;">
+            </div>
+            <div class="wxpay" style="width:100%;">
+                 <div class="wxpaycen">
+                     <div class="wxwxwx">
+                        <i class="wxpayimg wxpayimgtwo"></i>
+                        <h4>{{$t(alipayxg)}}</h4> 
+                     </div>  
+                    <div>
+                       <van-radio name="3"></van-radio> 
+                    </div>
+                 </div>
+            </div>
+              <!-- <div class="wxpay" style="width:100%;">
                   <div class="wxpaycen">
                       <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgthr"></i>
@@ -33,11 +43,11 @@
                       </div>
                         
                         <div>
-                           <van-radio name="3"></van-radio> 
+                           <van-radio name="4"></van-radio> 
                         </div>
                         
                  </div>
-             </div>
+             </div> -->
              </van-radio-group>
         </div>    
 </template>
@@ -60,6 +70,7 @@ export default{
             wxpay: 'common.wxpay',
             tuiwx: 'common.tuiwx',
             alipay: 'common.alipay',
+            alipayxg:'common.alipayxg',
             tuialipay: 'common.tuialipay',
             tuivisapay: 'common.tuivisapay'
         }

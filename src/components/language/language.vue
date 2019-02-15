@@ -13,7 +13,6 @@
             </el-radio>
          </el-radio-group>
        </keep-alive>
-       
        <!-- <my-file @input="input($event)"></my-file> -->
    </div>    
 </template>

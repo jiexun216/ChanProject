@@ -29,6 +29,19 @@
                 :label="$t(totallable)"
                 />
         </div>
+        
+        <!-- 支付码弹窗 -->
+        <!-- <van-dialog
+          v-model="erweimashow"
+          show-cancel-button
+          :show-cancel-button="false"
+          :confirm-button-text="confirmbutton"
+          :before-close="beforeClose">   
+            <div class="marginauto">
+                  <p style="margin:10px 0px;font-size:0.4rem;">支付请备注用户名及商品名称，谢谢！</p>
+                  <img src="../../assets/img/erweima.png" alt="" style="width:200px;margin:auto;">
+            </div>
+        </van-dialog> -->
      </div>
 </template>
 <script>
@@ -36,6 +49,9 @@ import Vue from "vue";
 import { NavBar, Toast } from "vant";
 import { Checkbox, CheckboxGroup } from "vant";
 import { SubmitBar } from "vant";
+import { Dialog } from 'vant';
+
+Vue.use(Dialog);
 Vue.use(SubmitBar);
 Vue.use(Checkbox).use(CheckboxGroup);
 Vue.use(NavBar);
@@ -78,7 +94,8 @@ export default {
       submitorder: 'common.submitorder',
       ordercenter: 'common.ordercenter',
       vantitle:'',
-      totallable: 'common.totallable'
+      totallable: 'common.totallable',
+      erweimashow:false,
     };
   },
   methods: {
@@ -195,25 +212,157 @@ export default {
             return false
         }
         generatingOrder(
-        this.payParam.buyType,
-        this.payParam.cartIds,
-        this.payParam.addressId,
-        this.payParam.goodsId,
-        this.payParam.skuId,
-        this.payParam.goodsQuantity,
-        this.payParam.memberCouponId,
-        this.payParam.remark,
-        this.payParam.payWay
-      ).then(res => {
-          this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-          if (res.data.status == 99) {
-              this.$router.push({name: res.data.data.url})
-          } else if (res.data.status == 0) {
-               this.$router.push({name: 'orderList'})
-          }
+          this.payParam.buyType,
+          this.payParam.cartIds,
+          this.payParam.addressId,
+          this.payParam.goodsId,
+          this.payParam.skuId,
+          this.payParam.goodsQuantity,
+          this.payParam.memberCouponId,
+          this.payParam.remark,
+          this.payParam.payWay
+          ).then(res => {
+            console.log(res)
+              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+              if (res.data.status == 99) {
+                  this.$router.push({name: res.data.data.url})
+              } else if (res.data.status == 0) {
+                  window.location.href=res.data.data.pay_url;
+              }
+          })
+        },
+    
+    // tradePay (tradeNo) {
+    //   this.ready(() => {
+    //     AlipayJSBridge.call("tradePay", {
+    //         tradeNo: tradeNo
+    //     }, (data) => {
+    //         // log(JSON.stringify(data));
+    //         // if ("9000" == data.resultCode) {
+    //         //     log("支付成功");
+    //         // }
+    //     });
+    //   })
+    // },
+    // ready (callback) {
+    //     if (window.AlipayJSBridge) {
+    //          callback && callback();
+    //      }else {
+    //          document.addEventListener('AlipayJSBridgeReady', callback, false);
+    //      }
+    // },
+    //点击确认已支付
+    // beforeClose(action,done) {
+    //   if (action === 'confirm') {
+    //     console.log("11")
+    //     if (this.payParam.addressId == 0) {
+    //         this.$toast(this.$t("common.chooseaddress"))
+    //         return false
+    //     }
+    //    if (this.payParam.payWay == 0) {
+    //         this.$toast(this.$t("common.choosepayfize"))
+    //         return false
+    //     }
+    //     generatingOrder(
+    //       this.payParam.buyType,
+    //       this.payParam.cartIds,
+    //       this.payParam.addressId,
+    //       this.payParam.goodsId,
+    //       this.payParam.skuId,
+    //       this.payParam.goodsQuantity,
+    //       this.payParam.memberCouponId,
+    //       this.payParam.remark,
+    //       this.payParam.payWay
+    //     ).then(res => {
+    //         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+    //         if (res.data.status == 99) {
+    //             this.$router.push({name: res.data.data.url})
+    //         } else if (res.data.status == 0) {
+    //         }
+    //   })
+    //   } else {
+    //     done();
+    //   }
+    // },
+    // clickconfirm () {
+    //     generatingOrder(
+    //       2,
+    //       this.payParam.cartIds,
+    //       this.payParam.addressId,
+    //       this.payParam.goodsId,
+    //       this.payParam.skuId,
+    //       this.payParam.goodsQuantity,
+    //       this.payParam.memberCouponId,
+    //       this.payParam.remark,
+    //       this.payParam.payWay
+    //     ).then(res => {
+    //         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+    //         if (res.data.status == 99) {
+    //             this.$router.push({name: res.data.data.url})
+    //         } else if (res.data.status == 0) {
+              
+                
+    //         }
+    //   })
+      
+    // },
+    //提交订单
+        // onSubmit() {
+        // if (this.payParam.addressId == 0) {
+        //     this.$toast(this.$t("common.chooseaddress"))
+        //     return false
+        // }
+        // // if (this.payParam.remark == '') {
+        // // this.$toast('请填写备注信息')
+        // // return false
+        // // }
+        // if (this.payParam.payWay == 0) {
+        //     this.$toast(this.$t("common.choosepayfize"))
+        //     return false
+        // }
+        // generatingOrder(
+        //   this.payParam.buyType,
+        //   this.payParam.cartIds,
+        //   this.payParam.addressId,
+        //   this.payParam.goodsId,
+        //   this.payParam.skuId,
+        //   this.payParam.goodsQuantity,
+        //   this.payParam.memberCouponId,
+        //   this.payParam.remark,
+        //   this.payParam.payWay
+        // ).then(res => {
+        //   this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+        // if (res.data.status == 99) {
+        // // this.$router.push({name: res.data.data.url})
+        // } else if (res.data.status == 0) {
+        //   let tradeNo = res.data.data.tradeNO;
+        //   this.tradePay(tradeNo);
+        //   console.log('提交按钮',tradeNo)
+        //   }
+        //   })
+        // },
+        // tradePay (tradeNo) {
+        //   this.ready(() => {
+        //   AlipayJSBridge.call("tradePay", {
+        //   tradeNo: tradeNo
+        //   },(data) => {
+        //   log(JSON.stringify(data));
+        //   console.log(data)
+        //   if ("9000" == data.resultCode) {
+        //   console.log("支付成功");
+        //   }
+        //   });
+        //   })
+        // },
+        // ready (callback) {
+        //     console.log('callback参数',callback);
+        //     if (window.AlipayJSBridge) {
+        //     callback && callback();
+        //     }else {
+        //     document.addEventListener('AlipayJSBridgeReady', callback, false); 
+        //     }
+        // },
 
-      })
-    },
     onClickLeft() {
       this.$router.push({ name: "cartList" });
     },
@@ -226,6 +375,7 @@ export default {
   },
   created () {
       this.getData();
+      // this.onSubmit();
   }
 };
 </script>
@@ -280,5 +430,10 @@ export default {
 }
 .van-nav-bar__title{
   font-size: 0.4rem;
+}
+.marginauto{
+  width:100%;
+  margin:auto;
+  text-align: center;
 }
 </style>

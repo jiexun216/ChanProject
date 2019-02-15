@@ -150,7 +150,7 @@ export default {
   methods: {
       // 首页数据
     getData() {
-        getMainData ().then(res => {
+        getMainData().then(res => {
             this.goodsList = res.data.data.goodsList;
             this.goodsCategoryList = res.data.data.goodsCategoryList;
             this.bannerList = res.data.data.bannerList;

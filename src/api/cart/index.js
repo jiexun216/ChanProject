@@ -20,7 +20,7 @@ export function addGoodsToCart(cartGoodsId,goodsQuantity,cartSkuId) {
 }
 
 // 下单结算接口 zhangjie 0918
-export function orderSettlement(buyType,cartIds,addressId,goodsId,skuId,goodsQuantity) {
+export function orderSettlement (buyType,cartIds,addressId,goodsId,skuId,goodsQuantity) {
     const url = 'order/settlement'
     const data = {
         buyType,
@@ -35,7 +35,7 @@ export function orderSettlement(buyType,cartIds,addressId,goodsId,skuId,goodsQua
 
 // 结算下单生成订单并支付 zhangjie 0918
 export function generatingOrder(buyType,cartIds,addressId,goodsId,skuId,goodsQuantity,memberCouponId,remark,payWay) {
-    const url = 'order/generatingOrder'
+    const url = '/order/generatingOrder'
     const data = {
         buyType,
         cartIds, 
@@ -60,11 +60,21 @@ export function generatingOrder(buyType,cartIds,addressId,goodsId,skuId,goodsQua
  }
 
  // 修改购物车商品数量 张杰 0919
- export function changeCartQuantity(cartId, goodsQuantity) {
+export function changeCartQuantity (cartId, goodsQuantity) {
     const url = 'cart/changeCart'
     const data = {
         cartId,
         goodsQuantity
     }
     return postData(url, data)
- }
+ }  
+
+  //待付款 立即支付按钮
+  export function immnetPayment (order_id, pay_way) {
+     const url = 'order/payOrder'
+     const data = {
+        order_id,
+        pay_way
+     }
+     return postData(url, data)
+  }

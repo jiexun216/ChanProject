@@ -18,8 +18,7 @@
                 v-for="item in prephone"
                 :key="item.index"
                 :label="item.countrydes + '+' + item.code"
-                :value="item.code"
-                >
+                :value="item.code">
                 <div>
                     {{item.country + '+' + item.code}}
                 </div>
@@ -28,22 +27,9 @@
           </template>
            <input type="text" class="tel" v-model="tel" :placeholder="$t(userphone)">
      </div>
-     <!-- <div class="login-teller">
-         <van-cell-group>
-          <van-field
-            v-model="sms"
-            center
-            clearable
-            :label="$t(SMS)"
-            :placeholder="$t(inputSMS)"
-          >
-            <van-button slot="button" size="small" type="primary" @click="sendMessage">{{$t(send)}}</van-button>
-          </van-field>
-        </van-cell-group>
-     </div> -->
      <div class="login-tellre login-restsend">
          <input type="text" class="yzm" v-model="verifyCode" :placeholder="$t(enteryzm)">   
-          <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
+         <span class="restsend" @click="sendMessage">{{$t(send)}}</span>
      </div>
      <div class="login-tellre">
          <input type="password" class="yzm" v-model="password" :placeholder="$t(userpwd)">
@@ -141,9 +127,6 @@ Vue.use(Field);
          sendMessage () {
           let tel = this.tel.trim();
           let district_code = this.value;
-          console.log(this.tel)
-          console.log(this.value)
-
           if(this.value == 86 && this.tel.length != 11 ) {
             //  messageSend (tel, 0,district_code ).then(res => {    
             //     this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
@@ -151,38 +134,21 @@ Vue.use(Field);
             //     return err
             // })
              this.$toast(this.$t("common.codeandphone"))
-          }else if(this.value == 852 && this.tel.length != 8){
-            //  messageSend (tel, 0,district_code ).then(res => {   
-            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-            //               }).catch(err => {
-            //                 return err
-            //             })
-             this.$toast(this.$t("common.codeandphone"))
-          }else if (this.value == 60 && this.tel.length != 7){
-            //  messageSend (tel, 0,district_code ).then(res => {
-            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-            //               }).catch(err => {
-            //                 return err
-            //             })
-             this.$toast(this.$t("common.codeandphone"))
-          }else if(this.value == 65 && this.tel.length != 8){
-            //  messageSend (tel, 0,district_code ).then(res => {    
-            //                 this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-            //               }).catch(err => {
-            //                 return err
-            //             })
-             this.$toast(this.$t("common.codeandphone"))
-          }else {
-            //  this.$toast("请填写正确的国家代码和手机号")
-             messageSend (tel, 0,district_code ).then(res => {    
-                            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-                          }).catch(err => {
-                            return err
-                        })
-          }
-
+              }else if(this.value == 852 && this.tel.length != 8){
+                this.$toast(this.$t("common.codeandphone"))
+              }else if (this.value == 60 && this.tel.length != 7){
+                this.$toast(this.$t("common.codeandphone"))
+              }else if(this.value == 65 && this.tel.length != 8){
+                this.$toast(this.$t("common.codeandphone"))
+              }else {
+                messageSend (tel, 0,district_code ).then(res => {    
+                                this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+                              }).catch(err => {
+                                return err
+                 })
+              }
          },
-         // 发送验证码倒计时  
+         // 发送验证码倒计时
          getAuthCode: function() {
             // let reg =/^\d$/;
             // if (!reg.test(this.tel)) {
@@ -210,14 +176,6 @@ Vue.use(Field);
           },
          // 会员注册
          memberRegister () {
-          //  let reg = /^\d$/;
-          //  if (!reg.test(this.tel)) {
-          //     this.$toast({
-          //     message: "请输入正确格式的手机号",
-          //     position: "top"
-          //     });
-          //     return false;
-          //  }
            if (!this.verifyCode) {
               this.$toast({
               message: "请输入验证码",
@@ -306,10 +264,12 @@ Vue.use(Field);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 .restsend{
   color: #f00;
   font-size:0.4rem;
+  z-index:1000;
 }
 .login-tellre{
   margin: 0.4rem;

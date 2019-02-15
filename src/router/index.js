@@ -30,6 +30,7 @@ import ResetPassword from '@/views/user/reset-password'
 import CartList from '@/views/cart/list'
 import CartSettlement from "@/views/cart/settlement"
 import CartEdit from "@/views/cart/edit"
+import Payment from "@/views/cart/payment"
 import FortuneIndex from '@/views/fortunetellers/index'
 import FortuneNoLog from '@/views/fortunetellers/no-fortune-log'
 import ContentFortune from '@/views/fortunetellers/contentfortune'
@@ -183,6 +184,12 @@ export default new Router({
       path: '/car/emptygood',
       component: Emptygood,
       meta: { title: '空购物车' }
+    },
+    // 待付款 立即支付页面
+    {
+      name: 'payment',
+      path: '/cart/payment',
+      component: Payment
     },
     // 算命首页
     {
