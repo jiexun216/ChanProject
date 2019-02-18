@@ -157,9 +157,7 @@ import { getMainData } from "@/api/index/index.js";
         },
         //立即支付
         payment (id) {
-            
-            this.$router.push("/cart/payment")
-            
+            this.$router.push("/cart/payment")   
         },
         // 确认收货
         confirmOrder (id) {
@@ -249,7 +247,7 @@ import { getMainData } from "@/api/index/index.js";
     font-size: 0.3rem;
 }
 .order{
-    margin: 0.3rem;
+    margin: 0.2rem;
     border-radius: 0.1rem;
     box-shadow: 0 0 0.5rem #ccc;
     font-size: 0.3rem;
@@ -304,15 +302,26 @@ import { getMainData } from "@/api/index/index.js";
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    overflow:hidden;
 }
 .orderstyle{
     display: inline-block;
-    /* margin-left: 0.2rem; */
+}
+.orderstyles{
+    overflow:hidden;
 }
 .ordername {
     flex-wrap: wrap;
     font-size: 0.3rem;
     margin-right: 0.4rem;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width:100%;
 }
 .ordersize{
     color: #ccc;

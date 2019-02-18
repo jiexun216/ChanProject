@@ -222,7 +222,6 @@ export default {
           this.payParam.remark,
           this.payParam.payWay
           ).then(res => {
-            console.log(res)
               this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
               if (res.data.status == 99) {
                   this.$router.push({name: res.data.data.url})
