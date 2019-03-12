@@ -2,7 +2,7 @@
      <div class="payment">
             <p>{{$t(paystyle)}}</p>
             <van-radio-group v-model="radio" @change="payWayChange"> 
-            <!-- <div class="wxpay" style="width:100%;">
+            <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgs"></i>
@@ -12,7 +12,7 @@
                          <van-radio name="1"></van-radio>
                      </div>  
                  </div>
-            </div> -->
+            </div>
             <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <div class="wxwxwx">

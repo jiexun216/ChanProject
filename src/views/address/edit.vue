@@ -42,7 +42,7 @@ export default {
      MyForm
   },
   data() {
-    var reg = /^[0-9]*$/
+    var reg = /^\d*$/
     var  validatephone = function(value){
       if(!value){
         this.$toast(this.$t("common.placeholder.userphone"))
@@ -80,7 +80,7 @@ export default {
         isDefault: true,
       },
       tel: '',
-      validaphone: validatephone
+      // validaphone: validatephone
     };
   },
   methods: {
@@ -91,8 +91,37 @@ export default {
         done();
       }
     },
+    // 正则验证处理
+    getErrorMessage (key) {
+      const value = String(this.data[key] || '').trim()
+      if (this.validator) {
+        const message = this.validator(key, value)
+        if (message) {
+          return message
+        }
+      }
+      switch (key) {
+        case 'name':
+          return value ? '' : this.$t("common.addinputname")
+        case 'mobile': 
+          return mobileReg(value) ? '' : this.$t("common.addcorrectphone")
+        case 'areaCode':
+          return value ? '' : this.$t("common.addinputerea")
+        case 'addressDetail':
+          return value ? '' : this.$t("common.addinputdetail")
+      }
+    },
     // 添加、修改地址保存
     onSave(content) {
+      const isValid = items.every(item => {
+          const msg = this.getErrorMessage(item)    //对value进行验证
+          if (msg) {
+            this.errorInfo[item] = true
+            this.$toast(msg)
+            this.saveAddressInfo();
+          }
+        return !msg 
+      })
       saveAddressInfo(
         content.id,
         content.name,
@@ -104,11 +133,11 @@ export default {
         content.areaCode,
         content.isDefault
       ).then(res => {
-        console.log(res)
           this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
           if (res.data.status == 0) {
+           
               this.$router.push({
-                name: 'addressList',
+                // name: 'addressList',
                 query: {
                   buyType: this.$route.query.buyType,
                   cartIds: this.$route.query.cartIds,
@@ -118,10 +147,11 @@ export default {
                   goodsQuantity: this.$route.query.goodsQuantity
                 }
               });
+              
           }
-        
       });
     },
+    
     // 编辑地址数据
     getData() {
       getAddressInfo(this.formData.id)
@@ -157,7 +187,7 @@ export default {
     // 添加地址链接 zhangjie 0919
     addAddressHandle () {
       this.$router.push({
-        name:'s',
+        name:'',
         query: {
           buyType: this.$route.query.buyType,
           cartIds: this.$route.query.cartIds,
@@ -167,7 +197,8 @@ export default {
           goodsQuantity: this.$route.query.goodsQuantity
         }
       })
-    }
+    },
+    
     }
    
 }

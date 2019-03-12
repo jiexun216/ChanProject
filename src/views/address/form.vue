@@ -22,7 +22,7 @@
         :value="areaText"
         @click="showAreaPopup = true"
         class="nameandphone" 
-        style="font-size:12px"/>
+        style="font-size:12px" />
       <!-- 选择默认地址 -->
       <van-switch-cell
         v-if="item.type === 'selectCell'"
@@ -38,7 +38,7 @@
     </van-popup>
   </div>
 </template>
-
+ 
 <script>
 import Vue from 'vue'
 import City from '@/common/js/area.js'
@@ -116,6 +116,9 @@ export default {
       this.getArea()
     }
   },
+  created () {
+      
+  },
   methods: {
     onFocus (key) {
       this.errorInfo[key] = false
@@ -154,13 +157,13 @@ export default {
     // 提交
     onSave () {
       const items = this.regList
-      const isValid = items.every(item => {
-        const msg = this.getErrorMessage(item)    //对value进行验证
-        if (msg) {
-          this.errorInfo[item] = true
-          this.$toast(msg)
-        }
-        return !msg 
+        const isValid = items.every(item => {
+          const msg = this.getErrorMessage(item)    //对value进行验证
+          if (msg) {
+            this.errorInfo[item] = true;
+            this.$toast(msg)
+          }
+        return !msg;
       })
       if (isValid) {
         this.$emit('save', this.data)  
@@ -179,17 +182,18 @@ export default {
         this.$toast(res.data.message ? res.data.message : this.$t('common.failuredcaozuo'))
         if(res.data.status == 0){
           this.$router.push({
-            name: 'addressList',
+            name: 'addressList',  //提交按钮跳转到地址列表
             query: {
                 // buyType: this.$route.query.buyType,
                 // cartIds: this.$router.query.cartIds,
                 // addressId: this.$route.query.addressId,
                 // goodsId: this.$router.query.goodsId,
                 // skuId: this.$route.query.skuId,
-                // goodsQuantity: this.$router.query.goodsQuantity,   
+                // goodsQuantity: this.$router.query.goodsQuantity,
             }
           })
         }
+       
       })
     },
     // 正则验证处理
@@ -215,7 +219,7 @@ export default {
      // 添加地址链接 zhangjie 0919
     addAddressHandle () {
       this.$router.push({
-        name:'s',
+        name:"",
         query: {
           buyType: this.$route.query.buyType,
           cartIds: this.$route.query.cartIds,
@@ -257,6 +261,9 @@ export default {
             duration: 1500
           });
         });
+    },
+    destroyed() {
+      
     },
   }
 }

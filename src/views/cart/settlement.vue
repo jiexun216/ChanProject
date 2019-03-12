@@ -31,17 +31,18 @@
         </div>
         
         <!-- 支付码弹窗 -->
-        <!-- <van-dialog
+        <van-dialog
           v-model="erweimashow"
           show-cancel-button
           :show-cancel-button="false"
-          :confirm-button-text="confirmbutton"
+          :confirmButtonText='$t(confirmButtonText)'
           :before-close="beforeClose">   
             <div class="marginauto">
-                  <p style="margin:10px 0px;font-size:0.4rem;">支付请备注用户名及商品名称，谢谢！</p>
-                  <img src="../../assets/img/erweima.png" alt="" style="width:200px;margin:auto;">
+                  <p style="margin:10px 0px;font-size:0.4rem;">{{tishi}}</p>
+
+                  <img :src="payUrl" alt="" style="width:200px;margin:auto;">
             </div>
-        </van-dialog> -->
+        </van-dialog>
      </div>
 </template>
 <script>
@@ -96,6 +97,9 @@ export default {
       vantitle:'',
       totallable: 'common.totallable',
       erweimashow:false,
+      payUrl: '',
+      tishi:'',
+      confirmButtonText: 'common.confirmButtonText'
     };
   },
   methods: {
@@ -203,10 +207,6 @@ export default {
             this.$toast(this.$t("common.chooseaddress"))
             return false
         }
-        // if (this.payParam.remark == '') {
-        //     this.$toast('请填写备注信息')
-        //     return false
-        // }
         if (this.payParam.payWay == 0) {
             this.$toast(this.$t("common.choosepayfize"))
             return false
@@ -224,9 +224,11 @@ export default {
           ).then(res => {
               this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
               if (res.data.status == 99) {
-                  this.$router.push({name: res.data.data.url})
+                  // this.$router.push({name: res.data.data.url})
               } else if (res.data.status == 0) {
-                  window.location.href=res.data.data.pay_url;
+                this.erweimashow = true;
+                this.payUrl = res.data.data.pay_url;
+                this.tishi = res.data.data.tishi;
               }
           })
         },
@@ -251,38 +253,29 @@ export default {
     //      }
     // },
     //点击确认已支付
-    // beforeClose(action,done) {
-    //   if (action === 'confirm') {
-    //     console.log("11")
-    //     if (this.payParam.addressId == 0) {
-    //         this.$toast(this.$t("common.chooseaddress"))
-    //         return false
-    //     }
-    //    if (this.payParam.payWay == 0) {
-    //         this.$toast(this.$t("common.choosepayfize"))
-    //         return false
-    //     }
-    //     generatingOrder(
-    //       this.payParam.buyType,
-    //       this.payParam.cartIds,
-    //       this.payParam.addressId,
-    //       this.payParam.goodsId,
-    //       this.payParam.skuId,
-    //       this.payParam.goodsQuantity,
-    //       this.payParam.memberCouponId,
-    //       this.payParam.remark,
-    //       this.payParam.payWay
-    //     ).then(res => {
-    //         this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
-    //         if (res.data.status == 99) {
-    //             this.$router.push({name: res.data.data.url})
-    //         } else if (res.data.status == 0) {
-    //         }
-    //   })
-    //   } else {
-    //     done();
-    //   }
-    // },
+    beforeClose(action,done) {
+      if (action === 'confirm') {
+        setTimeout(done, 1000);
+        if (this.payParam.addressId == 0) {
+            this.$toast(this.$t("common.chooseaddress"))
+            return false
+        }
+       if (this.payParam.payWay == 0) {
+            this.$toast(this.$t("common.choosepayfize"))
+            return false
+        }
+        generatingOrder(
+        ).then(res => {
+            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            if (res.data.status == 99) {
+                this.$router.push({name: res.data.data.url})
+            } else if (res.data.status == 0) {
+            }
+      })
+      } else {
+        done();
+      }
+    },
     // clickconfirm () {
     //     generatingOrder(
     //       2,

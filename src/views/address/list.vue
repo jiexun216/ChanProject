@@ -2,7 +2,7 @@
     <div>
         <div class="header" v-if="listData.length == 0">
          <div class="orderdetop">
-            <i class="back backs" @click="$router.push({path: '/ucenter/index'})"></i>     
+            <i class="back backs" @click="$router.back(-1)"></i>     
             <span class="orderaddress">{{$t(shipaddress)}}</span>
             <span class="myorder">
                 <i class="back backcoups"></i>
@@ -16,11 +16,10 @@
        </div>
         <div v-else> 
             <div class="orderdetop orderdetop1">
-                <i class="back backs" @click="$router.push({path: '/ucenter/index'})"></i>     
+                <i class="back backs" @click="$router.push({path:'/ucenter/index'})"></i> 
                 <span >{{$t(shipaddress)}}</span>
-                <span class="oks" @click="$router.back(-1)">
+                <span class="oks"  @click="$router.push({path:'/ucenter/index'})">
                   <!-- {{$t(completes)}} -->
-
                 </span>
                 </div>
                 <div class="oldaddress" v-for="(item, index) in listData" :key="index" @click="choiceAddressHandle(item.id)">
