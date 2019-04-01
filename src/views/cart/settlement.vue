@@ -233,10 +233,10 @@ export default {
                 window.location.href = res.data.data.pay_url;
               }
 
-              // if( res.data.data.payWay == '微信支付'){
-              //   location.href = res.data.data.pay_url;
-              //   console.log('微信支付',res.data.data.pay_url)
-              // }
+              if( res.data.data.payWay == '微信支付'){
+                location.href = res.data.data.pay_url;
+                console.log('微信支付',res.data.data.pay_url)
+              }
           })
         },
     
