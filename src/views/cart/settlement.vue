@@ -234,8 +234,8 @@ export default {
               }
 
               if( res.data.data.payWay == '微信支付'){
-                location.href = res.data.data.pay_url;
-                console.log('微信支付',res.data.data.pay_url)
+                location.href = res.data.data.pay_url + new Date().getTime()+Math.random()
+                console.log('微信支付',location.href)
               }
           })
         },
