@@ -229,14 +229,18 @@ export default {
                   // this.$router.push({name: res.data.data.url})
               } else if (res.data.status == 0) {
                 // this.erweimashow = true;
-                this.payUrl = res.data.data.pay_url;
-                window.location.href = res.data.data.pay_url;
-              }
-
+                // this.payUrl = res.data.data.pay_url;
+                // window.location.href = res.data.data.pay_url;
+                
               if( res.data.data.payWay == '微信支付'){
                 location.href = res.data.data.pay_url + new Date().getTime()+Math.random()
                 console.log('微信支付',location.href)
+              }else{
+                window.location.href = res.data.data.pay_url;
               }
+
+              }
+
           })
         },
     
