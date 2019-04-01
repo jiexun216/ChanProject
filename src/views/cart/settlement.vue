@@ -31,7 +31,7 @@
         </div>
         
         <!-- 支付码弹窗 -->
-        <van-dialog
+        <!-- <van-dialog
           v-model="erweimashow"
           show-cancel-button
           :show-cancel-button="false"
@@ -42,7 +42,7 @@
 
                   <img :src="payUrl" alt="" style="width:200px;margin:auto;">
             </div>
-        </van-dialog>
+        </van-dialog> -->
      </div>
 </template>
 <script>
@@ -222,14 +222,21 @@ export default {
           this.payParam.remark,
           this.payParam.payWay
           ).then(res => {
-              this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            // console.log(res)
+             console.log(res.data.data.pay_url)
+              // this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
               if (res.data.status == 99) {
                   // this.$router.push({name: res.data.data.url})
               } else if (res.data.status == 0) {
-                this.erweimashow = true;
+                // this.erweimashow = true;
                 this.payUrl = res.data.data.pay_url;
-                this.tishi = res.data.data.tishi;
+                window.location.href = res.data.data.pay_url;
               }
+
+              // if( res.data.data.payWay == '微信支付'){
+              //   location.href = res.data.data.pay_url;
+              //   console.log('微信支付',res.data.data.pay_url)
+              // }
           })
         },
     

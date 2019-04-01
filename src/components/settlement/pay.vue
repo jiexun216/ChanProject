@@ -6,18 +6,20 @@
                  <div class="wxpaycen">
                      <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgs"></i>
-                        <h4>{{$t(wxpay)}}</h4>  
+                        <h4>{{$t(wxpay)}}</h4>
+                        
                      </div>       
                      <div>
                          <van-radio name="1"></van-radio>
                      </div>  
                  </div>
+                 <p>{{$t(weixinpay)}}</p>
             </div>
             <div class="wxpay" style="width:100%;">
                  <div class="wxpaycen">
                      <div class="wxwxwx">
                         <i class="wxpayimg wxpayimgtwo"></i>
-                        <h4>{{$t(alipay)}}</h4> 
+                        <h4>{{$t(alipay)}}</h4>
                      </div>  
                     <div>
                        <van-radio name="2"></van-radio> 
@@ -68,6 +70,7 @@ export default{
             radio: '',
             paystyle: 'common.paystyle',
             wxpay: 'common.wxpay',
+            weixinpay: 'common.weixinpay',
             tuiwx: 'common.tuiwx',
             alipay: 'common.alipay',
             alipayxg:'common.alipayxg',
