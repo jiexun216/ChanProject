@@ -31,7 +31,7 @@
         </div>
         
         <!-- 支付码弹窗 -->
-        <!-- <van-dialog
+        <van-dialog
           v-model="erweimashow"
           show-cancel-button
           :show-cancel-button="false"
@@ -42,7 +42,7 @@
 
                   <img :src="payUrl" alt="" style="width:200px;margin:auto;">
             </div>
-        </van-dialog> -->
+        </van-dialog>
      </div>
 </template>
 <script>
@@ -233,7 +233,8 @@ export default {
                 // window.location.href = res.data.data.pay_url;
                 
               if( res.data.data.payWay == '微信支付'){
-                location.href = res.data.data.pay_url + new Date().getTime()+Math.random()
+                this.erweimashow = true;
+                this.payUrl = res.data.data.pay_url
                 console.log('微信支付',location.href)
               }else{
                 window.location.href = res.data.data.pay_url;
@@ -277,7 +278,7 @@ export default {
         }
         generatingOrder(
         ).then(res => {
-            this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
+            // this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
             if (res.data.status == 99) {
                 this.$router.push({name: res.data.data.url})
             } else if (res.data.status == 0) {
