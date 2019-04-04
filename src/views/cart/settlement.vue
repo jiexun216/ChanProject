@@ -226,19 +226,19 @@ export default {
              console.log(res.data.data.pay_url)
               // this.$toast(res.data.message ? res.data.message : this.$t("common.failuredcaozuo"))
               if (res.data.status == 99) {
-                  // this.$router.push({name: res.data.data.url})
+                   this.$router.push({name: res.data.data.url})
               } else if (res.data.status == 0) {
                 // this.erweimashow = true;
-                // this.payUrl = res.data.data.pay_url;
-                // window.location.href = res.data.data.pay_url;
-                
-              if( res.data.data.payWay == '微信支付'){
-                this.erweimashow = true;
-                this.payUrl = res.data.data.pay_url
-                console.log('微信支付',location.href)
-              }else{
+                this.payUrl = res.data.data.pay_url;
                 window.location.href = res.data.data.pay_url;
-              }
+                
+              // if( res.data.data.payWay == '微信支付'){
+              //   this.erweimashow = true;
+              //   this.payUrl = res.data.data.pay_url
+              //   console.log('微信支付',location.href)
+              // }else{
+              //   window.location.href = res.data.data.pay_url;
+              // }
 
               }
 
